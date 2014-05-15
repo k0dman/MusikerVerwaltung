@@ -32,6 +32,9 @@ public class MusicLounge04 extends JFrame {
 	// JTextField
 	private JTextField jtfsearch;
 
+	// JJButton
+	private JButton jbnew;
+
 	// Konstruktor
 	private MusicLounge04() {
 
@@ -91,14 +94,20 @@ public class MusicLounge04 extends JFrame {
 		// JTextField erzeugen
 		jtfsearch = new JTextField("Suchtext");
 		
-		// JTextfield vergrößern
+		// JButton erzeugen
+		jbnew = new JButton("Neu");
+
+		// JTextfield vergroeßern
 		jtfsearch.setColumns(10);
-		
+
 		// JLabels der >jpheaderright< hinzufuegen
 		jpheaderright.add(jlsearch);
 		jpheaderright.add(jtfsearch);
 		jpheaderleft.add(jlheader);
 
+		// JButton der >jpnew< hinzufuegen
+		jpnew.add(jbnew);
+		
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
