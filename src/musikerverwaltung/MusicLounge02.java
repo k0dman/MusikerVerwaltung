@@ -27,7 +27,7 @@ public class MusicLounge02 extends JFrame {
 
 	// JLabels
 	private JLabel jlheader, jlsearch;
-	
+
 	// JTextField
 	private JTextField jtfsearch;
 
@@ -78,7 +78,7 @@ public class MusicLounge02 extends JFrame {
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
 		jlsearch = new JLabel("Suche");
-		
+
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
@@ -89,8 +89,12 @@ public class MusicLounge02 extends JFrame {
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
 
-		// Automatische Groesse setzen
-		pack();
+		// Anfangsposition und -groesse festlegen
+		setBounds(0, 20, 1280, 720);
+		
+		// Groesse nicht veraenderbar
+		setResizable(false);
+		
 		// Frame sichtbar machen
 		setVisible(true);
 
