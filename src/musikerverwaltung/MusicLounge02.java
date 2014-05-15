@@ -90,7 +90,7 @@ public class MusicLounge02 extends JFrame {
 		copa.add(jpall);
 
 		// Anfangsposition und -groesse festlegen
-		setBounds(0, 20, 1280, 720);
+		setBounds(50, 50, 1280, 720);
 		
 		// Groesse nicht veraenderbar
 		setResizable(false);
