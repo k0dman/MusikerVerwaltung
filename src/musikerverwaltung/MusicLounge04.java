@@ -10,7 +10,7 @@ public class MusicLounge04 extends JFrame {
 	// VersionsNr. festlegen
 	private static final long serialVersionUID = 04L;
 
-	// Felder:jhkjk
+	// Felder:
 
 	// Schriften:
 	private Font fheader;
@@ -31,6 +31,9 @@ public class MusicLounge04 extends JFrame {
 
 	// JTextField
 	private JTextField jtfsearch;
+	
+	//JButton
+	private JButton jbnew;
 
 	// Konstruktor
 	private MusicLounge04() {
@@ -66,6 +69,9 @@ public class MusicLounge04 extends JFrame {
 		jpnew = new JPanel();
 		jpfooter = new JPanel();
 
+		//JButton erzeugen
+		jbnew = new JButton();
+		
 		// Farben hinzufuegen
 		jpheader.setBackground(bgheader);
 		jpinfo.setBackground(bginfo);
@@ -87,6 +93,10 @@ public class MusicLounge04 extends JFrame {
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
 		jlsearch = new JLabel("Suche");
+		
+		// JButton erzeugen
+		jbnew = new JButton("Neu");
+		jbnew.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
 		jtfsearch = new JTextField("Suchtext");
@@ -102,6 +112,9 @@ public class MusicLounge04 extends JFrame {
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
+		// JButton der >jpnew< hinzufuegen
+		jpnew.add(jbnew);
+		
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
 
