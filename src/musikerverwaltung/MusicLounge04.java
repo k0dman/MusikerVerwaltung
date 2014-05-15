@@ -10,7 +10,7 @@ public class MusicLounge04 extends JFrame {
 	// VersionsNr. festlegen
 	private static final long serialVersionUID = 04L;
 
-	// Felder:
+	// Felder:izuiuziuz
 
 	// Schriften:
 	private Font fheader;
