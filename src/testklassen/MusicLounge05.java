@@ -1,9 +1,12 @@
 package testklassen;
 
-import farbverlaeufe.*;
+import musikerverwaltung.*;
+
 import java.awt.*;
 
 import javax.swing.*;
+
+import musikerverwaltung.GradientJPanels;
 
 import java.awt.Font;
 
