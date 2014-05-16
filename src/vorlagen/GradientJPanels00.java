@@ -1,4 +1,4 @@
-package musikerverwaltung;
+package vorlagen;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -7,11 +7,11 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public final class GradientJPanels extends JPanel {
+public final class GradientJPanels00 extends JPanel {
 
 	public String jpanel;
 
-	public GradientJPanels(String jpanel) {
+	public GradientJPanels00(String jpanel) {
 
 		setOpaque(true);
 		this.jpanel = jpanel;

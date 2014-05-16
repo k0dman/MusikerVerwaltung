@@ -6,6 +6,9 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import vorlagen.GradientJPanels00;
+import vorlagen.RoundJTextField00;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +41,7 @@ public class MusicLounge07 extends JFrame {
 	private JLabel jlheader, jlsearch;
 
 	// JTextField
-	private RoundJTextField jtfsearch;
+	private RoundJTextField00 jtfsearch;
 	
 	// JButton
 	private JButton jbnewart, jbnewband, jbedit;
@@ -59,12 +62,12 @@ public class MusicLounge07 extends JFrame {
 		bgheader = new Color(214,214,214);
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 
-		GradientJPanels gpright = new GradientJPanels("gpheaderright");
-		GradientJPanels gpleft = new GradientJPanels("gpheaderleft");
-		GradientJPanels gpnew = new GradientJPanels("gpnew");
-		GradientJPanels gpmain = new GradientJPanels("gpmain");
-		GradientJPanels gpinfo = new GradientJPanels("gpinfo");
-		GradientJPanels gpfooter = new GradientJPanels("gpfooter");
+		GradientJPanels00 gpright = new GradientJPanels00("gpheaderright");
+		GradientJPanels00 gpleft = new GradientJPanels00("gpheaderleft");
+		GradientJPanels00 gpnew = new GradientJPanels00("gpnew");
+		GradientJPanels00 gpmain = new GradientJPanels00("gpmain");
+		GradientJPanels00 gpinfo = new GradientJPanels00("gpinfo");
+		GradientJPanels00 gpfooter = new GradientJPanels00("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
@@ -111,7 +114,7 @@ public class MusicLounge07 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		jtfsearch = new RoundJTextField(13);
+		jtfsearch = new RoundJTextField00(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));

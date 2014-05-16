@@ -1,12 +1,10 @@
-package testklassen;
+package vorlagen;
 
 import musikerverwaltung.*;
 
 import java.awt.*;
 
 import javax.swing.*;
-
-import musikerverwaltung.GradientJPanels;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -60,12 +58,12 @@ public class MusicLounge06 extends JFrame {
 		// Farben erzeugen
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 	
-		GradientJPanels gpright = new GradientJPanels("gpheader");
-		GradientJPanels gpleft = new GradientJPanels("gpheader");
-		GradientJPanels gpnew = new GradientJPanels("gpnew");
-		GradientJPanels gprcenter = new GradientJPanels("gpcenter");
-		GradientJPanels gpinfo = new GradientJPanels("gpinfo");
-		GradientJPanels gpfooter = new GradientJPanels("gpfooter");
+		GradientJPanels00 gpright = new GradientJPanels00("gpheader");
+		GradientJPanels00 gpleft = new GradientJPanels00("gpheader");
+		GradientJPanels00 gpnew = new GradientJPanels00("gpnew");
+		GradientJPanels00 gprcenter = new GradientJPanels00("gpcenter");
+		GradientJPanels00 gpinfo = new GradientJPanels00("gpinfo");
+		GradientJPanels00 gpfooter = new GradientJPanels00("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();

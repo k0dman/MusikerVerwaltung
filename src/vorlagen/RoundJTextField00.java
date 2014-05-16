@@ -1,13 +1,13 @@
-package musikerverwaltung;
+package vorlagen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class RoundJTextField extends JTextField {
+public class RoundJTextField00 extends JTextField {
 	private Shape shape;
 
-	public RoundJTextField(int size) {
+	public RoundJTextField00(int size) {
 		super(size);
 		
 		setOpaque(false); // As suggested by @AVD in comment.
