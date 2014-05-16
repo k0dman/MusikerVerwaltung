@@ -61,12 +61,12 @@ public class MusicLounge05 extends JFrame {
 		// Farben erzeugen
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 
-		GradientJPanels gpnew = new GradientJPanels(2);
-		GradientJPanels gpright = new GradientJPanels(4);
-		GradientJPanels gprcenter = new GradientJPanels(4);
-		GradientJPanels gpleft = new GradientJPanels(4);
-		GradientJPanels gpinfo = new GradientJPanels(3);
-		GradientJPanels gpfooter = new GradientJPanels(4);
+		GradientJPanels gpnew = new GradientJPanels("gpnew");
+		GradientJPanels gpright = new GradientJPanels("gpheader");
+		GradientJPanels gprcenter = new GradientJPanels("gpcenter");
+		GradientJPanels gpleft = new GradientJPanels("gpheader");
+		GradientJPanels gpinfo = new GradientJPanels("gpinfo");
+		GradientJPanels gpfooter = new GradientJPanels("gpfooter");
 
 		// bgheader = new Color(176, 176, 176);
 		bginfo = new Color(122, 139, 139);

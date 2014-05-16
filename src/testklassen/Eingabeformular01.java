@@ -23,6 +23,7 @@ public class Eingabeformular01 extends JPanel {
 	private JLabel vorsatz;
 	private JLabel zusatz;
 	private JLabel geschlecht;
+	private JLabel geschlechtgruppe;
 	private JLabel dob;
 	private JLabel dod;
 	private JLabel pseudonym;
@@ -48,13 +49,13 @@ public class Eingabeformular01 extends JPanel {
 	
 	//JJRadioButton
 	
-	private JRadioButton rbgeschlecht;
+	private JRadioButton rbmann;
+	private JRadioButton rbfrau;
+	private JRadioButton rbkeineahnung;
 	
-	//ButtonGroup wird erstellt
-    ButtonGroup gruppe = new ButtonGroup();
+	private ButtonGroup auswahl; 
 	
-	
-	
+		
 	
 
 	public JPanel jpmaindesc() {
@@ -130,6 +131,7 @@ public class Eingabeformular01 extends JPanel {
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
 		jtfgeschlecht = new JTextField();
+		geschlechtgruppe = new JLabel();
 		jtfdob = new JTextField();
 		jtfdod = new JTextField();
 		jtfpseudonym = new JTextField();
@@ -139,7 +141,25 @@ public class Eingabeformular01 extends JPanel {
 		
 		// Button erzeugen
 		
-		rbgeschlecht = new  JRadioButton("Maennlich");
+		rbmann = new  JRadioButton("Mann");
+		rbfrau = new  JRadioButton("Frau");
+		rbkeineahnung = new JRadioButton("Keine Ahnung");
+		
+		
+		
+		 //JRadioButtons ButtonGroup hinzufuegen
+		
+		auswahl = new ButtonGroup();
+        auswahl.add(rbmann);
+        auswahl.add(rbfrau);
+        auswahl.add(rbkeineahnung);
+        geschlechtgruppe.add(rbmann);
+        geschlechtgruppe.add(rbfrau);
+        geschlechtgruppe.add(rbkeineahnung);
+        
+        
+        
+        
 		// JTextfields vergoesern
 		
 		
@@ -179,7 +199,7 @@ public class Eingabeformular01 extends JPanel {
 		jpmaininput.add(jtftitel);
 		jpmaininput.add(jtfvorsatz);
 		jpmaininput.add(jtfzusatz);
-		jpmaininput.add(rbgeschlecht);
+		jpmaininput.add(geschlechtgruppe);
 		jpmaininput.add(jtfdob);
 		jpmaininput.add(jtfdod);
 		jpmaininput.add(jtfpseudonym);

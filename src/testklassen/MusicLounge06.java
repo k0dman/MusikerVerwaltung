@@ -167,6 +167,7 @@ public class MusicLounge06 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jpmainartist.jpmaindesc());
 				jpmain.add(jpmainartist.jpmaininput());
+				jpmain.add(jpmainartist.jpmainrechts());
 				jpmain.setVisible(true);
 
 			}
