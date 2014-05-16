@@ -6,15 +6,14 @@ import javax.swing.*;
 
 public class EingabeformularArtist01 extends JPanel {
 
-	
-// Felder:
-	
+	// Felder:
+
 	// Panels
 	private JPanel jpmaindesc, jpmaininput;
-	
+
 	// Schriften:
 	private Font ftfield;
-		
+
 	// Labels
 	private JLabel ueschrift;
 	private JLabel vorname;
@@ -31,7 +30,7 @@ public class EingabeformularArtist01 extends JPanel {
 	private JLabel solostueck;
 	private JLabel referenz;
 	private JLabel fueller;
-	
+
 	// JTextField
 	private JTextField jtfueschrift;
 	private JTextField jtfvorname;
@@ -46,26 +45,22 @@ public class EingabeformularArtist01 extends JPanel {
 	private JTextField jtfinstrument;
 	private JTextField jtfsolostueck;
 	private JTextField jtfreferenz;
-	
-	//JJRadioButton
-	
+
+	// JJRadioButton
+
 	private JRadioButton rbmann;
 	private JRadioButton rbfrau;
 	private JRadioButton rbkeineahnung;
-	
-	private ButtonGroup auswahl; 
-	
-		
-	
+
+	private ButtonGroup auswahl;
 
 	public JPanel jpmaindesc() {
 
 		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
-		jpmaindesc.setBackground(Color.WHITE);
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
-		
+
 		ueschrift = new JLabel("Tragen Sie einen Musiker ein:");
 		vorname = new JLabel("Vorname");
 		name = new JLabel("Name");
@@ -79,8 +74,7 @@ public class EingabeformularArtist01 extends JPanel {
 		instrument = new JLabel("Instrument");
 		solostueck = new JLabel("Stueck");
 		referenz = new JLabel("Referenz");
-		
-		
+
 		jpmaindesc.add(ueschrift);
 		jpmaindesc.add(name);
 		jpmaindesc.add(vorname);
@@ -94,7 +88,7 @@ public class EingabeformularArtist01 extends JPanel {
 		jpmaindesc.add(instrument);
 		jpmaindesc.add(solostueck);
 		jpmaindesc.add(referenz);
-		
+
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
 		name.setHorizontalAlignment(SwingConstants.RIGHT);
 		vorname.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -108,9 +102,9 @@ public class EingabeformularArtist01 extends JPanel {
 		instrument.setHorizontalAlignment(SwingConstants.RIGHT);
 		solostueck.setHorizontalAlignment(SwingConstants.RIGHT);
 		referenz.setHorizontalAlignment(SwingConstants.RIGHT);
-		
+
 		ueschrift.setFont(ftfield);
-		
+
 		return jpmaindesc;
 
 	}
@@ -118,13 +112,12 @@ public class EingabeformularArtist01 extends JPanel {
 	public JPanel jpmaininput() {
 
 		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
-		jpmaininput.setBackground(Color.WHITE);
 
 		fueller = new JLabel("");
 		jpmaininput.add(fueller);
-		
+
 		// JTextFields erzeugen
-		
+
 		jtfvorname = new JTextField();
 		jtfname = new JTextField();
 		jtftitel = new JTextField();
@@ -138,62 +131,55 @@ public class EingabeformularArtist01 extends JPanel {
 		jtfinstrument = new JTextField();
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
-		
+
 		// Button erzeugen
-		
-		rbmann = new  JRadioButton("Mann");
-		rbfrau = new  JRadioButton("Frau");
+
+		rbmann = new JRadioButton("Mann");
+		rbfrau = new JRadioButton("Frau");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
-		
-		
-		
-		 //JRadioButtons ButtonGroup hinzufuegen
-		
+
+		// JRadioButtons ButtonGroup hinzufuegen
+
 		auswahl = new ButtonGroup();
-        auswahl.add(rbmann);
-        auswahl.add(rbfrau);
-        auswahl.add(rbkeineahnung);
-        geschlechtgruppe.add(rbmann);
-        geschlechtgruppe.add(rbfrau);
-        geschlechtgruppe.add(rbkeineahnung);
-        
-        
-        
-        
+		auswahl.add(rbmann);
+		auswahl.add(rbfrau);
+		auswahl.add(rbkeineahnung);
+		geschlechtgruppe.add(rbmann);
+		geschlechtgruppe.add(rbfrau);
+		geschlechtgruppe.add(rbkeineahnung);
+
 		// JTextfields vergoesern
-		
-		
+
 		jtfname.setColumns(10);
 		jtfvorname.setColumns(10);
 		jtftitel.setColumns(10);
 		jtfvorsatz.setColumns(10);
 		jtfzusatz.setColumns(10);
-		
+
 		jtfdob.setColumns(10);
 		jtfdod.setColumns(10);
 		jtfpseudonym.setColumns(10);
 		jtfinstrument.setColumns(10);
 		jtfsolostueck.setColumns(10);
 		jtfreferenz.setColumns(10);
-		
-		//JTextfield schrift festlegen
+
+		// JTextfield schrift festlegen
 		jtfvorname.setFont(ftfield);
 		jtfname.setFont(ftfield);
 		jtfvorname.setFont(ftfield);
 		jtftitel.setFont(ftfield);
 		jtfvorsatz.setFont(ftfield);
 		jtfzusatz.setFont(ftfield);
-		
+
 		jtfdob.setFont(ftfield);
 		jtfdod.setFont(ftfield);
 		jtfpseudonym.setFont(ftfield);
 		jtfinstrument.setFont(ftfield);
 		jtfsolostueck.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
-		
-		
+
 		// JTextfields hinzufuegen
-	
+
 		jpmaininput.add(jtfname);
 		jpmaininput.add(jtfvorname);
 		jpmaininput.add(jtftitel);
@@ -206,18 +192,15 @@ public class EingabeformularArtist01 extends JPanel {
 		jpmaininput.add(jtfinstrument);
 		jpmaininput.add(jtfsolostueck);
 		jpmaininput.add(jtfreferenz);
-		
-		
+
 		return jpmaininput;
 
 	}
+
 	public JPanel jpmainrechts() {
 
 		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
-		jpmaininput.setBackground(Color.WHITE);
 
-		
-		
 		return jpmaininput;
 
 	}
