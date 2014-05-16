@@ -23,7 +23,7 @@ public class EingabeformularArtist01 extends JPanel {
 	private JLabel vorsatz;
 	private JLabel zusatz;
 	private JLabel geschlecht;
-	private JLabel geschlechtgruppe;
+	private JPanel geschlechtgruppe;
 	private JLabel dob;
 	private JLabel dod;
 	private JLabel pseudonym;
@@ -64,7 +64,7 @@ public class EingabeformularArtist01 extends JPanel {
 		jpmaindesc.setBackground(Color.WHITE);
 
 		// Schriften erzeugen
-		ftfield = new Font(Font.DIALOG, Font.BOLD + Font.ITALIC, 15);
+		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 		
 		ueschrift = new JLabel("Tragen Sie einen Musiker ein:");
 		vorname = new JLabel("Vorname");
@@ -131,7 +131,7 @@ public class EingabeformularArtist01 extends JPanel {
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
 		jtfgeschlecht = new JTextField();
-		geschlechtgruppe = new JLabel();
+		geschlechtgruppe = new JPanel();
 		jtfdob = new JTextField();
 		jtfdod = new JTextField();
 		jtfpseudonym = new JTextField();
