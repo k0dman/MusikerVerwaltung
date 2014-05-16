@@ -7,8 +7,6 @@ import java.awt.Color;
 
 import javax.swing.*;
 
-
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +27,7 @@ public class MusicLounge07 extends JFrame {
 	private EingabeformularBand01 jpmainband = new EingabeformularBand01();
 
 	// Farben
-	
+
 	// Contentpane
 	private Container copa;
 
@@ -42,7 +40,7 @@ public class MusicLounge07 extends JFrame {
 
 	// JTextField
 	private RoundJTextField jtfsearch;
-
+	
 	// JButton
 	private JButton jbnewart, jbnewband, jbedit;
 
@@ -59,13 +57,13 @@ public class MusicLounge07 extends JFrame {
 		fheader = new Font(Font.DIALOG, Font.BOLD + Font.ITALIC, 25);
 
 		// Farben erzeugen
-		bgheader = new Color(0,0,0);
+		bgheader = new Color(214,214,214);
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-	
+
 		GradientJPanels gpright = new GradientJPanels("gpheaderright");
 		GradientJPanels gpleft = new GradientJPanels("gpheaderleft");
 		GradientJPanels gpnew = new GradientJPanels("gpnew");
-		GradientJPanels gprcenter = new GradientJPanels("gpcenter");
+		GradientJPanels gpmain = new GradientJPanels("gpmain");
 		GradientJPanels gpinfo = new GradientJPanels("gpinfo");
 		GradientJPanels gpfooter = new GradientJPanels("gpfooter");
 
@@ -75,7 +73,7 @@ public class MusicLounge07 extends JFrame {
 		// JPanel erzeugen mit BorderLayout
 		jpall = new JPanel(new BorderLayout());
 		jpall.setBackground(bgheader);
-		
+
 		jpheader = new JPanel(new BorderLayout());
 		jpheader.setBackground(bgheader);
 		jpheaderleft = new JPanel();
@@ -97,8 +95,8 @@ public class MusicLounge07 extends JFrame {
 		jpall.add(gpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
-		jpheader.add(jpheaderleft.add(gpleft));
-		jpheader.add(jpheaderright.add(gpright), BorderLayout.EAST);
+		jpheader.add(gpleft);
+		jpheader.add(gpright, BorderLayout.EAST);
 		// jpheader.add(jpheaderright, BorderLayout.EAST);
 
 		// JLabel erzeugen
@@ -114,15 +112,18 @@ public class MusicLounge07 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		 jtfsearch = new RoundJTextField(13);
-	
+		jtfsearch = new RoundJTextField(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
 
+		// gpmain
+	
+
 		// >jpmain< unsichtbar machen
+		
 		jpmain.setVisible(false);
 
 		// Schriftart hinzufuegen
@@ -140,9 +141,9 @@ public class MusicLounge07 extends JFrame {
 		gpinfo.add(jpinfo.add(jbedit));
 		gpinfo.setPreferredSize(new Dimension(200, 50));
 
-		//jpfooter
+		// jpfooter
 		gpfooter.add(jpfooter);
-		
+
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
 
@@ -172,6 +173,7 @@ public class MusicLounge07 extends JFrame {
 				jpmain.add(jpmainartist.jpmaininput());
 				jpmain.add(jpmainartist.jpmainrechts());
 				jpmain.setVisible(true);
+			
 
 			}
 		});
@@ -185,6 +187,7 @@ public class MusicLounge07 extends JFrame {
 				jpmain.add(jpmainband.jpmaininput());
 				jpmain.add(jpmainband.jpmainrechts());
 				jpmain.setVisible(true);
+			
 
 			}
 		});
