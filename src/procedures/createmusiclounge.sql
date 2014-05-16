@@ -27,7 +27,7 @@ create table if not exists Musiker
 idmusiker integer not null auto_increment,
 idperson integer null,
 idgruppe integer(30) null,
-pseudonym varchar(30) unique not null,
+pseudonym varchar(30),
 instrument varchar(30),
 stuecksolo varchar(30),
 referenz varchar(30),
@@ -40,14 +40,15 @@ create table if not exists gruppe
 (
 idgruppe integer not null auto_increment,
 name varchar(30),
-Mitglied nchar(255),
-ehemalig nchar(255),
+mitglied integer,
+ehemalig integer,
 stueckgruppe varchar(30),
 referenz varchar(30),
 Primary Key (idgruppe)
 );
 
 ALTER TABLE `musiker` add foreign key (idgruppe) references gruppe (idgruppe) on update cascade on delete cascade;
+
 
 
 
