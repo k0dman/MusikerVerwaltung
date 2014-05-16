@@ -20,17 +20,14 @@ public class MusicLounge06 extends JFrame {
 
 	// Felder:
 
-	private boolean var, var1;
 	// Schriften:
 	private Font fheader;
+
 	// Instanzen für JPanels erzeugen
-	EingabeformularArtist01 jpmainartist = new EingabeformularArtist01();
-	EingabeformularBand01 jpmainband = new EingabeformularBand01();
+	private EingabeformularArtist01 jpmainartist = new EingabeformularArtist01();
+	private EingabeformularBand01 jpmainband = new EingabeformularBand01();
 
 	// Farben
-
-	// statische Farben
-	private Color bgheader, bginfo, bgmain, bgnew, bgfooter;
 
 	// Contentpane
 	private Container copa;
@@ -62,19 +59,13 @@ public class MusicLounge06 extends JFrame {
 
 		// Farben erzeugen
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-
-		GradientJPanels gpnew = new GradientJPanels(2);
-		GradientJPanels gpright = new GradientJPanels(4);
-		GradientJPanels gprcenter = new GradientJPanels(4);
-		GradientJPanels gpleft = new GradientJPanels(4);
-		GradientJPanels gpinfo = new GradientJPanels(3);
-		GradientJPanels gpfooter = new GradientJPanels(4);
-
-		// bgheader = new Color(176, 176, 176);
-		bginfo = new Color(122, 139, 139);
-		bgmain = new Color(217, 217, 217);
-		bgnew = new Color(122, 139, 139);
-		bgfooter = new Color(176, 176, 176);
+	
+		GradientJPanels gpright = new GradientJPanels("gpheader");
+		GradientJPanels gpleft = new GradientJPanels("gpheader");
+		GradientJPanels gpnew = new GradientJPanels("gpnew");
+		GradientJPanels gprcenter = new GradientJPanels("gpcenter");
+		GradientJPanels gpinfo = new GradientJPanels("gpinfo");
+		GradientJPanels gpfooter = new GradientJPanels("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
@@ -89,20 +80,16 @@ public class MusicLounge06 extends JFrame {
 		jpnew = new JPanel(new GridLayout(2, 1, 6, 6));
 		jpfooter = new JPanel();
 
+		// >jpnew< durchsichtig machen, damit zwischen den JButtons, der
+		// Hintergrund durchgemalt wird
 		jpnew.setOpaque(false);
-
-		// jpheader.setBackground(bgheader);
-		// jpinfo.setBackground(bginfo);
-		// jpmain.setBackground(bgmain);
-		// jpnew.setBackground(bgnew);
-		// jpfooter.setBackground(bgfooter);
-
+		jpfooter.setOpaque(false);
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
 		jpall.add(gpinfo, BorderLayout.EAST);
 		jpall.add(gpnew, BorderLayout.WEST);
-		jpall.add(jpfooter, BorderLayout.SOUTH);
+		jpall.add(gpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
 		jpheader.add(jpheaderleft.add(gpleft));
@@ -115,9 +102,9 @@ public class MusicLounge06 extends JFrame {
 
 		// JButton erzeugen
 		jbnewart = new JButton("Neuer Artist");
-		jbnewart.setPreferredSize(new Dimension(200, 35));
+		jbnewart.setPreferredSize(new Dimension(150, 35));
 		jbnewband = new JButton("Neue Band");
-		jbnewband.setPreferredSize(new Dimension(100, 35));
+		jbnewband.setPreferredSize(new Dimension(150, 35));
 		jbedit = new JButton("Bearbeiten");
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
@@ -142,17 +129,22 @@ public class MusicLounge06 extends JFrame {
 		jpnew.add(jbnewart);
 		jpnew.add(jbnewband);
 
+		// der Instanz das JPanel >jpnew< hinzufuegen
 		gpnew.add(jpnew);
+		gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
 		gpinfo.add(jpinfo.add(jbedit));
+		gpinfo.setPreferredSize(new Dimension(200, 50));
 
+		//jpfooter
+		gpfooter.add(jpfooter);
+		
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
 
 		// ActionLister();
 		actionListener();
-		System.out.println(var);
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -173,12 +165,9 @@ public class MusicLounge06 extends JFrame {
 				jpmain.removeAll();
 				jpmain.revalidate();
 				jpmain.repaint();
-
 				jpmain.add(jpmainartist.jpmaindesc());
 				jpmain.add(jpmainartist.jpmaininput());
 				jpmain.setVisible(true);
-				var = true;
-				System.out.println(var);
 
 			}
 		});
@@ -188,12 +177,9 @@ public class MusicLounge06 extends JFrame {
 				jpmain.removeAll();
 				jpmain.revalidate();
 				jpmain.repaint();
-
 				jpmain.add(jpmainband.jpmaindesc());
 				jpmain.add(jpmainband.jpmaininput());
-
 				jpmain.setVisible(true);
-				var1 = true;
 
 			}
 		});

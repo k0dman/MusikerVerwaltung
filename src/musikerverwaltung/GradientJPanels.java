@@ -9,50 +9,55 @@ import javax.swing.JPanel;
 
 public final class GradientJPanels extends JPanel {
 
-	public int zahl;
+	public String jpanel;
 
-	public GradientJPanels(int zahl) {
+	public GradientJPanels(String jpanel) {
 
 		setOpaque(true);
-		this.zahl = zahl;
+		this.jpanel = jpanel;
 
 	}
 
-	public int getZahl() {
+	public String getJpanel() {
 
-		return zahl;
+		return jpanel;
 	}
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g.create();
-		int zahl = getZahl();
+		String jpanel = getJpanel();
 		GradientPaint gp = null;
-		switch (zahl) {
-
-		// vertikaler Verlauf von rechts oben nach links unten
-		case 1:
-			gp = new GradientPaint(getWidth(), 0, Color.DARK_GRAY, 0, getHeight(),
-					Color.LIGHT_GRAY);
-			break;
-
-		// horizontaler, wiederholter Verlauf
-		case 2:
-			gp = new GradientPaint(getWidth() / 2, getHeight() / 2, Color.DARK_GRAY,
-					getWidth(), getHeight() / 2, Color.LIGHT_GRAY, true);
-			break;
-		// diagonaler Verlauf von links oben nach rechts unten
-		case 3:
-			gp = new GradientPaint(0, 0, Color.BLUE, getWidth(), getHeight(),
-					Color.YELLOW);
-			break;
+		switch (jpanel) {
 
 		// vertikaler Verlauf
-		case 4:
+		case "gpheader":
 			gp = new GradientPaint(getWidth() / 2, 0, Color.DARK_GRAY,
 					getWidth() / 2, getHeight(), Color.LIGHT_GRAY);
 			break;
+
+		// diagonaler Verlauf von links oben nach rechts unten
+		case "gpcenter":
+			gp = new GradientPaint(0, 0, Color.DARK_GRAY, getWidth(),
+					getHeight(), Color.LIGHT_GRAY);
+			break;
+		// vertikaler Verlauf von rechts oben nach links unten
+		case "gpinfo":
+			gp = new GradientPaint(0, getHeight() / 2, Color.LIGHT_GRAY, getWidth(),
+					getHeight() / 2, Color.DARK_GRAY);
+			break;
+
+		// horizontaler, wiederholter Verlauf
+		case "gpnew":
+			gp = new GradientPaint(0, getHeight() / 2, Color.DARK_GRAY,
+					getWidth(), getHeight() / 2, Color.LIGHT_GRAY);
+			break;
+
+		case "gpfooter":
+			gp = new GradientPaint(0, getHeight() / 2, Color.LIGHT_GRAY,
+					0, getHeight(), Color.DARK_GRAY);
+			break;
 		}
-		
+
 		g2d.setPaint(gp);
 
 		g2d.fillRect(0, 0, getWidth(), getHeight());
