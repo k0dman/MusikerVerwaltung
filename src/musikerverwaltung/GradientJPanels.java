@@ -1,4 +1,4 @@
-package farbverlaeufe;
+package musikerverwaltung;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
