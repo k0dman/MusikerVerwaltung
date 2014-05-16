@@ -82,7 +82,7 @@ public class MusicLounge05 extends JFrame {
 		jpheader = new JPanel(new BorderLayout());
 		jpheaderleft = new JPanel();
 		jpheaderright = new JPanel();
-		jpmain = new JPanel(new GridLayout(1, 2, 4, 4));
+		jpmain = new JPanel(new GridLayout(1, 3, 4, 4));
 		jpinfo = new JPanel();
 		jpnew = new JPanel();
 		jpfooter = new JPanel();
@@ -132,6 +132,7 @@ public class MusicLounge05 extends JFrame {
 		
 		jpmain.add(jpmainhead.jpmaindesc());
 		jpmain.add(jpmainhead.jpmaininput());
+		jpmain.add(jpmainhead.jpmainrechts());
 		jpmain.setVisible(false);
 
 		// Schriftart hinzufuegen
