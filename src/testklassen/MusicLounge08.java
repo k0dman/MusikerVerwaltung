@@ -47,7 +47,7 @@ public class MusicLounge08 extends JFrame {
 	private MusicLounge08() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge");
+		super("MusicLounge08");
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
