@@ -32,6 +32,7 @@ public class MusicLounge05 extends JFrame {
 	// JLabels
 	private JLabel jlheader, jlsearch;
 
+	
 	// JTextField
 	private JTextField jtfsearch;
 
@@ -41,7 +42,8 @@ public class MusicLounge05 extends JFrame {
 
 	// Konstruktor
 	private MusicLounge05() {
-
+		
+		
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge");
 
@@ -53,10 +55,20 @@ public class MusicLounge05 extends JFrame {
 
 		// Farben erzeugen
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-		GradientJPHeaderLeft gpleft = new GradientJPHeaderLeft();
-		GradientJPHeaderRight gpright = new GradientJPHeaderRight();
-		GradientJPInfo gpinfo = new GradientJPInfo();
-		gpinfo.paintComponent(getGraphics(), "b");
+		//GradientJPHeaderLeft gpleft = new GradientJPHeaderLeft();
+		//GradientJPHeaderRight gpright = new GradientJPHeaderRight();
+		
+		
+		
+	
+		
+		GradientJPanels gpinfo = new GradientJPanels(2);
+		GradientJPanels gpright = new GradientJPanels(4);
+		GradientJPanels gpleft = new GradientJPanels(4);
+		
+		
+		
+		
 		//bgheader = new Color(176, 176, 176);
 		bginfo = new Color(122, 139, 139);
 		bgmain = new Color(217, 217, 217);
@@ -79,14 +91,16 @@ public class MusicLounge05 extends JFrame {
 		// JButton erzeugen
 		jbnew = new JButton();
 		jbedit = new JButton();
-	
+		
 
 		//jpheader.setBackground(bgheader);
 		jpinfo.setBackground(bginfo);
 		jpmain.setBackground(bgmain);
 		//jpnew.setBackground(bgnew);
 		jpfooter.setBackground(bgfooter);
-
+		
+		
+		
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
@@ -120,6 +134,7 @@ public class MusicLounge05 extends JFrame {
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
 	
+
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
