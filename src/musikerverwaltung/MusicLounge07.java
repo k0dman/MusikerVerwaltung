@@ -1,9 +1,8 @@
-package testklassen;
+package musikerverwaltung;
 
 import musikerverwaltung.*;
 
 import java.awt.*;
-import java.awt.Color;
 
 import javax.swing.*;
 

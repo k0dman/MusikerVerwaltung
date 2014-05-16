@@ -1,4 +1,4 @@
-package testklassen;
+package musikerverwaltung;
 
 import java.awt.*;
 

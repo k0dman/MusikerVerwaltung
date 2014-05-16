@@ -1,4 +1,4 @@
-package musikerverwaltung;
+package vorlagen;
 
 import java.awt.*;
 import javax.swing.*;

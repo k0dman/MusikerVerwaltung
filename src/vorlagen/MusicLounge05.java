@@ -1,19 +1,21 @@
-package musikerverwaltung;
+package vorlagen;
 
 import java.awt.*;
-import javax.swing.*;
-import javax.swing.SwingUtilities;
-import java.awt.Font;
 
-public class MusicLounge03 extends JFrame {
+import javax.swing.*;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MusicLounge05 extends JFrame {
 
 	// VersionsNr. festlegen
-	private static final long serialVersionUID = 03L;
+	private static final long serialVersionUID = 05L;
 
 	// Felder:
 
 	// Schriften:
-
 	private Font fheader;
 
 	// Farben
@@ -33,8 +35,12 @@ public class MusicLounge03 extends JFrame {
 	// JTextField
 	private JTextField jtfsearch;
 
+	// JButton
+	private JButton jbnew;
+	private JButton jbedit;
+
 	// Konstruktor
-	private MusicLounge03() {
+	private MusicLounge05() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge");
@@ -67,6 +73,10 @@ public class MusicLounge03 extends JFrame {
 		jpnew = new JPanel();
 		jpfooter = new JPanel();
 
+		// JButton erzeugen
+		jbnew = new JButton();
+		jbedit = new JButton();
+
 		// Farben hinzufuegen
 		jpheader.setBackground(bgheader);
 		jpinfo.setBackground(bginfo);
@@ -89,12 +99,18 @@ public class MusicLounge03 extends JFrame {
 		jlheader = new JLabel("MusicLounge");
 		jlsearch = new JLabel("Suche");
 
+		// JButton erzeugen
+		jbnew = new JButton("Neu");
+		jbnew.setPreferredSize(new Dimension(100, 35));
+		jbedit = new JButton("Bearbeiten");
+		jbedit.setPreferredSize(new Dimension(100, 35));
+
 		// JTextField erzeugen
 		jtfsearch = new JTextField("Suchtext");
-		
+
 		// JTextfield vergrößern
 		jtfsearch.setColumns(10);
-		
+
 		// JLabels der >jpheaderright< hinzufuegen
 		jpheaderright.add(jlsearch);
 		jpheaderright.add(jtfsearch);
@@ -102,7 +118,12 @@ public class MusicLounge03 extends JFrame {
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
-		
+
+		// JButton der >jpnew< hinzufuegen
+		jpnew.add(jbnew);
+
+		// JButton der >jpedit< hinzufuegen
+		jpinfo.add(jbedit);
 
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
@@ -125,7 +146,7 @@ public class MusicLounge03 extends JFrame {
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MusicLounge03();
+				new MusicLounge05();
 
 			}
 		});
