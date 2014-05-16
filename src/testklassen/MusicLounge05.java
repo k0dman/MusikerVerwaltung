@@ -1,12 +1,11 @@
 package testklassen;
 
+import farbverlaeufe.*;
 import java.awt.*;
 
 import javax.swing.*;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MusicLounge05 extends JFrame {
 
@@ -19,8 +18,9 @@ public class MusicLounge05 extends JFrame {
 	private Font fheader;
 
 	// Farben
-	private Color bgheader, bgheaderleft, bgheaderright, bginfo, bgmain, bgnew,
-			bgfooter;
+
+	// statische Farben
+	private Color bgheader, bginfo, bgmain, bgnew, bgfooter;
 
 	// Contentpane
 	private Container copa;
@@ -52,9 +52,11 @@ public class MusicLounge05 extends JFrame {
 		fheader = new Font(Font.DIALOG, Font.BOLD + Font.ITALIC, 25);
 
 		// Farben erzeugen
-		bgheader = new Color(176, 176, 176);
-		bgheaderleft = new Color(176, 176, 176);
-		bgheaderright = new Color(176, 176, 176);
+		// Farbverlaeufe aus der Klasse >GradientPanel<
+		GradientJPHeaderLeft gpleft = new GradientJPHeaderLeft();
+		GradientJPHeaderRight gpright = new GradientJPHeaderRight();
+
+		//bgheader = new Color(176, 176, 176);
 		bginfo = new Color(122, 139, 139);
 		bgmain = new Color(217, 217, 217);
 		bgnew = new Color(122, 139, 139);
@@ -76,9 +78,9 @@ public class MusicLounge05 extends JFrame {
 		// JButton erzeugen
 		jbnew = new JButton();
 		jbedit = new JButton();
+	
 
-		// Farben hinzufuegen
-		jpheader.setBackground(bgheader);
+		//jpheader.setBackground(bgheader);
 		jpinfo.setBackground(bginfo);
 		jpmain.setBackground(bgmain);
 		jpnew.setBackground(bgnew);
@@ -92,8 +94,9 @@ public class MusicLounge05 extends JFrame {
 		jpall.add(jpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
-		jpheader.add(jpheaderleft);
-		jpheader.add(jpheaderright, BorderLayout.EAST);
+		jpheader.add(jpheaderleft.add(gpleft));
+		jpheader.add(jpheaderright.add(gpright), BorderLayout.EAST);
+		//jpheader.add(jpheaderright, BorderLayout.EAST);
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
@@ -112,9 +115,10 @@ public class MusicLounge05 extends JFrame {
 		jtfsearch.setColumns(10);
 
 		// JLabels der >jpheaderright< hinzufuegen
-		jpheaderright.add(jlsearch);
-		jpheaderright.add(jtfsearch);
-		jpheaderleft.add(jlheader);
+		gpleft.add(jpheaderleft.add(jlheader));
+		gpright.add(jpheaderright.add(jlsearch));
+		gpright.add(jpheaderright.add(jtfsearch));
+	
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);

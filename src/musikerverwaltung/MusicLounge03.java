@@ -102,6 +102,7 @@ public class MusicLounge03 extends JFrame {
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
+		
 
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
