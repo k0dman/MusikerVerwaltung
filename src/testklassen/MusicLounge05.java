@@ -55,7 +55,8 @@ public class MusicLounge05 extends JFrame {
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 		GradientJPHeaderLeft gpleft = new GradientJPHeaderLeft();
 		GradientJPHeaderRight gpright = new GradientJPHeaderRight();
-
+		GradientJPInfo gpinfo = new GradientJPInfo();
+		gpinfo.paintComponent(getGraphics(), "b");
 		//bgheader = new Color(176, 176, 176);
 		bginfo = new Color(122, 139, 139);
 		bgmain = new Color(217, 217, 217);
@@ -83,14 +84,14 @@ public class MusicLounge05 extends JFrame {
 		//jpheader.setBackground(bgheader);
 		jpinfo.setBackground(bginfo);
 		jpmain.setBackground(bgmain);
-		jpnew.setBackground(bgnew);
+		//jpnew.setBackground(bgnew);
 		jpfooter.setBackground(bgfooter);
 
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
 		jpall.add(jpinfo, BorderLayout.EAST);
-		jpall.add(jpnew, BorderLayout.WEST);
+		jpall.add(gpinfo, BorderLayout.WEST);
 		jpall.add(jpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
@@ -123,8 +124,8 @@ public class MusicLounge05 extends JFrame {
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
-		// JButton der >jpnew< hinzufuegen
-		jpnew.add(jbnew);
+		// JButton der >jpinfo< hinzufuegen
+		gpinfo.add(jpnew.add(jbnew));
 
 		// JButton der >jpedit< hinzufuegen
 		jpinfo.add(jbedit);
