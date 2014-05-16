@@ -9,6 +9,9 @@ import javax.swing.*;
 import musikerverwaltung.GradientJPanels;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class MusicLounge05 extends JFrame {
 
@@ -20,6 +23,7 @@ public class MusicLounge05 extends JFrame {
 	// Schriften:
 	private Font fheader;
 
+	Eingabeformular01 jpmainhead = new Eingabeformular01();
 	// Farben
 
 	// statische Farben
@@ -35,7 +39,6 @@ public class MusicLounge05 extends JFrame {
 	// JLabels
 	private JLabel jlheader, jlsearch;
 
-	
 	// JTextField
 	private JTextField jtfsearch;
 
@@ -45,8 +48,7 @@ public class MusicLounge05 extends JFrame {
 
 	// Konstruktor
 	private MusicLounge05() {
-		
-		
+
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge");
 
@@ -58,21 +60,15 @@ public class MusicLounge05 extends JFrame {
 
 		// Farben erzeugen
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-		//GradientJPHeaderLeft gpleft = new GradientJPHeaderLeft();
-		//GradientJPHeaderRight gpright = new GradientJPHeaderRight();
-		
-		
-		
-	
-		
-		GradientJPanels gpinfo = new GradientJPanels(2);
+
+		GradientJPanels gpnew = new GradientJPanels(2);
 		GradientJPanels gpright = new GradientJPanels(4);
+		GradientJPanels gprcenter = new GradientJPanels(4);
 		GradientJPanels gpleft = new GradientJPanels(4);
-		
-		
-		
-		
-		//bgheader = new Color(176, 176, 176);
+		GradientJPanels gpinfo = new GradientJPanels(3);
+		GradientJPanels gpfooter = new GradientJPanels(4);
+
+		// bgheader = new Color(176, 176, 176);
 		bginfo = new Color(122, 139, 139);
 		bgmain = new Color(217, 217, 217);
 		bgnew = new Color(122, 139, 139);
@@ -86,7 +82,7 @@ public class MusicLounge05 extends JFrame {
 		jpheader = new JPanel(new BorderLayout());
 		jpheaderleft = new JPanel();
 		jpheaderright = new JPanel();
-		jpmain = new JPanel();
+		jpmain = new JPanel(new GridLayout(1, 2, 4, 4));
 		jpinfo = new JPanel();
 		jpnew = new JPanel();
 		jpfooter = new JPanel();
@@ -94,27 +90,24 @@ public class MusicLounge05 extends JFrame {
 		// JButton erzeugen
 		jbnew = new JButton();
 		jbedit = new JButton();
-		
 
-		//jpheader.setBackground(bgheader);
-		jpinfo.setBackground(bginfo);
-		jpmain.setBackground(bgmain);
-		//jpnew.setBackground(bgnew);
-		jpfooter.setBackground(bgfooter);
-		
-		
-		
+		// jpheader.setBackground(bgheader);
+		// jpinfo.setBackground(bginfo);
+		// jpmain.setBackground(bgmain);
+		// jpnew.setBackground(bgnew);
+		// jpfooter.setBackground(bgfooter);
+
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
-		jpall.add(jpinfo, BorderLayout.EAST);
-		jpall.add(gpinfo, BorderLayout.WEST);
+		jpall.add(gpinfo, BorderLayout.EAST);
+		jpall.add(gpnew, BorderLayout.WEST);
 		jpall.add(jpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
 		jpheader.add(jpheaderleft.add(gpleft));
 		jpheader.add(jpheaderright.add(gpright), BorderLayout.EAST);
-		//jpheader.add(jpheaderright, BorderLayout.EAST);
+		// jpheader.add(jpheaderright, BorderLayout.EAST);
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
@@ -136,20 +129,25 @@ public class MusicLounge05 extends JFrame {
 		gpleft.add(jpheaderleft.add(jlheader));
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
-	
-
+		
+		jpmain.add(jpmainhead.jpmaindesc());
+		jpmain.add(jpmainhead.jpmaininput());
+		jpmain.setVisible(false);
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
 		// JButton der >jpinfo< hinzufuegen
-		gpinfo.add(jpnew.add(jbnew));
+		gpnew.add(jpnew.add(jbnew));
 
 		// JButton der >jpedit< hinzufuegen
-		jpinfo.add(jbedit);
+		gpinfo.add(jpinfo.add(jbedit));
 
 		// JPanel der ContentPane hinzufuegen
 		copa.add(jpall);
+
+		// ActionLister();
+		actionListener();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -159,6 +157,19 @@ public class MusicLounge05 extends JFrame {
 
 		// Frame sichtbar machen
 		setVisible(true);
+
+	}
+
+	private void actionListener() {
+
+		// Button
+		jbnew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				
+				jpmain.setVisible(true);
+
+			}
+		});
 
 	}
 
