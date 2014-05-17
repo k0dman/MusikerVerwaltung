@@ -8,15 +8,14 @@ public class EingabeformularBand01 extends JPanel {
 
 	// Felder:
 
-	// Panels
+	// Panel
 	private JPanel jpmaindesc, jpmaininput;
 
-	// Schriften:
+	// Schrift:
 	private Font ftfield;
 
-	// Labels
+	// Label
 	private JLabel ueschrift;
-
 	private JLabel name;
 	private JLabel mitglied;
 	private JLabel ehemalig;
@@ -25,22 +24,21 @@ public class EingabeformularBand01 extends JPanel {
 	private JLabel fueller;
 
 	// JTextField
-	private JTextField jtfueschrift;
 	private JTextField jtfname;
 	private JTextField jtfmitglied;
 	private JTextField jtfehemalig;
 	private JTextField jtfstueckgruppe;
-	private JTextField jtfueller;
 	private JTextField jtfreferenz;
-	
 
 	public JPanel jpmaindesc() {
 
+		// Panel erzeugen mit GridLayout
 		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 
+		// Label erzeugen
 		ueschrift = new JLabel("Tragen Sie eine Band ein:");
 		name = new JLabel("Name");
 		mitglied = new JLabel("Mitglied");
@@ -48,7 +46,7 @@ public class EingabeformularBand01 extends JPanel {
 		stueckgruppe = new JLabel("Stueck");
 		referenz = new JLabel("Referenz");
 
-
+		// Label dem Panel hinzuefuegen
 		jpmaindesc.add(ueschrift);
 		jpmaindesc.add(name);
 		jpmaindesc.add(mitglied);
@@ -56,6 +54,7 @@ public class EingabeformularBand01 extends JPanel {
 		jpmaindesc.add(stueckgruppe);
 		jpmaindesc.add(referenz);
 
+		// Label rechts anordnen
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
 		name.setHorizontalAlignment(SwingConstants.RIGHT);
 		mitglied.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -63,6 +62,7 @@ public class EingabeformularBand01 extends JPanel {
 		stueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
 		referenz.setHorizontalAlignment(SwingConstants.RIGHT);
 
+		// Schrift dem gewuenschten Label hinzufuegen
 		ueschrift.setFont(ftfield);
 
 		return jpmaindesc;
@@ -71,52 +71,40 @@ public class EingabeformularBand01 extends JPanel {
 
 	public JPanel jpmaininput() {
 
+		// Panel erzeugen mit Gridlayout
 		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
 
+		// Label erzeugen
 		fueller = new JLabel("");
 		jpmaininput.add(fueller);
 
 		// JTextFields erzeugen
-		
-
-
 		jtfname = new JTextField();
 		jtfmitglied = new JTextField();
 		jtfehemalig = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
 
-
 		// JTextfields vergoesern
-		
-
 		jtfname.setColumns(10);
 		jtfmitglied.setColumns(10);
 		jtfehemalig.setColumns(10);
 		jtfstueckgruppe.setColumns(10);
 		jtfreferenz.setColumns(10);
 
-		
 		// JTextfield schrift festlegen
-
 		jtfname.setFont(ftfield);
 		jtfmitglied.setFont(ftfield);
 		jtfehemalig.setFont(ftfield);
 		jtfstueckgruppe.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
-		
-
-
 
 		// JTextfields hinzufuegen
-
 		jpmaininput.add(jtfname);
 		jpmaininput.add(jtfmitglied);
 		jpmaininput.add(jtfehemalig);
 		jpmaininput.add(jtfstueckgruppe);
 		jpmaininput.add(jtfreferenz);
-		
-		
 
 		return jpmaininput;
 
