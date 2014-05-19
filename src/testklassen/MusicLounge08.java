@@ -1,7 +1,5 @@
 package testklassen;
 
-import musikerverwaltung.*;
-
 import java.awt.*;
 
 import javax.swing.*;
@@ -9,7 +7,6 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 public class MusicLounge08 extends JFrame {
 
@@ -24,6 +21,7 @@ public class MusicLounge08 extends JFrame {
 	// Instanzen für JPanels erzeugen
 	private EingabeformularArtist02 jpmainartist = new EingabeformularArtist02();
 	private EingabeformularBand02 jpmainband = new EingabeformularBand02();
+	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
 
 	// Farben
 
@@ -32,16 +30,16 @@ public class MusicLounge08 extends JFrame {
 
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
-			jpinfo, jpnew, jpfooter;
+			jpinfo, jpselect, jpfooter;
 
 	// JLabels
 	private JLabel jlheader, jlsearch;
 
 	// JTextField
 	private RoundJTextField01 jtfsearch;
-	
+
 	// JButton
-	private JButton jbnewart, jbnewband, jbedit;
+	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// Konstruktor
 	private MusicLounge08() {
@@ -56,7 +54,7 @@ public class MusicLounge08 extends JFrame {
 		fheader = new Font(Font.DIALOG, Font.BOLD + Font.ITALIC, 25);
 
 		// Farben erzeugen
-		bgheader = new Color(214,214,214);
+		bgheader = new Color(214, 214, 214);
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 
 		GradientJPanels01 gpright = new GradientJPanels01("gpheaderright");
@@ -79,12 +77,12 @@ public class MusicLounge08 extends JFrame {
 		jpheaderright = new JPanel();
 		jpmain = new JPanel(new GridLayout(1, 2, 4, 4));
 		jpinfo = new JPanel();
-		jpnew = new JPanel(new GridLayout(2, 1, 6, 6));
+		jpselect = new JPanel(new GridLayout(3, 1, 6, 6));
 		jpfooter = new JPanel();
 
-		// >jpnew< durchsichtig machen, damit zwischen den JButtons, der
+		// >jpselect< durchsichtig machen, damit zwischen den JButtons, der
 		// Hintergrund durchgemalt wird
-		jpnew.setOpaque(false);
+		jpselect.setOpaque(false);
 		jpfooter.setOpaque(false);
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
@@ -103,6 +101,8 @@ public class MusicLounge08 extends JFrame {
 		jlsearch = new JLabel("Suche");
 
 		// JButton erzeugen
+		jbmaintable = new JButton("Übersicht");
+		jbmaintable.setPreferredSize(new Dimension(150, 35));
 		jbnewart = new JButton("Neuer Artist");
 		jbnewart.setPreferredSize(new Dimension(150, 35));
 		jbnewband = new JButton("Neue Band");
@@ -119,21 +119,21 @@ public class MusicLounge08 extends JFrame {
 		gpright.add(jpheaderright.add(jtfsearch));
 
 		// gpmain
-	
 
 		// >jpmain< unsichtbar machen
-		
+
 		jpmain.setVisible(false);
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
 		// JButton der >jpinfo< hinzufuegen
-		jpnew.add(jbnewart);
-		jpnew.add(jbnewband);
+		jpselect.add(jbmaintable);
+		jpselect.add(jbnewart);
+		jpselect.add(jbnewband);
 
-		// der Instanz das JPanel >jpnew< hinzufuegen
-		gpnew.add(jpnew);
+		// der Instanz das JPanel >jpselect< hinzufuegen
+		gpnew.add(jpselect);
 		gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
@@ -172,7 +172,6 @@ public class MusicLounge08 extends JFrame {
 				jpmain.add(jpmainartist.jpmaininput());
 				jpmain.add(jpmainartist.jpmainrechts());
 				jpmain.setVisible(true);
-			
 
 			}
 		});
@@ -186,7 +185,17 @@ public class MusicLounge08 extends JFrame {
 				jpmain.add(jpmainband.jpmaininput());
 				jpmain.add(jpmainband.jpmainrechts());
 				jpmain.setVisible(true);
-			
+
+			}
+		});
+		// Button
+		jbmaintable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				jpmain.removeAll();
+				jpmain.revalidate();
+				jpmain.repaint();
+				jpmain.add(jpmaintable.jpmaindesc());
+				jpmain.setVisible(true);
 
 			}
 		});
