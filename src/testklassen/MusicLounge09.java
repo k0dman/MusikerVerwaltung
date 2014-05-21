@@ -8,7 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MusicLounge08 extends JFrame {
+public class MusicLounge09 extends JFrame {
 
 	// VersionsNr. festlegen
 	private static final long serialVersionUID = 8L;
@@ -28,8 +28,15 @@ public class MusicLounge08 extends JFrame {
 	// Contentpane
 	private Container copa;
 
-	//JMenuBar
+	// JMenuBar
 	private JMenuBar jmbmenu;
+
+	// JMenu
+	private JMenu jmdatei;
+
+	// JMenuItem
+	private JMenuItem jmiimport, jmiexport, jmiexit;
+
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
 			jpinfo, jpselect, jpfooter;
@@ -44,10 +51,10 @@ public class MusicLounge08 extends JFrame {
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// Konstruktor
-	private MusicLounge08() {
+	private MusicLounge09() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge08");
+		super("MusicLounge09");
 
 		// Sauberes Schließen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +76,28 @@ public class MusicLounge08 extends JFrame {
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
 
+		// JMenuBar erzeugen
+		jmbmenu = new JMenuBar();
+
+		// JMenu erzeugen
+		jmdatei = new JMenu("Datei");
+
+		// JMenuItems erzeugen
+		jmiimport = new JMenuItem("Importieren");
+		jmiexport = new JMenuItem("Exportieren");
+		jmiexit = new JMenuItem("Beenden");
+
+		// Items dem Menupunkt hinzufuegen
+		jmdatei.add(jmiimport);
+		jmdatei.add(jmiexport);
+		jmdatei.add(jmiexit);
+
+		// Menupunkte der JMenubar hinzufuegen
+		jmbmenu.add(jmdatei);
+		
+		//JMenubar dem Frame hinzufuegen
+		add(jmbmenu, BorderLayout.NORTH);
+
 		// JPanel erzeugen mit BorderLayout
 		jpall = new JPanel(new BorderLayout());
 		jpall.setBackground(bgheader);
@@ -86,6 +115,7 @@ public class MusicLounge08 extends JFrame {
 		// Hintergrund durchgemalt wird
 		jpselect.setOpaque(false);
 		jpfooter.setOpaque(false);
+		
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
@@ -149,7 +179,8 @@ public class MusicLounge08 extends JFrame {
 		copa.add(jpall);
 
 		// ActionLister();
-		actionListener();
+		actionListenerJButton();
+		actionListenerJMenuItems();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -162,7 +193,7 @@ public class MusicLounge08 extends JFrame {
 
 	}
 
-	private void actionListener() {
+	private void actionListenerJButton() {
 
 		// Button
 		jbnewart.addActionListener(new ActionListener() {
@@ -204,6 +235,17 @@ public class MusicLounge08 extends JFrame {
 
 	}
 
+	private void actionListenerJMenuItems() {
+
+		// Button
+		jmiexit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+			System.exit(0);
+
+			}
+		});
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -211,7 +253,7 @@ public class MusicLounge08 extends JFrame {
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MusicLounge08();
+				new MusicLounge09();
 
 			}
 		});
