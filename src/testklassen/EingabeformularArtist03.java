@@ -1,15 +1,14 @@
 package testklassen;
 
 import java.awt.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
 public class EingabeformularArtist03 extends JPanel {
 
 	// Felder:
-
-	// Panels
-	private JPanel jpmaindesc, jpmaininput;
 
 	// Schriften:
 	private Font ftfield;
@@ -45,6 +44,32 @@ public class EingabeformularArtist03 extends JPanel {
 	private JTextField jtfinstrument;
 	private JTextField jtfsolostueck;
 	private JTextField jtfreferenz;
+
+	// Deklaration der Auswahlvariablen
+	// In den eineckigen Klammern steht, von welchem Typ das Ausgewaehlte ist.
+	private JComboBox<String> jcbmonat;
+	private JComboBox<Integer> jcbtag, jcbjahr;
+	private JComboBox<String> dodjcbmonat;
+	private JComboBox<Integer> dodjcbtag, dodjcbjahr;
+
+	// Panels dafuer
+	private JPanel jpdatum;
+	private JPanel dodjpdatum;
+
+	// moegliche Auswahlen
+	// Umlaute sollte man immer als Unicode schreiben, damit beim Wechsel von
+	// einem Editor zum anderen nichts Unvorhergesehenes passiert.
+	// Die Unicodes findet man im Netz unter http://unicode.org/ oder, was fuer
+	// die Hackerpraxis etwas leichter lesbar ist, auf der Seite
+	// http://www.utf8-zeichentabelle.de/. Das &auml; hei&szlig;t dort etwa
+	// "LATIN SMALL LETTER A WITH DIAERESIS" und hat den Code \u00E4.
+	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
+			"Mai", "Juni", "Juli", "August", "September", "Oktober",
+			"November", "Dezember" };
+	private String[] dodmonatsname = { "Januar", "Februar", "M\u00E4rz", "April",
+			"Mai", "Juni", "Juli", "August", "September", "Oktober",
+			"November", "Dezember" };
+	//
 
 	// JJRadioButton
 
@@ -134,6 +159,51 @@ public class EingabeformularArtist03 extends JPanel {
 
 		// Button erzeugen
 
+		// Erzeugen der Auswahlen
+		// Das Jahr sollte editierbar sein, da die angebotene Liste
+		// unvollstaendig ist, Tag und Monat jedoch nicht.
+		jcbmonat = new JComboBox<String>(monatsname);
+		jcbmonat.setEditable(false);
+		dodjcbmonat = new JComboBox<String>(dodmonatsname);
+		dodjcbmonat.setEditable(false);
+
+		//
+		jcbtag = new JComboBox<Integer>();
+		for (int t = 1; t < 32; t++)
+			jcbtag.addItem(new Integer(t));
+		jcbtag.setEditable(false);
+		
+		dodjcbtag = new JComboBox<Integer>();
+		for (int t = 1; t < 32; t++)
+			dodjcbtag.addItem(new Integer(t));
+		dodjcbtag.setEditable(false);
+
+		//
+		// alle Jahre kann man/frau schlecht vorgeben
+		jcbjahr = new JComboBox<Integer>();
+		jcbjahr.setEditable(true);
+		dodjcbjahr = new JComboBox<Integer>();
+		dodjcbjahr.setEditable(true);
+		// die letzten hundert Jahre rein
+		// dazu aktuelles Jahr ermitteln
+		int aktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+		for (int j = 0; j <= 100; j++)
+			jcbjahr.addItem(new Integer(aktjahr - j));
+		int dodaktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+		for (int j = 0; j <= 100; j++)
+			dodjcbjahr.addItem(new Integer(dodaktjahr - j));
+		//
+
+		// alles in ein Panel
+		jpdatum = new JPanel();
+		jpdatum.add(jcbtag);
+		jpdatum.add(jcbmonat);
+		jpdatum.add(jcbjahr);
+		dodjpdatum = new JPanel();
+		dodjpdatum.add(dodjcbtag);
+		dodjpdatum.add(dodjcbmonat);
+		dodjpdatum.add(dodjcbjahr);
+
 		rbmann = new JRadioButton("Mann");
 		rbfrau = new JRadioButton("Frau");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
@@ -186,8 +256,8 @@ public class EingabeformularArtist03 extends JPanel {
 		jpmaininput.add(jtfvorsatz);
 		jpmaininput.add(jtfzusatz);
 		jpmaininput.add(geschlechtgruppe);
-		jpmaininput.add(jtfdob);
-		jpmaininput.add(jtfdod);
+		jpmaininput.add(jpdatum);
+		jpmaininput.add(dodjpdatum);
 		jpmaininput.add(jtfpseudonym);
 		jpmaininput.add(jtfinstrument);
 		jpmaininput.add(jtfsolostueck);

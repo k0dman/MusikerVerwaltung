@@ -38,6 +38,9 @@ public class MusicLounge11 extends JFrame {
 	// JMenuItem
 	private JMenuItem jmiimport, jmiexport, jmiexit;
 
+	//JTabbedPanre
+	private JTabbedPane jtpsample;
+	
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
 			jpinfo, jpselect, jpfooter;
@@ -55,7 +58,7 @@ public class MusicLounge11 extends JFrame {
 	private MusicLounge11() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge10");
+		super("MusicLounge11");
 
 		// Sauberes Schließen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -134,7 +137,7 @@ public class MusicLounge11 extends JFrame {
 		// JPanels der >jpheader< hinzufuegen
 		jpheader.add(gpleft);
 		jpheader.add(gpright, BorderLayout.EAST);
-		// jpheader.add(jpheaderright, BorderLayout.EAST);
+	
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
@@ -159,7 +162,32 @@ public class MusicLounge11 extends JFrame {
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
 
-		// gpmain
+		jtpsample = new JTabbedPane();
+		
+		/*jtpsample.setCellSelectionEnabled(true);
+		    ListSelectionModel cellSelectionModel = table.getSelectionModel();
+		    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+		      public void valueChanged(ListSelectionEvent e) {
+		        String selectedData = null;
+
+		        int[] selectedRow = table.getSelectedRows();
+		        int[] selectedColumns = table.getSelectedColumns();
+
+		        for (int i = 0; i < selectedRow.length; i++) {
+		          for (int j = 0; j < selectedColumns.length; j++) {
+		            selectedData = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
+		          }
+		        }
+		        System.out.println("Selected: " + selectedData);
+		      }
+
+		    });*/
+		
+		
+		
+		
 
 		// >jpmain< unsichtbar machen
 
@@ -212,7 +240,7 @@ public class MusicLounge11 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jpmainartist.jpmaindesc());
 				jpmain.add(jpmainartist.jpmaininput());
-				jpmain.add(jpmainartist.jpmainrechts());
+				jpmain.add(jpmainartist.jpmainrechts());				
 				jpmain.setVisible(true);
 
 			}
