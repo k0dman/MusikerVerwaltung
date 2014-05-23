@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class EingabeformularBand01 extends JPanel {
+public class EingabeformularBand02 extends JPanel {
 
 	// Felder:
 
@@ -24,6 +24,7 @@ public class EingabeformularBand01 extends JPanel {
 	private JLabel fueller;
 
 	// JTextField
+
 	private JTextField jtfname;
 	private JTextField jtfmitglied;
 	private JTextField jtfehemalig;
@@ -112,6 +113,7 @@ public class EingabeformularBand01 extends JPanel {
 
 	public JPanel jpmainrechts() {
 
+		//Panel erzeugen mit Gridlayout
 		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
 
 		return jpmaininput;

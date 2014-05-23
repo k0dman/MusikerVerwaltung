@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class EingabeformularBand02 extends JPanel {
+public class EingabeformularBand03 extends JPanel {
 
 	// Felder:
 
