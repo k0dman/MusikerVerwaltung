@@ -4,10 +4,12 @@ import java.awt.*;
 
 import javax.swing.*;
 
-
+import java.util.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MusicLounge11 extends JFrame {
 
@@ -38,9 +40,9 @@ public class MusicLounge11 extends JFrame {
 	// JMenuItem
 	private JMenuItem jmiimport, jmiexport, jmiexit;
 
-	//JTabbedPanre
+	// JTabbedPanre
 	private JTabbedPane jtpsample;
-	
+
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
 			jpinfo, jpselect, jpfooter;
@@ -91,22 +93,19 @@ public class MusicLounge11 extends JFrame {
 		jmiexport = new JMenuItem("Exportieren");
 		jmiexit = new JMenuItem("Beenden");
 
-		jmdatei.setMargin(new Insets(0,10,0,100));
+		jmdatei.setMargin(new Insets(0, 10, 0, 100));
 		// Items dem Menupunkt hinzufuegen
 		jmdatei.add(jmiimport);
 		jmdatei.add(jmiexport);
 		jmdatei.add(jmiexit);
 
-		
-		
 		jlmenudate = new JLabel("Datum");
 		// Menupunkte der JMenubar hinzufuegen
 		jmbmenu.add(jmdatei);
 		jmbmenu.add(Box.createHorizontalStrut(1150));
 		jmbmenu.add(jlmenudate);
 
-		
-		//JMenubar dem Frame hinzufuegen
+		// JMenubar dem Frame hinzufuegen
 		add(jmbmenu, BorderLayout.NORTH);
 
 		// JPanel erzeugen mit BorderLayout
@@ -126,7 +125,7 @@ public class MusicLounge11 extends JFrame {
 		// Hintergrund durchgemalt wird
 		jpselect.setOpaque(false);
 		jpfooter.setOpaque(false);
-		
+
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
@@ -137,12 +136,10 @@ public class MusicLounge11 extends JFrame {
 		// JPanels der >jpheader< hinzufuegen
 		jpheader.add(gpleft);
 		jpheader.add(gpright, BorderLayout.EAST);
-	
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
 		jlsearch = new JLabel("Suche");
-		
 
 		// JButton erzeugen
 		jbmaintable = new JButton("Übersicht");
@@ -163,12 +160,6 @@ public class MusicLounge11 extends JFrame {
 		gpright.add(jpheaderright.add(jtfsearch));
 
 		jtpsample = new JTabbedPane();
-		
-	
-		
-		
-		
-		
 
 		// >jpmain< unsichtbar machen
 
@@ -200,12 +191,13 @@ public class MusicLounge11 extends JFrame {
 		actionListenerJButton();
 		actionListenerJMenuItems();
 
+	
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
 
 		// Groesse nicht veraenderbar
 		setResizable(false);
-
+		System.out.println(jpheader.getPreferredSize());
 		// Frame sichtbar machen
 		setVisible(true);
 
@@ -221,7 +213,7 @@ public class MusicLounge11 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jpmainartist.jpmaindesc());
 				jpmain.add(jpmainartist.jpmaininput());
-				jpmain.add(jpmainartist.jpmainrechts());				
+				jpmain.add(jpmainartist.jpmainrechts());
 				jpmain.setVisible(true);
 
 			}
@@ -247,25 +239,24 @@ public class MusicLounge11 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jpmaintable.jpmaindesc());
 				jpmain.setVisible(true);
-				
-				
 
 			}
 		});
 
 	}
+
 
 	private void actionListenerJMenuItems() {
 
 		// Button
 		jmiexit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-			System.exit(0);
+				System.exit(0);
 
 			}
 		});
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
