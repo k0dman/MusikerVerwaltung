@@ -4,11 +4,12 @@ import java.awt.*;
 
 import javax.swing.*;
 
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MusicLounge09 extends JFrame {
+public class MusicLounge11 extends JFrame {
 
 	// VersionsNr. festlegen
 	private static final long serialVersionUID = 8L;
@@ -19,8 +20,8 @@ public class MusicLounge09 extends JFrame {
 	private Font fheader;
 
 	// Instanzen für JPanels erzeugen
-	private EingabeformularArtist02 jpmainartist = new EingabeformularArtist02();
-	private EingabeformularBand02 jpmainband = new EingabeformularBand02();
+	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
+	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
 	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
 
 	// Farben
@@ -42,7 +43,7 @@ public class MusicLounge09 extends JFrame {
 			jpinfo, jpselect, jpfooter;
 
 	// JLabels
-	private JLabel jlheader, jlsearch;
+	private JLabel jlheader, jlsearch, jlmenudate;
 
 	// JTextField
 	private RoundJTextField01 jtfsearch;
@@ -51,10 +52,10 @@ public class MusicLounge09 extends JFrame {
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// Konstruktor
-	private MusicLounge09() {
+	private MusicLounge11() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge09");
+		super("MusicLounge10");
 
 		// Sauberes Schließen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,13 +88,20 @@ public class MusicLounge09 extends JFrame {
 		jmiexport = new JMenuItem("Exportieren");
 		jmiexit = new JMenuItem("Beenden");
 
+		jmdatei.setMargin(new Insets(0,10,0,100));
 		// Items dem Menupunkt hinzufuegen
 		jmdatei.add(jmiimport);
 		jmdatei.add(jmiexport);
 		jmdatei.add(jmiexit);
 
+		
+		
+		jlmenudate = new JLabel("Datum");
 		// Menupunkte der JMenubar hinzufuegen
 		jmbmenu.add(jmdatei);
+		jmbmenu.add(Box.createHorizontalStrut(1150));
+		jmbmenu.add(jlmenudate);
+
 		
 		//JMenubar dem Frame hinzufuegen
 		add(jmbmenu, BorderLayout.NORTH);
@@ -131,6 +139,7 @@ public class MusicLounge09 extends JFrame {
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
 		jlsearch = new JLabel("Suche");
+		
 
 		// JButton erzeugen
 		jbmaintable = new JButton("Übersicht");
@@ -253,7 +262,7 @@ public class MusicLounge09 extends JFrame {
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MusicLounge09();
+				new MusicLounge11();
 
 			}
 		});

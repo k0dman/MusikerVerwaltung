@@ -1,10 +1,10 @@
-package musikerverwaltung;
+package testklassen;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-public class EingabeformularArtist01 extends JPanel {
+public class EingabeformularArtist03 extends JPanel {
 
 	// Felder:
 

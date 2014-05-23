@@ -1,23 +1,23 @@
-package musikerverwaltung;
-
-import musikerverwaltung.*;
+package vorlagen;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-import vorlagen.GradientJPanels00;
-import vorlagen.RoundJTextField00;
+import testklassen.GradientJPanels01;
+import testklassen.RoundJTextField01;
+import testklassen.Uebersichtstabelle00;
+import musikerverwaltung.EingabeformularArtist02;
+import musikerverwaltung.EingabeformularBand02;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
-public class MusicLounge07 extends JFrame {
+public class MusicLounge09 extends JFrame {
 
 	// VersionsNr. festlegen
-	private static final long serialVersionUID = 07L;
+	private static final long serialVersionUID = 8L;
 
 	// Felder:
 	private Color bgheader;
@@ -25,32 +25,42 @@ public class MusicLounge07 extends JFrame {
 	private Font fheader;
 
 	// Instanzen für JPanels erzeugen
-	private EingabeformularArtist01 jpmainartist = new EingabeformularArtist01();
-	private EingabeformularBand01 jpmainband = new EingabeformularBand01();
+	private EingabeformularArtist02 jpmainartist = new EingabeformularArtist02();
+	private EingabeformularBand02 jpmainband = new EingabeformularBand02();
+	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
 
 	// Farben
 
 	// Contentpane
 	private Container copa;
 
+	// JMenuBar
+	private JMenuBar jmbmenu;
+
+	// JMenu
+	private JMenu jmdatei;
+
+	// JMenuItem
+	private JMenuItem jmiimport, jmiexport, jmiexit;
+
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
-			jpinfo, jpnew, jpfooter;
+			jpinfo, jpselect, jpfooter;
 
 	// JLabels
 	private JLabel jlheader, jlsearch;
 
 	// JTextField
-	private RoundJTextField00 jtfsearch;
-	
+	private RoundJTextField01 jtfsearch;
+
 	// JButton
-	private JButton jbnewart, jbnewband, jbedit;
+	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// Konstruktor
-	private MusicLounge07() {
+	private MusicLounge09() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge");
+		super("MusicLounge09");
 
 		// Sauberes Schließen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,18 +69,40 @@ public class MusicLounge07 extends JFrame {
 		fheader = new Font(Font.DIALOG, Font.BOLD + Font.ITALIC, 25);
 
 		// Farben erzeugen
-		bgheader = new Color(214,214,214);
+		bgheader = new Color(214, 214, 214);
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 
-		GradientJPanels00 gpright = new GradientJPanels00("gpheaderright");
-		GradientJPanels00 gpleft = new GradientJPanels00("gpheaderleft");
-		GradientJPanels00 gpnew = new GradientJPanels00("gpnew");
-		GradientJPanels00 gpmain = new GradientJPanels00("gpmain");
-		GradientJPanels00 gpinfo = new GradientJPanels00("gpinfo");
-		GradientJPanels00 gpfooter = new GradientJPanels00("gpfooter");
+		GradientJPanels01 gpright = new GradientJPanels01("gpheaderright");
+		GradientJPanels01 gpleft = new GradientJPanels01("gpheaderleft");
+		GradientJPanels01 gpnew = new GradientJPanels01("gpnew");
+		GradientJPanels01 gpmain = new GradientJPanels01("gpmain");
+		GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
+		GradientJPanels01 gpfooter = new GradientJPanels01("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
+
+		// JMenuBar erzeugen
+		jmbmenu = new JMenuBar();
+
+		// JMenu erzeugen
+		jmdatei = new JMenu("Datei");
+
+		// JMenuItems erzeugen
+		jmiimport = new JMenuItem("Importieren");
+		jmiexport = new JMenuItem("Exportieren");
+		jmiexit = new JMenuItem("Beenden");
+
+		// Items dem Menupunkt hinzufuegen
+		jmdatei.add(jmiimport);
+		jmdatei.add(jmiexport);
+		jmdatei.add(jmiexit);
+
+		// Menupunkte der JMenubar hinzufuegen
+		jmbmenu.add(jmdatei);
+		
+		//JMenubar dem Frame hinzufuegen
+		add(jmbmenu, BorderLayout.NORTH);
 
 		// JPanel erzeugen mit BorderLayout
 		jpall = new JPanel(new BorderLayout());
@@ -82,13 +114,14 @@ public class MusicLounge07 extends JFrame {
 		jpheaderright = new JPanel();
 		jpmain = new JPanel(new GridLayout(1, 2, 4, 4));
 		jpinfo = new JPanel();
-		jpnew = new JPanel(new GridLayout(2, 1, 6, 6));
+		jpselect = new JPanel(new GridLayout(3, 1, 6, 6));
 		jpfooter = new JPanel();
 
-		// >jpnew< durchsichtig machen, damit zwischen den JButtons, der
+		// >jpselect< durchsichtig machen, damit zwischen den JButtons, der
 		// Hintergrund durchgemalt wird
-		jpnew.setOpaque(false);
+		jpselect.setOpaque(false);
 		jpfooter.setOpaque(false);
+		
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
@@ -106,6 +139,8 @@ public class MusicLounge07 extends JFrame {
 		jlsearch = new JLabel("Suche");
 
 		// JButton erzeugen
+		jbmaintable = new JButton("Übersicht");
+		jbmaintable.setPreferredSize(new Dimension(150, 35));
 		jbnewart = new JButton("Neuer Artist");
 		jbnewart.setPreferredSize(new Dimension(150, 35));
 		jbnewband = new JButton("Neue Band");
@@ -114,7 +149,7 @@ public class MusicLounge07 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		jtfsearch = new RoundJTextField00(13);
+		jtfsearch = new RoundJTextField01(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));
@@ -122,21 +157,21 @@ public class MusicLounge07 extends JFrame {
 		gpright.add(jpheaderright.add(jtfsearch));
 
 		// gpmain
-	
 
 		// >jpmain< unsichtbar machen
-		
+
 		jpmain.setVisible(false);
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
 		// JButton der >jpinfo< hinzufuegen
-		jpnew.add(jbnewart);
-		jpnew.add(jbnewband);
+		jpselect.add(jbmaintable);
+		jpselect.add(jbnewart);
+		jpselect.add(jbnewband);
 
-		// der Instanz das JPanel >jpnew< hinzufuegen
-		gpnew.add(jpnew);
+		// der Instanz das JPanel >jpselect< hinzufuegen
+		gpnew.add(jpselect);
 		gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
@@ -150,7 +185,8 @@ public class MusicLounge07 extends JFrame {
 		copa.add(jpall);
 
 		// ActionLister();
-		actionListener();
+		actionListenerJButton();
+		actionListenerJMenuItems();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -163,7 +199,7 @@ public class MusicLounge07 extends JFrame {
 
 	}
 
-	private void actionListener() {
+	private void actionListenerJButton() {
 
 		// Button
 		jbnewart.addActionListener(new ActionListener() {
@@ -175,7 +211,6 @@ public class MusicLounge07 extends JFrame {
 				jpmain.add(jpmainartist.jpmaininput());
 				jpmain.add(jpmainartist.jpmainrechts());
 				jpmain.setVisible(true);
-			
 
 			}
 		});
@@ -189,13 +224,34 @@ public class MusicLounge07 extends JFrame {
 				jpmain.add(jpmainband.jpmaininput());
 				jpmain.add(jpmainband.jpmainrechts());
 				jpmain.setVisible(true);
-			
+
+			}
+		});
+		// Button
+		jbmaintable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				jpmain.removeAll();
+				jpmain.revalidate();
+				jpmain.repaint();
+				jpmain.add(jpmaintable.jpmaindesc());
+				jpmain.setVisible(true);
 
 			}
 		});
 
 	}
 
+	private void actionListenerJMenuItems() {
+
+		// Button
+		jmiexit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+			System.exit(0);
+
+			}
+		});
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -203,7 +259,7 @@ public class MusicLounge07 extends JFrame {
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MusicLounge07();
+				new MusicLounge09();
 
 			}
 		});
