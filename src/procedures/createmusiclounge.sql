@@ -6,50 +6,48 @@ Use musiclounge;
 
 Create table if not exists person
 (
-idperson smallint not null auto_increment,
+idperson integer not null auto_increment,
 name varchar (100),
 vorname varchar(100),
 titel varchar(100),
 vorsatz varchar(100),
 zusatz varchar(100),
-geschlecht ENUM ('m','f','ns'),
+geschlecht varchar(1),
 gtag varchar(100),
 gmonat varchar(100),
-gjahr varchar(100)not null,
+gjahr varchar(100),
 ttag varchar(100),
 tmonat varchar(100),
 tjahr varchar(100),
-primary key (idperson)
+Primary key (idperson)
 );
 
 create table if not exists Musiker
 (
-idmusiker smallint not null auto_increment,
-idperson smallint null,
-idgruppe smallint null,
+idmusiker integer not null auto_increment,
+idperson integer null,
+idgruppe integer(30) null,
 pseudonym varchar(30),
 instrument varchar(30),
 stuecksolo varchar(30),
 referenz varchar(30),
-primary key (idmusiker),
+Primary key (idmusiker),
 foreign key (idperson) references person (idperson) on update cascade on delete cascade
 
 );
 
 create table if not exists gruppe
 (
-idgruppe smallint not null auto_increment,
+idgruppe integer not null auto_increment,
 name varchar(30),
-mitglied smallint ,
+mitglied integer,
 ehemalig integer,
 stueckgruppe varchar(30),
 referenz varchar(30),
-primary key (idgruppe),
-
-
+Primary Key (idgruppe)
 );
 
-
+ALTER TABLE `musiker` add foreign key (idgruppe) references gruppe (idgruppe) on update cascade on delete cascade;
 
 use musiclounge;
 

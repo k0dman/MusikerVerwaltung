@@ -1,7 +1,5 @@
 use musiclounge;
 
-
-/** Phil Collins **/
 SET @p0='Philip';
 SET @p1=' Collins';
 SET @p2=''; SET @p3=''; SET @p4='';
@@ -18,8 +16,6 @@ SET @p16='';
 
 CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
 
-
-/** Freddie Mercury **/
 SET @p0='Michael';
 SET @p1='Jagger';
 SET @p2=''; SET @p3=''; SET @p4='';
@@ -36,7 +32,6 @@ SET @p16='';
 
 CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
 
-/** Freddie Mercury **/
 SET @p0='Freddie';
 SET @p1='Mercury';
 SET @p2=''; SET @p3=''; SET @p4='';
@@ -53,7 +48,6 @@ SET @p16='';
 
 CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
 
-/** Enya **/
 SET @p0='Eithne';
 SET @p1='Bhraonáin';
 SET @p2=''; SET @p3=''; SET @p4='';
@@ -69,3 +63,5 @@ SET @p15='https://www.youtube.com/watch?v=ERFmHwYrw1A';
 SET @p16='';
 
 CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+
+
