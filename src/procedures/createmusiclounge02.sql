@@ -26,7 +26,6 @@ create table if not exists Musiker
 (
 idmusiker smallint not null auto_increment,
 idperson smallint null,
-idgruppe smallint null,
 pseudonym varchar(30),
 instrument varchar(30),
 stuecksolo varchar(30),
@@ -40,12 +39,20 @@ create table if not exists gruppe
 (
 idgruppe smallint not null auto_increment,
 name varchar(30),
-mitglied smallint ,
-ehemalig integer,
 stueckgruppe varchar(30),
 referenz varchar(30),
-primary key (idgruppe),
+primary key (idgruppe)
 
+
+);
+
+create table if not exists gruppehelp
+(
+idmusikerh smallint,
+idgruppe smallint,
+idehemalig smallint,
+
+foreign key (idgruppe) 			references gruppe	 (idgruppe)
 
 );
 

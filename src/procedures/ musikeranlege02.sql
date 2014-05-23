@@ -1,3 +1,4 @@
+/** Musiker anlegen *//
 use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
@@ -23,6 +24,7 @@ referenz, idmusiker);
 END$$
 DELIMITER ;
 
+/** Gruppe anlegen *//
 use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
@@ -30,8 +32,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeErstellen` (gridgruppe smalli
 grmitglied smallint, grehemalig smallint, grstueckgruppe varchar(100),
 grreferenz varchar(100))
 BEGIN
-insert into gruppe (name, mitglied, ehemalig, stueckgruppe, referenz)
-values (grname, grmitglied, grehemalig, grstueckgruppe, grreferenz);
-update musiker set idgruppe = grmitglied where grmitglied = idmusiker;
+declare idgruppe smallint;
+insert into gruppe (name,stueckgruppe, referenz)
+values (grname, grstueckgruppe, grreferenz);
+select last_insert_id() into idgruppe;
+insert into gruppehelp (idmusikerh, idgruppe, idehemalig)
+values (grmitglied, idgruppe, grehemalig);
 END$$
 DELIMITER ;
