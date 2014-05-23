@@ -164,26 +164,7 @@ public class MusicLounge11 extends JFrame {
 
 		jtpsample = new JTabbedPane();
 		
-		/*jtpsample.setCellSelectionEnabled(true);
-		    ListSelectionModel cellSelectionModel = table.getSelectionModel();
-		    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
-		      public void valueChanged(ListSelectionEvent e) {
-		        String selectedData = null;
-
-		        int[] selectedRow = table.getSelectedRows();
-		        int[] selectedColumns = table.getSelectedColumns();
-
-		        for (int i = 0; i < selectedRow.length; i++) {
-		          for (int j = 0; j < selectedColumns.length; j++) {
-		            selectedData = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
-		          }
-		        }
-		        System.out.println("Selected: " + selectedData);
-		      }
-
-		    });*/
+	
 		
 		
 		
@@ -266,6 +247,8 @@ public class MusicLounge11 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jpmaintable.jpmaindesc());
 				jpmain.setVisible(true);
+				
+				
 
 			}
 		});
