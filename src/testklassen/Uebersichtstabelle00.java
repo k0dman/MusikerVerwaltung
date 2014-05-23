@@ -1,6 +1,10 @@
 package testklassen;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.*;
 
 import javax.swing.*;
@@ -8,10 +12,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class Uebersichtstabelle00 extends JPanel {
 
+	// Instanzen für JPanels erzeugen
+	private EingabeformularArtist03 jtmaintableartist = new EingabeformularArtist03();
+
 	// Felder:
 
+	// JTabbedPane
+	private JTabbedPane jtpmaindesc;
+
 	// JPanel
-	private JPanel jpmaindesc, jpmaininput;
+	private JPanel jpmaindesc;
 
 	// JTable
 
@@ -28,12 +38,13 @@ public class Uebersichtstabelle00 extends JPanel {
 	// Schrift:
 	private Font ftfield;
 
-	// JTextField
+	// JLabel
+	private JLabel test;
 
 	public JPanel jpmaindesc() {
 
 		// Panel erzeugen mit GridLayout
-		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
+		JPanel jpmaindesc = new JPanel();
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -45,9 +56,6 @@ public class Uebersichtstabelle00 extends JPanel {
 		// Spaltenueberschriften aus der Methode-Klasse holen
 		dtm.setColumnIdentifiers(DBMethods00.COLUMN_IDENTIFIERS);
 
-	
-
-	
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
 
@@ -56,39 +64,120 @@ public class Uebersichtstabelle00 extends JPanel {
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		/*
-		 * cellSelectionModel .addListSelectionListener(new
-		 * ListSelectionListener() { public void valueChanged(ListSelectionEvent
-		 * e) { String selectedData = null;
-		 * 
-		 * int[] selectedRow = jtmaintable.getSelectedRows(); int[]
-		 * selectedColumns = jtmaintable .getSelectedColumns();
-		 * 
-		 * for (int i = 0; i < selectedRow.length; i++) { for (int j = 0; j <
-		 * selectedColumns.length; j++) { selectedData = (String)
-		 * jtmaintable.getValueAt( selectedRow[i], selectedColumns[j]); } }
-		 * System.out.println("Selected: " + selectedData); }
-		 * 
-		 * });
-		 */
-
-		// JScrollPane erstellen
-		jtmaintable.setAutoResizeMode(HEIGHT);
-		
 		jspmaintable = new JScrollPane(jtmaintable);
 
 		// JScrollPane dem JPanel hinzufuegem
 
 		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
-		// ist, außerdem schoener:)
-		jspmaintable.setPreferredSize(new Dimension(260, 150));
+		// ist, außerdem schoener:) //860 , 600
+		jspmaintable.setPreferredSize(new Dimension(100, 100));
 
 		jspmaintable.setViewportView(jtmaintable);
+		
+		//test = new JLabel("hey");
+		//jpmaindesc.add(test,BorderLayout.NORTH);
+		
+		jpmaindesc.add(jspmaintable, BorderLayout.WEST);
+		jpmaindesc.add(jspmaintable, BorderLayout.EAST);
+		// #############################//
+		// Methodenaufruf und in Variable abgelegt
+		Vector<Vector<String>> results = DBMethods00.DBSelectVector();
+		//
+		dtm.setDataVector(results, DBMethods00.COLUMN_IDENTIFIERS);
 
-		jpmaindesc.add(jspmaintable);
+		// Methode
+		dtm.fireTableDataChanged();
+		// #############################//
 
+		mouseListenertable();
 		return jpmaindesc;
 
 	}
 
+	private void mouseListenertable() {
+
+		// Button
+		jtmaintable.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int rows = jtmaintable.getRowCount();
+
+				if (e.getButton() == 2) {
+
+					// jtpmaindesc = new
+					// JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT);
+					// jtpmaindesc.addTab(jtmaintableartist.jtmaintabledesc());
+
+					int row = jtmaintable.getSelectedRow();
+					int column = jtmaintable.getSelectedColumn();
+					if (column == 1) {
+
+						Object artist = jtmaintable.getValueAt(row, column);
+						Object title = jtmaintable.getValueAt(row, column + 1);
+
+						artist = String.valueOf(artist);
+						title = String.valueOf(title);
+
+						String ausgabe = "Artist: " + artist + " " + "Titel: "
+								+ title;
+						JOptionPane.showMessageDialog(null, ausgabe);
+
+						test = new JLabel("hey");
+						Uebersichtstabelle00 jpmaindesc01 = new Uebersichtstabelle00();
+						jpmaindesc01.add(test);
+						test = new JLabel("hey");
+						jpmaindesc.add(test, BorderLayout.NORTH);
+						jpmaindesc.add(jpmaindesc01, BorderLayout.NORTH);
+						//jpmaindesc01.setVisible(true);
+						
+						
+
+					} else if (column == 2) {
+
+						Object artist = jtmaintable.getValueAt(row, column - 1);
+						Object title = jtmaintable.getValueAt(row, column);
+
+						artist = String.valueOf(artist);
+						title = String.valueOf(title);
+
+						String ausgabe = "Artist: " + artist + " " + "Titel: "
+								+ title;
+						JOptionPane.showMessageDialog(null, ausgabe);
+
+						test = new JLabel("hey");
+						Uebersichtstabelle00 jpmaindesc01 = new Uebersichtstabelle00();
+						jpmaindesc01.add(test);
+						jpmaindesc01.setVisible(true);
+
+					}
+				}
+			}
+		});
+
+	}
 }
