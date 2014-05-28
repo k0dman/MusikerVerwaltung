@@ -25,6 +25,7 @@ public class MusicLounge11 extends JFrame {
 	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
 	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
 	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
+	private JtpUebersichtstab00 jtpmain = new JtpUebersichtstab00();
 
 	// Farben
 
@@ -237,7 +238,7 @@ public class MusicLounge11 extends JFrame {
 				jpmain.removeAll();
 				jpmain.revalidate();
 				jpmain.repaint();
-				jpmain.add(jpmaintable.jpmaindesc());
+				jpmain.add(jtpmain.jtpmaindesc());
 				jpmain.setVisible(true);
 
 			}

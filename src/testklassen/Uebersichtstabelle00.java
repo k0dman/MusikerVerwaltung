@@ -70,15 +70,13 @@ public class Uebersichtstabelle00 extends JPanel {
 
 		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
 		// ist, auﬂerdem schoener:) //860 , 600
-		jspmaintable.setPreferredSize(new Dimension(100, 100));
+		jspmaintable.setPreferredSize(new Dimension(860, 600));
 
 		jspmaintable.setViewportView(jtmaintable);
-		
-		//test = new JLabel("hey");
-		//jpmaindesc.add(test,BorderLayout.NORTH);
-		
+
 		jpmaindesc.add(jspmaintable, BorderLayout.WEST);
 		jpmaindesc.add(jspmaintable, BorderLayout.EAST);
+
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
 		Vector<Vector<String>> results = DBMethods00.DBSelectVector();
@@ -96,7 +94,7 @@ public class Uebersichtstabelle00 extends JPanel {
 
 	private void mouseListenertable() {
 
-		// Button
+		// Button fuer die Tabelle
 		jtmaintable.addMouseListener(new MouseListener() {
 
 			@Override
@@ -125,39 +123,34 @@ public class Uebersichtstabelle00 extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				int rows = jtmaintable.getRowCount();
 
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
 				if (e.getButton() == 2) {
 
-					// jtpmaindesc = new
-					// JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT);
-					// jtpmaindesc.addTab(jtmaintableartist.jtmaintabledesc());
-
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
 					int row = jtmaintable.getSelectedRow();
 					int column = jtmaintable.getSelectedColumn();
+
+					// Wenn es sich um die erste Spalte handelt:
 					if (column == 1) {
 
+						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
 						Object artist = jtmaintable.getValueAt(row, column);
 						Object title = jtmaintable.getValueAt(row, column + 1);
 
+						// Die Objecte in Strings casten
 						artist = String.valueOf(artist);
 						title = String.valueOf(title);
 
+						// Zusammenfassen in eine Var
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
+
 						JOptionPane.showMessageDialog(null, ausgabe);
 
-						test = new JLabel("hey");
-						Uebersichtstabelle00 jpmaindesc01 = new Uebersichtstabelle00();
-						jpmaindesc01.add(test);
-						test = new JLabel("hey");
-						jpmaindesc.add(test, BorderLayout.NORTH);
-						jpmaindesc.add(jpmaindesc01, BorderLayout.NORTH);
-						//jpmaindesc01.setVisible(true);
-						
-						
-
-					} else if (column == 2) {
+					}
+					// Wenn es sich um die zweite Spalte handelt:
+					else if (column == 2) {
 
 						Object artist = jtmaintable.getValueAt(row, column - 1);
 						Object title = jtmaintable.getValueAt(row, column);
@@ -168,11 +161,6 @@ public class Uebersichtstabelle00 extends JPanel {
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
-
-						test = new JLabel("hey");
-						Uebersichtstabelle00 jpmaindesc01 = new Uebersichtstabelle00();
-						jpmaindesc01.add(test);
-						jpmaindesc01.setVisible(true);
 
 					}
 				}
