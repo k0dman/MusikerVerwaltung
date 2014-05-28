@@ -46,7 +46,6 @@ public class JtpUebersichtstab00 extends JTabbedPane {
 		
 		jtpmaindesc.addTab("Übersicht", jpmaintable.jpmaindesc());
 		
-				
 		return jtpmaindesc;
 
 	}
