@@ -1,52 +1,40 @@
 package testklassen;
 
-
+/*In dieser Klasse wird die Tabelle einer JTabbedPane hinzufuegt*/
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class JtpUebersichtstab00 extends JTabbedPane {
+public class JtpUebersichtstab00 extends JPanel {
 
-	// Instanzen für JPanels erzeugen
-	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
+	// Instanzen fuer JPanel erzeugen
+    //	private Uebersichtstabelle00 jpmaintable = new Uebersichtstabelle00();
 
 	// Felder:
 
-	// JTabbedPane
-	private JTabbedPane jtpmaindesc;
+	// JPanel
+	private JPanel jpmaindesc;
 
-	// JTable
+	//JLabel
+	private JLabel jltest;
+	
+	public JPanel jpmaindesc() {
 
-	private JTable jtmaintable;
+		// neue JPanel erzeugen
+		jpmaindesc = new JPanel();
 
-	// DefaultTableModel
-
-	private DefaultTableModel dtm;
-
-	// JScrollPane
-
-	private JScrollPane jspmaintable;
-
-	// Schrift:
-	private Font ftfield;
-
-	// JLabel
-	private JLabel test;
-
-	public JTabbedPane jtpmaindesc() {
-
-		jtpmaindesc = new JTabbedPane();
+		// neue JLabel
 		
-		jtpmaindesc.addTab("Übersicht", jpmaintable.jpmaindesc());
+		jltest = new JLabel("Hallo");
 		
-		return jtpmaindesc;
+		// Tab hinzufuegen
+		jpmaindesc.add(jltest);
+
+		// JTP zurueckgeben
+		return jpmaindesc;
 
 	}
+
 }

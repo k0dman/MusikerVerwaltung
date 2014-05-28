@@ -24,7 +24,9 @@ public class MusicLounge11 extends JFrame {
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
 	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
-	private JtpUebersichtstab00 jtpmain = new JtpUebersichtstab00();
+	private Uebersichtstabelle00 jtpmain = new Uebersichtstabelle00();
+	private JTableUebersichtstab00 jtmaintable = new JTableUebersichtstab00();
+	//private JtpUebersichtstab00 jtpmain = new JtpUebersichtstab00();
 
 	// Farben
 
@@ -39,9 +41,6 @@ public class MusicLounge11 extends JFrame {
 
 	// JMenuItem
 	private JMenuItem jmiimport, jmiexport, jmiexit;
-
-	// JTabbedPanre
-	private JTabbedPane jtpsample;
 
 	// JPanel
 	private JPanel jpall, jpheader, jpheaderleft, jpheaderright, jpmain,
@@ -70,8 +69,8 @@ public class MusicLounge11 extends JFrame {
 
 		// Farben erzeugen
 		bgheader = new Color(214, 214, 214);
-		// Farbverlaeufe aus der Klasse >GradientPanel<
 
+		// Farbverlaeufe aus der Klasse >GradientPanel<
 		GradientJPanels01 gpright = new GradientJPanels01("gpheaderright");
 		GradientJPanels01 gpleft = new GradientJPanels01("gpheaderleft");
 		GradientJPanels01 gpnew = new GradientJPanels01("gpnew");
@@ -93,7 +92,9 @@ public class MusicLounge11 extends JFrame {
 		jmiexport = new JMenuItem("Exportieren");
 		jmiexit = new JMenuItem("Beenden");
 
+		// Abstand setzen
 		jmdatei.setMargin(new Insets(0, 10, 0, 100));
+
 		// Items dem Menupunkt hinzufuegen
 		jmdatei.add(jmiimport);
 		jmdatei.add(jmiexport);
@@ -159,8 +160,6 @@ public class MusicLounge11 extends JFrame {
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
 
-		jtpsample = new JTabbedPane();
-
 		// >jpmain< unsichtbar machen
 
 		jpmain.setVisible(false);
@@ -190,14 +189,14 @@ public class MusicLounge11 extends JFrame {
 		// ActionLister();
 		actionListenerJButton();
 		actionListenerJMenuItems();
-
-	
+		
+		
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
 
 		// Groesse nicht veraenderbar
 		setResizable(false);
-		System.out.println(jpheader.getPreferredSize());
+
 		// Frame sichtbar machen
 		setVisible(true);
 
@@ -239,12 +238,12 @@ public class MusicLounge11 extends JFrame {
 				jpmain.repaint();
 				jpmain.add(jtpmain.jtpmaindesc());
 				jpmain.setVisible(true);
+				
 
 			}
 		});
 
 	}
-
 
 	private void actionListenerJMenuItems() {
 
@@ -256,6 +255,10 @@ public class MusicLounge11 extends JFrame {
 			}
 		});
 	}
+	
+	
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
