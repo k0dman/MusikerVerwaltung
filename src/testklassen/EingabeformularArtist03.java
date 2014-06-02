@@ -46,23 +46,16 @@ public class EingabeformularArtist03 extends JPanel {
 	private JTextField jtfreferenz;
 
 	// Deklaration der Auswahlvariablen
-	// In den eineckigen Klammern steht, von welchem Typ das Ausgewaehlte ist.
+	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte ist.
 	private JComboBox<String> jcbmonat;
 	private JComboBox<Integer> jcbtag, jcbjahr;
 	private JComboBox<String> dodjcbmonat;
 	private JComboBox<Integer> dodjcbtag, dodjcbjahr;
 
-	// Panels dafuer
+	// Panels daf\u00FCr
 	private JPanel jpdatum;
 	private JPanel dodjpdatum;
 
-	// moegliche Auswahlen
-	// Umlaute sollte man immer als Unicode schreiben, damit beim Wechsel von
-	// einem Editor zum anderen nichts Unvorhergesehenes passiert.
-	// Die Unicodes findet man im Netz unter http://unicode.org/ oder, was fuer
-	// die Hackerpraxis etwas leichter lesbar ist, auf der Seite
-	// http://www.utf8-zeichentabelle.de/. Das &auml; hei&szlig;t dort etwa
-	// "LATIN SMALL LETTER A WITH DIAERESIS" und hat den Code \u00E4.
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
@@ -161,7 +154,7 @@ public class EingabeformularArtist03 extends JPanel {
 
 		// Erzeugen der Auswahlen
 		// Das Jahr sollte editierbar sein, da die angebotene Liste
-		// unvollstaendig ist, Tag und Monat jedoch nicht.
+		// unvollst\u00E4ndig ist, Tag und Monat jedoch nicht.
 		jcbmonat = new JComboBox<String>(monatsname);
 		jcbmonat.setEditable(false);
 		dodjcbmonat = new JComboBox<String>(dodmonatsname);
@@ -208,7 +201,7 @@ public class EingabeformularArtist03 extends JPanel {
 		rbfrau = new JRadioButton("Frau");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
 
-		// JRadioButtons ButtonGroup hinzufuegen
+		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 
 		auswahl = new ButtonGroup();
 		auswahl.add(rbmann);
@@ -218,7 +211,7 @@ public class EingabeformularArtist03 extends JPanel {
 		geschlechtgruppe.add(rbfrau);
 		geschlechtgruppe.add(rbkeineahnung);
 
-		// JTextfields vergoesern
+		// JTextfields verg\u00F6sern
 
 		jtfname.setColumns(10);
 		jtfvorname.setColumns(10);
@@ -248,7 +241,7 @@ public class EingabeformularArtist03 extends JPanel {
 		jtfsolostueck.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
 
-		// JTextfields hinzufuegen
+		// JTextfields hinzuf\u00FCgen
 
 		jpmaininput.add(jtfname);
 		jpmaininput.add(jtfvorname);
