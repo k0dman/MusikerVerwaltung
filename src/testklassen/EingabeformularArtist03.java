@@ -14,47 +14,20 @@ public class EingabeformularArtist03 extends JPanel {
 	private Font ftfield;
 
 	// Labels
-	private JLabel ueschrift;
-	private JLabel vorname;
-	private JLabel name;
-	private JLabel titel;
-	private JLabel vorsatz;
-	private JLabel zusatz;
-	private JLabel geschlecht;
-	private JPanel geschlechtgruppe;
-	private JLabel dob;
-	private JLabel dod;
-	private JLabel pseudonym;
-	private JLabel instrument;
-	private JLabel solostueck;
-	private JLabel referenz;
-	private JLabel fueller;
+	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz, geschlecht, geschlechtgruppe, dob, dod, pseudonym, instrument, solostueck, referenz, fueller;
+	
 
 	// JTextField
-	private JTextField jtfueschrift;
-	private JTextField jtfvorname;
-	private JTextField jtfname;
-	private JTextField jtftitel;
-	private JTextField jtfvorsatz;
-	private JTextField jtfzusatz;
-	private JTextField jtfgeschlecht;
-	private JTextField jtfdob;
-	private JTextField jtfdod;
-	private JTextField jtfpseudonym;
-	private JTextField jtfinstrument;
-	private JTextField jtfsolostueck;
-	private JTextField jtfreferenz;
+	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz, jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz;
 
 	// Deklaration der Auswahlvariablen
 	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte ist.
-	private JComboBox<String> jcbmonat;
-	private JComboBox<Integer> jcbtag, jcbjahr;
-	private JComboBox<String> dodjcbmonat;
-	private JComboBox<Integer> dodjcbtag, dodjcbjahr;
+	private JComboBox<String> jcbmonat, dodjcbmonat;
+	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
 
 	// Panels daf\u00FCr
-	private JPanel jpdatum;
-	private JPanel dodjpdatum;
+	private JPanel jpdatum, dodjpdatum;
+	
 
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
@@ -62,13 +35,11 @@ public class EingabeformularArtist03 extends JPanel {
 	private String[] dodmonatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
-	//
+	
 
 	// JJRadioButton
 
-	private JRadioButton rbmann;
-	private JRadioButton rbfrau;
-	private JRadioButton rbkeineahnung;
+	private JRadioButton rbmann, rbfrau, rbkeineahnung;
 
 	private ButtonGroup auswahl;
 
