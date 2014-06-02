@@ -44,10 +44,10 @@ public class EingabeformularBand03 extends JPanel {
 		name = new JLabel("Name");
 		mitglied = new JLabel("Mitglied");
 		ehemalig = new JLabel("Ehemalig");
-		stueckgruppe = new JLabel("Stueck");
+		stueckgruppe = new JLabel("St\u00FCck");
 		referenz = new JLabel("Referenz");
 
-		// Label dem Panel hinzuefuegen
+		// Label dem Panel hinzuf\u00FCgen
 		jpmaindesc.add(ueschrift);
 		jpmaindesc.add(name);
 		jpmaindesc.add(mitglied);
@@ -63,7 +63,7 @@ public class EingabeformularBand03 extends JPanel {
 		stueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
 		referenz.setHorizontalAlignment(SwingConstants.RIGHT);
 
-		// Schrift dem gewuenschten Label hinzufuegen
+		// Schrift dem gew\u00FCnschten Label hinzuf\u00FCgen
 		ueschrift.setFont(ftfield);
 
 		return jpmaindesc;
@@ -86,7 +86,7 @@ public class EingabeformularBand03 extends JPanel {
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
 
-		// JTextfields vergoesern
+		// JTextfields verg\u00F6sern
 		jtfname.setColumns(10);
 		jtfmitglied.setColumns(10);
 		jtfehemalig.setColumns(10);
@@ -100,7 +100,7 @@ public class EingabeformularBand03 extends JPanel {
 		jtfstueckgruppe.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
 
-		// JTextfields hinzufuegen
+		// JTextfields hinzuf\u00FCgen
 		jpmaininput.add(jtfname);
 		jpmaininput.add(jtfmitglied);
 		jpmaininput.add(jtfehemalig);
