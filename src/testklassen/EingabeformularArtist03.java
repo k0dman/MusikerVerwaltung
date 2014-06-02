@@ -14,7 +14,7 @@ public class EingabeformularArtist03 extends JPanel {
 	private Font ftfield;
 
 	// Labels
-	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz, geschlecht, geschlechtgruppe, dob, dod, pseudonym, instrument, solostueck, referenz, fueller;
+	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz, geschlecht, dob, dod, pseudonym, instrument, solostueck, referenz, fueller;
 	
 
 	// JTextField
@@ -26,7 +26,7 @@ public class EingabeformularArtist03 extends JPanel {
 	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
 
 	// Panels daf\u00FCr
-	private JPanel jpdatum, dodjpdatum;
+	private JPanel jpdatum, dodjpdatum, geschlechtgruppe;
 	
 
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
