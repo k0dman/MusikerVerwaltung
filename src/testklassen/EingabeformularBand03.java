@@ -15,21 +15,11 @@ public class EingabeformularBand03 extends JPanel {
 	private Font ftfield;
 
 	// Label
-	private JLabel ueschrift;
-	private JLabel name;
-	private JLabel mitglied;
-	private JLabel ehemalig;
-	private JLabel stueckgruppe;
-	private JLabel referenz;
-	private JLabel fueller;
+	private JLabel ueschrift, name, mitglied, ehemalig, stueckgruppe, referenz, fueller;
 
 	// JTextField
 
-	private JTextField jtfname;
-	private JTextField jtfmitglied;
-	private JTextField jtfehemalig;
-	private JTextField jtfstueckgruppe;
-	private JTextField jtfreferenz;
+	private JTextField jtfname, jtfmitglied, jtfehemalig, jtfstueckgruppe, jtfreferenz;
 
 	public JPanel jpmaindesc() {
 
