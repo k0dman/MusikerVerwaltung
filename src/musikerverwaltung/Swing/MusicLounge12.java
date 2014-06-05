@@ -1,17 +1,13 @@
-package testklassen;
+package musikerverwaltung.Swing;
 
+import musikerverwaltung.Graphics.*;
 import java.awt.*;
-
 import javax.swing.*;
-
-import java.util.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class MusicLounge11 extends JFrame {
+public class MusicLounge12 extends JFrame {
 
 	// VersionsNr. festlegen
 	private static final long serialVersionUID = 8L;
@@ -22,11 +18,9 @@ public class MusicLounge11 extends JFrame {
 	private Font fheader;
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
-	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
-	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
-	private Uebersichtstabelle00 jtpmain = new Uebersichtstabelle00();
-	private JTableUebersichtstab00 jtmaintable = new JTableUebersichtstab00();
-	//private JtpUebersichtstab00 jtpmain = new JtpUebersichtstab00();
+	private EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
+	private EingabeformularBand04 jpmainband = new EingabeformularBand04();
+	private Uebersichtstabelle02 jtpmain = new Uebersichtstabelle02();
 
 	// Farben
 
@@ -50,16 +44,16 @@ public class MusicLounge11 extends JFrame {
 	private JLabel jlheader, jlsearch, jlmenudate;
 
 	// JTextField
-	private RoundJTextField01 jtfsearch;
+	private RoundJTextField02 jtfsearch;
 
 	// JButton
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// Konstruktor
-	private MusicLounge11() {
+	private MusicLounge12() {
 
 		// Titel (Aufruf mit super aus der Basisklasse)
-		super("MusicLounge11");
+		super("MusicLounge12");
 
 		// Sauberes Schließen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,12 +65,12 @@ public class MusicLounge11 extends JFrame {
 		bgheader = new Color(214, 214, 214);
 
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-		GradientJPanels01 gpright = new GradientJPanels01("gpheaderright");
-		GradientJPanels01 gpleft = new GradientJPanels01("gpheaderleft");
-		GradientJPanels01 gpnew = new GradientJPanels01("gpnew");
-		GradientJPanels01 gpmain = new GradientJPanels01("gpmain");
-		GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
-		GradientJPanels01 gpfooter = new GradientJPanels01("gpfooter");
+		GradientJPanels02 gpright = new GradientJPanels02("gpheaderright");
+		GradientJPanels02 gpleft = new GradientJPanels02("gpheaderleft");
+		GradientJPanels02 gpnew = new GradientJPanels02("gpnew");
+		GradientJPanels02 gpmain = new GradientJPanels02("gpmain");
+		GradientJPanels02 gpinfo = new GradientJPanels02("gpinfo");
+		GradientJPanels02 gpfooter = new GradientJPanels02("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
@@ -153,7 +147,7 @@ public class MusicLounge11 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		jtfsearch = new RoundJTextField01(13);
+		jtfsearch = new RoundJTextField02(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));
@@ -189,8 +183,7 @@ public class MusicLounge11 extends JFrame {
 		// ActionLister();
 		actionListenerJButton();
 		actionListenerJMenuItems();
-		
-		
+
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
 
@@ -236,9 +229,10 @@ public class MusicLounge11 extends JFrame {
 				jpmain.removeAll();
 				jpmain.revalidate();
 				jpmain.repaint();
-				jpmain.add(jtpmain.jtpmaindesc());
+				// Pointer auf die Variable legen
+				jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
+				jpmain.add(jtpmain.jtpmaindesc);
 				jpmain.setVisible(true);
-				
 
 			}
 		});
@@ -255,10 +249,6 @@ public class MusicLounge11 extends JFrame {
 			}
 		});
 	}
-	
-	
-	
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -267,7 +257,7 @@ public class MusicLounge11 extends JFrame {
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MusicLounge11();
+				new MusicLounge12();
 
 			}
 		});

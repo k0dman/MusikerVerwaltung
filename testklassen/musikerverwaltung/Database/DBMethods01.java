@@ -1,13 +1,11 @@
-package testklassen;
+package musikerverwaltung.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-
-
-public final class DBMethods00 {
+public final class DBMethods01 {
 
 	// Diese Eintraege werden zum Verbindungsaufbau benoetigt
 	// Die Variabeln werden als >final< deklariert, da es sich hier um
@@ -19,7 +17,7 @@ public final class DBMethods00 {
 
 	// Instanz-Objekt erzeugen für die ganze Klasse
 	private static DBConnection conn = new DBConnection();
-	
+
 	public final static Vector<String> COLUMN_IDENTIFIERS = new Vector<String>() {
 		{
 
@@ -47,7 +45,8 @@ public final class DBMethods00 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("SELECT idperson,pseudonym,stuecksolo FROM musiker WHERE 1");
+			rs = stmt
+					.executeQuery("SELECT idperson,pseudonym,stuecksolo FROM musiker WHERE 1");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -58,7 +57,6 @@ public final class DBMethods00 {
 				person.add(" ");
 				person.add(rs.getString("pseudonym"));
 				person.add(rs.getString("stuecksolo"));
-				
 
 				results.add(person);
 

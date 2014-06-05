@@ -1,10 +1,10 @@
-package testklassen;
+package musikerverwaltung.Swing;
 
 
 
 import javax.swing.*;
 
-public class AddArtist extends JTabbedPane{
+public class AddArtist01 extends JTabbedPane{
 
 	private JLabel jltest;
 	private JPanel content;

@@ -1,16 +1,16 @@
-package testklassen;
+package musikerverwaltung.Database;
 
 import java.sql.*;
 
 //Notice, do not import org.gjt.mm.mysql.* 
 //or you will have problems! 
 
-public class DBConnection {
+public class DBConnection01 {
 	// Erzeugen eines Connection-Objektes (Bei Connection handelt es sich um
 	// eine Interface-Klasse)
 	Connection connection;
 
-	public DBConnection() {
+	public DBConnection01() {
 
 	}
 

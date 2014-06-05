@@ -1,4 +1,4 @@
-package testklassen;
+package vorlagen;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +9,9 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import testklassen.JTableUebersichtstab00;
+import testklassen.JtpUebersichtstab00;
 
 public class Uebersichtstabelle00 extends JTabbedPane {
 

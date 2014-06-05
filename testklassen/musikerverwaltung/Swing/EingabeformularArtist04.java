@@ -1,56 +1,45 @@
-package musikerverwaltung;
+package musikerverwaltung.Swing;
 
 import java.awt.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
-public class EingabeformularArtist02 extends JPanel {
+public class EingabeformularArtist04 extends JPanel {
 
 	// Felder:
-
-	// Panels
-	private JPanel jpmaindesc, jpmaininput;
 
 	// Schriften:
 	private Font ftfield;
 
 	// Labels
-	private JLabel ueschrift;
-	private JLabel vorname;
-	private JLabel name;
-	private JLabel titel;
-	private JLabel vorsatz;
-	private JLabel zusatz;
-	private JLabel geschlecht;
-	private JPanel geschlechtgruppe;
-	private JLabel dob;
-	private JLabel dod;
-	private JLabel pseudonym;
-	private JLabel instrument;
-	private JLabel solostueck;
-	private JLabel referenz;
-	private JLabel fueller;
+	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz, geschlecht, dob, dod, pseudonym, instrument, solostueck, referenz, fueller;
+	
 
 	// JTextField
-	private JTextField jtfueschrift;
-	private JTextField jtfvorname;
-	private JTextField jtfname;
-	private JTextField jtftitel;
-	private JTextField jtfvorsatz;
-	private JTextField jtfzusatz;
-	private JTextField jtfgeschlecht;
-	private JTextField jtfdob;
-	private JTextField jtfdod;
-	private JTextField jtfpseudonym;
-	private JTextField jtfinstrument;
-	private JTextField jtfsolostueck;
-	private JTextField jtfreferenz;
+	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz, jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz;
+
+	// Deklaration der Auswahlvariablen
+	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte ist.
+	private JComboBox<String> jcbmonat, dodjcbmonat;
+	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
+
+	// Panels daf\u00FCr
+	private JPanel jpdatum, dodjpdatum, geschlechtgruppe;
+	
+
+	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
+			"Mai", "Juni", "Juli", "August", "September", "Oktober",
+			"November", "Dezember" };
+	private String[] dodmonatsname = { "Januar", "Februar", "M\u00E4rz", "April",
+			"Mai", "Juni", "Juli", "August", "September", "Oktober",
+			"November", "Dezember" };
+	
 
 	// JJRadioButton
 
-	private JRadioButton rbmann;
-	private JRadioButton rbfrau;
-	private JRadioButton rbkeineahnung;
+	private JRadioButton rbmann, rbfrau, rbkeineahnung;
 
 	private ButtonGroup auswahl;
 
@@ -134,11 +123,56 @@ public class EingabeformularArtist02 extends JPanel {
 
 		// Button erzeugen
 
+		// Erzeugen der Auswahlen
+		// Das Jahr sollte editierbar sein, da die angebotene Liste
+		// unvollst\u00E4ndig ist, Tag und Monat jedoch nicht.
+		jcbmonat = new JComboBox<String>(monatsname);
+		jcbmonat.setEditable(false);
+		dodjcbmonat = new JComboBox<String>(dodmonatsname);
+		dodjcbmonat.setEditable(false);
+
+		//
+		jcbtag = new JComboBox<Integer>();
+		for (int t = 1; t < 32; t++)
+			jcbtag.addItem(new Integer(t));
+		jcbtag.setEditable(false);
+		
+		dodjcbtag = new JComboBox<Integer>();
+		for (int t = 1; t < 32; t++)
+			dodjcbtag.addItem(new Integer(t));
+		dodjcbtag.setEditable(false);
+
+		//
+		// alle Jahre kann man/frau schlecht vorgeben
+		jcbjahr = new JComboBox<Integer>();
+		jcbjahr.setEditable(true);
+		dodjcbjahr = new JComboBox<Integer>();
+		dodjcbjahr.setEditable(true);
+		// die letzten hundert Jahre rein
+		// dazu aktuelles Jahr ermitteln
+		int aktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+		for (int j = 0; j <= 100; j++)
+			jcbjahr.addItem(new Integer(aktjahr - j));
+		int dodaktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+		for (int j = 0; j <= 100; j++)
+			dodjcbjahr.addItem(new Integer(dodaktjahr - j));
+		//
+
+		// alles in ein Panel
+		jpdatum = new JPanel();
+		jpdatum.add(jcbtag);
+		jpdatum.add(jcbmonat);
+		jpdatum.add(jcbjahr);
+		dodjpdatum = new JPanel();
+		dodjpdatum.add(dodjcbtag);
+		dodjpdatum.add(dodjcbmonat);
+		dodjpdatum.add(dodjcbjahr);
+
 		rbmann = new JRadioButton("Mann");
 		rbfrau = new JRadioButton("Frau");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
 
-		// JRadioButtons ButtonGroup hinzufuegen
+		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 
 		auswahl = new ButtonGroup();
 		auswahl.add(rbmann);
@@ -148,7 +182,7 @@ public class EingabeformularArtist02 extends JPanel {
 		geschlechtgruppe.add(rbfrau);
 		geschlechtgruppe.add(rbkeineahnung);
 
-		// JTextfields vergoesern
+		// JTextfields verg\u00F6sern
 
 		jtfname.setColumns(10);
 		jtfvorname.setColumns(10);
@@ -178,7 +212,7 @@ public class EingabeformularArtist02 extends JPanel {
 		jtfsolostueck.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
 
-		// JTextfields hinzufuegen
+		// JTextfields hinzuf\u00FCgen
 
 		jpmaininput.add(jtfname);
 		jpmaininput.add(jtfvorname);
@@ -186,8 +220,8 @@ public class EingabeformularArtist02 extends JPanel {
 		jpmaininput.add(jtfvorsatz);
 		jpmaininput.add(jtfzusatz);
 		jpmaininput.add(geschlechtgruppe);
-		jpmaininput.add(jtfdob);
-		jpmaininput.add(jtfdod);
+		jpmaininput.add(jpdatum);
+		jpmaininput.add(dodjpdatum);
 		jpmaininput.add(jtfpseudonym);
 		jpmaininput.add(jtfinstrument);
 		jpmaininput.add(jtfsolostueck);

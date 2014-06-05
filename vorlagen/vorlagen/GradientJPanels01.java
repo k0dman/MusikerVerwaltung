@@ -1,4 +1,4 @@
-package musikerverwaltung;
+package vorlagen;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -58,7 +58,7 @@ public final class GradientJPanels01 extends JPanel {
 		// vertikaler Verlauf von rechts oben nach links unten
 		case "gpinfo":
 			gp = new GradientPaint(0, getHeight() / 2, Color.LIGHT_GRAY,
-					getWidth(), getHeight() / 2, Color.DARK_GRAY);
+					getWidth(), getHeight() / 2, Color.GRAY);
 			g2d.setPaint(gp);
 
 			g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
@@ -66,7 +66,7 @@ public final class GradientJPanels01 extends JPanel {
 
 		// horizontaler, wiederholter Verlauf
 		case "gpnew":
-			gp = new GradientPaint(0, getHeight() / 2, Color.DARK_GRAY,
+			gp = new GradientPaint(0, getHeight() / 2, Color.GRAY,
 					getWidth(), getHeight() / 2, Color.LIGHT_GRAY);
 			g2d.setPaint(gp);
 

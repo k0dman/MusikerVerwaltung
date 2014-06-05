@@ -1,4 +1,4 @@
-package musikerverwaltung;
+package musikerverwaltung.Database;
 
 import java.sql.*;
 

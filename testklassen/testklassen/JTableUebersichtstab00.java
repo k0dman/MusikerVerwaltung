@@ -1,8 +1,8 @@
 package testklassen;
 
+/*In dieser Klasse wird die Tabelle einer JTabbedPane hinzufuegt*/
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
@@ -10,12 +10,15 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class Uebersichtstabelle01 extends JTabbedPane {
+import musikerverwaltung.Database.DBMethods01;
+
+public class JTableUebersichtstab00 extends JTable {
+
+	// Instanzen fuer JPanel erzeugen
+
+	private JtpUebersichtstab00 jpaddpanel = new JtpUebersichtstab00();
 
 	// Felder:
-
-	// Instanz AddArtist
-	private AddArtist addartist;
 
 	// JTable
 
@@ -25,24 +28,14 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 
 	private DefaultTableModel dtm;
 
-	// JTabbedPane
-	public JTabbedPane jtpmaindesc;
-
-	// JScrollPane
-
-	private JScrollPane jspmaintable;
-
-	// Schrift:
-	private Font ftfield;
-
-	public JTabbedPane jtpmaindesc() {
+	public JTable jtmaintable() {
 
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
 		dtm = new DefaultTableModel(1, 3);
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
-		dtm.setColumnIdentifiers(DBMethods00.COLUMN_IDENTIFIERS);
+		dtm.setColumnIdentifiers(DBMethods01.COLUMN_IDENTIFIERS);
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
@@ -54,42 +47,17 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = DBMethods00.DBSelectVector();
+		Vector<Vector<String>> results = DBMethods01.DBSelectVector();
 		//
-		dtm.setDataVector(results, DBMethods00.COLUMN_IDENTIFIERS);
+		dtm.setDataVector(results, DBMethods01.COLUMN_IDENTIFIERS);
 
 		// Methode
 		dtm.fireTableDataChanged();
 		// #############################//
 
-		// Panel erzeugen mit GridLayout
-		JTabbedPane jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
-				JTabbedPane.SCROLL_TAB_LAYOUT);
+		
 
-		// Schriften erzeugen
-		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
-
-		// JTable der JScrollPane hinzufuegen
-		jspmaintable = new JScrollPane(jtmaintable);
-
-		// JScrollPane der JTabbedPane hinzufuegen
-
-		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
-		// ist, auﬂerdem schoener:) //860 , 600
-		jspmaintable.setPreferredSize(new Dimension(860, 600));
-
-		// Viewport setzen
-		jspmaintable.setViewportView(jtmaintable);
-
-		// Hinzufuegen der JScrollPane zur JTabbedPane
-		jtpmaindesc.addTab("Tabelle", jspmaintable);
-
-		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
-		// zurueckpacken)
-		mouseListenertable();
-
-		return jtpmaindesc;
-
+		return jtmaintable;
 	}
 
 	public void mouseListenertable() {
@@ -147,9 +115,9 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 								+ title;
 
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist();
-						addartist.addArtist(artist, title, jtpmaindesc);
-
+					
+				
+					
 					}
 					// Wenn es sich um die zweite Spalte handelt:
 					else if (column == 2) {
@@ -163,12 +131,12 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist();
-						addartist.addArtist(artist, title, jtpmaindesc);
 
 					}
 				}
 			}
 		});
+
 	}
+	
 }

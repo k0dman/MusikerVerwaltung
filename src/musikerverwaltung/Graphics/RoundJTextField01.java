@@ -1,4 +1,4 @@
-package testklassen;
+package musikerverwaltung.Graphics;
 
 import javax.swing.*;
 import java.awt.*;
