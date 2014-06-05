@@ -4,11 +4,9 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import diverse.JTableUebersichtstab00;
 import musikerverwaltung.Swing.EingabeformularArtist04;
 import musikerverwaltung.Swing.EingabeformularBand04;
-import testklassen.GradientJPanels01;
-import testklassen.JTableUebersichtstab00;
-import testklassen.RoundJTextField01;
 
 import java.util.*;
 import java.awt.Font;
@@ -56,7 +54,7 @@ public class MusicLounge11 extends JFrame {
 	private JLabel jlheader, jlsearch, jlmenudate;
 
 	// JTextField
-	private RoundJTextField01 jtfsearch;
+	private RoundJTextField00 jtfsearch;
 
 	// JButton
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
@@ -159,7 +157,7 @@ public class MusicLounge11 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		jtfsearch = new RoundJTextField01(13);
+		jtfsearch = new RoundJTextField00(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));

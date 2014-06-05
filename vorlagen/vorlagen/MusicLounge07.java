@@ -1,13 +1,8 @@
 package vorlagen;
 
 import musikerverwaltung.*;
-
 import java.awt.*;
-
 import javax.swing.*;
-
-import testklassen.GradientJPanels01;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

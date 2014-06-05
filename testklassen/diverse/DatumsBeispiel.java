@@ -1,4 +1,4 @@
-package testklassen;
+package diverse;
 //
 import java.awt.*;
 import java.awt.event.*;

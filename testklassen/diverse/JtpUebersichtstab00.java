@@ -1,4 +1,4 @@
-package testklassen;
+package diverse;
 
 /*In dieser Klasse wird die Tabelle einer JTabbedPane hinzufuegt*/
 

@@ -1,4 +1,4 @@
-package testklassen;
+package diverse;
 import javax.swing.JOptionPane;
 import java.util.*;
 

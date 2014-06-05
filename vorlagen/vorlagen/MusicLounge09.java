@@ -1,12 +1,7 @@
 package vorlagen;
 
 import java.awt.*;
-
 import javax.swing.*;
-
-import testklassen.GradientJPanels01;
-import testklassen.RoundJTextField01;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,7 +43,7 @@ public class MusicLounge09 extends JFrame {
 	private JLabel jlheader, jlsearch;
 
 	// JTextField
-	private RoundJTextField01 jtfsearch;
+	private RoundJTextField00 jtfsearch;
 
 	// JButton
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
@@ -146,7 +141,7 @@ public class MusicLounge09 extends JFrame {
 		jbedit.setPreferredSize(new Dimension(100, 35));
 
 		// JTextField erzeugen
-		jtfsearch = new RoundJTextField01(13);
+		jtfsearch = new RoundJTextField00(13);
 
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));
@@ -230,7 +225,7 @@ public class MusicLounge09 extends JFrame {
 				jpmain.removeAll();
 				jpmain.revalidate();
 				jpmain.repaint();
-				jpmain.add(jpmaintable.jpmaindesc());
+				jpmain.add(jpmaintable.jtpmaindesc());
 				jpmain.setVisible(true);
 
 			}
