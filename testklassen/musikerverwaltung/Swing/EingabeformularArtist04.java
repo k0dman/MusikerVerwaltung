@@ -245,9 +245,12 @@ public class EingabeformularArtist04 extends JPanel {
 		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
 		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
 		rbkeineahnung.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
-		jcbtag.setToolTipText("Wählen Sie den Tag an dem der Interpret geboren wurde?");
-		jcbmonat.setToolTipText("Wählen Sie den Monat an dem der Interpret geboren wurde?");
-		jcbjahr.setToolTipText("Wählen Sie das Jahr in dem der Interpret geboren wurde?");
+		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
+		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
+		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
+		dodjcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
+		dodjcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
+		dodjcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
 		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
 		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
 		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
@@ -256,7 +259,7 @@ public class EingabeformularArtist04 extends JPanel {
 		jtfpseudonym.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
 		jtfinstrument.setToolTipText("Tragen Sie hier bitte das Instrument ein");
 		jtfsolostueck.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
-		jtfreferenz.setToolTipText("Tragen Sie hier bitte eine Referenz zu einem K\u00FCnstler ein");
+		jtfreferenz.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 		
 		
 		return jpmainInput;
@@ -300,6 +303,7 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
+		// ToolTip hinzuf\u00FCgen
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten anzulegen");
 
 		// In Arbeit
