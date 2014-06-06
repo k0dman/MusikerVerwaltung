@@ -18,9 +18,9 @@ public class MusicLounge12 extends JFrame {
 	private Font fheader;
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
-	private EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
-	private EingabeformularBand04 jpmainband = new EingabeformularBand04();
-	private Uebersichtstabelle02 jtpmain = new Uebersichtstabelle02();
+	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
+	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
+	private Uebersichtstabelle01 jtpmain = new Uebersichtstabelle01();
 
 	// Farben
 

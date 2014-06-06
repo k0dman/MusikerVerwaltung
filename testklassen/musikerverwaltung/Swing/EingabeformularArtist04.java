@@ -28,7 +28,7 @@ public class EingabeformularArtist04 extends JPanel {
 	private JPanel jpmainartist;
 	
 	// JPanel f\u00FCr Button
-	private JPanel jpmainrechts;
+	private JPanel jpmainRight;
 
 	// Deklaration der Auswahlvariablen
 	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
@@ -56,9 +56,9 @@ public class EingabeformularArtist04 extends JPanel {
 
 	private ButtonGroup auswahl;
 
-	public JPanel jpmaindesc() {
+	public JPanel jpmainDesc() {
 
-		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
+		JPanel jpmainDesc = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -77,19 +77,19 @@ public class EingabeformularArtist04 extends JPanel {
 		solostueck = new JLabel("Stueck");
 		referenz = new JLabel("Referenz");
 
-		jpmaindesc.add(ueschrift);
-		jpmaindesc.add(name);
-		jpmaindesc.add(vorname);
-		jpmaindesc.add(titel);
-		jpmaindesc.add(vorsatz);
-		jpmaindesc.add(zusatz);
-		jpmaindesc.add(geschlecht);
-		jpmaindesc.add(dob);
-		jpmaindesc.add(dod);
-		jpmaindesc.add(pseudonym);
-		jpmaindesc.add(instrument);
-		jpmaindesc.add(solostueck);
-		jpmaindesc.add(referenz);
+		jpmainDesc.add(ueschrift);
+		jpmainDesc.add(name);
+		jpmainDesc.add(vorname);
+		jpmainDesc.add(titel);
+		jpmainDesc.add(vorsatz);
+		jpmainDesc.add(zusatz);
+		jpmainDesc.add(geschlecht);
+		jpmainDesc.add(dob);
+		jpmainDesc.add(dod);
+		jpmainDesc.add(pseudonym);
+		jpmainDesc.add(instrument);
+		jpmainDesc.add(solostueck);
+		jpmainDesc.add(referenz);
 
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
 		name.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -107,16 +107,16 @@ public class EingabeformularArtist04 extends JPanel {
 
 		ueschrift.setFont(ftfield);
 
-		return jpmaindesc;
+		return jpmainDesc;
 
 	}
 
-	public JPanel jpmaininput() {
+	public JPanel jpmainInput() {
 
-		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
+		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
 
 		fueller = new JLabel("");
-		jpmaininput.add(fueller);
+		jpmainInput.add(fueller);
 
 		// JTextFields erzeugen
 
@@ -227,27 +227,27 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// JTextfields hinzuf\u00FCgen
 
-		jpmaininput.add(jtfname);
-		jpmaininput.add(jtfvorname);
-		jpmaininput.add(jtftitel);
-		jpmaininput.add(jtfvorsatz);
-		jpmaininput.add(jtfzusatz);
-		jpmaininput.add(geschlechtgruppe);
-		jpmaininput.add(jpdatum);
-		jpmaininput.add(dodjpdatum);
-		jpmaininput.add(jtfpseudonym);
-		jpmaininput.add(jtfinstrument);
-		jpmaininput.add(jtfsolostueck);
-		jpmaininput.add(jtfreferenz);
+		jpmainInput.add(jtfname);
+		jpmainInput.add(jtfvorname);
+		jpmainInput.add(jtftitel);
+		jpmainInput.add(jtfvorsatz);
+		jpmainInput.add(jtfzusatz);
+		jpmainInput.add(geschlechtgruppe);
+		jpmainInput.add(jpdatum);
+		jpmainInput.add(dodjpdatum);
+		jpmainInput.add(jtfpseudonym);
+		jpmainInput.add(jtfinstrument);
+		jpmainInput.add(jtfsolostueck);
+		jpmainInput.add(jtfreferenz);
 
-		return jpmaininput;
+		return jpmainInput;
 
 	}
 
-	public JPanel jpmainrechts() {
+	public JPanel jpmainRight() {
 
 		// JPanel erzeugen
-		jpmainrechts = new JPanel(new GridLayout(13, 1, 1, 10));
+		jpmainRight = new JPanel(new GridLayout(13, 1, 1, 10));
 
 		// JButton erzeugen
 		jbsubmit = new JButton("Eintragen");
@@ -255,49 +255,49 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// L\u00FCenf\u00FCller einf\u00FCgen
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 		fueller = new JLabel("");
-		jpmainrechts.add(fueller);
+		jpmainRight.add(fueller);
 
 		// JButton dem JPanel hinzuf\u00FCgen
-		jpmainrechts.add(jbsubmit, BorderLayout.SOUTH);
+		jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
 
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
-		return jpmainrechts;
+		return jpmainRight;
 
 	}
 
 
 
-		public JPanel jpmainartist() {
+		public JPanel jpmainArtist() {
 			
-		jpmainartist = new JPanel();
+		jpmainartist = new JPanel(new GridLayout(1, 2, 4, 4));
 		
 		
-		jpmainartist.add(jpmaindesc());
-		jpmainartist.add(jpmaininput());
-		jpmainartist.add(jpmainrechts());
+		jpmainartist.add(jpmainDesc());
+		jpmainartist.add(jpmainInput());
+		jpmainartist.add(jpmainRight());
 			
 		return jpmainartist;
 			

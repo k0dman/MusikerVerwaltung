@@ -1,8 +1,11 @@
 package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
+
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,9 +21,9 @@ public class MusicLounge13 extends JFrame {
 	private Font fheader;
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
-	private EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
-	private EingabeformularBand04 jpmainband = new EingabeformularBand04();
 	private Uebersichtstabelle01 jtpmain = new Uebersichtstabelle01();
+	// Instanz AddArtist
+	private AddArtist01 addartist;
 
 	// Farben
 
@@ -69,7 +72,7 @@ public class MusicLounge13 extends JFrame {
 		GradientJPanels01 gpleft = new GradientJPanels01("gpheaderleft");
 		GradientJPanels01 gpnew = new GradientJPanels01("gpnew");
 		GradientJPanels01 gpmain = new GradientJPanels01("gpmain");
-		GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
+		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
 		GradientJPanels01 gpfooter = new GradientJPanels01("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
@@ -111,7 +114,7 @@ public class MusicLounge13 extends JFrame {
 		jpheader.setBackground(bgheader);
 		jpheaderleft = new JPanel();
 		jpheaderright = new JPanel();
-		jpmain = new JPanel(new GridLayout(1, 2, 4, 4));
+		jpmain = new JPanel(new BorderLayout());
 		jpinfo = new JPanel();
 		jpselect = new JPanel(new GridLayout(3, 1, 6, 6));
 		jpfooter = new JPanel();
@@ -124,7 +127,7 @@ public class MusicLounge13 extends JFrame {
 		// JPanels der >jpall< hinzufuegen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
-		jpall.add(gpinfo, BorderLayout.EAST);
+		// jpall.add(gpinfo, BorderLayout.EAST);
 		jpall.add(gpnew, BorderLayout.WEST);
 		jpall.add(gpfooter, BorderLayout.SOUTH);
 
@@ -155,8 +158,10 @@ public class MusicLounge13 extends JFrame {
 		gpright.add(jpheaderright.add(jtfsearch));
 
 		// >jpmain< unsichtbar machen
-
-		jpmain.setVisible(false);
+		// Pointer auf die Variable legen
+		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
+		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
+		
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
@@ -171,8 +176,8 @@ public class MusicLounge13 extends JFrame {
 		gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
-		gpinfo.add(jpinfo.add(jbedit));
-		gpinfo.setPreferredSize(new Dimension(200, 50));
+		// gpinfo.add(jpinfo.add(jbedit));
+		// gpinfo.setPreferredSize(new Dimension(200, 50));
 
 		// jpfooter
 		gpfooter.add(jpfooter);
@@ -200,26 +205,17 @@ public class MusicLounge13 extends JFrame {
 		// Button
 		jbnewart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				jpmain.removeAll();
-				jpmain.revalidate();
-				jpmain.repaint();
-				jpmain.add(jpmainartist.jpmaindesc());
-				jpmain.add(jpmainartist.jpmaininput());
-				jpmain.add(jpmainartist.jpmainrechts());
-				jpmain.setVisible(true);
-
+				addartist = new AddArtist01();
+				addartist.insertArtist(jtpmain.jtpmaindesc,
+						"Interpret eintragen");
 			}
 		});
 		// Button
 		jbnewband.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				jpmain.removeAll();
-				jpmain.revalidate();
-				jpmain.repaint();
-				jpmain.add(jpmainband.jpmaindesc());
-				jpmain.add(jpmainband.jpmaininput());
-				jpmain.add(jpmainband.jpmainrechts());
-				jpmain.setVisible(true);
+				addartist = new AddArtist01();
+				addartist.insertBand(jtpmain.jtpmaindesc,
+						"Band eintragen");
 
 			}
 		});

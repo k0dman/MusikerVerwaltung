@@ -85,7 +85,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Tabelle", jspmaintable);
-
+		
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();

@@ -5,8 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import diverse.JTableUebersichtstab00;
-import musikerverwaltung.Swing.EingabeformularArtist04;
-import musikerverwaltung.Swing.EingabeformularBand04;
+import musikerverwaltung.Swing.EingabeformularArtist03;
+import musikerverwaltung.Swing.EingabeformularBand03;
 
 import java.util.*;
 import java.awt.Font;
@@ -26,8 +26,8 @@ public class MusicLounge11 extends JFrame {
 	private Font fheader;
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
-	private EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
-	private EingabeformularBand04 jpmainband = new EingabeformularBand04();
+	private EingabeformularArtist03 jpmainartist = new EingabeformularArtist03();
+	private EingabeformularBand03 jpmainband = new EingabeformularBand03();
 	private Uebersichtstabelle00 jtpmain = new Uebersichtstabelle00();
 	private JTableUebersichtstab00 jtmaintable = new JTableUebersichtstab00();
 	//private JtpUebersichtstab00 jtpmain = new JtpUebersichtstab00();

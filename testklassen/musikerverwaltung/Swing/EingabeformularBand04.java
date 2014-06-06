@@ -9,7 +9,7 @@ public class EingabeformularBand04 extends JPanel {
 	// Felder:
 
 	// Panel
-	private JPanel jpmaindesc, jpmaininput;
+	private JPanel jpmainDesc, jpmainInput, jpmainband;
 
 	// Schrift:
 	private Font ftfield;
@@ -21,10 +21,10 @@ public class EingabeformularBand04 extends JPanel {
 
 	private JTextField jtfname, jtfmitglied, jtfehemalig, jtfstueckgruppe, jtfreferenz;
 
-	public JPanel jpmaindesc() {
+	public JPanel jpmainDesc() {
 
 		// Panel erzeugen mit GridLayout
-		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
+		JPanel jpmainDesc = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -38,14 +38,14 @@ public class EingabeformularBand04 extends JPanel {
 		referenz = new JLabel("Referenz");
 
 		// Label dem Panel hinzuf\u00FCgen
-		jpmaindesc.add(ueschrift);
-		jpmaindesc.add(name);
-		jpmaindesc.add(mitglied);
-		jpmaindesc.add(ehemalig);
-		jpmaindesc.add(stueckgruppe);
-		jpmaindesc.add(referenz);
+		jpmainDesc.add(ueschrift);
+		jpmainDesc.add(name);
+		jpmainDesc.add(mitglied);
+		jpmainDesc.add(ehemalig);
+		jpmainDesc.add(stueckgruppe);
+		jpmainDesc.add(referenz);
 
-		// Label rechts anordnen
+		// Label Right anordnen
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
 		name.setHorizontalAlignment(SwingConstants.RIGHT);
 		mitglied.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -56,18 +56,18 @@ public class EingabeformularBand04 extends JPanel {
 		// Schrift dem gew\u00FCnschten Label hinzuf\u00FCgen
 		ueschrift.setFont(ftfield);
 
-		return jpmaindesc;
+		return jpmainDesc;
 
 	}
 
-	public JPanel jpmaininput() {
+	public JPanel jpmainInput() {
 
 		// Panel erzeugen mit Gridlayout
-		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
+		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
 
 		// Label erzeugen
 		fueller = new JLabel("");
-		jpmaininput.add(fueller);
+		jpmainInput.add(fueller);
 
 		// JTextFields erzeugen
 		jtfname = new JTextField();
@@ -91,23 +91,40 @@ public class EingabeformularBand04 extends JPanel {
 		jtfreferenz.setFont(ftfield);
 
 		// JTextfields hinzuf\u00FCgen
-		jpmaininput.add(jtfname);
-		jpmaininput.add(jtfmitglied);
-		jpmaininput.add(jtfehemalig);
-		jpmaininput.add(jtfstueckgruppe);
-		jpmaininput.add(jtfreferenz);
+		jpmainInput.add(jtfname);
+		jpmainInput.add(jtfmitglied);
+		jpmainInput.add(jtfehemalig);
+		jpmainInput.add(jtfstueckgruppe);
+		jpmainInput.add(jtfreferenz);
 
-		return jpmaininput;
+		return jpmainInput;
 
 	}
 
-	public JPanel jpmainrechts() {
+	public JPanel jpmainRight() {
 
 		//Panel erzeugen mit Gridlayout
-		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
+		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
 
-		return jpmaininput;
+		return jpmainInput;
 
+	}
+	
+	public JPanel jpmainBand() {
+		
+	jpmainband = new JPanel(new GridLayout(1, 2, 4, 4));
+	
+	
+	jpmainband.add(jpmainDesc());
+	jpmainband.add(jpmainInput());
+	jpmainband.add(jpmainRight());
+		
+	return jpmainband;
+		
+		
+		
+		
+		
 	}
 
 }
