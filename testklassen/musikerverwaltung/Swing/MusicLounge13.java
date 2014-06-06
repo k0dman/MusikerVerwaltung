@@ -21,7 +21,7 @@ public class MusicLounge13 extends JFrame {
 	private Font fheader;
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
-	private Uebersichtstabelle01 jtpmain = new Uebersichtstabelle01();
+	private Uebersichtstabelle02 jtpmain = new Uebersichtstabelle02();
 	// Instanz AddArtist
 	private AddArtist01 addartist;
 

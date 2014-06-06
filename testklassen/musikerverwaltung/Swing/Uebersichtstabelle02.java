@@ -36,6 +36,13 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Schrift:
 	private Font ftfield;
+	
+	// Pfad fuer Icon - zum schnellen Anpassen
+	private String iconpath = "/progis";
+	
+	private Icon[] tabicons = {
+	
+	new ImageIcon(iconpath+"/git/MusikerVerwaltung/pics/notes-SH-icon.png") };
 
 	public JTabbedPane jtpmaindesc() {
 
@@ -84,8 +91,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 		jspmaintable.setViewportView(jtmaintable);
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
-		jtpmaindesc.addTab("Tabelle", jspmaintable);
-		
+		jtpmaindesc.addTab("Libary", tabicons[0], jspmaintable);
+
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();
