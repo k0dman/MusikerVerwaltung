@@ -139,6 +139,8 @@ public class MusicLounge13 extends JFrame {
 		jlheader = new JLabel("MusicLounge");
 		Icons searchicon = new Icons();
 		jlsearch = new JLabel(searchicon.icons[3]);
+		
+		
 	
 		
 		
@@ -154,7 +156,8 @@ public class MusicLounge13 extends JFrame {
 
 		// JTextField erzeugen
 		jtfsearch = new RoundJTextField01(13);
-
+		// ToolTipText JtextField hinzuf\u00FCgen
+		jtfsearch.setToolTipText("Such Sie hier nach einem Interpreten oder Titel");
 		// JLabels der >jpheaderright< hinzufuegen
 		gpleft.add(jpheaderleft.add(jlheader));
 		gpright.add(jpheaderright.add(jlsearch));

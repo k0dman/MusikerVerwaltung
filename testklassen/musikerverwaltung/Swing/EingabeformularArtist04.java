@@ -1,6 +1,8 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -24,9 +26,9 @@ public class EingabeformularArtist04 extends JPanel {
 			jtfinstrument, jtfsolostueck, jtfreferenz;
 
 	// JPanel f\u00FCr jpmainartist
-	
+
 	private JPanel jpmainartist;
-	
+
 	// JPanel f\u00FCr Button
 	private JPanel jpmainRight;
 
@@ -239,29 +241,36 @@ public class EingabeformularArtist04 extends JPanel {
 		jpmainInput.add(jtfinstrument);
 		jpmainInput.add(jtfsolostueck);
 		jpmainInput.add(jtfreferenz);
-		
+
 		// ToolTips hinzuf\u00FCgen
 
 		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
 		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
-		rbkeineahnung.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
+		rbkeineahnung
+				.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
 		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
 		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
 		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
-		dodjcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
-		dodjcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
-		dodjcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
+		dodjcbtag
+				.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
+		dodjcbmonat
+				.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
+		dodjcbjahr
+				.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
 		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
 		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
 		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
 		jtfvorsatz.setToolTipText("Tragen Sie hier bitte den Vorsatz ein");
 		jtfzusatz.setToolTipText("Tragen Sie hier bitte den Zusatz ein");
-		jtfpseudonym.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
-		jtfinstrument.setToolTipText("Tragen Sie hier bitte das Instrument ein");
-		jtfsolostueck.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
-		jtfreferenz.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
-		
-		
+		jtfpseudonym
+				.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
+		jtfinstrument
+				.setToolTipText("Tragen Sie hier bitte das Instrument ein");
+		jtfsolostueck
+				.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
+		jtfreferenz
+				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
+
 		return jpmainInput;
 
 	}
@@ -308,26 +317,33 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
+		
+		// ActionLister();
+		actionListenerJButton();
+		
 		return jpmainRight;
 
 	}
 
+	public JPanel jpmainArtist() {
 
+		jpmainartist = new JPanel(new GridLayout(1, 3, 4, 4));
 
-		public JPanel jpmainArtist() {
-			
-		jpmainartist = new JPanel(new GridLayout(1, 2, 4, 4));
-		
-		
 		jpmainartist.add(jpmainDesc());
 		jpmainartist.add(jpmainInput());
 		jpmainartist.add(jpmainRight());
-			
+
 		return jpmainartist;
-			
-			
-			
-			
-			
-		}
+
+	}
+
+	private void actionListenerJButton() {
+
+		// Button
+		jbsubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+			JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+			}
+		});
+	}
 }
