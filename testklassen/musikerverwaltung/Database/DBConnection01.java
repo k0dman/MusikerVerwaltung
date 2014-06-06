@@ -8,7 +8,7 @@ import java.sql.*;
 public class DBConnection01 {
 	// Erzeugen eines Connection-Objektes (Bei Connection handelt es sich um
 	// eine Interface-Klasse)
-	Connection connection;
+	public Connection connection;
 
 	public DBConnection01() {
 

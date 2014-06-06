@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
-public class EingabeformularArtist04 extends JPanel {
+public class AnzeigeFormularArtist00 extends JPanel {
 
 	// Felder:
 
@@ -23,10 +23,12 @@ public class EingabeformularArtist04 extends JPanel {
 			jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym,
 			jtfinstrument, jtfsolostueck, jtfreferenz;
 
-
+	// JPanel f\u00FCr jpmainartist
 	
-	// JPanel
-	private JPanel jpmainRight, jpmainArtist;
+	private JPanel jpmainartist;
+	
+	// JPanel f\u00FCr Button
+	private JPanel jpmainRight;
 
 	// Deklaration der Auswahlvariablen
 	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
@@ -315,14 +317,17 @@ public class EingabeformularArtist04 extends JPanel {
 
 		public JPanel jpmainArtist() {
 			
-		jpmainArtist = new JPanel(new GridLayout(1, 2, 4, 4));
+		jpmainartist = new JPanel(new GridLayout(1, 2, 4, 4));
 		
 		
-		jpmainArtist.add(jpmainDesc());
-		jpmainArtist.add(jpmainInput());
-		jpmainArtist.add(jpmainRight());
+		jpmainartist.add(jpmainDesc());
+		jpmainartist.add(jpmainInput());
+		jpmainartist.add(jpmainRight());
 			
-		return jpmainArtist;
+		return jpmainartist;
+			
+			
+			
 			
 			
 		}
