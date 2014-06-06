@@ -16,6 +16,13 @@ public class EingabeformularBand04 extends JPanel {
 
 	// Label
 	private JLabel ueschrift, name, mitglied, ehemalig, stueckgruppe, referenz, fueller;
+	
+	// JPanel f\u00FCr Button
+	private JPanel jpmainRight;
+	
+	// JButton
+
+	private JButton jbsubmit;
 
 	// JTextField
 
@@ -103,10 +110,32 @@ public class EingabeformularBand04 extends JPanel {
 
 	public JPanel jpmainRight() {
 
-		//Panel erzeugen mit Gridlayout
-		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
+		// JPanel erzeugen
+				jpmainRight = new JPanel(new GridLayout(13, 1, 1, 10));
 
-		return jpmainInput;
+				// JButton erzeugen
+				jbsubmit = new JButton("Eintragen");
+				jbsubmit.setPreferredSize(new Dimension(10, 20));
+
+				// L\u00FCenf\u00FCller einf\u00FCgen
+				fueller = new JLabel("");
+				jpmainRight.add(fueller);
+				fueller = new JLabel("");
+				jpmainRight.add(fueller);
+				fueller = new JLabel("");
+				jpmainRight.add(fueller);
+				fueller = new JLabel("");
+				jpmainRight.add(fueller);
+				fueller = new JLabel("");
+				jpmainRight.add(fueller);
+				fueller = new JLabel("");
+
+				// JButton dem JPanel hinzuf\u00FCgen
+				jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
+
+				// In Arbeit
+				jbsubmit.setPreferredSize(new Dimension(0, 0));
+				return jpmainRight;
 
 	}
 	
