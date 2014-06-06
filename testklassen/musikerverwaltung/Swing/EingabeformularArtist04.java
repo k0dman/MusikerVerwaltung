@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import musikerverwaltung.Methods.*;
 
 import javax.swing.*;
 
@@ -80,9 +81,10 @@ public class EingabeformularArtist04 extends JPanel {
 		referenz = new JLabel("Referenz");
 
 		jpmainDesc.add(ueschrift);
+
+		jpmainDesc.add(titel);
 		jpmainDesc.add(name);
 		jpmainDesc.add(vorname);
-		jpmainDesc.add(titel);
 		jpmainDesc.add(vorsatz);
 		jpmainDesc.add(zusatz);
 		jpmainDesc.add(geschlecht);
@@ -122,19 +124,22 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// JTextFields erzeugen
 
-		jtfvorname = new JTextField();
-		jtfname = new JTextField();
 		jtftitel = new JTextField();
+		jtfname = new JTextField();
+		jtfvorname = new JTextField();
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
 		jtfgeschlecht = new JTextField();
-		geschlechtgruppe = new JPanel();
 		jtfdob = new JTextField();
 		jtfdod = new JTextField();
 		jtfpseudonym = new JTextField();
 		jtfinstrument = new JTextField();
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
+
+		// Jpanel erzeugen
+
+		geschlechtgruppe = new JPanel();
 
 		// Button erzeugen
 
@@ -184,9 +189,11 @@ public class EingabeformularArtist04 extends JPanel {
 		dodjpdatum.add(dodjcbjahr);
 
 		rbmann = new JRadioButton("Mann");
+		rbmann.setActionCommand("m");
 		rbfrau = new JRadioButton("Frau");
+		rbfrau.setActionCommand("f");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
-
+		rbkeineahnung.setActionCommand("ns");
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 
 		auswahl = new ButtonGroup();
@@ -229,9 +236,9 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// JTextfields hinzuf\u00FCgen
 
+		jpmainInput.add(jtftitel);
 		jpmainInput.add(jtfname);
 		jpmainInput.add(jtfvorname);
-		jpmainInput.add(jtftitel);
 		jpmainInput.add(jtfvorsatz);
 		jpmainInput.add(jtfzusatz);
 		jpmainInput.add(geschlechtgruppe);
@@ -317,10 +324,10 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
-		
+
 		// ActionLister();
 		actionListenerJButton();
-		
+
 		return jpmainRight;
 
 	}
@@ -337,13 +344,32 @@ public class EingabeformularArtist04 extends JPanel {
 
 	}
 
+
 	private void actionListenerJButton() {
 
 		// Button
 		jbsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-			JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+
+			/*	JOptionPane.showMessageDialog(null, jcbmonat.getSelectedItem()
+						.toString(), "alert", JOptionPane.ERROR_MESSAGE);*/
+				
+				
+				EintragenDaten artistdata = new EintragenDaten(jtftitel
+						.getText(), jtfvorsatz.getText(), jtfvorname.getText(),
+						jtfzusatz.getText(), jtfname.getText(), jcbtag
+								.getSelectedItem().toString(), jcbmonat
+								.getSelectedItem().toString(), jcbjahr
+								.getSelectedItem().toString(), dodjcbtag
+								.getSelectedItem().toString(), dodjcbmonat
+								.getSelectedItem().toString(), dodjcbjahr
+								.getSelectedItem().toString(), auswahl
+								.getSelection().getActionCommand(),
+						jtfpseudonym.getText(), jtfinstrument.getText(),
+						jtfsolostueck.getText(), jtfreferenz.getText());
+				System.out.println(artistdata.toString());
 			}
 		});
+		
 	}
 }
