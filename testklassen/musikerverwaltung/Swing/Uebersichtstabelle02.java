@@ -6,12 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons;
+import musikerverwaltung.Methods.*;
 import diverse.*;
 
 
@@ -21,6 +20,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Instanz AddArtist
 	private AddArtist01 addartist;
+	public AnzeigeDaten artistdata;
 
 	// JTable
 
@@ -158,7 +158,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 						JOptionPane.showMessageDialog(null, ausgabe);
 						addartist = new AddArtist01();
-						addartist.addArtist(artist, title, jtpmaindesc);
+						//artistdata = new AnzeigeDaten(String.valueOf(artist));
+						addartist.showArtist(artist, title, jtpmaindesc);
 
 					}
 					// Wenn es sich um die zweite Spalte handelt:
@@ -174,7 +175,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
 						addartist = new AddArtist01();
-						addartist.addArtist(artist, title, jtpmaindesc);
+						AnzeigeDaten artistdata = new AnzeigeDaten(String.valueOf(artist));
+						addartist.showArtist(artist, title, jtpmaindesc);
 
 					}
 				}

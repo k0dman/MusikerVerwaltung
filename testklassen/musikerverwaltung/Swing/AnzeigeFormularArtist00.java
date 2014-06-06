@@ -6,6 +6,10 @@ import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
+import musikerverwaltung.Database.DBMethods01;
+import musikerverwaltung.Methods.*;
+import musikerverwaltung.Swing.*;
+
 public class AnzeigeFormularArtist00 extends JPanel {
 
 	// Felder:
@@ -119,8 +123,10 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jpmainInput.add(fueller);
 
 		// JTextFields erzeugen
-
+		
+		Uebersichtstabelle02 artistdata = new Uebersichtstabelle02();
 		jtfvorname = new JTextField();
+		jtfvorname.setText(DBMethods01.DBSelectArtist("Collins").get(1));
 		jtfname = new JTextField();
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
@@ -262,6 +268,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfreferenz.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 		
 		
+		//System.out.println(artistdata.getVorname());
 		return jpmainInput;
 
 	}
@@ -323,7 +330,8 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jpmainartist.add(jpmainDesc());
 		jpmainartist.add(jpmainInput());
 		jpmainartist.add(jpmainRight());
-			
+		
+		
 		return jpmainartist;
 			
 			

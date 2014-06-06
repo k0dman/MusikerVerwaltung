@@ -15,7 +15,7 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 	// Felder:
 
 	// Instanz AddArtist
-	private AddArtist01 addartist;
+	private AddArtist addartist;
 
 	// JTable
 
@@ -147,7 +147,7 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 								+ title;
 
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist01();
+						addartist = new AddArtist();
 						addartist.addArtist(artist, title, jtpmaindesc);
 
 					}
@@ -163,7 +163,7 @@ public class Uebersichtstabelle01 extends JTabbedPane {
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist01();
+						addartist = new AddArtist();
 						addartist.addArtist(artist, title, jtpmaindesc);
 
 					}

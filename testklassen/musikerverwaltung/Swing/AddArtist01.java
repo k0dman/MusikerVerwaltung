@@ -7,18 +7,17 @@ import musikerverwaltung.Graphics.Icons;
 public class AddArtist01 extends JTabbedPane {
 	private EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
 	private EingabeformularBand04 jpmainband = new EingabeformularBand04();
+	private AnzeigeFormularArtist00 jpmainshowartist = new AnzeigeFormularArtist00();
+	
 	private Icons tabicons = new Icons();
 	private JLabel jltest;
 	private JPanel content;
 	
-	public void addArtist(Object artist, Object title, JTabbedPane jtpane) {
-		String name = artist + " - " + title;
-		content = new JPanel();
-		jltest = new JLabel(name);
-		content.add(jltest);
-
-		jtpane.addTab(String.valueOf(artist), content);
-
+	public void showArtist(Object artist, Object title, JTabbedPane jtpane) {
+		
+	
+		jtpane.addTab(String.valueOf(artist), tabicons.icons[2], jpmainshowartist.jpmainArtist());
+		
 	}
 
 	public void insertArtist(JTabbedPane jtpane, String name) {

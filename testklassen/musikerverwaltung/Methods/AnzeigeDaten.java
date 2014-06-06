@@ -1,4 +1,8 @@
 package musikerverwaltung.Methods;
+
+import musikerverwaltung.Database.DBMethods01;
+
+
 // import java.util.*;
 
 public class AnzeigeDaten {
@@ -8,26 +12,15 @@ public class AnzeigeDaten {
 			titel, namensvorsatz, namenszusatz, todesjahr, todesdatum, lebt;
 
 	// Konstruktor, weisst die Parameter (aus Person) den Klassen-Attributen zu
-	public AnzeigeDaten(String titel, String namensvorsatz, String vorname,
-			String namenszusatz, String nachname, String geburtsjahr,
-			String geburtsdatum, String geschlecht, String todesdatum,
-			String todesjahr, String lebt) {
-
-		this.titel = titel;
-		this.namensvorsatz = namensvorsatz;
+	public AnzeigeDaten(String vorname) {
+	
 		this.vorname = vorname;
-		this.namenszusatz = namenszusatz;
-		this.nachname = nachname;
-		this.geburtsjahr = geburtsjahr;
-		this.geburtsdatum = geburtsdatum;
-		this.geschlecht = geschlecht;
-		this.todesdatum = todesdatum;
-		this.todesjahr = todesjahr;
-		this.lebt = lebt;
+
 	}
 
 	// Namen ausgeben
 	public String getTitel() {
+
 		return titel;
 	}
 

@@ -1,8 +1,10 @@
 package musikerverwaltung.Database;
 
+import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public final class DBMethods01 {
@@ -68,4 +70,52 @@ public final class DBMethods01 {
 		return results;
 	}
 
+	public static final List<String> DBSelectArtist(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<String> artistdata = new ArrayList<String>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson = musiker.idperson WHERE `person`.`name` ='"+artist+"'");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				artistdata.add(rs.getString("name"));
+				artistdata.add(rs.getString("vorname"));
+				artistdata.add(rs.getString("titel"));
+				artistdata.add(rs.getString("vorsatz"));
+				artistdata.add(rs.getString("zusatz"));
+				artistdata.add(rs.getString("geschlecht"));
+				artistdata.add(rs.getString("gtag"));
+				artistdata.add(rs.getString("gmonat"));
+				artistdata.add(rs.getString("gjahr"));
+				artistdata.add(rs.getString("tjahr"));
+				artistdata.add(rs.getString("instrument"));
+				artistdata.add(rs.getString("stuecksolo"));
+			}
+		}
+		
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return artistdata;
+	}
 }
