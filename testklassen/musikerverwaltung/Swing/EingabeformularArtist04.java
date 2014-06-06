@@ -239,7 +239,26 @@ public class EingabeformularArtist04 extends JPanel {
 		jpmainInput.add(jtfinstrument);
 		jpmainInput.add(jtfsolostueck);
 		jpmainInput.add(jtfreferenz);
+		
+		// ToolTips hinzuf\u00FCgen
 
+		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
+		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
+		rbkeineahnung.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
+		jcbtag.setToolTipText("Wählen Sie den Tag an dem der Interpret geboren wurde?");
+		jcbmonat.setToolTipText("Wählen Sie den Monat an dem der Interpret geboren wurde?");
+		jcbjahr.setToolTipText("Wählen Sie das Jahr in dem der Interpret geboren wurde?");
+		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
+		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
+		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
+		jtfvorsatz.setToolTipText("Tragen Sie hier bitte den Vorsatz ein");
+		jtfzusatz.setToolTipText("Tragen Sie hier bitte den Zusatz ein");
+		jtfpseudonym.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
+		jtfinstrument.setToolTipText("Tragen Sie hier bitte das Instrument ein");
+		jtfsolostueck.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
+		jtfreferenz.setToolTipText("Tragen Sie hier bitte eine Referenz zu einem K\u00FCnstler ein");
+		
+		
 		return jpmainInput;
 
 	}
@@ -281,6 +300,7 @@ public class EingabeformularArtist04 extends JPanel {
 
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
+		jbsubmit.setToolTipText("Hier klicken, um den Interpreten anzulegen");
 
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
