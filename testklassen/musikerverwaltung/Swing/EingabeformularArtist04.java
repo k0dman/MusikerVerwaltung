@@ -14,28 +14,41 @@ public class EingabeformularArtist04 extends JPanel {
 	private Font ftfield;
 
 	// Labels
-	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz, geschlecht, dob, dod, pseudonym, instrument, solostueck, referenz, fueller;
-	
+	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz,
+			geschlecht, dob, dod, pseudonym, instrument, solostueck, referenz,
+			fueller;
 
 	// JTextField
-	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz, jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz;
+	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz,
+			jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym,
+			jtfinstrument, jtfsolostueck, jtfreferenz;
+
+	// JPanel f\u00FCr jpmainartist
+	
+	private JPanel jpmainartist;
+	
+	// JPanel f\u00FCr Button
+	private JPanel jpmainrechts;
 
 	// Deklaration der Auswahlvariablen
-	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte ist.
+	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
+	// ist.
 	private JComboBox<String> jcbmonat, dodjcbmonat;
 	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
 
 	// Panels daf\u00FCr
 	private JPanel jpdatum, dodjpdatum, geschlechtgruppe;
-	
 
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
-	private String[] dodmonatsname = { "Januar", "Februar", "M\u00E4rz", "April",
-			"Mai", "Juni", "Juli", "August", "September", "Oktober",
+	private String[] dodmonatsname = { "Januar", "Februar", "M\u00E4rz",
+			"April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
-	
+
+	// JButton
+
+	private JButton jbsubmit;
 
 	// JJRadioButton
 
@@ -136,7 +149,7 @@ public class EingabeformularArtist04 extends JPanel {
 		for (int t = 1; t < 32; t++)
 			jcbtag.addItem(new Integer(t));
 		jcbtag.setEditable(false);
-		
+
 		dodjcbtag = new JComboBox<Integer>();
 		for (int t = 1; t < 32; t++)
 			dodjcbtag.addItem(new Integer(t));
@@ -158,7 +171,7 @@ public class EingabeformularArtist04 extends JPanel {
 			dodjcbjahr.addItem(new Integer(dodaktjahr - j));
 		//
 
-		// alles in ein Panel
+		// Alles in ein Panel
 		jpdatum = new JPanel();
 		jpdatum.add(jcbtag);
 		jpdatum.add(jcbmonat);
@@ -197,7 +210,7 @@ public class EingabeformularArtist04 extends JPanel {
 		jtfsolostueck.setColumns(10);
 		jtfreferenz.setColumns(10);
 
-		// JTextfield schrift festlegen
+		// JTextfield Schrift festlegen
 		jtfvorname.setFont(ftfield);
 		jtfname.setFont(ftfield);
 		jtfvorname.setFont(ftfield);
@@ -233,10 +246,64 @@ public class EingabeformularArtist04 extends JPanel {
 
 	public JPanel jpmainrechts() {
 
-		JPanel jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
+		// JPanel erzeugen
+		jpmainrechts = new JPanel(new GridLayout(13, 1, 1, 10));
 
-		return jpmaininput;
+		// JButton erzeugen
+		jbsubmit = new JButton("Eintragen");
+		jbsubmit.setPreferredSize(new Dimension(10, 20));
+
+		// L\u00FCenf\u00FCller einf\u00FCgen
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+		fueller = new JLabel("");
+		jpmainrechts.add(fueller);
+
+		// JButton dem JPanel hinzuf\u00FCgen
+		jpmainrechts.add(jbsubmit, BorderLayout.SOUTH);
+
+		// In Arbeit
+		jbsubmit.setPreferredSize(new Dimension(0, 0));
+		return jpmainrechts;
 
 	}
 
+
+
+		public JPanel jpmainartist() {
+			
+		jpmainartist = new JPanel();
+		
+		
+		jpmainartist.add(jpmaindesc());
+		jpmainartist.add(jpmaininput());
+		jpmainartist.add(jpmainrechts());
+			
+		return jpmainartist;
+			
+			
+			
+			
+			
+		}
 }
