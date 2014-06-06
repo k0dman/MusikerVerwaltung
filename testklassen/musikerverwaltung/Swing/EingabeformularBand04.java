@@ -15,18 +15,20 @@ public class EingabeformularBand04 extends JPanel {
 	private Font ftfield;
 
 	// Label
-	private JLabel ueschrift, name, mitglied, ehemalig, stueckgruppe, referenz, fueller;
-	
+	private JLabel ueschrift, name, mitglied, ehemalig, stueckgruppe, referenz,
+			fueller;
+
 	// JPanel f\u00FCr Button
 	private JPanel jpmainRight;
-	
+
 	// JButton
 
 	private JButton jbsubmit;
 
 	// JTextField
 
-	private JTextField jtfname, jtfmitglied, jtfehemalig, jtfstueckgruppe, jtfreferenz;
+	private JTextField jtfname, jtfmitglied, jtfehemalig, jtfstueckgruppe,
+			jtfreferenz;
 
 	public JPanel jpmainDesc() {
 
@@ -104,6 +106,16 @@ public class EingabeformularBand04 extends JPanel {
 		jpmainInput.add(jtfstueckgruppe);
 		jpmainInput.add(jtfreferenz);
 
+		// ToolTips hinzuf\u00FCgen
+
+		jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
+		jtfmitglied.setToolTipText("Tragen Sie hier bitte die Bandmitglieder ein");
+		jtfehemalig.setToolTipText("Tragen Sie hier bitte die ehemaligen Bandmitglieder ein");
+		jtfstueckgruppe
+				.setToolTipText("Tragen Sie hier bitte ein Stueck der Gruppe ein");
+		jtfreferenz
+				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
+
 		return jpmainInput;
 
 	}
@@ -111,49 +123,46 @@ public class EingabeformularBand04 extends JPanel {
 	public JPanel jpmainRight() {
 
 		// JPanel erzeugen
-				jpmainRight = new JPanel(new GridLayout(13, 1, 1, 10));
+		jpmainRight = new JPanel(new GridLayout(13, 1, 1, 10));
 
-				// JButton erzeugen
-				jbsubmit = new JButton("Eintragen");
-				jbsubmit.setPreferredSize(new Dimension(10, 20));
+		// JButton erzeugen
+		jbsubmit = new JButton("Eintragen");
+		jbsubmit.setPreferredSize(new Dimension(10, 20));
 
-				// L\u00FCenf\u00FCller einf\u00FCgen
-				fueller = new JLabel("");
-				jpmainRight.add(fueller);
-				fueller = new JLabel("");
-				jpmainRight.add(fueller);
-				fueller = new JLabel("");
-				jpmainRight.add(fueller);
-				fueller = new JLabel("");
-				jpmainRight.add(fueller);
-				fueller = new JLabel("");
-				jpmainRight.add(fueller);
-				fueller = new JLabel("");
+		// L\u00FCenf\u00FCller einf\u00FCgen
+		fueller = new JLabel("");
+		jpmainRight.add(fueller);
+		fueller = new JLabel("");
+		jpmainRight.add(fueller);
+		fueller = new JLabel("");
+		jpmainRight.add(fueller);
+		fueller = new JLabel("");
+		jpmainRight.add(fueller);
+		fueller = new JLabel("");
+		jpmainRight.add(fueller);
+		fueller = new JLabel("");
 
-				// JButton dem JPanel hinzuf\u00FCgen
-				jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
+		// JButton dem JPanel hinzuf\u00FCgen
+		jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
 
-				// In Arbeit
-				jbsubmit.setPreferredSize(new Dimension(0, 0));
-				return jpmainRight;
+		// In Arbeit
+		jbsubmit.setPreferredSize(new Dimension(0, 0));
+		// ToolTip hinzuf\u00FCgen
+				jbsubmit.setToolTipText("Hier klicken, um die Band anzulegen");
+		return jpmainRight;
 
 	}
-	
+
 	public JPanel jpmainBand() {
-		
-	jpmainband = new JPanel(new GridLayout(1, 2, 4, 4));
-	
-	
-	jpmainband.add(jpmainDesc());
-	jpmainband.add(jpmainInput());
-	jpmainband.add(jpmainRight());
-		
-	return jpmainband;
-		
-		
-		
-		
-		
+
+		jpmainband = new JPanel(new GridLayout(1, 2, 4, 4));
+
+		jpmainband.add(jpmainDesc());
+		jpmainband.add(jpmainInput());
+		jpmainband.add(jpmainRight());
+
+		return jpmainband;
+
 	}
 
 }
