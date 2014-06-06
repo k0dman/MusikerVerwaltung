@@ -137,8 +137,11 @@ public class MusicLounge13 extends JFrame {
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
-		jlsearch = new JLabel("Suche");
-
+		Icons searchicon = new Icons();
+		jlsearch = new JLabel(searchicon.icons[3]);
+	
+		
+		
 		// JButton erzeugen
 		jbmaintable = new JButton("Übersicht");
 		jbmaintable.setPreferredSize(new Dimension(150, 35));

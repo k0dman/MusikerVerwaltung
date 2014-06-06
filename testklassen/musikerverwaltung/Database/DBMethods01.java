@@ -20,9 +20,7 @@ public final class DBMethods01 {
 
 	public final static Vector<String> COLUMN_IDENTIFIERS = new Vector<String>() {
 		{
-
-			add("Band");
-			add("Künstler");
+			add("Interpret");
 			add("Titel");
 		}
 	};
@@ -54,7 +52,6 @@ public final class DBMethods01 {
 			while (rs.next()) {
 				Vector<String> person = new Vector<String>();
 
-				person.add(" ");
 				person.add(rs.getString("pseudonym"));
 				person.add(rs.getString("stuecksolo"));
 

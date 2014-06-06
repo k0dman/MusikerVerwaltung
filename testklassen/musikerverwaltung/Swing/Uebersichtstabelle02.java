@@ -10,7 +10,10 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import musikerverwaltung.Database.DBMethods00;
+import musikerverwaltung.Database.*;
+import musikerverwaltung.Graphics.Icons;
+import diverse.*;
+
 
 public class Uebersichtstabelle02 extends JTabbedPane {
 
@@ -37,12 +40,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 	// Schrift:
 	private Font ftfield;
 	
-	// Pfad fuer Icon - zum schnellen Anpassen
-	private String iconpath = "/progis";
-	
-	private Icon[] tabicons = {
-	
-	new ImageIcon(iconpath+"/git/MusikerVerwaltung/pics/notes-SH-icon.png") };
+
 
 	public JTabbedPane jtpmaindesc() {
 
@@ -51,7 +49,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 		dtm = new DefaultTableModel(1, 3);
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
-		dtm.setColumnIdentifiers(DBMethods00.COLUMN_IDENTIFIERS);
+		dtm.setColumnIdentifiers(DBMethods01.COLUMN_IDENTIFIERS);
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
@@ -63,9 +61,9 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = DBMethods00.DBSelectVector();
+		Vector<Vector<String>> results = DBMethods01.DBSelectVector();
 		//
-		dtm.setDataVector(results, DBMethods00.COLUMN_IDENTIFIERS);
+		dtm.setDataVector(results, DBMethods01.COLUMN_IDENTIFIERS);
 
 		// Methode
 		dtm.fireTableDataChanged();
@@ -89,9 +87,12 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 		// Viewport setzen
 		jspmaintable.setViewportView(jtmaintable);
-
+		
+		// Icons aus Icon-Klasse holen
+		Icons tabicons = new Icons();
+		
 		// Hinzufuegen der JScrollPane zur JTabbedPane
-		jtpmaindesc.addTab("Libary", tabicons[0], jspmaintable);
+		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
 
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
@@ -141,7 +142,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 					int column = jtmaintable.getSelectedColumn();
 
 					// Wenn es sich um die erste Spalte handelt:
-					if (column == 1) {
+					if (column == 0) {
 
 						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
 						Object artist = jtmaintable.getValueAt(row, column);
@@ -161,7 +162,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 					}
 					// Wenn es sich um die zweite Spalte handelt:
-					else if (column == 2) {
+					else if (column == 1) {
 
 						Object artist = jtmaintable.getValueAt(row, column - 1);
 						Object title = jtmaintable.getValueAt(row, column);
