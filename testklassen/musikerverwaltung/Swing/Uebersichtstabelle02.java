@@ -6,20 +6,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons;
 import musikerverwaltung.Methods.*;
 import diverse.*;
-
 
 public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Felder:
 
 	// Instanz AddArtist
-	private AddArtist01 addartist;
+	private AddTabs01 addartist;
 	public AnzeigeDaten artistdata;
 
 	// JTable
@@ -39,8 +40,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Schrift:
 	private Font ftfield;
-	
-
+	public String name;
 
 	public JTabbedPane jtpmaindesc() {
 
@@ -87,10 +87,10 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 		// Viewport setzen
 		jspmaintable.setViewportView(jtmaintable);
-		
+
 		// Icons aus Icon-Klasse holen
 		Icons tabicons = new Icons();
-		
+
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
 
@@ -100,6 +100,13 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 		return jtpmaindesc;
 
+	}
+
+	public Object artist(Object artist){
+		
+	
+			
+			return artist;
 	}
 
 	public void mouseListenertable() {
@@ -157,8 +164,15 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 								+ title;
 
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist01();
-						//artistdata = new AnzeigeDaten(String.valueOf(artist));
+
+						// Instanz fuer Artist erzeugen um einen Tab
+						// hinzuzufuegen
+						addartist = new AddTabs01();
+
+						// Instanz fuer Uebergabe des Namens an AnzeigeDaten
+		
+
+						// Methodenaufruf um Tab zu adden
 						addartist.showArtist(artist, title, jtpmaindesc);
 
 					}
@@ -174,8 +188,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddArtist01();
-						AnzeigeDaten artistdata = new AnzeigeDaten(String.valueOf(artist));
+						addartist = new AddTabs01();
+
 						addartist.showArtist(artist, title, jtpmaindesc);
 
 					}

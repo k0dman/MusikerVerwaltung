@@ -23,7 +23,7 @@ public class MusicLounge13 extends JFrame {
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle02 jtpmain = new Uebersichtstabelle02();
 	// Instanz AddArtist
-	private AddArtist01 addartist;
+	private AddTabs01 addartist;
 
 	// Farben
 
@@ -208,7 +208,7 @@ public class MusicLounge13 extends JFrame {
 		// Button
 		jbnewart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				addartist = new AddArtist01();
+				addartist = new AddTabs01();
 				addartist.insertArtist(jtpmain.jtpmaindesc,
 						"Interpret eintragen");
 			}
@@ -216,7 +216,7 @@ public class MusicLounge13 extends JFrame {
 		// Button
 		jbnewband.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				addartist = new AddArtist01();
+				addartist = new AddTabs01();
 				addartist.insertBand(jtpmain.jtpmaindesc,
 						"Band eintragen");
 

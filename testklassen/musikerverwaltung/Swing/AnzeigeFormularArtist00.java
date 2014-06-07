@@ -28,9 +28,9 @@ public class AnzeigeFormularArtist00 extends JPanel {
 			jtfinstrument, jtfsolostueck, jtfreferenz;
 
 	// JPanel f\u00FCr jpmainartist
-	
+
 	private JPanel jpmainartist;
-	
+
 	// JPanel f\u00FCr Button
 	private JPanel jpmainRight;
 
@@ -59,6 +59,8 @@ public class AnzeigeFormularArtist00 extends JPanel {
 	private JRadioButton rbmann, rbfrau, rbkeineahnung;
 
 	private ButtonGroup auswahl;
+
+	private AnzeigeDaten artistdata;
 
 	public JPanel jpmainDesc() {
 
@@ -115,7 +117,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 	}
 
-	public JPanel jpmainInput() {
+	public JPanel jpmainInput(Object artist) {
 
 		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
 
@@ -123,10 +125,29 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jpmainInput.add(fueller);
 
 		// JTextFields erzeugen
-		
-		Uebersichtstabelle02 artistdata = new Uebersichtstabelle02();
+
+		System.out.println(artist + " Jey");
+
 		jtfvorname = new JTextField();
-		jtfvorname.setText(DBMethods01.DBSelectArtist("Collins").get(1));
+
+		String vorname = "";
+		String name = "";
+		String[] artist1 = String.valueOf(artist).split("[ ]");
+		for (int i = 0; i < artist1.length; i++) {
+			switch (i) {
+			case 0:
+				vorname = artist1[i];
+				break;
+			case 1:
+				name = artist1[i];
+				break;
+
+			}
+
+		}
+
+		jtfvorname.setText(DBMethods01.DBSelectArtist(name).get(1));
+
 		jtfname = new JTextField();
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
@@ -245,30 +266,37 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jpmainInput.add(jtfinstrument);
 		jpmainInput.add(jtfsolostueck);
 		jpmainInput.add(jtfreferenz);
-		
+
 		// ToolTips hinzuf\u00FCgen
 
 		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
 		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
-		rbkeineahnung.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
+		rbkeineahnung
+				.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
 		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
 		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
 		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
-		dodjcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
-		dodjcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
-		dodjcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
+		dodjcbtag
+				.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
+		dodjcbmonat
+				.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
+		dodjcbjahr
+				.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
 		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
 		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
 		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
 		jtfvorsatz.setToolTipText("Tragen Sie hier bitte den Vorsatz ein");
 		jtfzusatz.setToolTipText("Tragen Sie hier bitte den Zusatz ein");
-		jtfpseudonym.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
-		jtfinstrument.setToolTipText("Tragen Sie hier bitte das Instrument ein");
-		jtfsolostueck.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
-		jtfreferenz.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
-		
-		
-		//System.out.println(artistdata.getVorname());
+		jtfpseudonym
+				.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
+		jtfinstrument
+				.setToolTipText("Tragen Sie hier bitte das Instrument ein");
+		jtfsolostueck
+				.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
+		jtfreferenz
+				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
+
+		// System.out.println(artistdata.getVorname());
 		return jpmainInput;
 
 	}
@@ -315,28 +343,20 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
-		
+
 		return jpmainRight;
 
 	}
 
+	public JPanel jpmainArtist(Object artist) {
 
-
-		public JPanel jpmainArtist() {
-			
 		jpmainartist = new JPanel(new GridLayout(1, 2, 4, 4));
-		
-		
+
 		jpmainartist.add(jpmainDesc());
-		jpmainartist.add(jpmainInput());
+		jpmainartist.add(jpmainInput(artist));
 		jpmainartist.add(jpmainRight());
-		
-		
+
 		return jpmainartist;
-			
-			
-			
-			
-			
-		}
+
+	}
 }

@@ -1,6 +1,6 @@
 package musikerverwaltung.Methods;
 
-import musikerverwaltung.Database.DBMethods01;
+import musikerverwaltung.Database.*;
 
 
 // import java.util.*;
