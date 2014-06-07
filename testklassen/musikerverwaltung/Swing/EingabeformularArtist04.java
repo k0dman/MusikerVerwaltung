@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import musikerverwaltung.Database.DBMethods02;
 import musikerverwaltung.Methods.*;
 
 import javax.swing.*;
@@ -368,6 +370,7 @@ public class EingabeformularArtist04 extends JPanel {
 						jtfpseudonym.getText(), jtfinstrument.getText(),
 						jtfsolostueck.getText(), jtfreferenz.getText());
 				System.out.println(artistdata.toString());
+				artistdata.insert();
 			}
 		});
 		
