@@ -1,5 +1,7 @@
 package musikerverwaltung.Methods;
 
+import musikerverwaltung.Database.*;
+
 // import java.util.*;
 
 public class EintragenDaten {
@@ -111,6 +113,16 @@ public class EintragenDaten {
 
 	public String getReferenz() {
 		return referenz;
+	}
+
+	public void insert() {
+		DBMethods02
+				.insert(getTitel(), getNamensvorsatz(), getVorname(),
+						getNamenszusatz(), getNachname(), getGeburtstag(),
+						getGeburtsmonat(), getGeburtsjahr(), getTodestag(),
+						getTodesmonat(), getTodesjahr(), getGeschlecht(),
+						getPseudonym(), getInstrument(), getSolostueck(),
+						getReferenz());
 	}
 
 	// Methode, um die Daten als String auszugeben
