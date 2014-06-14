@@ -3,8 +3,10 @@ package musikerverwaltung.hA;
 public class Person extends Mensch {
 
 	// Klassen-Attribute / variablen mit denen in der KLasse gearbeitet wird
-	private String name, vorname, geburtsjahr, geburtsdatum, geschlecht, titel,
+	private String name, vorname, geburtsdatum, geschlecht, titel,
 			vorsatz, zusatz, todesdatum, lebt;
+	
+	private int geburtstag, geburtsmonat, geburtsjahr;
 
 	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen
 	// zu
@@ -32,6 +34,22 @@ public class Person extends Mensch {
 		this.todesdatum = todesdatum;
 	}
 
+	public String getTitel() {
+		return titel;
+	}
+
+	public String getVorsatz() {
+		return vorsatz;
+	}
+	
+	public String getZusatz() {
+		return zusatz;
+	}
+	
+	public String getGeschlecht() {
+		return geschlecht;
+	}
+
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
@@ -47,19 +65,19 @@ public class Person extends Mensch {
 	@Override
 	public int getGeburtsTag() {
 		// TODO Auto-generated method stub
-		return 0;
+		return geburtstag;
 	}
 
 	@Override
 	public int getGeburtsMonat() {
 		// TODO Auto-generated method stub
-		return 0;
+		return geburtsmonat;
 	}
 
 	@Override
 	public int getGeburtsJahr() {
 		// TODO Auto-generated method stub
-		return 0;
+		return geburtsjahr;
 	}
 
 	@Override

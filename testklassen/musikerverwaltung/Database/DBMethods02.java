@@ -83,8 +83,8 @@ public final class DBMethods02 {
 
 	public static final void insert(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
-			String geburtstag, String geburtsmonat, String geburtsjahr,
-			String todestag, String todesmonat, String todesjahr,
+			int geburtstag, int geburtsmonat, int geburtsjahr,
+			int todestag, int todesmonat, int todesjahr,
 			String geschlecht, String pseudonym, String instrument,
 			String solostueck, String referenz) {
 
@@ -108,12 +108,12 @@ public final class DBMethods02 {
 			callableStatement.setString(4, namensvorsatz);
 			callableStatement.setString(5, namenszusatz);
 			callableStatement.setString(6, geschlecht);
-			callableStatement.setString(7, geburtsjahr);
-			callableStatement.setString(8, geburtsmonat);
-			callableStatement.setString(9, geburtsjahr);
-			callableStatement.setString(10, todestag);
-			callableStatement.setString(11, todesmonat);
-			callableStatement.setString(12, todesjahr);
+			callableStatement.setInt(7, geburtsjahr);
+			callableStatement.setInt(8, geburtsmonat);
+			callableStatement.setInt(9, geburtsjahr);
+			callableStatement.setInt(10, todestag);
+			callableStatement.setInt(11, todesmonat);
+			callableStatement.setInt(12, todesjahr);
 			callableStatement.setString(13, pseudonym);
 			callableStatement.setString(14, instrument);
 			callableStatement.setString(15, solostueck);

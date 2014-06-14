@@ -27,6 +27,8 @@ public class Testklasse {
 
 		System.out.println(Dieter.toString());
 
+		
+		System.out.println();
 	}
 
 }
