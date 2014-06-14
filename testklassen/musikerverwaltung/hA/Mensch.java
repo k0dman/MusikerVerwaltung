@@ -1,4 +1,4 @@
-package musikerverwaltung.Methods;
+package musikerverwaltung.hA;
 
 //
 /**<h3>Vorgaben f&uuml;r die Klasse Person.</h3>

@@ -18,7 +18,7 @@ public final class DBMethods01 {
 	private final static String passwd = "";
 
 	// Instanz-Objekt erzeugen für die ganze Klasse
-	private static DBConnection conn = new DBConnection();
+	private static DBConnection01 conn = new DBConnection01();
 
 	public final static Vector<String> COLUMN_IDENTIFIERS = new Vector<String>() {
 		{

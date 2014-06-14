@@ -102,11 +102,9 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 	}
 
-	public Object artist(Object artist){
-		
-	
-			
-			return artist;
+	public Object artist(Object artist) {
+
+		return artist;
 	}
 
 	public void mouseListenertable() {
@@ -165,15 +163,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 
 						JOptionPane.showMessageDialog(null, ausgabe);
 
-						// Instanz fuer Artist erzeugen um einen Tab
-						// hinzuzufuegen
-						addartist = new AddTabs01();
-
-						// Instanz fuer Uebergabe des Namens an AnzeigeDaten
-		
-
 						// Methodenaufruf um Tab zu adden
-						addartist.showArtist(artist, title, jtpmaindesc);
+						AddTabs01.showArtist(artist, title, jtpmaindesc);
 
 					}
 					// Wenn es sich um die zweite Spalte handelt:
@@ -188,9 +179,8 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 						String ausgabe = "Artist: " + artist + " " + "Titel: "
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
-						addartist = new AddTabs01();
 
-						addartist.showArtist(artist, title, jtpmaindesc);
+						AddTabs01.showArtist(artist, title, jtpmaindesc);
 
 					}
 				}
