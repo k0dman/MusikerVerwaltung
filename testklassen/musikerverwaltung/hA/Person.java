@@ -6,7 +6,6 @@ public class Person extends Mensch {
 	private String name, vorname, geburtsjahr, geburtsdatum, geschlecht, titel,
 			vorsatz, zusatz, todesdatum, lebt;
 
-
 	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen
 	// zu
 	public Person(String name, String vorname, String geschlecht,

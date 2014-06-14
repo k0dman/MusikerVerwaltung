@@ -21,9 +21,9 @@ public final class Helfer {
 		Calendar cal = new GregorianCalendar();
 		int aktuellesjahr = cal.get(Calendar.YEAR);
 
-		//tag in String casten um RegEx anwenden zu koennen
+		// tag in String casten um RegEx anwenden zu koennen
 		String tagpruef = String.valueOf(tag);
-		
+
 		if (jahr >= 1900 && jahr <= aktuellesjahr) {
 			// MONATE MIT 31 TAGEN
 			int[] a = { 1, 3, 5, 7, 8, 10, 12 };

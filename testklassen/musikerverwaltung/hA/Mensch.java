@@ -90,8 +90,10 @@ public abstract class Mensch {
 	 * 
 	 * @return Todesdatum in der Form <code>tt.mm.jjjj</code>
 	 */
-	public String getTodesDatum() { return
-	Helfer.textDatum(getTodesTag(),getTodesMonat(),getTodesJahr()); }
+	public String getTodesDatum() {
+		return Helfer.textDatum(getTodesTag(), getTodesMonat(), getTodesJahr());
+	}
+
 	//
 	/**
 	 * <h4>Todesdatum setzen.</h4>

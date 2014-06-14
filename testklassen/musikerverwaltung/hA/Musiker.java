@@ -55,11 +55,11 @@ public class Musiker extends Person {
 	public String[] referenz() {
 		return referenz;
 	}
-	
+
 	public String toString() {
 		String ausgabe = super.getName() + " akA: " + pseudonym
-				+ " macht viele Dinge, wie: " + instrument[1] + " in dem stueck "
-				+ stueck[0] ;
+				+ " macht viele Dinge, wie: " + instrument[1]
+				+ " in dem stueck " + stueck[0];
 
 		return ausgabe;
 
