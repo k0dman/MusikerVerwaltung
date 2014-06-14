@@ -5,7 +5,8 @@ public class Testklasse {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		System.out.println(Helfer.textDatum(1, 6, 1999));
+		System.out.println(Helfer.pruefDatum(28,4,2014));
+		
 
 		String[] instrumente = new String[2];
 		instrumente[0] = "Saxophon";
