@@ -1,12 +1,16 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class EingabeformularBand04 extends JPanel {
+import musikerverwaltung.Database.DBMethods02;
+
+public class EingabeformularBand05 extends JPanel {
 
 	// Felder:
+	private JComboBox<String> ComboBox;
 
 	// Panel
 	private JPanel jpmainDesc, jpmainInput, jpmainband;
@@ -109,8 +113,10 @@ public class EingabeformularBand04 extends JPanel {
 		// ToolTips hinzuf\u00FCgen
 
 		jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
-		jtfmitglied.setToolTipText("Tragen Sie hier bitte die Bandmitglieder ein");
-		jtfehemalig.setToolTipText("Tragen Sie hier bitte die ehemaligen Bandmitglieder ein");
+		jtfmitglied
+				.setToolTipText("Tragen Sie hier bitte die Bandmitglieder ein");
+		jtfehemalig
+				.setToolTipText("Tragen Sie hier bitte die ehemaligen Bandmitglieder ein");
 		jtfstueckgruppe
 				.setToolTipText("Tragen Sie hier bitte ein Stueck der Gruppe ein");
 		jtfreferenz
@@ -134,6 +140,15 @@ public class EingabeformularBand04 extends JPanel {
 		jpmainRight.add(fueller);
 		fueller = new JLabel("");
 		jpmainRight.add(fueller);
+
+		String[] a = DBMethods02.DBSelectPseudonym();
+
+		// Erzeugen der Combobox
+		ComboBox = new JComboBox<String>();
+		ComboBox.setModel(new DefaultComboBoxModel<String>(a));
+
+		jpmainRight.add(ComboBox);
+
 		fueller = new JLabel("");
 		jpmainRight.add(fueller);
 		fueller = new JLabel("");
@@ -148,7 +163,7 @@ public class EingabeformularBand04 extends JPanel {
 		// In Arbeit
 		jbsubmit.setPreferredSize(new Dimension(0, 0));
 		// ToolTip hinzuf\u00FCgen
-				jbsubmit.setToolTipText("Hier klicken, um die Band anzulegen");
+		jbsubmit.setToolTipText("Hier klicken, um die Band anzulegen");
 		return jpmainRight;
 
 	}

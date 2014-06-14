@@ -1,11 +1,16 @@
 package musikerverwaltung.Database;
 
 import java.util.*;
+import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 import com.mysql.jdbc.*;
 
@@ -14,7 +19,7 @@ import musikerverwaltung.Methods.*;
 ;
 
 public final class DBMethods02 {
-
+	
 	// Diese Eintraege werden zum Verbindungsaufbau benoetigt
 	// Die Variabeln werden als >final< deklariert, da es sich hier um
 	// Konstanten handelt, die nicht mehr veraendert werden sollen
@@ -85,18 +90,18 @@ public final class DBMethods02 {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
-		
+
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerErstellen(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			 /// Fuer die Variable wird muss ein Statement erstellt werden um
-			  // eine Kommunikation mit der DB zu ermoeglichen stmt =
-			 
+			// / Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen stmt =
+
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
-			
+
 			callableStatement.setString(1, vorname);
 			callableStatement.setString(2, nachname);
 			callableStatement.setString(3, titel);
@@ -113,12 +118,12 @@ public final class DBMethods02 {
 			callableStatement.setString(14, instrument);
 			callableStatement.setString(15, solostueck);
 			callableStatement.setString(16, referenz);
-			callableStatement.setNull(17,java.sql.Types.INTEGER);
-			
+			callableStatement.setNull(17, java.sql.Types.INTEGER);
+
 			callableStatement.executeUpdate();
-			
+
 			System.out.println("Record is inserted into DBUSER table!");
-			
+
 		}
 
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
@@ -177,4 +182,54 @@ public final class DBMethods02 {
 		}
 		return artistdata;
 	}
-}
+
+	public static final String[] DBSelectPseudonym() {
+
+		
+		
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		String[] pseudonymsdata = new String[1000];
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("SELECT pseudonym FROM musiker WHERE 1");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+			int a = 0;
+			while (rs.next()) {
+				
+				pseudonymsdata[a] = rs.getString("pseudonym");
+				a++;
+				
+		}
+
+		 
+
+		rs.close();}
+		
+		
+		
+		
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pseudonymsdata;
+	
+
+	}	}
+
