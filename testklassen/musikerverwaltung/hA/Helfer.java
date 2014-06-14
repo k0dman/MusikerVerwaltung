@@ -72,17 +72,18 @@ public final class Helfer {
 	}
 
 	// HINZUFUEGEN EINER STELLE FALLS NUR EINE VORHANDEN
-	public static final String textDatum(String tag, String monat, String jahr) {
+	public static final String textDatum(int tag, int monat, int jahr) {
 		String datum;
-
-		if (tag.length() != 2) {
-			tag = "0" + tag;
+		String tag1 = "";
+		String monat1 = "";
+		if (tag < 10) {
+			tag1 = "0" + tag;
 		}
-		if (monat.length() != 2) {
-			monat = "0" + monat;
+		if (monat < 10) {
+			monat1 = "0" + monat;
 		}
 
-		datum = (tag + "." + monat + "." + jahr);
+		datum = (tag1 + "." + monat1 + "." + jahr);
 
 		return datum;
 	}

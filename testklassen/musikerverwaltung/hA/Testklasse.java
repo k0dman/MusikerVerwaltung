@@ -1,0 +1,31 @@
+package musikerverwaltung.hA;
+
+public class Testklasse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println(Helfer.textDatum(1, 6, 1999));
+
+		String[] instrumente = new String[2];
+		instrumente[0] = "Saxophon";
+		instrumente[1] = "Floete";
+
+		String[] stueck = new String[1];
+		stueck[0] = "phil ist cool";
+
+		String[] referenz = new String[0];
+
+		Person1 Dieter = new Person1("Augustin", "Dieter", "m", "1,5,1950");
+		
+		
+		Musiker Bert = new Musiker("Wollersheim", "Bert", "M", "20.05.1943",
+				"BertiBo", instrumente, stueck, referenz);
+		
+		System.out.println(Bert.toString());
+
+		System.out.println(Dieter.toString());
+
+	}
+
+}
