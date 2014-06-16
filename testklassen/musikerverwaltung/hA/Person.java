@@ -1,114 +1,143 @@
 package musikerverwaltung.hA;
 
-// import java.util.*;
-
 public class Person extends Mensch {
 
 	// Klassen-Attribute / variablen mit denen in der KLasse gearbeitet wird
-	private String nachname, vorname, geburtsjahr, geburtsdatum, geschlecht,
-			titel, namensvorsatz, namenszusatz, todesjahr, todesdatum, lebt;
+	private String name, vorname, geburtsdatum, geschlecht, titel,
+			vorsatz, zusatz, todesdatum, lebt;
 	
-	
-	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen zu
-	public Person(String nachname, String vorname, String geschlecht, String geburtsdatum) {
-		this.nachname = nachname;
+	private int geburtstag, geburtsmonat, geburtsjahr;
+
+	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen
+	// zu
+	public Person(String name, String vorname, String geschlecht,
+			String geburtsdatum) {
+		this.name = name;
 		this.vorname = vorname;
 		this.geschlecht = geschlecht;
 		this.geburtsdatum = geburtsdatum;
-		}
-	
-	
-	// Konstruktor#2, weisst die Parameter (aus Person) den Klassen-Attributen zu
-	public Person(String nachname, String vorname, String titel, String vorsatz,
+	}
+
+	// Konstruktor#2, weisst die Parameter (aus Person) den Klassen-Attributen
+	// zu
+	public Person(String name, String vorname, String titel, String vorsatz,
 			String zusatz, String geschlecht, String geburtsdatum,
 			String todesdatum) {
 
-		this.titel = titel;
-		this.namensvorsatz = namensvorsatz;
+		this.name = name;
 		this.vorname = vorname;
-		this.namenszusatz = namenszusatz;
-		this.nachname = nachname;
-		this.geburtsjahr = geburtsjahr;
-		this.geburtsdatum = geburtsdatum;
+		this.titel = titel;
+		this.vorsatz = vorsatz;
+		this.zusatz = zusatz;
 		this.geschlecht = geschlecht;
+		this.geburtsdatum = geburtsdatum;
 		this.todesdatum = todesdatum;
-		this.todesjahr = todesjahr;
-		this.lebt = lebt;
 	}
 
-
-
-	// Namen ausgeben
 	public String getTitel() {
 		return titel;
 	}
 
-	public String getNamensvorsatz() {
-		return namensvorsatz;
+	public String getVorsatz() {
+		return vorsatz;
 	}
-
-	public String getVorname() {
-		return vorname;
+	
+	public String getZusatz() {
+		return zusatz;
 	}
-
-	public String getNamenszusatz() {
-		return namenszusatz;
-	}
-
-	public String getNachname() {
-		return nachname;
-	}
-
-	public String getGeburtsdatum() {
-		if (geburtsdatum != null)
-			return geburtsjahr;
-		else
-			return geburtsdatum;
-	}
-
-	public String getTodesdatum() {
-		if (todesdatum != null)
-			return todesjahr;
-		else
-			return todesdatum;
-	}
-
+	
 	public String getGeschlecht() {
 		return geschlecht;
 	}
 
-	public String getLebt() {
-		return lebt;
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 
-	// Methode, um die Daten als String auszugeben
-	public String toString() {
-		return getTitel() + " " + getNamensvorsatz() + " " + getVorname() + " "
-				+ getNamenszusatz() + " " + getNachname() + " "
-				+ getGeburtsdatum() + " " + getGeschlecht() + " "
-				+ getTodesdatum() + " " + getLebt();
+	@Override
+	public String getVorname() {
+		// TODO Auto-generated method stub
+		return vorname;
 	}
 
+	@Override
+	public int getGeburtsTag() {
+		// TODO Auto-generated method stub
+		return geburtstag;
+	}
+
+	@Override
+	public int getGeburtsMonat() {
+		// TODO Auto-generated method stub
+		return geburtsmonat;
+	}
+
+	@Override
+	public int getGeburtsJahr() {
+		// TODO Auto-generated method stub
+		return geburtsjahr;
+	}
+
+	@Override
+	public int getTodesTag() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getTodesMonat() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getTodesJahr() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setTodesDatum(int tag, int monat, int jahr) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean isMann() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isFrau() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isTot() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public double alter() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String nameKomplett() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public String anrede() {
-		String g = geschlecht.toUpperCase();
-		String anrede = null;
-		if (g.charAt(0) == 'M' || g.charAt(0) == 'H')
-			anrede = "r Herr ";
-
-		else if (g.charAt(0) == 'W' || g.charAt(0) == 'F')
-			anrede = " Frau ";
-		else
-			anrede = "?";
-
-		return "Sehr geehrte" + anrede + getNachname();
-	}
-
-	public String alter() {
-		int jahr = 2014;
-		int geburt = Integer.parseInt(getGeburtsdatum());
-		int alter = jahr - geburt;
-
-		return "Alter: " + alter;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
