@@ -209,7 +209,7 @@ public class MusicLounge13 extends JFrame {
 		jbnewart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				addartist = new AddTabs01();
-				addartist.insertArtist(jtpmain.jtpmaindesc,
+				AddTabs01.insertArtist(jtpmain.jtpmaindesc,
 						"Interpret eintragen");
 			}
 		});
@@ -217,7 +217,7 @@ public class MusicLounge13 extends JFrame {
 		jbnewband.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				addartist = new AddTabs01();
-				addartist.insertBand(jtpmain.jtpmaindesc,
+				AddTabs01.insertBand(jtpmain.jtpmaindesc,
 						"Band eintragen");
 
 			}

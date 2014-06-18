@@ -12,8 +12,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-import com.mysql.jdbc.*;
-
 import musikerverwaltung.Methods.*;
 
 ;
