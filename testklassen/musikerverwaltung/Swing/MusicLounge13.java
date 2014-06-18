@@ -139,7 +139,9 @@ public class MusicLounge13 extends JFrame {
 		jlheader = new JLabel("MusicLounge");
 		Icons searchicon = new Icons();
 		jlsearch = new JLabel(searchicon.icons[3]);
-
+	
+		
+		
 		// JButton erzeugen
 		jbmaintable = new JButton("Übersicht");
 		jbmaintable.setPreferredSize(new Dimension(150, 35));
@@ -162,6 +164,7 @@ public class MusicLounge13 extends JFrame {
 		// Pointer auf die Variable legen
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
+		
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
@@ -205,14 +208,18 @@ public class MusicLounge13 extends JFrame {
 		// Button
 		jbnewart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				AddTabs01.insertArtist(jtpmain.jtpmaindesc,
+				addartist = new AddTabs01();
+				addartist.insertArtist(jtpmain.jtpmaindesc,
 						"Interpret eintragen");
 			}
 		});
 		// Button
 		jbnewband.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				AddTabs01.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
+				addartist = new AddTabs01();
+				addartist.insertBand(jtpmain.jtpmaindesc,
+						"Band eintragen");
+
 			}
 		});
 		// Button

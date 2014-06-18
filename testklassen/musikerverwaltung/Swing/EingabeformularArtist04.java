@@ -397,9 +397,7 @@ public class EingabeformularArtist04 extends JPanel {
 						jtfpseudonym.getText(), jtfinstrument.getText(),
 						jtfsolostueck.getText(), jtfreferenz.getText());
 				
-				
-				//Insert Methode aus Musiker aufrufen
-				musikereintragen.insert();
+				Musiker.insert();
 			}
 		});
 		
