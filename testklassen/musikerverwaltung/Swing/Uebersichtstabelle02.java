@@ -18,9 +18,6 @@ import diverse.*;
 public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Felder:
-
-	// Instanz AddArtist
-	private AddTabs01 addartist;
 	public AnzeigeDaten artistdata;
 
 	// JTable

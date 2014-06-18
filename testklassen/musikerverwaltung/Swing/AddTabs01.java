@@ -2,13 +2,12 @@ package musikerverwaltung.Swing;
 
 import javax.swing.*;
 
-import vorlagen.EingabeformularBand04;
 import musikerverwaltung.Graphics.Icons;
 
 public final class AddTabs01 extends JTabbedPane {
-	private static EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
-	private static EingabeformularBand05 jpmainband = new EingabeformularBand05();
-	private static AnzeigeFormularArtist00 jpmainshowartist = new AnzeigeFormularArtist00();
+	private static final EingabeformularArtist04 jpmainartist = new EingabeformularArtist04();
+	private static final EingabeformularBand05 jpmainband = new EingabeformularBand05();
+	private static final AnzeigeFormularArtist00 jpmainshowartist = new AnzeigeFormularArtist00();
 	
 	private static Icons tabicons = new Icons();
 	
@@ -16,6 +15,7 @@ public final class AddTabs01 extends JTabbedPane {
 		
 	
 		jtpane.addTab(String.valueOf(artist), tabicons.icons[2], jpmainshowartist.jpmainArtist(artist));
+		
 		
 	}
 

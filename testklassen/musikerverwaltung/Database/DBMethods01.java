@@ -70,7 +70,7 @@ public final class DBMethods01 {
 		return results;
 	}
 
-	public static final List<String> DBSelectArtist(String artist) {
+	public static final List<String> DBSelectArtist(Object artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -89,7 +89,7 @@ public final class DBMethods01 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson = musiker.idperson WHERE `person`.`name` ='"+artist+"'");
+					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson = musiker.idperson WHERE `musiker`.`pseudonym` = '"+artist+"' LIMIT 0 , 30");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -105,8 +105,10 @@ public final class DBMethods01 {
 				artistdata.add(rs.getString("gmonat"));
 				artistdata.add(rs.getString("gjahr"));
 				artistdata.add(rs.getString("tjahr"));
+				artistdata.add(rs.getString("pseudonym"));
 				artistdata.add(rs.getString("instrument"));
 				artistdata.add(rs.getString("stuecksolo"));
+				artistdata.add(rs.getString("referenz"));
 			}
 		}
 		

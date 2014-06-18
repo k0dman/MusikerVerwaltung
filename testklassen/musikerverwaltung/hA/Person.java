@@ -3,13 +3,16 @@ package musikerverwaltung.hA;
 public class Person extends Mensch {
 
 	// Klassen-Attribute / variablen mit denen in der KLasse gearbeitet wird
-	private String name, vorname, geburtsdatum, geschlecht, titel,
-			vorsatz, zusatz, todesdatum, lebt;
-	
+	private String name, vorname, geburtsdatum, geschlecht, titel, vorsatz,
+			zusatz, todesdatum, lebt;
+
 	private int geburtstag, geburtsmonat, geburtsjahr;
 
 	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen
 	// zu
+	public Person() {
+	}
+
 	public Person(String name, String vorname, String geschlecht,
 			String geburtsdatum) {
 		this.name = name;
@@ -41,11 +44,11 @@ public class Person extends Mensch {
 	public String getVorsatz() {
 		return vorsatz;
 	}
-	
+
 	public String getZusatz() {
 		return zusatz;
 	}
-	
+
 	public String getGeschlecht() {
 		return geschlecht;
 	}

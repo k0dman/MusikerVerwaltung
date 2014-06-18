@@ -6,9 +6,9 @@ import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
-import musikerverwaltung.Database.DBMethods01;
-import musikerverwaltung.Methods.*;
-import musikerverwaltung.Swing.*;
+import musikerverwaltung.*;
+import musikerverwaltung.Methods.AnzeigeDaten;
+import musikerverwaltung.hA.*;
 
 public class AnzeigeFormularArtist00 extends JPanel {
 
@@ -126,7 +126,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 		// JTextFields erzeugen
 
-		System.out.println(artist + " Jey");
+		/*System.out.println(artist + " Jey");
 
 		jtfvorname = new JTextField();
 
@@ -144,9 +144,12 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 			}
 
-		}
+		}*/
+		
+		Musiker test = new Musiker(String.valueOf(artist));
+		
 
-		jtfvorname.setText(DBMethods01.DBSelectArtist(name).get(1));
+		//tfvorname.setText(DBMethods01.DBSelectArtist(artist).get(1));
 
 		jtfname = new JTextField();
 		jtftitel = new JTextField();
@@ -160,7 +163,18 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfinstrument = new JTextField();
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
-
+		jtfvorname = new JTextField();
+		
+		jtfvorname.setText(test.getMusikerVorname());
+		jtfname.setText(test.getMusikerName());
+		jtftitel.setText(test.getMusikerTitel());
+		jtfvorsatz.setText(test.getMusikerVorsatz());
+		jtfzusatz.setText(test.getMusikerZusatz());
+		//--->hier geschlechtgurppe;
+		jtfpseudonym.setText(test.getMusikerPseudonym());
+		jtfinstrument.setText(test.getMusikerInstrument());
+		jtfreferenz.setText(test.getMusikerReferenz());
+		jtfsolostueck.setText(test.getMusikerStueckSolo());
 		// Button erzeugen
 
 		// Erzeugen der Auswahlen
