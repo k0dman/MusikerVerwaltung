@@ -132,14 +132,13 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		// Instanz der Klasse Musiker erzeugen und Pseudonym uebergeben um
 		// entsprechenden >SELECT< ausfuehren zu koennen in DB-Methoden
 		Musiker musiker = new Musiker(String.valueOf(artist));
-		
+
 		// Texte setzen die aus der MusikerKlasse-DBKlasse kommen
 		jtfvorname.setText(musiker.getMusikerVorname());
 		jtfname.setText(musiker.getMusikerName());
 		jtftitel.setText(musiker.getMusikerTitel());
 		jtfvorsatz.setText(musiker.getMusikerVorsatz());
 		jtfzusatz.setText(musiker.getMusikerZusatz());
-		// --->hier geschlechtgruppe;
 		jtfpseudonym.setText(musiker.getMusikerPseudonym());
 		jtfinstrument.setText(musiker.getMusikerInstrument());
 		jtfreferenz.setText(musiker.getMusikerReferenz());
@@ -192,11 +191,23 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		dodjpdatum.add(dodjcbmonat);
 		dodjpdatum.add(dodjcbjahr);
 
-		// JRadioButtons erzeugen
+		// Pruefung ob m oder w oder ns
+		boolean m = false;
+		boolean w = false;
+		boolean ns = false;
 
-		rbmann = new JRadioButton("Mann");
-		rbfrau = new JRadioButton("Frau");
-		rbkeineahnung = new JRadioButton("Keine Ahnung");
+		if (musiker.getMusikerGeschlecht().equals("m"))
+			m = true;
+		if (musiker.getMusikerGeschlecht().equals("f"))
+			w = true;
+		if (musiker.getMusikerGeschlecht().equals("ns"))
+			ns = true;
+
+		// // JRadioButtons erzeugen und die richtigen RadioButtons
+		// vorselektieren
+		rbmann = new JRadioButton("Mann", m);
+		rbfrau = new JRadioButton("Frau", w);
+		rbkeineahnung = new JRadioButton("Keine Ahnung", ns);
 
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 		auswahl = new ButtonGroup();
@@ -213,7 +224,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtftitel.setColumns(10);
 		jtfvorsatz.setColumns(10);
 		jtfzusatz.setColumns(10);
-
 		jtfdob.setColumns(10);
 		jtfdod.setColumns(10);
 		jtfpseudonym.setColumns(10);
@@ -228,7 +238,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtftitel.setFont(ftfield);
 		jtfvorsatz.setFont(ftfield);
 		jtfzusatz.setFont(ftfield);
-
 		jtfdob.setFont(ftfield);
 		jtfdod.setFont(ftfield);
 		jtfpseudonym.setFont(ftfield);
