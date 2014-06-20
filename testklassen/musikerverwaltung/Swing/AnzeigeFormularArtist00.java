@@ -156,7 +156,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 		// JComboBox - Geburtstag - Monat
 		jcbmonat = new JComboBox<String>(monatsname);
-		jcbmonat.setSelectedItem((Object)musiker.getMusikerGMonat());
+		jcbmonat.setSelectedItem(musiker.getMusikerTMonat()-1);
 		jcbmonat.setEditable(false);
 		
 		// JComboBox - Geburtstag - Jahr
@@ -178,7 +178,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 		// JComboBox - Todes - Monat
 		dodjcbmonat = new JComboBox<String>(dodmonatsname);
-		dodjcbmonat.setSelectedItem((Object)musiker.getMusikerTMonat());
+		dodjcbmonat.setSelectedItem(musiker.getMusikerTMonat()-1);
 		dodjcbmonat.setEditable(false);
 
 		// JComboBox - Todes - Monat

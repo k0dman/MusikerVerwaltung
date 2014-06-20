@@ -129,8 +129,8 @@ public class Musiker extends Person {
 	public int getMusikerGTag() {
 		return Integer.parseInt(DBMethods01.DBSelectArtist(getPseudonym()).get(6));
 	}
-	public String getMusikerGMonat() {
-		return String.valueOf(DBMethods01.DBSelectArtist(getPseudonym()).get(7));
+	public int getMusikerGMonat() {
+		return Integer.parseInt(DBMethods01.DBSelectArtist(getPseudonym()).get(7));
 	}
 	public int getMusikerGJahr() {
 		return Integer.parseInt(DBMethods01.DBSelectArtist(getPseudonym()).get(8));
@@ -138,8 +138,8 @@ public class Musiker extends Person {
 	public int getMusikerTTag() {
 		return Integer.parseInt((DBMethods01.DBSelectArtist(getPseudonym()).get(9)));
 	}
-	public String getMusikerTMonat() {
-		return String.valueOf(DBMethods01.DBSelectArtist(getPseudonym()).get(10));
+	public int getMusikerTMonat() {
+		return Integer.parseInt(DBMethods01.DBSelectArtist(getPseudonym()).get(10));
 	}
 	public int getMusikerTJahr() {
 		return Integer.parseInt(DBMethods01.DBSelectArtist(getPseudonym()).get(11));
