@@ -78,6 +78,8 @@ public final class DBMethods02 {
 		}
 		return results;
 	}
+	
+	
 
 	public static final void insert(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
@@ -181,6 +183,9 @@ public final class DBMethods02 {
 		return artistdata;
 	}
 
+	
+	
+	
 	public static final String[] DBSelectPseudonym() {
 
 		
