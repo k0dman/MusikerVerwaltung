@@ -99,8 +99,8 @@ public class Musiker extends Person {
 				.getGeburtsTag(), super.getGeburtsMonat(), super
 				.getGeburtsJahr(), super.getTodesTag(), super.getTodesMonat(),
 				super.getTodesJahr(), super.getGeschlecht(), getPseudonym(),
-				getInstrument().toString(), getStueckSolo().toString(),
-				getReferenz().toString());
+				getInstrument()[0], getStueckSolo()[0],
+				getReferenz()[0]);
 	}
 
 	

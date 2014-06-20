@@ -385,18 +385,41 @@ public class EingabeformularArtist04 extends JPanel {
 				 * artistdata.insert();
 				 */
 
-				Musiker musikereintragen = new Musiker(jtftitel.getText(),
-						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
-								.getText(), jtfname.getText(), jcbtag
-								.getSelectedItem(), jcbmonat.getSelectedItem(),
-						jcbjahr.getSelectedItem(), dodjcbtag.getSelectedItem(),
-						dodjcbmonat.getSelectedItem(), dodjcbjahr
-								.getSelectedItem(), auswahl.getSelection()
-								.getActionCommand(), jtfpseudonym.getText(),
-						jtfinstrument.getText(), jtfsolostueck.getText(),
-						jtfreferenz.getText());
+				/*
+				 * // Konstuktor#3 public Musiker( String titel,String vorsatz,
+				 * String vorname,String zusatz, String name, int geburtstag,
+				 * int geburtsmonat, int geburtsjahr, int todestag, int
+				 * todesmonat, int todesjahr, String geschlecht, String
+				 * pseudonym, String[] instrument, String[] stuecksolo, String[]
+				 * referenz)
+				 */
+				String[] instrument = new String[10];
+				instrument[0] = jtfinstrument.getText();
+				String[] solostueck = new String[10];
+				solostueck[0] = jtfsolostueck.getText();
+				String[] referenz = new String[10];
+				referenz[0] = jtfreferenz.getText();
+				
+				
+				Musiker musikereintragen = new Musiker(
+						jtftitel.getText(),						
+						jtfvorsatz.getText(),
+						jtfvorname.getText(),
+						jtfzusatz.getText(),
+						jtfname.getText(),
+						Integer.parseInt(String.valueOf(jcbtag.getSelectedItem())),
+						Helfer.monatUmwandlung(jcbmonat.getSelectedItem().toString()),
+						Integer.parseInt(String.valueOf(jcbjahr.getSelectedItem())),
+						Integer.parseInt(String.valueOf(dodjcbtag.getSelectedItem())),
+						Helfer.monatUmwandlung(dodjcbmonat.getSelectedItem().toString()),
+						Integer.parseInt(String.valueOf(dodjcbjahr.getSelectedItem())),
+						auswahl.getSelection().getActionCommand(),						
+						jtfpseudonym.getText(),
+						instrument,
+						solostueck,
+						referenz);
 
-				Musiker.insert();
+				musikereintragen.insert();
 			}
 		});
 
