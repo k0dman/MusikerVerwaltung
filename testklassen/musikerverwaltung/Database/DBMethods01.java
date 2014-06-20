@@ -104,6 +104,8 @@ public final class DBMethods01 {
 				artistdata.add(rs.getString("gtag"));
 				artistdata.add(rs.getString("gmonat"));
 				artistdata.add(rs.getString("gjahr"));
+				artistdata.add(rs.getString("ttag"));
+				artistdata.add(rs.getString("tmonat"));
 				artistdata.add(rs.getString("tjahr"));
 				artistdata.add(rs.getString("pseudonym"));
 				artistdata.add(rs.getString("instrument"));

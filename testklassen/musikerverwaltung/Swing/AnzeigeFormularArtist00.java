@@ -52,11 +52,13 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 	public JPanel jpmainDesc() {
 
+		//JPanel für linke Seite des JTabbedPane
 		JPanel jpmainDesc = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 
+		//JLabels erzeugen
 		ueschrift = new JLabel("Tragen Sie einen Musiker ein:");
 		vorname = new JLabel("Vorname");
 		name = new JLabel("Name");
@@ -99,6 +101,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		solostueck.setHorizontalAlignment(SwingConstants.RIGHT);
 		referenz.setHorizontalAlignment(SwingConstants.RIGHT);
 
+		//Ueberschrift setzen
 		ueschrift.setFont(ftfield);
 
 		return jpmainDesc;
@@ -144,42 +147,47 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfreferenz.setText(musiker.getMusikerReferenz());
 		jtfsolostueck.setText(musiker.getMusikerStueckSolo());
 
-		// Button erzeugen
-
-		// Erzeugen der Auswahlen
-		// Das Jahr sollte editierbar sein, da die angebotene Liste
-		// unvollst\u00E4ndig ist, Tag und Monat jedoch nicht.
-		jcbmonat = new JComboBox<String>(monatsname);
-		jcbmonat.setEditable(false);
-		dodjcbmonat = new JComboBox<String>(dodmonatsname);
-		dodjcbmonat.setEditable(false);
-
-		//
+		// JComboBox- Geburtstag - Tag
 		jcbtag = new JComboBox<Integer>();
 		for (int t = 1; t < 32; t++)
 			jcbtag.addItem(new Integer(t));
+		jcbtag.setSelectedIndex(musiker.getMusikerGTag()-1);
 		jcbtag.setEditable(false);
 
+		// JComboBox - Geburtstag - Monat
+		jcbmonat = new JComboBox<String>(monatsname);
+		jcbmonat.setSelectedItem((Object)musiker.getMusikerGMonat());
+		jcbmonat.setEditable(false);
+		
+		// JComboBox - Geburtstag - Jahr
+		jcbjahr = new JComboBox<Integer>();
+		jcbjahr.setEditable(true);
+		int aktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+		System.out.println(aktjahr);
+		System.out.println(musiker.getGeburtsJahr());
+		for (int j = 0; j <= 100; j++)
+			jcbjahr.addItem(new Integer(aktjahr - j));
+		jcbjahr.setSelectedIndex(aktjahr-musiker.getMusikerGJahr());
+		
+		// JComboBox- Todes - Tag
 		dodjcbtag = new JComboBox<Integer>();
 		for (int t = 1; t < 32; t++)
 			dodjcbtag.addItem(new Integer(t));
+		dodjcbtag.setSelectedIndex(musiker.getMusikerTTag()-1);
 		dodjcbtag.setEditable(false);
 
-		//
-		// alle Jahre kann man/frau schlecht vorgeben
-		jcbjahr = new JComboBox<Integer>();
-		jcbjahr.setEditable(true);
+		// JComboBox - Todes - Monat
+		dodjcbmonat = new JComboBox<String>(dodmonatsname);
+		dodjcbmonat.setSelectedItem((Object)musiker.getMusikerTMonat());
+		dodjcbmonat.setEditable(false);
+
+		// JComboBox - Todes - Monat
 		dodjcbjahr = new JComboBox<Integer>();
 		dodjcbjahr.setEditable(true);
-		// die letzten hundert Jahre rein
-		// dazu aktuelles Jahr ermitteln
-		int aktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
-		for (int j = 0; j <= 100; j++)
-			jcbjahr.addItem(new Integer(aktjahr - j));
 		int dodaktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
 		for (int j = 0; j <= 100; j++)
 			dodjcbjahr.addItem(new Integer(dodaktjahr - j));
-		//
+		dodjcbjahr.setSelectedIndex(aktjahr-musiker.getMusikerTJahr());
 
 		// Alles in ein Panel
 		jpdatum = new JPanel();
@@ -246,7 +254,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfreferenz.setFont(ftfield);
 
 		// JTextfields hinzuf\u00FCgen
-
 		jpmainInput.add(jtfname);
 		jpmainInput.add(jtfvorname);
 		jpmainInput.add(jtftitel);
@@ -288,7 +295,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 
-		// System.out.println(artistdata.getVorname());
 		return jpmainInput;
 
 	}
