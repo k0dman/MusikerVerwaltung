@@ -388,7 +388,7 @@ public class EingabeformularArtist04 extends JPanel {
 				Musiker musikereintragen = new Musiker(jtftitel.getText(),
 						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
 								.getText(), jtfname.getText(), jcbtag
-								.getSelectedItem(), jcbmonat.getSelectedItem().toString(),
+								.getSelectedItem(), jcbmonat.getSelectedItem(),
 						jcbjahr.getSelectedItem(), dodjcbtag.getSelectedItem(),
 						dodjcbmonat.getSelectedItem(), dodjcbjahr
 								.getSelectedItem(), auswahl.getSelection()

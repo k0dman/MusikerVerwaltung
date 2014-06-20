@@ -89,7 +89,7 @@ public final class Helfer {
 	
 	
 
-	public int monatUmwandlung (String monat){
+	public static int monatUmwandlung (String monat){
 		
 	int monatszahl = 0;
 	
