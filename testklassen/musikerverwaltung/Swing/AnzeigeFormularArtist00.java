@@ -156,7 +156,7 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 		// JComboBox - Geburtstag - Monat
 		jcbmonat = new JComboBox<String>(monatsname);
-		jcbmonat.setSelectedIndex(musiker.getMusikerTMonat()-1);
+		jcbmonat.setSelectedIndex(musiker.getMusikerGMonat()-1);
 		jcbmonat.setEditable(false);
 		
 		// JComboBox - Geburtstag - Jahr
