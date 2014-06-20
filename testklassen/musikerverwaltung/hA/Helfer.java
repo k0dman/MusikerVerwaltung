@@ -87,13 +87,41 @@ public final class Helfer {
 		return datum;
 	}
 	
-	// Switch Mehtode zum Abändern von String to int bei Monaten
+	
 
 	public int monatUmwandlung (String monat){
 		
-	int monatzahl = 0;
+	int monatszahl = 0;
 	
-	return monatzahl;
+	switch (monat){
+	
+	case "Januar" : monatszahl = 1;
+	break;
+	case "Februar" : monatszahl = 2;
+	break;
+	case "M\u00E4rz" : monatszahl = 3;
+	break;
+	case "April" : monatszahl = 4;
+	break;
+	case "Mai" : monatszahl = 5;
+	break;
+	case "Juni" : monatszahl = 6;
+	break;
+	case "Juli" : monatszahl = 7;
+	break;
+	case "August" : monatszahl = 8;
+	break;
+	case "September" : monatszahl = 9;
+	break;
+	case "Oktober" : monatszahl = 10;
+	break;
+	case "November" : monatszahl = 11;
+	break;
+	case "Dezember" : monatszahl = 12;
+	
+	}
+	
+	return monatszahl;
 		
 	}
 	
