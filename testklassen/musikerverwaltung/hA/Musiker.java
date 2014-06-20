@@ -33,8 +33,8 @@ public class Musiker extends Person {
 	}
 
 	// Konstuktor#2
-	public Musiker(String name, String vorname, String titel, String vorsatz,
-			String zusatz, String geschlecht, String geburtsdatum,
+	public Musiker( String titel,String vorsatz, String vorname,String zusatz, String name,
+			 String geburtsdatum, String geschlecht, 
 			String todesdatum, String pseudonym, String[] instrument,
 			String[] stuecksolo, String[] referenz) {
 
@@ -48,6 +48,25 @@ public class Musiker extends Person {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 	}
+	
+	// Konstuktor#3
+		public Musiker( String titel,String vorsatz, String vorname,String zusatz, String name,
+				int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
+				 int todesmonat, int todesjahr, String geschlecht, String pseudonym, String[] instrument,
+				String[] stuecksolo, String[] referenz) {
+
+			// Aufruf des Konstruktors der Basis-Klasse
+			super(name, vorname, titel, vorsatz, zusatz, geschlecht, geburtstag, geburtsmonat, geburtsjahr,
+					 todestag, todesmonat, todesjahr);
+
+			// Sets
+			this.pseudonym = pseudonym;
+			this.instrument = instrument;
+			this.stuecksolo = stuecksolo;
+			this.referenz = referenz;
+		}
+		
+		// Gets
 
 	public String getPseudonym() {
 		return pseudonym;

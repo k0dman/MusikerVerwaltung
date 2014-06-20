@@ -56,7 +56,7 @@ public class EingabeformularArtist04 extends JPanel {
 	// JButton
 
 	private JButton jbsubmit;
-	
+
 	private Border border;
 
 	// JJRadioButton
@@ -124,13 +124,13 @@ public class EingabeformularArtist04 extends JPanel {
 	public JPanel jpmainInput() {
 
 		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
-		
+
 		border = jpmainInput.getBorder();
-		Border margin = new LineBorder(Color.LIGHT_GRAY,2);
-		
+		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
+
 		CompoundBorder border1 = new CompoundBorder(border, margin);
 		jpmainInput.setBorder(new TitledBorder(border1, "hey"));
-		
+
 		fueller = new JLabel("");
 		jpmainInput.add(fueller);
 
@@ -290,8 +290,6 @@ public class EingabeformularArtist04 extends JPanel {
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 
-	
-		
 		return jpmainInput;
 
 	}
@@ -358,48 +356,49 @@ public class EingabeformularArtist04 extends JPanel {
 
 	}
 
-
 	private void actionListenerJButton() {
 
 		// Button
 		jbsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 
-			/*	JOptionPane.showMessageDialog(null, jcbmonat.getSelectedItem()
-						.toString(), "alert", JOptionPane.ERROR_MESSAGE);*/
-				
-				
-				/*Musiker artistdata = new Musiker(jtftitel
-						.getText(), jtfvorsatz.getText(), jtfvorname.getText(),
-						jtfzusatz.getText(), jtfname.getText(), jcbtag
-								.getSelectedItem().toString(), jcbmonat
-								.getSelectedItem().toString(), jcbjahr
-								.getSelectedItem().toString(), dodjcbtag
-								.getSelectedItem().toString(), dodjcbmonat
-								.getSelectedItem().toString(), dodjcbjahr
-								.getSelectedItem().toString(), auswahl
-								.getSelection().getActionCommand(),
-						jtfpseudonym.getText(), jtfinstrument.getText(),
-						jtfsolostueck.getText(), jtfreferenz.getText());
-				System.out.println(artistdata.toString());
-				artistdata.insert();*/
-				
-				Musiker musikereintragen = new Musiker(jtftitel
-						.getText(), jtfvorsatz.getText(), jtfvorname.getText(),
-						jtfzusatz.getText(), jtfname.getText(), jcbtag
-								.getSelectedItem().toString(), jcbmonat
-								.getSelectedItem().toString(), jcbjahr
-								.getSelectedItem().toString(), dodjcbtag
-								.getSelectedItem().toString(), dodjcbmonat
-								.getSelectedItem().toString(), dodjcbjahr
-								.getSelectedItem().toString(), auswahl
-								.getSelection().getActionCommand(),
-						jtfpseudonym.getText(), jtfinstrument.getText(),
-						jtfsolostueck.getText(), jtfreferenz.getText());
-				
+				/*
+				 * JOptionPane.showMessageDialog(null,
+				 * jcbmonat.getSelectedItem() .toString(), "alert",
+				 * JOptionPane.ERROR_MESSAGE);
+				 */
+
+				/*
+				 * Musiker artistdata = new Musiker(jtftitel .getText(),
+				 * jtfvorsatz.getText(), jtfvorname.getText(),
+				 * jtfzusatz.getText(), jtfname.getText(), jcbtag
+				 * .getSelectedItem().toString(), jcbmonat
+				 * .getSelectedItem().toString(), jcbjahr
+				 * .getSelectedItem().toString(), dodjcbtag
+				 * .getSelectedItem().toString(), dodjcbmonat
+				 * .getSelectedItem().toString(), dodjcbjahr
+				 * .getSelectedItem().toString(), auswahl
+				 * .getSelection().getActionCommand(), jtfpseudonym.getText(),
+				 * jtfinstrument.getText(), jtfsolostueck.getText(),
+				 * jtfreferenz.getText());
+				 * System.out.println(artistdata.toString());
+				 * artistdata.insert();
+				 */
+
+				Musiker musikereintragen = new Musiker(jtftitel.getText(),
+						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
+								.getText(), jtfname.getText(), jcbtag
+								.getSelectedItem(), jcbmonat.getSelectedItem().toString(),
+						jcbjahr.getSelectedItem(), dodjcbtag.getSelectedItem(),
+						dodjcbmonat.getSelectedItem(), dodjcbjahr
+								.getSelectedItem(), auswahl.getSelection()
+								.getActionCommand(), jtfpseudonym.getText(),
+						jtfinstrument.getText(), jtfsolostueck.getText(),
+						jtfreferenz.getText());
+
 				Musiker.insert();
 			}
 		});
-		
+
 	}
 }

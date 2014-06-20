@@ -86,5 +86,15 @@ public final class Helfer {
 
 		return datum;
 	}
+	
+	// Switch Mehtode zum Abändern von String to int bei Monaten
 
+	public int monatUmwandlung (String monat){
+		
+	int monatzahl = 0;
+	
+	return monatzahl;
+		
+	}
+	
 }

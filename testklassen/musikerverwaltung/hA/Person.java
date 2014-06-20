@@ -6,7 +6,7 @@ public class Person extends Mensch {
 	private String name, vorname, geburtsdatum, geschlecht, titel, vorsatz,
 			zusatz, todesdatum, lebt;
 
-	private int geburtstag, geburtsmonat, geburtsjahr;
+	private int geburtstag, geburtsmonat, geburtsjahr, todesjahr, todestag, todesmonat;
 
 	// Konstruktor#1, weisst die Parameter (aus Person) den Klassen-Attributen
 	// zu
@@ -36,6 +36,26 @@ public class Person extends Mensch {
 		this.geburtsdatum = geburtsdatum;
 		this.todesdatum = todesdatum;
 	}
+	
+	// Konstruktor#3, weisst die Parameter (aus Person) den Klassen-Attributen
+		// zu
+		public Person(String name, String vorname, String titel, String vorsatz,
+				String zusatz, String geschlecht, int geburtstag, int geburtsmonat, int geburtsjahr,
+				int todestag, int todesmonat, int todesjahr) {
+
+			this.name = name;
+			this.vorname = vorname;
+			this.titel = titel;
+			this.vorsatz = vorsatz;
+			this.zusatz = zusatz;
+			this.geburtstag = geburtstag;
+			this.geburtsmonat = geburtsmonat;
+			this.geburtsjahr = geburtsjahr;
+			this.todestag = todestag;
+			this.todesmonat = todesmonat;
+			this.todesjahr =  todesjahr;
+			this.geschlecht = geschlecht;
+		}
 
 	public String getTitel() {
 		return titel;
@@ -86,19 +106,19 @@ public class Person extends Mensch {
 	@Override
 	public int getTodesTag() {
 		// TODO Auto-generated method stub
-		return 0;
+		return todestag;
 	}
 
 	@Override
 	public int getTodesMonat() {
 		// TODO Auto-generated method stub
-		return 0;
+		return todesmonat;
 	}
 
 	@Override
 	public int getTodesJahr() {
 		// TODO Auto-generated method stub
-		return 0;
+		return todesjahr;
 	}
 
 	@Override
