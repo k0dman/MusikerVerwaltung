@@ -50,6 +50,9 @@ public class MusicLounge13 extends JFrame {
 	// JButton
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
+	// GradientJPanels
+	private GradientJPanels02 gpright, gpleft, gpnew, gpmain, gpfooter;
+
 	// Konstruktor
 	private MusicLounge13() {
 
@@ -66,12 +69,12 @@ public class MusicLounge13 extends JFrame {
 		bgheader = new Color(214, 214, 214);
 
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-		GradientJPanels02 gpright = new GradientJPanels02("gpheaderright");
-		GradientJPanels02 gpleft = new GradientJPanels02("gpheaderleft");
-		GradientJPanels02 gpnew = new GradientJPanels02("gpnew");
-		GradientJPanels02 gpmain = new GradientJPanels02("gpmain");
+		gpright = new GradientJPanels02("gpheaderright");
+		gpleft = new GradientJPanels02("gpheaderleft");
+		gpnew = new GradientJPanels02("gpnew");
+		gpmain = new GradientJPanels02("gpmain");
 		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
-		GradientJPanels02 gpfooter = new GradientJPanels02("gpfooter");
+		gpfooter = new GradientJPanels02("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
@@ -135,7 +138,11 @@ public class MusicLounge13 extends JFrame {
 
 		// JLabel erzeugen
 		jlheader = new JLabel("MusicLounge");
+
+		// Instanz der Klasse Incons erzeugen
 		Icons searchicon = new Icons();
+
+		// JLabel Icon zuweisen
 		jlsearch = new JLabel(searchicon.icons[3]);
 
 		// JButton erzeugen
@@ -164,12 +171,12 @@ public class MusicLounge13 extends JFrame {
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
 
-		// JButton der >jpinfo< hinzufuegen
+		// JButton der >jpselect< hinzufuegen
 		jpselect.add(jbmaintable);
 		jpselect.add(jbnewart);
 		jpselect.add(jbnewband);
 
-		// der Instanz das JPanel >jpselect< hinzufuegen
+		// der Instanz von GradientPanel das JPanel >jpselect< hinzufuegen
 		gpnew.add(jpselect);
 		gpnew.setPreferredSize(new Dimension(200, 50));
 

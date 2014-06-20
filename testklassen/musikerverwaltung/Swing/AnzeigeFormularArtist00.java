@@ -3,11 +3,7 @@ package musikerverwaltung.Swing;
 import java.awt.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import javax.swing.*;
-
-import musikerverwaltung.*;
-import musikerverwaltung.Methods.AnzeigeDaten;
 import musikerverwaltung.hA.*;
 
 public class AnzeigeFormularArtist00 extends JPanel {
@@ -28,21 +24,16 @@ public class AnzeigeFormularArtist00 extends JPanel {
 			jtfinstrument, jtfsolostueck, jtfreferenz;
 
 	// JPanel f\u00FCr jpmainartist
+	private JPanel jpmainartist, jpmainright;
 
-	private JPanel jpmainartist;
-
-	// JPanel f\u00FCr Button
-	private JPanel jpmainRight;
-
-	// Deklaration der Auswahlvariablen
-	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
-	// ist.
+	// JComoboxBox
 	private JComboBox<String> jcbmonat, dodjcbmonat;
 	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
 
 	// Panels daf\u00FCr
 	private JPanel jpdatum, dodjpdatum, geschlechtgruppe;
 
+	// String Array fuer die Monatsnamen
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
@@ -51,16 +42,13 @@ public class AnzeigeFormularArtist00 extends JPanel {
 			"November", "Dezember" };
 
 	// JButton
-
 	private JButton jbsubmit;
 
-	// JJRadioButton
-
+	// JRadioButton
 	private JRadioButton rbmann, rbfrau, rbkeineahnung;
 
+	// Button Group
 	private ButtonGroup auswahl;
-
-	private AnzeigeDaten artistdata;
 
 	public JPanel jpmainDesc() {
 
@@ -119,38 +107,14 @@ public class AnzeigeFormularArtist00 extends JPanel {
 
 	public JPanel jpmainInput(Object artist) {
 
+		// Neues JPanel erzeugen, dass mittig angezeigt wird in der JTabbedPane
 		JPanel jpmainInput = new JPanel(new GridLayout(13, 1, 1, 10));
 
+		// Lueckenfueller
 		fueller = new JLabel("");
 		jpmainInput.add(fueller);
 
 		// JTextFields erzeugen
-
-		/*System.out.println(artist + " Jey");
-
-		jtfvorname = new JTextField();
-
-		String vorname = "";
-		String name = "";
-		String[] artist1 = String.valueOf(artist).split("[ ]");
-		for (int i = 0; i < artist1.length; i++) {
-			switch (i) {
-			case 0:
-				vorname = artist1[i];
-				break;
-			case 1:
-				name = artist1[i];
-				break;
-
-			}
-
-		}*/
-		
-		Musiker test = new Musiker(String.valueOf(artist));
-		
-
-		//tfvorname.setText(DBMethods01.DBSelectArtist(artist).get(1));
-
 		jtfname = new JTextField();
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
@@ -164,17 +128,23 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
 		jtfvorname = new JTextField();
+
+		// Instanz der Klasse Musiker erzeugen und Pseudonym uebergeben um
+		// entsprechenden >SELECT< ausfuehren zu koennen in DB-Methoden
+		Musiker musiker = new Musiker(String.valueOf(artist));
 		
-		jtfvorname.setText(test.getMusikerVorname());
-		jtfname.setText(test.getMusikerName());
-		jtftitel.setText(test.getMusikerTitel());
-		jtfvorsatz.setText(test.getMusikerVorsatz());
-		jtfzusatz.setText(test.getMusikerZusatz());
-		//--->hier geschlechtgurppe;
-		jtfpseudonym.setText(test.getMusikerPseudonym());
-		jtfinstrument.setText(test.getMusikerInstrument());
-		jtfreferenz.setText(test.getMusikerReferenz());
-		jtfsolostueck.setText(test.getMusikerStueckSolo());
+		// Texte setzen die aus der MusikerKlasse-DBKlasse kommen
+		jtfvorname.setText(musiker.getMusikerVorname());
+		jtfname.setText(musiker.getMusikerName());
+		jtftitel.setText(musiker.getMusikerTitel());
+		jtfvorsatz.setText(musiker.getMusikerVorsatz());
+		jtfzusatz.setText(musiker.getMusikerZusatz());
+		// --->hier geschlechtgruppe;
+		jtfpseudonym.setText(musiker.getMusikerPseudonym());
+		jtfinstrument.setText(musiker.getMusikerInstrument());
+		jtfreferenz.setText(musiker.getMusikerReferenz());
+		jtfsolostueck.setText(musiker.getMusikerStueckSolo());
+
 		// Button erzeugen
 
 		// Erzeugen der Auswahlen
@@ -222,12 +192,13 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		dodjpdatum.add(dodjcbmonat);
 		dodjpdatum.add(dodjcbjahr);
 
+		// JRadioButtons erzeugen
+
 		rbmann = new JRadioButton("Mann");
 		rbfrau = new JRadioButton("Frau");
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
 
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
-
 		auswahl = new ButtonGroup();
 		auswahl.add(rbmann);
 		auswahl.add(rbfrau);
@@ -237,7 +208,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		geschlechtgruppe.add(rbkeineahnung);
 
 		// JTextfields verg\u00F6sern
-
 		jtfname.setColumns(10);
 		jtfvorname.setColumns(10);
 		jtftitel.setColumns(10);
@@ -282,7 +252,6 @@ public class AnzeigeFormularArtist00 extends JPanel {
 		jpmainInput.add(jtfreferenz);
 
 		// ToolTips hinzuf\u00FCgen
-
 		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
 		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
 		rbkeineahnung
@@ -318,54 +287,36 @@ public class AnzeigeFormularArtist00 extends JPanel {
 	public JPanel jpmainRight() {
 
 		// JPanel erzeugen
-		jpmainRight = new JPanel(new GridLayout(13, 1, 1, 10));
+		jpmainright = new JPanel(new GridLayout(12, 1, 2, 2));
+		jpmainright.setPreferredSize(new Dimension(50, 100));
 
 		// JButton erzeugen
-		jbsubmit = new JButton("Eintragen");
-		jbsubmit.setPreferredSize(new Dimension(10, 20));
+		jbsubmit = new JButton("Speichern");
+
+		// In Arbeit => Groesse des Eintragen-Buttons setzen
+		jbsubmit.setPreferredSize(new Dimension(50, 100));
 
 		// L\u00FCenf\u00FCller einf\u00FCgen
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
-		fueller = new JLabel("");
-		jpmainRight.add(fueller);
+		for (int i = 0; i < 11; i++) {
+			fueller = new JLabel("");
+			jpmainright.add(fueller);
+		}
 
 		// JButton dem JPanel hinzuf\u00FCgen
-		jpmainRight.add(jbsubmit, BorderLayout.SOUTH);
+		jpmainright.add(jbsubmit);
 		// ToolTip hinzuf\u00FCgen
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten anzulegen");
 
-		// In Arbeit
-		jbsubmit.setPreferredSize(new Dimension(0, 0));
-
-		return jpmainRight;
+		return jpmainright;
 
 	}
 
+	// Methode, die die drei JPanels zusammenfuehrt
 	public JPanel jpmainArtist(Object artist) {
+		// JPanel erzeugen, dem drei JPanels hinzugefuegt werden
+		jpmainartist = new JPanel(new GridLayout(1, 3, 4, 4));
 
-		jpmainartist = new JPanel(new GridLayout(1, 2, 4, 4));
-
+		// hinzufuegen der JPanels
 		jpmainartist.add(jpmainDesc());
 		jpmainartist.add(jpmainInput(artist));
 		jpmainartist.add(jpmainRight());
