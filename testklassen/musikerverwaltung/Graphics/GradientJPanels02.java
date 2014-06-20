@@ -70,7 +70,7 @@ public final class GradientJPanels02 extends JPanel {
 					getWidth(), getHeight() / 2, Color.LIGHT_GRAY);
 			g2d.setPaint(gp);
 
-			g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
+			g2d.fillRect(0, 0,getWidth(), getHeight());
 			break;
 
 		case "gpfooter":

@@ -22,8 +22,6 @@ public class MusicLounge13 extends JFrame {
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle02 jtpmain = new Uebersichtstabelle02();
-	// Instanz AddArtist
-	private AddTabs01 addartist;
 
 	// Farben
 
@@ -68,12 +66,12 @@ public class MusicLounge13 extends JFrame {
 		bgheader = new Color(214, 214, 214);
 
 		// Farbverlaeufe aus der Klasse >GradientPanel<
-		GradientJPanels01 gpright = new GradientJPanels01("gpheaderright");
-		GradientJPanels01 gpleft = new GradientJPanels01("gpheaderleft");
-		GradientJPanels01 gpnew = new GradientJPanels01("gpnew");
-		GradientJPanels01 gpmain = new GradientJPanels01("gpmain");
+		GradientJPanels02 gpright = new GradientJPanels02("gpheaderright");
+		GradientJPanels02 gpleft = new GradientJPanels02("gpheaderleft");
+		GradientJPanels02 gpnew = new GradientJPanels02("gpnew");
+		GradientJPanels02 gpmain = new GradientJPanels02("gpmain");
 		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
-		GradientJPanels01 gpfooter = new GradientJPanels01("gpfooter");
+		GradientJPanels02 gpfooter = new GradientJPanels02("gpfooter");
 
 		// Gibt ContentPane Objekt zurueck
 		copa = getContentPane();
