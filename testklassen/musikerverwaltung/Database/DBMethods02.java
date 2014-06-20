@@ -78,7 +78,50 @@ public final class DBMethods02 {
 		}
 		return results;
 	}
-	
+	public static final Vector<Vector<String>> DBSearch(String keyword) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> results = new Vector<Vector<String>>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson"
+							+ " = musiker.idperson WHERE CONCAT(name, vorname, pseudonym, stuecksolo) like '%"
+							+ keyword + "%'");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> person = new Vector<String>();
+
+				person.add(rs.getString("pseudonym"));
+				person.add(rs.getString("stuecksolo"));
+
+				results.add(person);
+
+			}
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return results;
+	}
 	
 
 	public static final void insert(String titel, String namensvorsatz,

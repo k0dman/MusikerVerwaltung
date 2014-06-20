@@ -38,6 +38,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 	// Schrift:
 	private Font ftfield;
 	public String name;
+	
 
 	public JTabbedPane jtpmaindesc() {
 
