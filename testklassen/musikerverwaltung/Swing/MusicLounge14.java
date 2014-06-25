@@ -6,11 +6,11 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import vorlagen.RoundJTextField01;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MusicLounge14 extends JFrame {
 
@@ -46,14 +46,14 @@ public class MusicLounge14 extends JFrame {
 	// JLabels
 	private JLabel jlheader, jlsearch, jlmenudate;
 
-	// JTextField
-	private RoundJTextField03 jtfsearch;
-
 	// JButton
 	private JButton jbmaintable, jbnewart, jbnewband, jbedit;
 
 	// GradientJPanels
 	private GradientJPanels03 gpright, gpleft, gpnew, gpmain, gpfooter;
+
+	// JTextField
+	private RoundJTextField03 jtfsearch;
 
 	// Konstruktor
 	private MusicLounge14() {
@@ -73,7 +73,7 @@ public class MusicLounge14 extends JFrame {
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 		gpright = new GradientJPanels03("gpheaderright");
 		gpleft = new GradientJPanels03("gpheaderleft");
-		gpnew = new GradientJPanels03("gpnew");
+		//gpnew = new GradientJPanels03("gpnew");
 		gpmain = new GradientJPanels03("gpmain");
 		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
 		gpfooter = new GradientJPanels03("gpfooter");
@@ -131,7 +131,7 @@ public class MusicLounge14 extends JFrame {
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
 		// jpall.add(gpinfo, BorderLayout.EAST);
-		jpall.add(gpnew, BorderLayout.WEST);
+		//jpall.add(gpnew, BorderLayout.WEST);
 		jpall.add(gpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
@@ -165,10 +165,14 @@ public class MusicLounge14 extends JFrame {
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
 
-		// >jpmain< unsichtbar machen
+		// JTabbedPane einbinden
 		// Pointer auf die Variable legen
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
+		
+		// Tabs hinzufuegen
+		AddTabs02.insertArtist(jtpmain.jtpmaindesc, "Interpret eintragen");
+		AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
 
 		// Schriftart hinzufuegen
 		jlheader.setFont(fheader);
@@ -179,8 +183,8 @@ public class MusicLounge14 extends JFrame {
 		jpselect.add(jbnewband);
 
 		// der Instanz von GradientPanel das JPanel >jpselect< hinzufuegen
-		gpnew.add(jpselect);
-		gpnew.setPreferredSize(new Dimension(200, 50));
+		//gpnew.add(jpselect);
+	//	gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
 		// gpinfo.add(jpinfo.add(jbedit));
@@ -195,6 +199,7 @@ public class MusicLounge14 extends JFrame {
 		// ActionLister();
 		actionListenerJButton();
 		actionListenerJMenuItems();
+		mouseListenerJTP();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -209,20 +214,6 @@ public class MusicLounge14 extends JFrame {
 
 	private void actionListenerJButton() {
 
-		// Button
-		jbnewart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				AddTabs02.insertArtist(jtpmain.jtpmaindesc,
-						"Interpret eintragen");
-			}
-		});
-		// Button
-		jbnewband.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
-
-			}
-		});
 		// Button
 		jbmaintable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -262,6 +253,49 @@ public class MusicLounge14 extends JFrame {
 			}
 		});
 
+	}
+	
+	public void mouseListenerJTP(){
+		
+		jtpmain.jtpmaindesc.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getButton() == 3) {
+					
+					int zahl = jtpmain.jtpmaindesc.getSelectedIndex();
+					JOptionPane.showMessageDialog(null, zahl);
+					jtpmain.jtpmaindesc.remove(zahl);
+					
+				}
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 	}
 
 }

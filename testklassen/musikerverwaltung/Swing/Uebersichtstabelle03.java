@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import vorlagen.DBMethods01;
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons01;
 import diverse.*;
@@ -17,26 +16,21 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 	// Felder:
 
-
 	// JTable
-
 	public JTable jtmaintable;
 
 	// DefaultTableModel
-
 	private DefaultTableModel dtm;
 
 	// JTabbedPane
 	public JTabbedPane jtpmaindesc;
 
 	// JScrollPane
-
 	private JScrollPane jspmaintable;
 
 	// Schrift:
 	private Font ftfield;
 	public String name;
-	
 
 	public JTabbedPane jtpmaindesc() {
 
@@ -45,7 +39,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		dtm = new DefaultTableModel(1, 3);
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
-		dtm.setColumnIdentifiers(DBMethods01.COLUMN_IDENTIFIERS);
+		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
@@ -57,9 +51,9 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = DBMethods01.DBSelectVector();
+		Vector<Vector<String>> results = DBMethods02.DBSelectVector();
 		//
-		dtm.setDataVector(results, DBMethods01.COLUMN_IDENTIFIERS);
+		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
 		// Methode
 		dtm.fireTableDataChanged();
@@ -93,15 +87,13 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();
-
+		
+		
 		return jtpmaindesc;
 
 	}
 
-	public Object artist(Object artist) {
-
-		return artist;
-	}
+	
 
 	public void mouseListenertable() {
 
@@ -134,7 +126,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+			
 				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
 				if (e.getButton() == 2) {
 
