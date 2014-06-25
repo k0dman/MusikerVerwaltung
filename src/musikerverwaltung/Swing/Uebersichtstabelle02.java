@@ -1,24 +1,22 @@
-package diverse;
-
-/*In dieser Klasse wird die Tabelle einer JTabbedPane hinzufuegt*/
+package musikerverwaltung.Swing;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import vorlagen.DBMethods01;
+import musikerverwaltung.Database.*;
+import musikerverwaltung.Graphics.Icons01;
+import diverse.*;
 
-public class JTableUebersichtstab00 extends JTable {
-
-	// Instanzen fuer JPanel erzeugen
-
-	private JtpUebersichtstab00 jpaddpanel = new JtpUebersichtstab00();
+public class Uebersichtstabelle02 extends JTabbedPane {
 
 	// Felder:
+
 
 	// JTable
 
@@ -28,7 +26,19 @@ public class JTableUebersichtstab00 extends JTable {
 
 	private DefaultTableModel dtm;
 
-	public JTable jtmaintable() {
+	// JTabbedPane
+	public JTabbedPane jtpmaindesc;
+
+	// JScrollPane
+
+	private JScrollPane jspmaintable;
+
+	// Schrift:
+	private Font ftfield;
+	public String name;
+	
+
+	public JTabbedPane jtpmaindesc() {
 
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
@@ -55,9 +65,42 @@ public class JTableUebersichtstab00 extends JTable {
 		dtm.fireTableDataChanged();
 		// #############################//
 
-		
+		// Panel erzeugen mit GridLayout
+		JTabbedPane jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
+				JTabbedPane.SCROLL_TAB_LAYOUT);
 
-		return jtmaintable;
+		// Schriften erzeugen
+		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
+
+		// JTable der JScrollPane hinzufuegen
+		jspmaintable = new JScrollPane(jtmaintable);
+
+		// JScrollPane der JTabbedPane hinzufuegen
+
+		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, auﬂerdem schoener:) //860 , 600
+		jspmaintable.setPreferredSize(new Dimension(860, 600));
+
+		// Viewport setzen
+		jspmaintable.setViewportView(jtmaintable);
+
+		// Icons aus Icon-Klasse holen
+		Icons01 tabicons = new Icons01();
+
+		// Hinzufuegen der JScrollPane zur JTabbedPane
+		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
+
+		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
+		// zurueckpacken)
+		mouseListenertable();
+
+		return jtpmaindesc;
+
+	}
+
+	public Object artist(Object artist) {
+
+		return artist;
 	}
 
 	public void mouseListenertable() {
@@ -100,7 +143,7 @@ public class JTableUebersichtstab00 extends JTable {
 					int column = jtmaintable.getSelectedColumn();
 
 					// Wenn es sich um die erste Spalte handelt:
-					if (column == 1) {
+					if (column == 0) {
 
 						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
 						Object artist = jtmaintable.getValueAt(row, column);
@@ -115,12 +158,13 @@ public class JTableUebersichtstab00 extends JTable {
 								+ title;
 
 						JOptionPane.showMessageDialog(null, ausgabe);
-					
-				
-					
+
+						// Methodenaufruf um Tab zu adden
+						AddTabs02.showArtist(artist, title, jtpmaindesc);
+
 					}
 					// Wenn es sich um die zweite Spalte handelt:
-					else if (column == 2) {
+					else if (column == 1) {
 
 						Object artist = jtmaintable.getValueAt(row, column - 1);
 						Object title = jtmaintable.getValueAt(row, column);
@@ -132,11 +176,11 @@ public class JTableUebersichtstab00 extends JTable {
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
 
+						AddTabs02.showArtist(artist, title, jtpmaindesc);
+
 					}
 				}
 			}
 		});
-
 	}
-	
 }

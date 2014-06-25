@@ -1,16 +1,17 @@
-package vorlagen;
+package musikerverwaltung.Graphics;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
-public final class GradientJPanels01 extends JPanel {
+public final class GradientJPanels03 extends JPanel {
 
 	public String jpanel;
 
-	public GradientJPanels01(String jpanel) {
+	public GradientJPanels03(String jpanel) {
 
 		setOpaque(true);
 		this.jpanel = jpanel;
@@ -69,7 +70,7 @@ public final class GradientJPanels01 extends JPanel {
 					getWidth(), getHeight() / 2, Color.LIGHT_GRAY);
 			g2d.setPaint(gp);
 
-			g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
+			g2d.fillRect(0, 0,getWidth(), getHeight());
 			break;
 
 		case "gpfooter":
