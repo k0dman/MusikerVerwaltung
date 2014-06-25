@@ -73,7 +73,7 @@ public class MusicLounge14 extends JFrame {
 		// Farbverlaeufe aus der Klasse >GradientPanel<
 		gpright = new GradientJPanels03("gpheaderright");
 		gpleft = new GradientJPanels03("gpheaderleft");
-		//gpnew = new GradientJPanels03("gpnew");
+		// gpnew = new GradientJPanels03("gpnew");
 		gpmain = new GradientJPanels03("gpmain");
 		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
 		gpfooter = new GradientJPanels03("gpfooter");
@@ -131,7 +131,7 @@ public class MusicLounge14 extends JFrame {
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
 		// jpall.add(gpinfo, BorderLayout.EAST);
-		//jpall.add(gpnew, BorderLayout.WEST);
+		// jpall.add(gpnew, BorderLayout.WEST);
 		jpall.add(gpfooter, BorderLayout.SOUTH);
 
 		// JPanels der >jpheader< hinzufuegen
@@ -169,7 +169,7 @@ public class MusicLounge14 extends JFrame {
 		// Pointer auf die Variable legen
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
-		
+
 		// Tabs hinzufuegen
 		AddTabs02.insertArtist(jtpmain.jtpmaindesc, "Interpret eintragen");
 		AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
@@ -183,8 +183,8 @@ public class MusicLounge14 extends JFrame {
 		jpselect.add(jbnewband);
 
 		// der Instanz von GradientPanel das JPanel >jpselect< hinzufuegen
-		//gpnew.add(jpselect);
-	//	gpnew.setPreferredSize(new Dimension(200, 50));
+		// gpnew.add(jpselect);
+		// gpnew.setPreferredSize(new Dimension(200, 50));
 
 		// JButton der >jpedit< hinzufuegen
 		// gpinfo.add(jpinfo.add(jbedit));
@@ -254,48 +254,55 @@ public class MusicLounge14 extends JFrame {
 		});
 
 	}
-	
-	public void mouseListenerJTP(){
-		
+
+	public void mouseListenerJTP() {
+
 		jtpmain.jtpmaindesc.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if (e.getButton() == 3) {
-					
 					int zahl = jtpmain.jtpmaindesc.getSelectedIndex();
-					JOptionPane.showMessageDialog(null, zahl);
-					jtpmain.jtpmaindesc.remove(zahl);
-					
+					int auswahl;
+					if (zahl > 2) {
+						auswahl = JOptionPane.showConfirmDialog(null,
+								"Bist du sicher ? Alle Daten gehen verloren !",
+								"Tab-Schlieﬂen", JOptionPane.YES_NO_OPTION);
+						if (auswahl == JOptionPane.YES_OPTION) {
+
+							JOptionPane.showMessageDialog(null, zahl);
+							jtpmain.jtpmaindesc.remove(zahl);
+						}
+					}
 				}
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 	}
 
 }

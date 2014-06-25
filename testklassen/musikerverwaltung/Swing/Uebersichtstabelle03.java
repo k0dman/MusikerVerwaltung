@@ -87,13 +87,10 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();
-		
-		
+
 		return jtpmaindesc;
 
 	}
-
-	
 
 	public void mouseListenertable() {
 
@@ -103,6 +100,41 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtmaintable.getSelectedRow();
+					int column = jtmaintable.getSelectedColumn();
+
+					// Wenn es sich um die erste Spalte handelt:
+					if (column == 0) {
+
+						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
+						Object artist = jtmaintable.getValueAt(row, column);
+						Object title = jtmaintable.getValueAt(row, column + 1);
+
+						// Die Objecte in Strings casten
+						artist = String.valueOf(artist);
+						title = String.valueOf(title);
+
+						// Methodenaufruf um Tab zu adden
+						AddTabs02.showArtist(artist, title, jtpmaindesc);
+
+					}
+					// Wenn es sich um die zweite Spalte handelt:
+					else if (column == 1) {
+
+						Object artist = jtmaintable.getValueAt(row, column - 1);
+						Object title = jtmaintable.getValueAt(row, column);
+
+						artist = String.valueOf(artist);
+						title = String.valueOf(title);
+
+						AddTabs02.showArtist(artist, title, jtpmaindesc);
+
+					}
+				}
 			}
 
 			@Override
@@ -126,52 +158,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-			
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtmaintable.getSelectedRow();
-					int column = jtmaintable.getSelectedColumn();
-
-					// Wenn es sich um die erste Spalte handelt:
-					if (column == 0) {
-
-						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
-						Object artist = jtmaintable.getValueAt(row, column);
-						Object title = jtmaintable.getValueAt(row, column + 1);
-
-						// Die Objecte in Strings casten
-						artist = String.valueOf(artist);
-						title = String.valueOf(title);
-
-						// Zusammenfassen in eine Var
-						String ausgabe = "Artist: " + artist + " " + "Titel: "
-								+ title;
-
-						JOptionPane.showMessageDialog(null, ausgabe);
-
-						// Methodenaufruf um Tab zu adden
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
-
-					}
-					// Wenn es sich um die zweite Spalte handelt:
-					else if (column == 1) {
-
-						Object artist = jtmaintable.getValueAt(row, column - 1);
-						Object title = jtmaintable.getValueAt(row, column);
-
-						artist = String.valueOf(artist);
-						title = String.valueOf(title);
-
-						String ausgabe = "Artist: " + artist + " " + "Titel: "
-								+ title;
-						JOptionPane.showMessageDialog(null, ausgabe);
-
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
-
-					}
-				}
 			}
 		});
 	}
