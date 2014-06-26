@@ -39,40 +39,42 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
-		dtm = new DefaultTableModel(1, 3);
-		
+		dtm = new DefaultTableModel(1, 3) {
+			//
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+
 		// Spaltenueberschriften aus der Methode-Klasse holen
 		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = DBMethods02.DBSelectVector();
+		Vector<Vector<String>> results = DBMethods03.DBSelectVector();
 		//
 		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
 		// Methode
 		dtm.fireTableDataChanged();
 		// #############################//
-		
-	
+
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
 		System.out.println(jtmaintable.getRowCount());
 		System.out.println(jtmaintable.getColumnCount());
-		dtm.isCellEditable(jtmaintable.getRowCount()-1, jtmaintable.getColumnCount()-1);
+
 		jtmaintable.getTableHeader().setReorderingAllowed(false);
-		// jtmaintable.setRowSelectionAllowed(false);
 
 		jtmaintable.setCellSelectionEnabled(true);
 
 		ListSelectionModel cellSelectionModel = jtmaintable.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
-		
-		
+
 		// JTable der JScrollPane hinzufuegen
 		jspmaintable = new JScrollPane(jtmaintable);
 
@@ -98,12 +100,10 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();
-		
+
 		return jtpmaindesc;
 
 	}
-	
-
 
 	public void mouseListenertable() {
 
