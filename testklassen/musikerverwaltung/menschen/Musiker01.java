@@ -126,35 +126,40 @@ public class Musiker01 extends Person01 {
 	public String getMusikerGeschlecht() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(5));
 	}
-	public int getMusikerGTag() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(6));
+	
+	public String getMusikerLebt() {
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(6));
 	}
-	public int getMusikerGMonat() {
+	
+	public int getMusikerGTag() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(7));
 	}
-	public int getMusikerGJahr() {
+	public int getMusikerGMonat() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(8));
 	}
+	public int getMusikerGJahr() {
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(9));
+	}
 	public int getMusikerTTag() {
-		return Integer.parseInt((DBMethods03.DBSelectArtist(getPseudonym()).get(9)));
+		return Integer.parseInt((DBMethods03.DBSelectArtist(getPseudonym()).get(10)));
 	}
 	public int getMusikerTMonat() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(10));
-	}
-	public int getMusikerTJahr() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(11));
 	}
-	public String getMusikerPseudonym() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(12));
+	public int getMusikerTJahr() {
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(12));
 	}
-	public String getMusikerInstrument() {
+	public String getMusikerPseudonym() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(13));
 	}
-	public String getMusikerStueckSolo() {
+	public String getMusikerInstrument() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(14));
 	}
-	public String getMusikerReferenz() {
+	public String getMusikerStueckSolo() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(15));
+	}
+	public String getMusikerReferenz() {
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(16));
 	}
 
 }

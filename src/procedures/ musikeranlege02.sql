@@ -1,42 +1,42 @@
-/** Musiker anlegen *//
 use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerErstellen` (musvorname varchar(100), musname varchar(100),
 mustitel varchar(100), musvorsatz varchar(100), muszusatz varchar(100),
-musgeschlecht varchar(1), musgtag varchar(100), musgmonat varchar(100), musgjahr varchar(100),
-musttag varchar(100), mustmonat varchar(100), mustjahr varchar(100),
+musgeschlecht varchar(1),muslebt varchar(1), musgtag int(2), musgmonat int(2), musgjahr int(4),
+musttag int(2), mustmonat int(2), mustjahr int(4),
 pseudonym varchar(100), instrument varchar(100), stuecksolo varchar(100),
-referenz varchar(100), idperson integer)
+referenz varchar(100), id_person int(11), id_instrument int(11), id_referenz int(11), id_solostueck int(11))
 BEGIN
-declare idperson integer;
-declare idmusiker integer;
+
+declare id_musiker int;
+
+/* Personen Tabelle fuellen */
 insert into person (name, vorname, titel, vorsatz, zusatz,
-geschlecht, gtag, gmonat, gjahr, ttag, tmonat, tjahr)
+geschlecht, lebt,  gtag, gmonat, gjahr, ttag, tmonat, tjahr)
 values (musname, musvorname, mustitel, musvorsatz, muszusatz,
-musgeschlecht, musgtag, musgmonat, musgjahr, musttag, mustmonat, mustjahr);
-select last_insert_id() into idperson;
-insert into musiker (idperson, pseudonym, instrument, stuecksolo,
-referenz, idmusiker)
-values (idperson, pseudonym, instrument, stuecksolo,
-referenz, idmusiker);
+musgeschlecht, muslebt, musgtag, musgmonat, musgjahr, musttag, mustmonat, mustjahr);
 
-END$$
-DELIMITER ;
+/* Musiker Tabelle fuelen */
+select last_insert_id() into id_person;
+insert into musiker (id_musiker, id_person, pseudonym)
+values (id_musiker, id_person, pseudonym);
 
-/** Gruppe anlegen *//
-use musiclounge;
+/* Instrument eintragen */
+select last_insert_id() into id_musiker;
+insert into instrument (id_musiker, instrument )
+values (id_musiker, instrument);
 
-CREATE PROCEDURE DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeErstellen` (gridgruppe smallint, grname varchar(100),
-grmitglied smallint, grehemalig smallint, grstueckgruppe varchar(100),
-grreferenz varchar(100))
-BEGIN
-declare idgruppe smallint;
-insert into gruppe (name,stueckgruppe, referenz)
-values (grname, grstueckgruppe, grreferenz);
-select last_insert_id() into idgruppe;
-insert into gruppehelp (idmusikerh, idgruppe, idehemalig)
-values (grmitglied, idgruppe, grehemalig);
+/* Solostueck eintragen */
+select last_insert_id() into id_musiker;
+insert into stuecksolo (id_musiker, stuecksolo )
+values (id_musiker, stuecksolo);
+
+/* Referenz eintragen */
+select last_insert_id() into id_musiker;
+insert into referenz (id_musiker, referenz)
+values (id_musiker, referenz);
+
+
 END$$
 DELIMITER ;

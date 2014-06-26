@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 public final class DBMethods03 {
-	
+
 	// Diese Eintraege werden zum Verbindungsaufbau benoetigt
 	// Die Variabeln werden als >final< deklariert, da es sich hier um
 	// Konstanten handelt, die nicht mehr veraendert werden sollen
@@ -51,7 +51,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT idperson,pseudonym,stuecksolo FROM musiker WHERE 1");
+					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus JOIN stuecksolo ss ON mus.id_musiker = ss.id_musiker WHERE 1 order by pseudonym");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -74,6 +74,7 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
+
 	public static final Vector<Vector<String>> DBSearch(String keyword) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -118,14 +119,12 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
-	
 
 	public static final void insert(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
-			int geburtstag, int geburtsmonat, int geburtsjahr,
-			int todestag, int todesmonat, int todesjahr,
-			String geschlecht, String pseudonym, String instrument,
-			String solostueck, String referenz) {
+			int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
+			int todesmonat, int todesjahr, String geschlecht, String pseudonym,
+			String instrument, String solostueck, String referenz) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -192,7 +191,8 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson = musiker.idperson WHERE `musiker`.`pseudonym` = '"+artist+"' LIMIT 0 , 30");
+					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
+							+ artist + "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -204,6 +204,7 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("vorsatz"));
 				artistdata.add(rs.getString("zusatz"));
 				artistdata.add(rs.getString("geschlecht"));
+				artistdata.add(rs.getString("lebt"));
 				artistdata.add(rs.getString("gtag"));
 				artistdata.add(rs.getString("gmonat"));
 				artistdata.add(rs.getString("gjahr"));
@@ -216,7 +217,6 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("referenz"));
 			}
 		}
-		
 
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
@@ -225,13 +225,9 @@ public final class DBMethods03 {
 		}
 		return artistdata;
 	}
-	
-	
-	
+
 	public static final String[] DBSelectPseudonym() {
 
-		
-		
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
@@ -248,33 +244,27 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt
-					.executeQuery("SELECT pseudonym FROM musiker WHERE 1");
+			rs = stmt.executeQuery("SELECT pseudonym FROM musiker WHERE 1");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
 			int a = 0;
 			while (rs.next()) {
-				
+
 				pseudonymsdata[a] = rs.getString("pseudonym");
 				a++;
-				
+
+			}
+
+			rs.close();
 		}
 
-		 
-
-		rs.close();}
-		
-		
-		
-		
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return pseudonymsdata;
-	
 
-	}	}
-
+	}
+}
