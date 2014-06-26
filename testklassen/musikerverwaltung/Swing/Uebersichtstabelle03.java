@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
+
 import javax.swing.*;
+import javax.swing.plaf.TableUI;
 import javax.swing.table.DefaultTableModel;
+
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons01;
 import diverse.*;
@@ -37,17 +40,9 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
 		dtm = new DefaultTableModel(1, 3);
-
+		
 		// Spaltenueberschriften aus der Methode-Klasse holen
 		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
-
-		// JTable erzeugen
-		jtmaintable = new JTable(dtm);
-
-		jtmaintable.setCellSelectionEnabled(true);
-		ListSelectionModel cellSelectionModel = jtmaintable.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
@@ -58,14 +53,26 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// Methode
 		dtm.fireTableDataChanged();
 		// #############################//
+		
+	
+		// JTable erzeugen
+		jtmaintable = new JTable(dtm);
+		System.out.println(jtmaintable.getRowCount());
+		System.out.println(jtmaintable.getColumnCount());
+		dtm.isCellEditable(jtmaintable.getRowCount()-1, jtmaintable.getColumnCount()-1);
+		jtmaintable.getTableHeader().setReorderingAllowed(false);
+		// jtmaintable.setRowSelectionAllowed(false);
 
-		// Panel erzeugen mit GridLayout
-		JTabbedPane jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
-				JTabbedPane.SCROLL_TAB_LAYOUT);
+		jtmaintable.setCellSelectionEnabled(true);
 
+		ListSelectionModel cellSelectionModel = jtmaintable.getSelectionModel();
+		cellSelectionModel
+				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
-
+		
+		
 		// JTable der JScrollPane hinzufuegen
 		jspmaintable = new JScrollPane(jtmaintable);
 
@@ -81,16 +88,22 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// Icons aus Icon-Klasse holen
 		Icons01 tabicons = new Icons01();
 
+		// Panel erzeugen mit GridLayout
+		JTabbedPane jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
+				JTabbedPane.SCROLL_TAB_LAYOUT);
+
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
 
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenertable();
-
+		
 		return jtpmaindesc;
 
 	}
+	
+
 
 	public void mouseListenertable() {
 
