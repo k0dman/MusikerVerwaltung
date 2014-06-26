@@ -1,19 +1,14 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
-
 import javax.swing.*;
-import javax.swing.plaf.TableUI;
 import javax.swing.table.DefaultTableModel;
-
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons01;
-import diverse.*;
+import javax.swing.plaf.InsetsUIResource;
 
 public class Uebersichtstabelle03 extends JTabbedPane {
 
@@ -33,6 +28,8 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 	// Schrift:
 	private Font ftfield;
+	
+	// String
 	public String name;
 
 	public JTabbedPane jtpmaindesc() {
@@ -40,7 +37,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
 		dtm = new DefaultTableModel(1, 3) {
-			//
+			// Das Editieren der Zeilen Disablen
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
@@ -96,6 +93,11 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
+		jtpmaindesc.setBackground(new Color(201,201,201));
+		
+		 UIManager.put("TabbedPane.contentBorderInsets", new InsetsUIResource(2,
+	                10, 3, 10));
+	        jtpmaindesc.updateUI();
 
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
