@@ -270,8 +270,6 @@ public class MusicLounge14 extends JFrame {
 								"Bist du sicher ? Alle Daten gehen verloren !",
 								"Tab-Schlieﬂen", JOptionPane.YES_NO_OPTION);
 						if (auswahl == JOptionPane.YES_OPTION) {
-
-							JOptionPane.showMessageDialog(null, zahl);
 							jtpmain.jtpmaindesc.remove(zahl);
 						}
 					}
