@@ -268,18 +268,16 @@ public class MusicLounge14 extends JFrame {
 				if (e.getButton() == 1) {
 					int zahl = jtpmain.jtpmaindesc.getSelectedIndex();
 					int auswahl;
-					if (zahl < 2) {
-						auswahl = JOptionPane.showConfirmDialog(null,
-								"Bist du sicher ? Alle Daten gehen verloren !",
-								"Tab-Schließen", JOptionPane.YES_NO_OPTION);
-						if (auswahl == JOptionPane.YES_OPTION) {
+					if (zahl <= 2) {
+						
+					
 							
 							jpmain.revalidate();
 							jpmain.repaint();
 						}
 					}
 				}
-			}
+			
 
 			@Override
 			public void mouseExited(MouseEvent e) {
