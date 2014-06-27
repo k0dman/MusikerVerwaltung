@@ -170,7 +170,7 @@ public final class DBMethods03 {
 
 			
 
-			// Abfrage Eintrag erfolgreich war
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
