@@ -45,6 +45,7 @@ public class DBConnection01 {
 		// Falsche Daten zur DB
 		catch (Exception ex) {
 			System.out.println("false");
+			System.out.println("Probleme mit der Datenbank !");
 
 			return false;
 		}

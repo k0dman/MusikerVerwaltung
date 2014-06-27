@@ -51,11 +51,15 @@ public class AnzeigeFormularArtist01 extends JPanel {
 
 	// Button Group
 	private ButtonGroup auswahl;
+	
+	// Instanz der Klasse Musiker erzeugen und Pseudonym uebergeben um
+	// entsprechenden >SELECT< ausfuehren zu koennen in DB-Methoden
+	private Musiker01 musiker;
 
-	public JPanel jpmainDesc() {
+	public JPanel jpmainDesc(Object artist) {
 
 		// JPanel für linke Seite des JTabbedPane
-		JPanel jpmainDesc = new JPanel(new GridLayout(13, 1, 10, 10));
+		JPanel jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -75,19 +79,23 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		solostueck = new JLabel("Stueck");
 		referenz = new JLabel("Referenz");
 
-		jpmainDesc.add(ueschrift);
-		jpmainDesc.add(name);
-		jpmainDesc.add(vorname);
-		jpmainDesc.add(titel);
-		jpmainDesc.add(vorsatz);
-		jpmainDesc.add(zusatz);
-		jpmainDesc.add(geschlecht);
-		jpmainDesc.add(dob);
-		jpmainDesc.add(dod);
-		jpmainDesc.add(pseudonym);
-		jpmainDesc.add(instrument);
-		jpmainDesc.add(solostueck);
-		jpmainDesc.add(referenz);
+		//Instanz erzeugen mit Parameteruebergabe
+		musiker = new Musiker01(String.valueOf(artist));
+		
+		jpmaindesc.add(ueschrift);
+		jpmaindesc.add(name);
+		jpmaindesc.add(vorname);
+		jpmaindesc.add(titel);
+		jpmaindesc.add(vorsatz);
+		jpmaindesc.add(zusatz);
+		jpmaindesc.add(geschlecht);
+		jpmaindesc.add(dob);
+		if (musiker.getMusikerLebt().equals("n"))
+		jpmaindesc.add(dod);
+		jpmaindesc.add(pseudonym);
+		jpmaindesc.add(instrument);
+		jpmaindesc.add(solostueck);
+		jpmaindesc.add(referenz);
 
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
 		name.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -106,7 +114,7 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		// Ueberschrift setzen
 		ueschrift.setFont(ftfield);
 
-		return jpmainDesc;
+		return jpmaindesc;
 
 	}
 
@@ -133,11 +141,10 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
 		jtfvorname = new JTextField();
-
-		// Instanz der Klasse Musiker erzeugen und Pseudonym uebergeben um
-		// entsprechenden >SELECT< ausfuehren zu koennen in DB-Methoden
-		Musiker01 musiker = new Musiker01(String.valueOf(artist));
-
+		
+		//Instanz erzeugen mit Parameteruebergabe
+		musiker = new Musiker01(String.valueOf(artist));
+		
 		// Texte setzen die aus der MusikerKlasse-DBKlasse kommen
 		jtfvorname.setText(musiker.getMusikerVorname());
 		jtfname.setText(musiker.getMusikerName());
@@ -168,39 +175,41 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		for (int j = 0; j <= 100; j++)
 			jcbjahr.addItem(new Integer(aktjahr - j));
 		jcbjahr.setSelectedIndex(aktjahr - musiker.getMusikerGJahr());
-		
-		
-		// #### Hier if-Abfrage einbauen ob lebt oder nicht ### //
-		// JComboBox- Todes - Tag
-		dodjcbtag = new JComboBox<Integer>();
-		for (int t = 1; t < 32; t++)
-			dodjcbtag.addItem(new Integer(t));
-		dodjcbtag.setSelectedIndex(musiker.getMusikerTTag() - 1);
-		dodjcbtag.setEditable(false);
-		
-
-		// JComboBox - Todes - Monat
-		dodjcbmonat = new JComboBox<String>(dodmonatsname);
-		dodjcbmonat.setSelectedIndex(musiker.getMusikerTMonat() - 1);
-		dodjcbmonat.setEditable(false);
-
-		// JComboBox - Todes - Monat
-		dodjcbjahr = new JComboBox<Integer>();
-		dodjcbjahr.setEditable(true);
-		int dodaktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
-		for (int j = 0; j <= 100; j++)
-			dodjcbjahr.addItem(new Integer(dodaktjahr - j));
-		dodjcbjahr.setSelectedIndex(aktjahr - musiker.getMusikerTJahr());
 
 		// Alles in ein Panel
 		jpdatum = new JPanel();
 		jpdatum.add(jcbtag);
 		jpdatum.add(jcbmonat);
 		jpdatum.add(jcbjahr);
-		dodjpdatum = new JPanel();
-		dodjpdatum.add(dodjcbtag);
-		dodjpdatum.add(dodjcbmonat);
-		dodjpdatum.add(dodjcbjahr);
+
+		// #### Hier if-Abfrage einbauen ob lebt oder nicht ### //
+		if (musiker.getMusikerLebt().equals("n")) {
+			// JComboBox- Todes - Tag
+			dodjcbtag = new JComboBox<Integer>();
+			for (int t = 1; t < 32; t++)
+				dodjcbtag.addItem(new Integer(t));
+			dodjcbtag.setSelectedIndex(musiker.getMusikerTTag() - 1);
+			dodjcbtag.setEditable(false);
+
+			// JComboBox - Todes - Monat
+			dodjcbmonat = new JComboBox<String>(dodmonatsname);
+			dodjcbmonat.setSelectedIndex(musiker.getMusikerTMonat() - 1);
+			dodjcbmonat.setEditable(false);
+
+			// JComboBox - Todes - Monat
+			dodjcbjahr = new JComboBox<Integer>();
+			dodjcbjahr.setEditable(true);
+			int dodaktjahr = (new GregorianCalendar()).get(Calendar.YEAR);
+			for (int j = 0; j <= 100; j++)
+				dodjcbjahr.addItem(new Integer(dodaktjahr - j));
+			dodjcbjahr.setSelectedIndex(aktjahr - musiker.getMusikerTJahr());
+
+			// in ein JPanel einfuegen
+			dodjpdatum = new JPanel();
+			dodjpdatum.add(dodjcbtag);
+			dodjpdatum.add(dodjcbmonat);
+			dodjpdatum.add(dodjcbjahr);
+		}
 
 		// Pruefung ob m oder w oder ns
 		boolean m = false;
@@ -264,7 +273,8 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		jpmainInput.add(jtfzusatz);
 		jpmainInput.add(geschlechtgruppe);
 		jpmainInput.add(jpdatum);
-		jpmainInput.add(dodjpdatum);
+		if (musiker.getMusikerLebt().equals("n"))
+			jpmainInput.add(dodjpdatum);
 		jpmainInput.add(jtfpseudonym);
 		jpmainInput.add(jtfinstrument);
 		jpmainInput.add(jtfsolostueck);
@@ -278,12 +288,17 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
 		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
 		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
-		dodjcbtag
-				.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
-		dodjcbmonat
-				.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
-		dodjcbjahr
-				.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
+	
+		//Pruefung ob Musiker noch lebt
+		if (musiker.getMusikerLebt().equals("n")) {
+			dodjcbtag
+					.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
+			dodjcbmonat
+					.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
+			dodjcbjahr
+					.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
+		}
+		
 		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
 		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
 		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
@@ -335,7 +350,7 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		jpmainartist = new JPanel(new GridLayout(1, 3, 4, 4));
 
 		// hinzufuegen der JPanels
-		jpmainartist.add(jpmainDesc());
+		jpmainartist.add(jpmainDesc(artist));
 		jpmainartist.add(jpmainInput(artist));
 		jpmainartist.add(jpmainRight());
 

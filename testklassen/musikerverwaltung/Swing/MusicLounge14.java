@@ -241,20 +241,6 @@ public class MusicLounge14 extends JFrame {
 		});
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		// Konfliktfreies spaeteres paralleles Betreiben des Dialoges
-		// sicherstellen
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				new MusicLounge14();
-
-			}
-		});
-
-	}
-
 	public void mouseListenerJTP() {
 
 		jtpmain.jtpmaindesc.addMouseListener(new MouseListener() {
@@ -297,6 +283,20 @@ public class MusicLounge14 extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+
+			}
+		});
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Konfliktfreies spaeteres paralleles Betreiben des Dialoges
+		// sicherstellen
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new MusicLounge14();
 
 			}
 		});
