@@ -2,16 +2,21 @@ package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
 import musikerverwaltung.menschen.Musiker01;
+
 import javax.swing.UIManager.*;
+
 import java.awt.*;
 import java.util.*;
 
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.plaf.InsetsUIResource;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -60,7 +65,11 @@ public class MusicLounge14 extends JFrame {
 
 	// Konstruktor
 	private MusicLounge14() {
+		
+		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge14");
+		
+		// Look And Feel - Nimbus
 		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -74,7 +83,7 @@ public class MusicLounge14 extends JFrame {
 			// If Nimbus is not available, you can set the GUI to another look
 			// and feel.
 		}
-		// Titel (Aufruf mit super aus der Basisklasse)
+		
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -216,6 +225,7 @@ public class MusicLounge14 extends JFrame {
 		actionListenerJButton();
 		actionListenerJMenuItems();
 		mouseListenerJTP();
+		searchKeyListener();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -305,6 +315,39 @@ public class MusicLounge14 extends JFrame {
 
 	}
 
+	
+	public void searchKeyListener(){
+		jtfsearch.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getKeyCode() == 30) JOptionPane.showMessageDialog(null, "message1");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getKeyCode() == 30) JOptionPane.showMessageDialog(null, "message2");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getKeyCode() == 10){
+					JOptionPane.showMessageDialog(null, "wuuuu");
+					Musiker01 libaryselect = new Musiker01();
+					libaryselect.selectLibary(jtfsearch.getText());					
+				}
+				
+				
+				//Text wieder leeren - muss am Ende stehen
+				jtfsearch.setText("");
+			}
+		});
+		
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

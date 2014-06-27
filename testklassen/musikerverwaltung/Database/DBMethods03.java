@@ -188,7 +188,7 @@ public final class DBMethods03 {
 
 	}
 	
-	// Methode die Insert-Prozedur ausfuehrt
+	// Methode die Update-Prozedur ausfuehrt
 		public static final void updateArtist(int id,String titel, String namensvorsatz,
 				String vorname, String namenszusatz, String nachname,
 				int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
@@ -312,7 +312,8 @@ public final class DBMethods03 {
 		}
 		return artistdata;
 	}
-
+	
+	// Select nach Pseudonym um gezieltes Klicken in der Libary zu ermoeglichen
 	public static final String[] DBSelectPseudonym() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter

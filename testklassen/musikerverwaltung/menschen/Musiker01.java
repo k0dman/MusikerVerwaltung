@@ -118,6 +118,12 @@ public class Musiker01 extends Person01 {
 				super.getGeschlecht(), super.isTot(), getPseudonym(),
 				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
 	}
+	
+	public Vector<Vector<String>> selectLibary(String keyword){
+		Vector<Vector<String>> result = DBMethods03.DBSearch(keyword);
+		return result;
+		
+	}
 
 	// Aufruf des Selects aus der Datenbank
 	public Vector<Vector<String>> dbSelect() {

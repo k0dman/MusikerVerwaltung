@@ -41,7 +41,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 	public String name;
 	Musiker01 result = new Musiker01();
 
-	public JTabbedPane jtpmaindesc() {
+	public JTabbedPane jtpmaindesc(Vector<Vector<String>> result) {
 
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
