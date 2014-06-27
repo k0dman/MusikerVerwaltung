@@ -168,7 +168,7 @@ public final class DBMethods03 {
 			callableStatement.setNull(20, java.sql.Types.INTEGER);
 			callableStatement.setNull(21, java.sql.Types.INTEGER);
 
-			callableStatement.executeUpdate();
+			
 
 			// Abfrage Eintrag erfolgreich war
 			if (callableStatement.executeUpdate() == 0)
