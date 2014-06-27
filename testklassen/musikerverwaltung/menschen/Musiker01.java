@@ -98,7 +98,7 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void insert() {
-		DBMethods03.insert(super.getTitel(), super.getVorsatz(), super
+		DBMethods03.insertArtist(super.getTitel(), super.getVorsatz(), super
 				.getVorname(), super.getZusatz(), super.getName(), super
 				.getGeburtsTag(), super.getGeburtsMonat(), super
 				.getGeburtsJahr(), super.getTodesTag(), super.getTodesMonat(),

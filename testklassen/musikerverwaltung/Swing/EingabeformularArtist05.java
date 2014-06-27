@@ -422,8 +422,6 @@ public class EingabeformularArtist05 extends JPanel {
 
 				// Insert-Methode aufrufen
 				musikereintragen.insert();
-				jpmaininput.repaint();
-				jpmaininput.revalidate();
 			}
 		});
 

@@ -122,7 +122,7 @@ public final class DBMethods03 {
 	}
 
 	// Methode die Insert-Prozedur ausfuehrt
-	public static final void insert(String titel, String namensvorsatz,
+	public static final void insertArtist(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
 			int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
 			int todesmonat, int todesjahr, String geschlecht, boolean istot,
