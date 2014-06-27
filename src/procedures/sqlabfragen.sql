@@ -1,10 +1,14 @@
-//Uebersichtstabelle
+//Uebersichtstabelle ALT
 
 SELECT 
   mus.pseudonym, 
   ss.stuecksolo
   
 FROM musiker mus JOIN stuecksolo ss ON mus.id_musiker = ss.id_musiker;
+
+//Uebersichtstabelle NEU (evtl.)
+SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss where mus.id_musiker = ss.id_musiker UNION SELECT gr.name, sg.stueckgruppe FROM gruppe gr, stueckgruppe sg where gr.id_gruppe = sg.id_gruppe order by pseudonym
+
 
 //Artistansicht
 
