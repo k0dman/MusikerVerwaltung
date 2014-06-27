@@ -2,11 +2,13 @@ package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
 import musikerverwaltung.menschen.Musiker01;
-
+import javax.swing.UIManager.*;
 import java.awt.*;
 import java.util.*;
-import javax.swing.*;
 
+import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.plaf.InsetsUIResource;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +27,6 @@ public class MusicLounge14 extends JFrame {
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle03 jtpmain = new Uebersichtstabelle03();
-	
 
 	// Farben
 
@@ -59,9 +60,21 @@ public class MusicLounge14 extends JFrame {
 
 	// Konstruktor
 	private MusicLounge14() {
-
-		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge14");
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					UIManager.put("TabbedPane.contentBorderInsets",new InsetsUIResource(0,
+							0,0,0));
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// If Nimbus is not available, you can set the GUI to another look
+			// and feel.
+		}
+		// Titel (Aufruf mit super aus der Basisklasse)
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -169,7 +182,7 @@ public class MusicLounge14 extends JFrame {
 
 		// JTabbedPane einbinden
 		// Pointer auf die Variable legen
-		
+
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
 
@@ -268,7 +281,7 @@ public class MusicLounge14 extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-	
+
 			}
 
 			@Override

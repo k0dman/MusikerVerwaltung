@@ -1,6 +1,7 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
@@ -13,7 +14,7 @@ import musikerverwaltung.Graphics.Icons01;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.plaf.InsetsUIResource;
+
 
 import musikerverwaltung.menschen.*;
 
@@ -101,12 +102,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
-		jtpmaindesc.setBackground(new Color(201, 201, 201));
-
-		UIManager.put("TabbedPane.contentBorderInsets", new InsetsUIResource(2,
-				10, 3, 10));
-		jtpmaindesc.updateUI();
-
+	
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenerTable();

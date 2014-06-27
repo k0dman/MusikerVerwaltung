@@ -14,9 +14,7 @@ public final class AddTabs02 extends JTabbedPane {
 	
 	public static void showArtist(Object artist, Object title, JTabbedPane jtpane) {
 		
-	
 		jtpane.addTab(String.valueOf(artist), tabicons.icons[2], jpmainshowartist.jpmainArtist(artist));
-		
 		
 	}
 

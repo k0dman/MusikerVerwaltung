@@ -9,6 +9,7 @@ import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import musikerverwaltung.Graphics.*;
 
 public class EingabeformularArtist05 extends JPanel {
 
@@ -26,6 +27,8 @@ public class EingabeformularArtist05 extends JPanel {
 	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz,
 			jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym,
 			jtfinstrument, jtfsolostueck, jtfreferenz;
+	
+
 
 	// Deklaration der Auswahlvariablen
 	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
@@ -143,6 +146,8 @@ public class EingabeformularArtist05 extends JPanel {
 		jtfinstrument = new JTextField();
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
+		
+
 
 		// Jpanel erzeugen fuer geschlechtgruppe
 		geschlechtgruppe = new JPanel();
@@ -363,7 +368,17 @@ public class EingabeformularArtist05 extends JPanel {
 		jpmainartist.add(jpmainDesc());
 		jpmainartist.add(jpmainInput());
 		jpmainartist.add(jpmainRight());
+		
+		// Border dem JPanel hinzufuegen
+		border = jpmainartist.getBorder();
+		// Farbe fuer Border
+		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
+		CompoundBorder border1 = new CompoundBorder(border, margin);
+		jpmainartist.setBorder(new TitledBorder(border1, "hey"));
+
+		
+		
 		return jpmainartist;
 
 	}
@@ -422,6 +437,18 @@ public class EingabeformularArtist05 extends JPanel {
 
 				// Insert-Methode aufrufen
 				musikereintragen.insertArtist();
+				jtftitel.setText("");
+				jtfname.setText("");
+				jtfvorname.setText("");
+				jtfvorsatz.setText("");
+				jtfzusatz.setText("");
+				jtfgeschlecht.setText("");
+				jtfdob.setText("");
+				jtfdod.setText("");
+				jtfpseudonym.setText("");
+				jtfinstrument.setText("");
+				jtfsolostueck.setText("");
+				jtfreferenz.setText("");				
 			}
 		});
 
