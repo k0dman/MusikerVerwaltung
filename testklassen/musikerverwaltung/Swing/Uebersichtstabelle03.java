@@ -35,7 +35,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 	// Schrift:
 	private Font ftfield;
-	
+
 	// String
 	public String name;
 	Musiker01 result = new Musiker01();
@@ -53,7 +53,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
 		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
-		
+
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
 		Vector<Vector<String>> results = result.dbSelect();
@@ -101,11 +101,11 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
-		jtpmaindesc.setBackground(new Color(201,201,201));
-		
-		 UIManager.put("TabbedPane.contentBorderInsets", new InsetsUIResource(2,
-	                10, 3, 10));
-	        jtpmaindesc.updateUI();
+		jtpmaindesc.setBackground(new Color(201, 201, 201));
+
+		UIManager.put("TabbedPane.contentBorderInsets", new InsetsUIResource(2,
+				10, 3, 10));
+		jtpmaindesc.updateUI();
 
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
@@ -114,11 +114,12 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		return jtpmaindesc;
 
 	}
-	
-	//ChangeListener zur Aktualisierung der Tabelle beim Oeffnen des Library-Tabs
-	public void changeListenerTable(){
+
+	// ChangeListener zur Aktualisierung der Tabelle beim Oeffnen des
+	// Library-Tabs
+	public void changeListenerTable() {
 		jtpmaindesc.addChangeListener(new ChangeListener() {
-			
+
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				// TODO Auto-generated method stub
@@ -131,8 +132,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 				dtm.fireTableDataChanged();
 			}
 		});
-		
-		
+
 	}
 
 	public void mouseListenerTable() {
@@ -144,38 +144,42 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 			public void mouseReleased(MouseEvent e) {
 
 				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1) {
+				if (e.getButton() == 1 || e.getButton() == 2) {
+					if (e.getClickCount() == 2 | e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtmaintable.getSelectedRow();
-					int column = jtmaintable.getSelectedColumn();
+						// In Var die ausgewaehlten Zeilen und Spalten speichern
+						int row = jtmaintable.getSelectedRow();
+						int column = jtmaintable.getSelectedColumn();
 
-					// Wenn es sich um die erste Spalte handelt:
-					if (column == 0) {
+						// Wenn es sich um die erste Spalte handelt:
+						if (column == 0) {
 
-						// Die Werte des ausgewaehlten Feldes in Objecte ablegen
-						Object artist = jtmaintable.getValueAt(row, column);
-						Object title = jtmaintable.getValueAt(row, column + 1);
+							// Die Werte des ausgewaehlten Feldes in Objecte
+							// ablegen
+							Object artist = jtmaintable.getValueAt(row, column);
+							Object title = jtmaintable.getValueAt(row,
+									column + 1);
 
-						// Die Objecte in Strings casten
-						artist = String.valueOf(artist);
-						title = String.valueOf(title);
+							// Die Objecte in Strings casten
+							artist = String.valueOf(artist);
+							title = String.valueOf(title);
 
-						// Methodenaufruf um Tab zu adden
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
+							// Methodenaufruf um Tab zu adden
+							AddTabs02.showArtist(artist, title, jtpmaindesc);
+						}
 
-					}
-					// Wenn es sich um die zweite Spalte handelt:
-					else if (column == 1) {
+						// Wenn es sich um die zweite Spalte handelt:
+						else if (column == 1) {
 
-						Object artist = jtmaintable.getValueAt(row, column - 1);
-						Object title = jtmaintable.getValueAt(row, column);
+							Object artist = jtmaintable.getValueAt(row,
+									column - 1);
+							Object title = jtmaintable.getValueAt(row, column);
 
-						artist = String.valueOf(artist);
-						title = String.valueOf(title);
+							artist = String.valueOf(artist);
+							title = String.valueOf(title);
 
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
-
+							AddTabs02.showArtist(artist, title, jtpmaindesc);
+						}
 					}
 				}
 			}

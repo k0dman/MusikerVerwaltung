@@ -188,7 +188,6 @@ public class EingabeformularArtist05 extends JPanel {
 		// RButton - Lebt oder nicht
 		jrblebt = new JRadioButton("lebt");
 		jrblebt.setActionCommand("j");
-		
 
 		// LueckenFueller
 		fueller = new JLabel("");
@@ -200,8 +199,8 @@ public class EingabeformularArtist05 extends JPanel {
 		jpdatum.add(jcbmonat);
 		jpdatum.add(jcbjahr);
 		jpdatum.add(fueller);
-		
-		//TodesDatum
+
+		// TodesDatum
 		dodjpdatum = new JPanel(new GridLayout(1, 5, 2, 2));
 		dodjpdatum.add(dodjcbtag);
 		dodjpdatum.add(dodjcbmonat);
@@ -211,6 +210,7 @@ public class EingabeformularArtist05 extends JPanel {
 		// RButton - Mann
 		rbmann = new JRadioButton("Mann");
 		rbmann.setActionCommand("m");
+		rbmann.setSelected(true);
 
 		// RButton - Frau
 		rbfrau = new JRadioButton("Frau");
@@ -225,10 +225,10 @@ public class EingabeformularArtist05 extends JPanel {
 		auswahl.add(rbmann);
 		auswahl.add(rbfrau);
 		auswahl.add(rbkeineahnung);
+
 		geschlechtgruppe.add(rbmann);
 		geschlechtgruppe.add(rbfrau);
 		geschlechtgruppe.add(rbkeineahnung);
-		
 
 		// JTextfields verg\u00F6sern
 		jtfname.setColumns(10);
@@ -416,11 +416,14 @@ public class EingabeformularArtist05 extends JPanel {
 								.monatUmwandlung(dodjcbmonat.getSelectedItem()
 										.toString()), Integer.parseInt(String
 								.valueOf(dodjcbjahr.getSelectedItem())),
-						auswahl.getSelection().getActionCommand(),jrblebt.getActionCommand(),jtfpseudonym
-								.getText(), instrument, solostueck, referenz);
+						auswahl.getSelection().getActionCommand(), jrblebt
+								.getActionCommand(), jtfpseudonym.getText(),
+						instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen
 				musikereintragen.insert();
+				jpmaininput.repaint();
+				jpmaininput.revalidate();
 			}
 		});
 

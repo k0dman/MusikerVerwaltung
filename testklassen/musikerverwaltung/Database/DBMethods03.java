@@ -1,16 +1,14 @@
 package musikerverwaltung.Database;
 
-import java.util.*;
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
+
+import javax.swing.JOptionPane;
+
 import musikerverwaltung.menschen.*;
 
 public final class DBMethods03 {
@@ -72,6 +70,7 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectTable");
 		}
 		return results;
 	}
@@ -95,7 +94,8 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND CONCAT (name, vorname, pseudonym, stuecksolo) like '%"+keyword+"%'");
+					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND CONCAT (name, vorname, pseudonym, stuecksolo) like '%"
+							+ keyword + "%'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -115,31 +115,34 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
+			System.out
+					.println("Fehler beim Ausführen der Methode zur DBSearch");
 		}
 		return results;
 	}
 
+	// Methode die Insert-Prozedur ausfuehrt
 	public static final void insert(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
 			int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
-			int todesmonat, int todesjahr, String geschlecht, 
-			boolean istot, String pseudonym,
-			String instrument, String solostueck, String referenz) {
+			int todesmonat, int todesjahr, String geschlecht, boolean istot,
+			String pseudonym, String instrument, String solostueck,
+			String referenz) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerErstellen(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-		
+
 		// Boolean fuer <istot> wird erneut umgewandelt mit Helfer-Methode
 		String lebt = Helfer01.toStringLebt(istot);
-		
+
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
 			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen stmt =
+			// eine Kommunikation mit der DB zu ermoeglichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
@@ -167,7 +170,12 @@ public final class DBMethods03 {
 
 			callableStatement.executeUpdate();
 
-			System.out.println("Artist wurde eingetragen!");
+			// Abfrage Eintrag erfolgreich war
+			if (callableStatement.executeUpdate() == 0)
+				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+			else
+				JOptionPane.showMessageDialog(null,
+						"Der Interpret wurde eingetragen!");
 
 		}
 
@@ -175,10 +183,12 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der Insert-Prozedur");
 		}
 
 	}
 
+	// Methode zum Select fuer Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -229,6 +239,7 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der DBSelectArtist");
 		}
 		return artistdata;
 	}
