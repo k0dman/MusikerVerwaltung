@@ -351,6 +351,7 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Fehler bei Pseudonym-Suche");
 		}
 		return pseudonymsdata;
 

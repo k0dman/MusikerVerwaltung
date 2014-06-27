@@ -71,9 +71,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
-		System.out.println(jtmaintable.getRowCount());
-		System.out.println(jtmaintable.getColumnCount());
-
+	
 		jtmaintable.getTableHeader().setReorderingAllowed(false);
 
 		jtmaintable.setCellSelectionEnabled(true);
