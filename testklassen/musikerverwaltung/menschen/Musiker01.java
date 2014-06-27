@@ -9,14 +9,14 @@ public class Musiker01 extends Person01 {
 	private String pseudonym;
 	private String[] instrument, stuecksolo, referenz;
 
-	public Musiker01(){
-		
+	public Musiker01() {
+
 	}
-	
-	public Musiker01(String pseudonym) {	
-		
+
+	public Musiker01(String pseudonym) {
+
 		this.pseudonym = pseudonym;
-		
+
 	}
 
 	// Konstruktor#1
@@ -37,8 +37,8 @@ public class Musiker01 extends Person01 {
 	}
 
 	// Konstuktor#2
-	public Musiker01( String titel,String vorsatz, String vorname,String zusatz, String name,
-			 String geburtsdatum, String geschlecht, 
+	public Musiker01(String titel, String vorsatz, String vorname,
+			String zusatz, String name, String geburtsdatum, String geschlecht,
 			String todesdatum, String pseudonym, String[] instrument,
 			String[] stuecksolo, String[] referenz) {
 
@@ -52,25 +52,27 @@ public class Musiker01 extends Person01 {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 	}
-	
+
 	// Konstuktor#3
-		public Musiker01( String titel,String vorsatz, String vorname,String zusatz, String name,
-				int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
-				 int todesmonat, int todesjahr, String geschlecht, String lebt, String pseudonym, String[] instrument,
-				String[] stuecksolo, String[] referenz) {
+	public Musiker01(String titel, String vorsatz, String vorname,
+			String zusatz, String name, int geburtstag, int geburtsmonat,
+			int geburtsjahr, int todestag, int todesmonat, int todesjahr,
+			String geschlecht, String lebt, String pseudonym,
+			String[] instrument, String[] stuecksolo, String[] referenz) {
 
-			// Aufruf des Konstruktors der Basis-Klasse
-			super(name, vorname, titel, vorsatz, zusatz, geschlecht, lebt, geburtstag, geburtsmonat, geburtsjahr,
-					 todestag, todesmonat, todesjahr);
+		// Aufruf des Konstruktors der Basis-Klasse
+		super(name, vorname, titel, vorsatz, zusatz, geschlecht, lebt,
+				geburtstag, geburtsmonat, geburtsjahr, todestag, todesmonat,
+				todesjahr);
 
-			// Sets
-			this.pseudonym = pseudonym;
-			this.instrument = instrument;
-			this.stuecksolo = stuecksolo;
-			this.referenz = referenz;
-		}
-		
-		// Gets
+		// Sets
+		this.pseudonym = pseudonym;
+		this.instrument = instrument;
+		this.stuecksolo = stuecksolo;
+		this.referenz = referenz;
+	}
+
+	// Gets
 
 	public String getPseudonym() {
 		return pseudonym;
@@ -98,78 +100,124 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void insertArtist() {
-		DBMethods03.insertArtist(super.getTitel(), super.getVorsatz(), super
-				.getVorname(), super.getZusatz(), super.getName(), super
-				.getGeburtsTag(), super.getGeburtsMonat(), super
-				.getGeburtsJahr(), super.getTodesTag(), super.getTodesMonat(),
-				super.getTodesJahr(), super.getGeschlecht(), super.isTot(), getPseudonym(),
-				getInstrument()[0], getStueckSolo()[0],
-				getReferenz()[0]);
-	}
-	
-	// Aufruf des Selects aus der Datenbank
-	public Vector<Vector<String>> dbSelect(){
-		Vector<Vector<String>>result = DBMethods03.dbSelectTable();
-		return result;	
+		DBMethods03.insertArtist(super.getTitel(), super.getVorsatz(),
+				super.getVorname(), super.getZusatz(), super.getName(),
+				super.getGeburtsTag(), super.getGeburtsMonat(),
+				super.getGeburtsJahr(), super.getTodesTag(),
+				super.getTodesMonat(), super.getTodesJahr(),
+				super.getGeschlecht(), super.isTot(), getPseudonym(),
+				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
 	}
 
-	
+	public void updateArtist(int id) {
+		DBMethods03.updateArtist(id, super.getTitel(), super.getVorsatz(),
+				super.getVorname(), super.getZusatz(), super.getName(),
+				super.getGeburtsTag(), super.getGeburtsMonat(),
+				super.getGeburtsJahr(), super.getTodesTag(),
+				super.getTodesMonat(), super.getTodesJahr(),
+				super.getGeschlecht(), super.isTot(), getPseudonym(),
+				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
+	}
+
+	// Aufruf des Selects aus der Datenbank
+	public Vector<Vector<String>> dbSelect() {
+		Vector<Vector<String>> result = DBMethods03.dbSelectTable();
+		return result;
+	}
+
 	// GET - Methode um die Daten aus der Datenb
 	public String getMusiker() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()));
 	}
+
+	public int getMusikerID() {
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				0));
+	}
+
 	public String getMusikerName() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(0));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(1));
 	}
+
 	public String getMusikerVorname() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(1));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(2));
 	}
+
 	public String getMusikerTitel() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(2));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(3));
 	}
+
 	public String getMusikerVorsatz() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(3));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(4));
 	}
+
 	public String getMusikerZusatz() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(4));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(5));
 	}
+
 	public String getMusikerGeschlecht() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(5));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(6));
 	}
-	
+
 	public String getMusikerLebt() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(6));
+		return String
+				.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(7));
 	}
-	
+
 	public int getMusikerGTag() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(7));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				8));
 	}
+
 	public int getMusikerGMonat() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(8));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				9));
 	}
+
 	public int getMusikerGJahr() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(9));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				10));
 	}
+
 	public int getMusikerTTag() {
-		return Integer.parseInt((DBMethods03.DBSelectArtist(getPseudonym()).get(10)));
+		return Integer.parseInt((DBMethods03.DBSelectArtist(getPseudonym())
+				.get(11)));
 	}
+
 	public int getMusikerTMonat() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(11));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				12));
 	}
+
 	public int getMusikerTJahr() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(12));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				13));
 	}
+
 	public String getMusikerPseudonym() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(13));
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
+				.get(14));
 	}
+
 	public String getMusikerInstrument() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(14));
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
+				.get(15));
 	}
+
 	public String getMusikerStueckSolo() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(15));
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
+				.get(16));
 	}
+
 	public String getMusikerReferenz() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()).get(16));
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
+				.get(17));
 	}
 
 }

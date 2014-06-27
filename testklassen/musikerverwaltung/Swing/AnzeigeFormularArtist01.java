@@ -1,6 +1,8 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -65,7 +67,7 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 
 		// JLabels erzeugen
-		ueschrift = new JLabel("Tragen Sie einen Musiker ein:");
+		ueschrift = new JLabel("Info´s zum Musiker:");
 		vorname = new JLabel("Vorname");
 		name = new JLabel("Name");
 		titel = new JLabel("Titel");
@@ -226,9 +228,11 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		// // JRadioButtons erzeugen und die richtigen RadioButtons
 		// vorselektieren
 		rbmann = new JRadioButton("Mann", m);
+		rbmann.setActionCommand("m");
 		rbfrau = new JRadioButton("Frau", w);
+		rbfrau.setActionCommand("f");
 		rbkeineahnung = new JRadioButton("Keine Ahnung", ns);
-
+		rbkeineahnung.setActionCommand("ns");
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 		auswahl = new ButtonGroup();
 		auswahl.add(rbmann);
@@ -312,8 +316,9 @@ public class AnzeigeFormularArtist01 extends JPanel {
 				.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
-
+		
 		return jpmainInput;
+		
 
 	}
 
@@ -324,7 +329,7 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		jpmainright.setPreferredSize(new Dimension(50, 100));
 
 		// JButton erzeugen
-		jbsubmit = new JButton("Speichern");
+		jbsubmit = new JButton("Bearbeiten");
 
 		// In Arbeit => Groesse des Eintragen-Buttons setzen
 		jbsubmit.setPreferredSize(new Dimension(50, 100));
@@ -338,8 +343,8 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainright.add(jbsubmit);
 		// ToolTip hinzuf\u00FCgen
-		jbsubmit.setToolTipText("Hier klicken, um den Interpreten anzulegen");
-
+		jbsubmit.setToolTipText("Hier klicken, um den Interpreten zu editieren");
+		actionListenerJButton();
 		return jpmainright;
 
 	}
@@ -357,4 +362,40 @@ public class AnzeigeFormularArtist01 extends JPanel {
 		return jpmainartist;
 
 	}
+	private void actionListenerJButton() {
+
+		
+
+		// Speicher-Button
+		jbsubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+
+				// Arrays erzeugen
+				String[] instrument = new String[10];
+				instrument[0] = jtfinstrument.getText();
+				String[] solostueck = new String[10];
+				solostueck[0] = jtfsolostueck.getText();
+				String[] referenz = new String[10];
+				referenz[0] = jtfreferenz.getText();
+
+				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
+				Musiker01 musikerbearbeiten = new Musiker01(jtftitel.getText(),
+						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
+								.getText(), jtfname.getText(), Integer
+								.parseInt(String.valueOf(jcbtag
+										.getSelectedItem())), Helfer01
+								.monatUmwandlung(jcbmonat.getSelectedItem()
+										.toString()), Integer.parseInt(String
+								.valueOf(jcbjahr.getSelectedItem())), 
+								musiker.getMusikerTTag(), musiker.getMusikerTMonat(), musiker.getMusikerTJahr(),
+						auswahl.getSelection().getActionCommand(),musiker.getMusikerLebt(), jtfpseudonym.getText(),
+						instrument, solostueck, referenz);
+
+				// Insert-Methode aufrufen
+				musikerbearbeiten.updateArtist(musiker.getMusikerID());
+			}
+		});
+
+	}
 }
+

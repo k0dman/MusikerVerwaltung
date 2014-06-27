@@ -187,6 +187,74 @@ public final class DBMethods03 {
 		}
 
 	}
+	
+	// Methode die Insert-Prozedur ausfuehrt
+		public static final void updateArtist(int id,String titel, String namensvorsatz,
+				String vorname, String namenszusatz, String nachname,
+				int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
+				int todesmonat, int todesjahr, String geschlecht, boolean istot,
+				String pseudonym, String instrument, String solostueck,
+				String referenz) {
+
+			// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+			conn.connectionToDB(host, database, user, passwd);
+
+			java.sql.CallableStatement callableStatement = null;
+			String insertStoreProc = "{call musikerBearbeiten(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+
+			// Boolean fuer <istot> wird erneut umgewandelt mit Helfer-Methode
+			String lebt = Helfer01.toStringLebt(istot);
+
+			// try / catch zum Abfangen, falls Fehler auftreten
+			try {
+
+				// / Fuer die Variable wird muss ein Statement erstellt werden um
+				// eine Kommunikation mit der DB zu ermoeglichen
+
+				callableStatement = conn.connection.prepareCall(insertStoreProc);
+
+				callableStatement.setString(1, vorname);
+				callableStatement.setString(2, nachname);
+				callableStatement.setString(3, titel);
+				callableStatement.setString(4, namensvorsatz);
+				callableStatement.setString(5, namenszusatz);
+				callableStatement.setString(6, geschlecht);
+				callableStatement.setString(7, lebt);
+				callableStatement.setInt(8, geburtstag);
+				callableStatement.setInt(9, geburtsmonat);
+				callableStatement.setInt(10, geburtsjahr);
+				callableStatement.setInt(11, todestag);
+				callableStatement.setInt(12, todesmonat);
+				callableStatement.setInt(13, todesjahr);
+				callableStatement.setString(14, pseudonym);
+				callableStatement.setString(15, instrument);
+				callableStatement.setString(16, solostueck);
+				callableStatement.setString(17, referenz);
+				callableStatement.setInt(18, id);
+				callableStatement.setNull(19, java.sql.Types.INTEGER);
+				callableStatement.setNull(20, java.sql.Types.INTEGER);
+				callableStatement.setNull(21, java.sql.Types.INTEGER);
+				callableStatement.setNull(22, java.sql.Types.INTEGER);
+
+				
+
+				// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+				if (callableStatement.executeUpdate() == 0)
+					JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+				else
+					JOptionPane.showMessageDialog(null,
+							"Der Interpret wurde bearbeitet!");
+
+			}
+
+			// Moegliche Fehlerquellen: Falscher Tabellenname,
+			// falsche Spaltennamen, falsche Datentypen
+			catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Fehler beim Ausführen der Insert-Prozedur");
+			}
+
+		}
 
 	// Methode zum Select fuer Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
@@ -208,13 +276,14 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
+					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
 							+ artist + "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
 
 			while (rs.next()) {
+				artistdata.add(rs.getString("id_person"));
 				artistdata.add(rs.getString("name"));
 				artistdata.add(rs.getString("vorname"));
 				artistdata.add(rs.getString("titel"));
