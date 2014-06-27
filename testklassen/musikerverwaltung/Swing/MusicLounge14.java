@@ -65,17 +65,17 @@ public class MusicLounge14 extends JFrame {
 
 	// Konstruktor
 	private MusicLounge14() {
-		
+
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge14");
-		
+
 		// Look And Feel - Nimbus
 		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
-					UIManager.put("TabbedPane.contentBorderInsets",new InsetsUIResource(0,
-							0,0,0));
+					UIManager.put("TabbedPane.contentBorderInsets",
+							new InsetsUIResource(0, 0, 0, 0));
 					break;
 				}
 			}
@@ -83,7 +83,6 @@ public class MusicLounge14 extends JFrame {
 			// If Nimbus is not available, you can set the GUI to another look
 			// and feel.
 		}
-		
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -314,50 +313,76 @@ public class MusicLounge14 extends JFrame {
 		});
 
 	}
-
-	
-	public void searchKeyListener(){
+	// KeyListener fuer die Suchfunktion
+	public void searchKeyListener() {
 		jtfsearch.addKeyListener(new KeyListener() {
-			
+
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if (e.getKeyCode() == 30) JOptionPane.showMessageDialog(null, "message1");
+		
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if (e.getKeyCode() == 30) JOptionPane.showMessageDialog(null, "message2");
-			}
 			
+			}
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if (e.getKeyCode() == 10){
-					JOptionPane.showMessageDialog(null, "wuuuu");
+				
+				// Abfrage ob "Enter" gedrueckt wurde (KeyCode = 10)
+				if (e.getKeyCode() == 10) {
 					
+					//zaehlen der Tabs
+					int tabindex = jtpmain.jtpmaindesc.getTabCount();
+				
+					// String-Array in dem die Title der Tabs gespeichert werden
+					String [] title = new String [tabindex];
+					
+					// Speicher der Tab-Titel im Array
+					for (int j = 0; j < tabindex; j++){
+						title[j] = jtpmain.jtpmaindesc.getTitleAt(j);			
+					}
+					// Neu zeichnen lassen
 					jpmain.removeAll();
 					jpmain.revalidate();
 					jpmain.repaint();
+					
 					// Pointer auf die Variable legen
-					jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(jtfsearch.getText());
+					jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(jtfsearch
+							.getText());
+					//Hinzufuegen der TabbedPane zum Panel
 					jpmain.add(jtpmain.jtpmaindesc);
-					jpmain.setVisible(true);	
+					jpmain.setVisible(true);
+					
 					// Tabs hinzufuegen
-					AddTabs02.insertArtist(jtpmain.jtpmaindesc, "Interpret eintragen");
+					AddTabs02.insertArtist(jtpmain.jtpmaindesc,
+							"Interpret eintragen");
 					AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
-					//Text wieder leeren - muss am Ende stehen
-					jtfsearch.setText("");
+					
+					// Vorher bestehende Tabs wieder hinzufuegen nach Suche
+					for (int i = 0; i < tabindex; i++) {
+					
+						// Erst ab zweiten Tab ausfuehren
+						if (i > 2) {
+							// Uebergabe der Tab-Titel fuer Titel und weiterleitung an die Suche
+							AddTabs02.showArtist(title[i], title[i],
+									jtpmain.jtpmaindesc);
+						}
+
+						// Text wieder leeren - muss am Ende stehen
+						jtfsearch.setText("");
+					}
 				}
-				
-				
-				
+
 			}
 		});
-		
-		
+
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

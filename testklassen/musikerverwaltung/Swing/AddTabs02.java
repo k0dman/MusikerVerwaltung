@@ -1,6 +1,7 @@
 package musikerverwaltung.Swing;
 
 import javax.swing.*;
+import java.awt.*;
 
 import musikerverwaltung.Graphics.Icons01;
 
@@ -29,4 +30,6 @@ public final class AddTabs02 extends JTabbedPane {
 		jtpane.addTab(name, tabicons.icons[1], jpmainband.jpmainBand());
 
 	}
+	
+
 }
