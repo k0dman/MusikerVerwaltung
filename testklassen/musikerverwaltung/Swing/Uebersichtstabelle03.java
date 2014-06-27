@@ -116,7 +116,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 			public void mouseReleased(MouseEvent e) {
 
 				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 2) {
+				if (e.getButton() == 1) {
 
 					// In Var die ausgewaehlten Zeilen und Spalten speichern
 					int row = jtmaintable.getSelectedRow();
