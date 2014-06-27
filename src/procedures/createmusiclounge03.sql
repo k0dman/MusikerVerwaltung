@@ -151,6 +151,7 @@ create table if not exists gruppe
 id_gruppe int(11) not null auto_increment,
 name varchar(100),
 primary key (id_gruppe)
+
 );
 
 create table if not exists mitglied
@@ -159,6 +160,27 @@ id_mitglied int(11) not null auto_increment,
 id_musiker int(11) NOT NULL,
 id_gruppe int(11) NOT NULL,
 aktiv ENUM('j','n'),
-primary key (id_mitglied)
-
+primary key (id_mitglied),
+foreign key (id_musiker) references musiker (id_musiker) on update cascade on delete cascade
 );
+
+create table if not exists stueckgruppe
+(
+id_stueckgruppe int(11) not null auto_increment,
+id_gruppe int(11),
+stueckgruppe varchar(100),
+primary key (id_stueckgruppe),
+foreign key (id_gruppe) references gruppe (id_gruppe) on update cascade on delete cascade
+);
+
+create table if not exists grreferenz
+(
+id_grreferenz int(11) not null auto_increment,
+id_gruppe int(11),
+grreferenz varchar(100),
+primary key (id_grreferenz),
+foreign key (id_gruppe) references gruppe (id_gruppe) on update cascade on delete cascade
+);
+
+
+
