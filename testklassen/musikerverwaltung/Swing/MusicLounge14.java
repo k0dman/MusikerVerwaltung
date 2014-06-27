@@ -265,7 +265,20 @@ public class MusicLounge14 extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				if (e.getButton() == 1) {
+					int zahl = jtpmain.jtpmaindesc.getSelectedIndex();
+					int auswahl;
+					if (zahl < 2) {
+						auswahl = JOptionPane.showConfirmDialog(null,
+								"Bist du sicher ? Alle Daten gehen verloren !",
+								"Tab-Schließen", JOptionPane.YES_NO_OPTION);
+						if (auswahl == JOptionPane.YES_OPTION) {
+							
+							jpmain.revalidate();
+							jpmain.repaint();
+						}
+					}
+				}
 			}
 
 			@Override

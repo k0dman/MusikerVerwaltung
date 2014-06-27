@@ -150,7 +150,7 @@ public final class DBMethods03 {
 			callableStatement.setString(5, namenszusatz);
 			callableStatement.setString(6, geschlecht);
 			callableStatement.setString(7, lebt);
-			callableStatement.setInt(8, geburtsjahr);
+			callableStatement.setInt(8, geburtstag);
 			callableStatement.setInt(9, geburtsmonat);
 			callableStatement.setInt(10, geburtsjahr);
 			callableStatement.setInt(11, todestag);
