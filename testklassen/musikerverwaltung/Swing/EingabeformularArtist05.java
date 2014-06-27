@@ -421,7 +421,7 @@ public class EingabeformularArtist05 extends JPanel {
 						instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen
-				musikereintragen.insert();
+				musikereintragen.insertArtist();
 			}
 		});
 
