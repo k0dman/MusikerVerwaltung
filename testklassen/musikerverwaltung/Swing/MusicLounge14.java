@@ -223,8 +223,8 @@ public class MusicLounge14 extends JFrame {
 		// ActionLister();
 		actionListenerJButton();
 		actionListenerJMenuItems();
-		mouseListenerJTP();
 		searchKeyListener();
+		mouseListenerJTP();
 
 		// Anfangsposition und -groesse festlegen
 		setBounds(50, 50, 1280, 720);
@@ -313,6 +313,7 @@ public class MusicLounge14 extends JFrame {
 		});
 
 	}
+
 	// KeyListener fuer die Suchfunktion
 	public void searchKeyListener() {
 		jtfsearch.addKeyListener(new KeyListener() {
@@ -320,62 +321,65 @@ public class MusicLounge14 extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-		
+
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-			
+
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				// Abfrage ob "Enter" gedrueckt wurde (KeyCode = 10)
 				if (e.getKeyCode() == 10) {
-					
-					//zaehlen der Tabs
+
+					// zaehlen der Tabs
 					int tabindex = jtpmain.jtpmaindesc.getTabCount();
-				
+
 					// String-Array in dem die Title der Tabs gespeichert werden
-					String [] title = new String [tabindex];
-					
+					String[] title = new String[tabindex];
+
 					// Speicher der Tab-Titel im Array
-					for (int j = 0; j < tabindex; j++){
-						title[j] = jtpmain.jtpmaindesc.getTitleAt(j);			
+					for (int j = 0; j < tabindex; j++) {
+						title[j] = jtpmain.jtpmaindesc.getTitleAt(j);
 					}
 					// Neu zeichnen lassen
 					jpmain.removeAll();
 					jpmain.revalidate();
 					jpmain.repaint();
-					
+
 					// Pointer auf die Variable legen
 					jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(jtfsearch
 							.getText());
-					//Hinzufuegen der TabbedPane zum Panel
+					// Hinzufuegen der TabbedPane zum Panel
 					jpmain.add(jtpmain.jtpmaindesc);
 					jpmain.setVisible(true);
-					
+
 					// Tabs hinzufuegen
 					AddTabs02.insertArtist(jtpmain.jtpmaindesc,
 							"Interpret eintragen");
 					AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
-					
+
 					// Vorher bestehende Tabs wieder hinzufuegen nach Suche
 					for (int i = 0; i < tabindex; i++) {
-					
+
 						// Erst ab zweiten Tab ausfuehren
 						if (i > 2) {
-							// Uebergabe der Tab-Titel fuer Titel und weiterleitung an die Suche
+							// Uebergabe der Tab-Titel fuer Titel und
+							// weiterleitung an die Suche
 							AddTabs02.showArtist(title[i], title[i],
 									jtpmain.jtpmaindesc);
 						}
-
-						// Text wieder leeren - muss am Ende stehen
-						jtfsearch.setText("");
 					}
+					// Text wieder leeren - muss am Ende stehen
+					jtfsearch.setText("");
+
+					// MouseListener wieder hinzufuegen
+					mouseListenerJTP();
 				}
 
 			}
