@@ -4,11 +4,18 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import musikerverwaltung.Database.*;
 import musikerverwaltung.Graphics.Icons01;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.InsetsUIResource;
+
+import musikerverwaltung.menschen.*;
 
 public class Uebersichtstabelle03 extends JTabbedPane {
 
@@ -31,6 +38,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 	
 	// String
 	public String name;
+	Musiker01 result = new Musiker01();
 
 	public JTabbedPane jtpmaindesc() {
 
@@ -45,10 +53,10 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
 		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
-
+		
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = DBMethods03.DBSelectVector();
+		Vector<Vector<String>> results = result.dbSelect();
 		//
 		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
@@ -88,7 +96,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		Icons01 tabicons = new Icons01();
 
 		// Panel erzeugen mit GridLayout
-		JTabbedPane jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
+		jtpmaindesc = new JTabbedPane(JTabbedPane.TOP,
 				JTabbedPane.SCROLL_TAB_LAYOUT);
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
@@ -101,13 +109,33 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
-		mouseListenertable();
-
+		mouseListenerTable();
+		changeListenerTable();
 		return jtpmaindesc;
 
 	}
+	
+	//ChangeListener zur Aktualisierung der Tabelle beim Oeffnen des Library-Tabs
+	public void changeListenerTable(){
+		jtpmaindesc.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				// TODO Auto-generated method stub
+				Musiker01 result = new Musiker01();
+				Vector<Vector<String>> results = result.dbSelect();
+				//
+				dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
-	public void mouseListenertable() {
+				// Methode
+				dtm.fireTableDataChanged();
+			}
+		});
+		
+		
+	}
+
+	public void mouseListenerTable() {
 
 		// Button fuer die Tabelle
 		jtmaintable.addMouseListener(new MouseListener() {

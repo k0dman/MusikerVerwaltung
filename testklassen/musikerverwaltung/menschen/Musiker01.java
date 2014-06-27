@@ -1,6 +1,6 @@
 package musikerverwaltung.menschen;
 
-
+import java.util.Vector;
 import musikerverwaltung.Database.DBMethods03;
 
 public class Musiker01 extends Person01 {
@@ -9,6 +9,10 @@ public class Musiker01 extends Person01 {
 	private String pseudonym;
 	private String[] instrument, stuecksolo, referenz;
 
+	public Musiker01(){
+		
+	}
+	
 	public Musiker01(String pseudonym) {	
 		
 		this.pseudonym = pseudonym;
@@ -101,6 +105,12 @@ public class Musiker01 extends Person01 {
 				super.getTodesJahr(), super.getGeschlecht(), super.isTot(), getPseudonym(),
 				getInstrument()[0], getStueckSolo()[0],
 				getReferenz()[0]);
+	}
+	
+	// Aufruf des Selects aus der Datenbank
+	public Vector<Vector<String>> dbSelect(){
+		Vector<Vector<String>>result = DBMethods03.dbSelectTable();
+		return result;	
 	}
 
 	

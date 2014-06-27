@@ -33,7 +33,7 @@ public final class DBMethods03 {
 		}
 	};
 
-	public static final Vector<Vector<String>> DBSelectVector() {
+	public static final Vector<Vector<String>> dbSelectTable() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);

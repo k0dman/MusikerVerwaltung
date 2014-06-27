@@ -1,9 +1,10 @@
 package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
+import musikerverwaltung.menschen.Musiker01;
 
 import java.awt.*;
-
+import java.util.*;
 import javax.swing.*;
 
 import java.awt.Font;
@@ -24,6 +25,7 @@ public class MusicLounge14 extends JFrame {
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle03 jtpmain = new Uebersichtstabelle03();
+	
 
 	// Farben
 
@@ -167,6 +169,7 @@ public class MusicLounge14 extends JFrame {
 
 		// JTabbedPane einbinden
 		// Pointer auf die Variable legen
+		
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
 
@@ -265,19 +268,8 @@ public class MusicLounge14 extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if (e.getButton() == 1) {
-					int zahl = jtpmain.jtpmaindesc.getSelectedIndex();
-					int auswahl;
-					if (zahl <= 2) {
-						
-					
-							
-							jpmain.revalidate();
-							jpmain.repaint();
-						}
-					}
-				}
-			
+	
+			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
