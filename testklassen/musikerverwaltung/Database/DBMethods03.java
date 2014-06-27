@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import musikerverwaltung.menschen.*;
 
 public final class DBMethods03 {
 
@@ -94,9 +95,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT * FROM person INNER JOIN musiker ON person.idperson"
-							+ " = musiker.idperson WHERE CONCAT(name, vorname, pseudonym, stuecksolo) like '%"
-							+ keyword + "%'");
+					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND CONCAT (name, vorname, pseudonym, stuecksolo) like '%"+keyword+"%'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -123,15 +122,19 @@ public final class DBMethods03 {
 	public static final void insert(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
 			int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
-			int todesmonat, int todesjahr, String geschlecht, String pseudonym,
+			int todesmonat, int todesjahr, String geschlecht, 
+			boolean istot, String pseudonym,
 			String instrument, String solostueck, String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
-		String insertStoreProc = "{call musikerErstellen(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-
+		String insertStoreProc = "{call musikerErstellen(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+		
+		// Boolean fuer <istot> wird erneut umgewandelt mit Helfer-Methode
+		String lebt = Helfer01.toStringLebt(istot);
+		
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
@@ -146,21 +149,25 @@ public final class DBMethods03 {
 			callableStatement.setString(4, namensvorsatz);
 			callableStatement.setString(5, namenszusatz);
 			callableStatement.setString(6, geschlecht);
-			callableStatement.setInt(7, geburtsjahr);
-			callableStatement.setInt(8, geburtsmonat);
-			callableStatement.setInt(9, geburtsjahr);
-			callableStatement.setInt(10, todestag);
-			callableStatement.setInt(11, todesmonat);
-			callableStatement.setInt(12, todesjahr);
-			callableStatement.setString(13, pseudonym);
-			callableStatement.setString(14, instrument);
-			callableStatement.setString(15, solostueck);
-			callableStatement.setString(16, referenz);
-			callableStatement.setNull(17, java.sql.Types.INTEGER);
+			callableStatement.setString(7, lebt);
+			callableStatement.setInt(8, geburtsjahr);
+			callableStatement.setInt(9, geburtsmonat);
+			callableStatement.setInt(10, geburtsjahr);
+			callableStatement.setInt(11, todestag);
+			callableStatement.setInt(12, todesmonat);
+			callableStatement.setInt(13, todesjahr);
+			callableStatement.setString(14, pseudonym);
+			callableStatement.setString(15, instrument);
+			callableStatement.setString(16, solostueck);
+			callableStatement.setString(17, referenz);
+			callableStatement.setNull(18, java.sql.Types.INTEGER);
+			callableStatement.setNull(19, java.sql.Types.INTEGER);
+			callableStatement.setNull(20, java.sql.Types.INTEGER);
+			callableStatement.setNull(21, java.sql.Types.INTEGER);
 
 			callableStatement.executeUpdate();
 
-			System.out.println("Record is inserted into DBUSER table!");
+			System.out.println("Artist wurde eingetragen!");
 
 		}
 

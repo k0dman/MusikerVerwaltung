@@ -1,9 +1,9 @@
 package musikerverwaltung.menschen;
 
 import vorlagen.DBMethods01;
-import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethods02;
 
-public class Musiker extends Person01 {
+public class Musiker extends Person {
 
 	// Instanzvariabeln
 	private String pseudonym;
@@ -94,7 +94,7 @@ public class Musiker extends Person01 {
 	}
 
 	public void insert() {
-		DBMethods03.insert(super.getTitel(), super.getVorsatz(), super
+		DBMethods02.insert(super.getTitel(), super.getVorsatz(), super
 				.getVorname(), super.getZusatz(), super.getName(), super
 				.getGeburtsTag(), super.getGeburtsMonat(), super
 				.getGeburtsJahr(), super.getTodesTag(), super.getTodesMonat(),

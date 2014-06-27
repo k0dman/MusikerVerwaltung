@@ -40,7 +40,7 @@ public class Person01 extends Mensch {
 	// Konstruktor#3, weisst die Parameter (aus Person) den Klassen-Attributen
 		// zu
 		public Person01(String name, String vorname, String titel, String vorsatz,
-				String zusatz, String geschlecht, int geburtstag, int geburtsmonat, int geburtsjahr,
+				String zusatz, String geschlecht, String lebt, int geburtstag, int geburtsmonat, int geburtsjahr,
 				int todestag, int todesmonat, int todesjahr) {
 
 			this.name = name;
@@ -55,6 +55,7 @@ public class Person01 extends Mensch {
 			this.todesmonat = todesmonat;
 			this.todesjahr =  todesjahr;
 			this.geschlecht = geschlecht;
+			this.lebt = lebt;
 		}
 
 	public String getTitel() {
@@ -142,7 +143,7 @@ public class Person01 extends Mensch {
 	@Override
 	public boolean isTot() {
 		// TODO Auto-generated method stub
-		return false;
+		return Helfer01.toBoolLebt(lebt);
 	}
 
 	@Override

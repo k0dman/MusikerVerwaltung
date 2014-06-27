@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethods02;
 import musikerverwaltung.menschen.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -398,7 +398,7 @@ public class EingabeformularArtist04 extends JPanel {
 				referenz[0] = jtfreferenz.getText();
 				
 				
-				Musiker01 musikereintragen = new Musiker01(
+				Musiker musikereintragen = new Musiker(
 						jtftitel.getText(),						
 						jtfvorsatz.getText(),
 						jtfvorname.getText(),

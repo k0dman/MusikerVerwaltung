@@ -187,7 +187,8 @@ public class EingabeformularArtist05 extends JPanel {
 
 		// RButton - Lebt oder nicht
 		jrblebt = new JRadioButton("lebt");
-		jrblebt.setActionCommand("lebt");
+		jrblebt.setActionCommand("j");
+		
 
 		// LueckenFueller
 		fueller = new JLabel("");
@@ -227,6 +228,7 @@ public class EingabeformularArtist05 extends JPanel {
 		geschlechtgruppe.add(rbmann);
 		geschlechtgruppe.add(rbfrau);
 		geschlechtgruppe.add(rbkeineahnung);
+		
 
 		// JTextfields verg\u00F6sern
 		jtfname.setColumns(10);
@@ -400,7 +402,7 @@ public class EingabeformularArtist05 extends JPanel {
 				String[] referenz = new String[10];
 				referenz[0] = jtfreferenz.getText();
 
-				// Instanzvar erzeugen - Uebergabe der Parameter
+				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
 				Musiker01 musikereintragen = new Musiker01(jtftitel.getText(),
 						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
 								.getText(), jtfname.getText(), Integer
@@ -414,7 +416,7 @@ public class EingabeformularArtist05 extends JPanel {
 								.monatUmwandlung(dodjcbmonat.getSelectedItem()
 										.toString()), Integer.parseInt(String
 								.valueOf(dodjcbjahr.getSelectedItem())),
-						auswahl.getSelection().getActionCommand(), jtfpseudonym
+						auswahl.getSelection().getActionCommand(),jrblebt.getActionCommand(),jtfpseudonym
 								.getText(), instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen

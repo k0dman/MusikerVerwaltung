@@ -86,42 +86,78 @@ public final class Helfer01 {
 
 		return datum;
 	}
-	
-	
 
-	public static int monatUmwandlung (String monat){
-		
-	int monatszahl = 0;
-	
-	switch (monat){
-	
-	case "Januar" : monatszahl = 1;
-	break;
-	case "Februar" : monatszahl = 2;
-	break;
-	case "M\u00E4rz" : monatszahl = 3;
-	break;
-	case "April" : monatszahl = 4;
-	break;
-	case "Mai" : monatszahl = 5;
-	break;
-	case "Juni" : monatszahl = 6;
-	break;
-	case "Juli" : monatszahl = 7;
-	break;
-	case "August" : monatszahl = 8;
-	break;
-	case "September" : monatszahl = 9;
-	break;
-	case "Oktober" : monatszahl = 10;
-	break;
-	case "November" : monatszahl = 11;
-	break;
-	case "Dezember" : monatszahl = 12;
-	
+	public static boolean toBoolLebt(String lebt) {
+
+		boolean lebendig = false;
+		if (lebt.equals("j")) {
+			lebendig = false;
+		}
+		if (lebt.equals("n")) {
+			lebendig = true;
+		}
+
+		return lebendig;
 	}
-	
-	return monatszahl;
-		
+
+	public static String toStringLebt(boolean lebt) {
+
+		String lebendig = "";
+		if (lebt == true) {
+			lebendig = "n";
+		}
+		if (lebt == false) {
+			lebendig = "j";
+		}
+
+		return lebendig;
+	}
+
+	public static int monatUmwandlung(String monat) {
+
+		int monatszahl = 0;
+
+		switch (monat) {
+
+		case "Januar":
+			monatszahl = 1;
+			break;
+		case "Februar":
+			monatszahl = 2;
+			break;
+		case "M\u00E4rz":
+			monatszahl = 3;
+			break;
+		case "April":
+			monatszahl = 4;
+			break;
+		case "Mai":
+			monatszahl = 5;
+			break;
+		case "Juni":
+			monatszahl = 6;
+			break;
+		case "Juli":
+			monatszahl = 7;
+			break;
+		case "August":
+			monatszahl = 8;
+			break;
+		case "September":
+			monatszahl = 9;
+			break;
+		case "Oktober":
+			monatszahl = 10;
+			break;
+		case "November":
+			monatszahl = 11;
+			break;
+		case "Dezember":
+			monatszahl = 12;
+
+		}
+
+		return monatszahl;
+
 	}
 }
