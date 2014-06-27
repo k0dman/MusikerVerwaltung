@@ -192,7 +192,7 @@ public class MusicLounge14 extends JFrame {
 		// JTabbedPane einbinden
 		// Pointer auf die Variable legen
 
-		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
+		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(null);
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
 
 		// Tabs hinzufuegen
@@ -247,7 +247,7 @@ public class MusicLounge14 extends JFrame {
 				jpmain.revalidate();
 				jpmain.repaint();
 				// Pointer auf die Variable legen
-				jtpmain.jtpmaindesc = jtpmain.jtpmaindesc();
+				jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(null);
 				jpmain.add(jtpmain.jtpmaindesc);
 				jpmain.setVisible(true);
 
@@ -336,13 +336,23 @@ public class MusicLounge14 extends JFrame {
 				// TODO Auto-generated method stub
 				if (e.getKeyCode() == 10){
 					JOptionPane.showMessageDialog(null, "wuuuu");
-					Musiker01 libaryselect = new Musiker01();
-					libaryselect.selectLibary(jtfsearch.getText());					
+					
+					jpmain.removeAll();
+					jpmain.revalidate();
+					jpmain.repaint();
+					// Pointer auf die Variable legen
+					jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(jtfsearch.getText());
+					jpmain.add(jtpmain.jtpmaindesc);
+					jpmain.setVisible(true);	
+					// Tabs hinzufuegen
+					AddTabs02.insertArtist(jtpmain.jtpmaindesc, "Interpret eintragen");
+					AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
+					//Text wieder leeren - muss am Ende stehen
+					jtfsearch.setText("");
 				}
 				
 				
-				//Text wieder leeren - muss am Ende stehen
-				jtfsearch.setText("");
+				
 			}
 		});
 		

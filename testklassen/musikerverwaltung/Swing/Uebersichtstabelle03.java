@@ -39,9 +39,9 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 	// String
 	public String name;
-	Musiker01 result = new Musiker01();
+	Musiker01 dbsearch = new Musiker01();
 
-	public JTabbedPane jtpmaindesc(Vector<Vector<String>> result) {
+	public JTabbedPane jtpmaindesc(String result) {
 
 		// DefaultTableModel erzeugen und die Spaltenanzahl/Zeilenanzahl
 		// festlegen
@@ -57,7 +57,11 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
-		Vector<Vector<String>> results = result.dbSelect();
+		Vector<Vector<String>> results;
+		if (result == null){
+		results = dbsearch.dbSelect();
+		}
+		else results = dbsearch.selectLibary(result);
 		//
 		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
