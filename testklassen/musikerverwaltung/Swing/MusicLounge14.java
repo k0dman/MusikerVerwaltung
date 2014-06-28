@@ -1,17 +1,11 @@
 package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
-import musikerverwaltung.menschen.Musiker01;
-
+import com.jgoodies.looks.LookUtils;
 import javax.swing.UIManager.*;
-
 import java.awt.*;
-import java.util.*;
-
 import javax.swing.*;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.plaf.InsetsUIResource;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 
 public class MusicLounge14 extends JFrame {
 
@@ -69,20 +64,44 @@ public class MusicLounge14 extends JFrame {
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge14");
 
-		// Look And Feel - Nimbus
+		System.setProperty("sun.awt.noerasebackground", "true");
+		setDefaultLookAndFeelDecorated(true);
+
+		UIManager.put("ClassLoader", LookUtils.class.getClassLoader());
 		try {
-			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					UIManager.put("TabbedPane.contentBorderInsets",
-							new InsetsUIResource(0, 0, 0, 0));
-					break;
-				}
-			}
+			UIManager.setLookAndFeel ( "com.alee.laf.WebLookAndFeel" );
 		} catch (Exception e) {
-			// If Nimbus is not available, you can set the GUI to another look
-			// and feel.
+			// Look And Feel - Nimbus /*
+			try {
+				for (LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						UIManager.put("TabbedPane.contentBorderInsets",
+								new InsetsUIResource(0, 0, 0, 0));
+						break;
+					}
+				}
+			} catch (Exception em) {
+				try {UIManager
+					.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+
+				} catch (Exception ee) {
+					
+				}
+
+			}
 		}
+
+		/*
+		 * Toolkit.getDefaultToolkit().setDynamicLayout(true);
+		 * 
+		 * try { UIManager
+		 * .setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel"); }
+		 * catch (Exception e) {
+		 * 
+		 * }
+		 */
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

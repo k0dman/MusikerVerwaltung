@@ -1,5 +1,6 @@
 package musikerverwaltung.Swing;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -375,7 +376,7 @@ public class EingabeformularArtist05 extends JPanel {
 		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
 		CompoundBorder border1 = new CompoundBorder(border, margin);
-		jpmainartist.setBorder(new TitledBorder(border1, "hey"));
+		jpmainartist.setBorder(new TitledBorder(border1, ""));
 
 		
 		
