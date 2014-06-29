@@ -255,6 +255,62 @@ public final class DBMethods03 {
 			}
 
 		}
+		
+		// Methode die Insert-Prozedur für eine Band ausfuehrt
+		
+		// id_musiker muss übergeben werden für die Prozedur
+		public static final void insertBand(String name, String stueckgruppe,
+				String referenz, int id_musiker, boolean aktiv) {
+
+			// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
+			conn.connectionToDB(host, database, user, passwd);
+
+			java.sql.CallableStatement callableStatement = null;
+			String insertStoreProc = "{call gruppeErstellen(?,?,?,?,?,?,?,?)}";
+
+			// Frage ob wir hier mit boolean wieder arbeiten oder nicht.
+			// Die Datenbank erwartet "j" / "n"
+			// Boolean fuer <istaktiv> wird erneut umgewandelt mit Helfer-Methode
+						
+			String lebt = Helfer01.toStringLebt(istot);
+
+			// try / catch zum Abfangen, falls Fehler auftreten
+			try {
+
+				// / Fuer die Variable wird muss ein Statement erstellt werden um
+				// eine Kommunikation mit der DB zu ermoeglichen
+
+				callableStatement = conn.connection.prepareCall(insertStoreProc);
+
+				callableStatement.setString(1, name); // Name Band
+				callableStatement.setNull(2, java.sql.Types.INTEGER); //id_grreferenz
+				callableStatement.setNull(2, java.sql.Types.INTEGER); //id_stueckgruppe
+				callableStatement.setString(4, stueckgruppe); // Stueck der Gruppe
+				callableStatement.setString(5, grreferenz); // Referenz
+				callableStatement.setInt(6, id_musiker); //id_musiker
+				callableStatement.setNull(7, java.sql.Types.INTEGER);// id_gruppe
+				callableStatement.setString(8, aktiv); //Gruppenmitglied aktiv/passiv
+
+
+				
+
+				// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+				if (callableStatement.executeUpdate() == 0)
+					JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+				else
+					JOptionPane.showMessageDialog(null,
+							"Der Interpret wurde eingetragen!");
+
+			}
+
+			// Moegliche Fehlerquellen: Falscher Tabellenname,
+			// falsche Spaltennamen, falsche Datentypen
+			catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Fehler beim Ausführen der Insert-Prozedur");
+			}
+
+		}
 
 	// Methode zum Select fuer Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
