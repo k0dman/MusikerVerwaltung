@@ -1,7 +1,6 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
@@ -14,6 +13,7 @@ import musikerverwaltung.Graphics.Icons01;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 
 
 import musikerverwaltung.menschen.*;
@@ -109,6 +109,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// zurueckpacken)
 		mouseListenerTable();
 		changeListenerTable();
+		
 		return jtpmaindesc;
 
 	}

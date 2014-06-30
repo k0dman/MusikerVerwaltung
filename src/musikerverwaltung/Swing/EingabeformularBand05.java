@@ -1,11 +1,8 @@
 package musikerverwaltung.Swing;
 
 import java.awt.*;
-import java.util.ArrayList;
-
 import javax.swing.*;
-
-import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethods02;
 
 public class EingabeformularBand05 extends JPanel {
 
@@ -141,7 +138,7 @@ public class EingabeformularBand05 extends JPanel {
 		fueller = new JLabel("");
 		jpmainRight.add(fueller);
 
-		String[] a = DBMethods03.DBSelectPseudonym();
+		String[] a = DBMethods02.DBSelectPseudonym();
 
 		// Erzeugen der Combobox
 		ComboBox = new JComboBox<String>();

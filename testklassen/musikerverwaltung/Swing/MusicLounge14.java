@@ -3,9 +3,12 @@ package musikerverwaltung.Swing;
 import musikerverwaltung.Graphics.*;
 
 import javax.swing.UIManager.*;
+
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.plaf.InsetsUIResource;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,10 +74,18 @@ public class MusicLounge14 extends JFrame {
 		            break;
 		        }
 		    }
-		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		} catch (UnsupportedLookAndFeelException e) {
+		    // handle exception
+		} catch (ClassNotFoundException e) {
+		    // handle exception
+		} catch (InstantiationException e) {
+		    // handle exception
+		} catch (IllegalAccessException e) {
+		    // handle exception
 		}
+		
 
+		
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
