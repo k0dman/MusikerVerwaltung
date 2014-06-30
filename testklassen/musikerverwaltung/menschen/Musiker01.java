@@ -1,6 +1,9 @@
 package musikerverwaltung.menschen;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
+
 import musikerverwaltung.Database.DBMethods03;
 
 public class Musiker01 extends Person01 {
@@ -129,6 +132,12 @@ public class Musiker01 extends Person01 {
 	public Vector<Vector<String>> dbSelect() {
 		Vector<Vector<String>> result = DBMethods03.dbSelectTable();
 		return result;
+	}
+	
+	//Aufruf des Selects der Musiker mit Pseudonyme fuer Bandeintragen
+	public Vector<String> getMusikerArray(){
+		Vector<String> musiker = DBMethods03.dbSelectPseudonym();
+		return musiker;
 	}
 
 	// GET - Methode um die Daten aus der Datenb

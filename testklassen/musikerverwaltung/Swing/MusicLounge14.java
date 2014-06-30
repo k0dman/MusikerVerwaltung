@@ -1,7 +1,7 @@
 package musikerverwaltung.Swing;
 
 import musikerverwaltung.Graphics.*;
-import com.jgoodies.looks.LookUtils;
+
 import javax.swing.UIManager.*;
 import java.awt.*;
 import javax.swing.*;
@@ -64,44 +64,16 @@ public class MusicLounge14 extends JFrame {
 		// Titel (Aufruf mit super aus der Basisklasse)
 		super("MusicLounge14");
 
-		System.setProperty("sun.awt.noerasebackground", "true");
-		setDefaultLookAndFeelDecorated(true);
-
-		UIManager.put("ClassLoader", LookUtils.class.getClassLoader());
 		try {
-			UIManager.setLookAndFeel ( "com.alee.laf.WebLookAndFeel" );
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
 		} catch (Exception e) {
-			// Look And Feel - Nimbus /*
-			try {
-				for (LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
-					if ("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
-						UIManager.put("TabbedPane.contentBorderInsets",
-								new InsetsUIResource(0, 0, 0, 0));
-						break;
-					}
-				}
-			} catch (Exception em) {
-				try {UIManager
-					.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
-
-				} catch (Exception ee) {
-					
-				}
-
-			}
+		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
-
-		/*
-		 * Toolkit.getDefaultToolkit().setDynamicLayout(true);
-		 * 
-		 * try { UIManager
-		 * .setLookAndFeel("de.muntjak.tinylookandfeel.TinyLookAndFeel"); }
-		 * catch (Exception e) {
-		 * 
-		 * }
-		 */
 
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
