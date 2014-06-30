@@ -75,7 +75,7 @@ public final class DBMethods03 {
 		return results;
 	}
 
-	public static final Vector<Vector<String>> DBSearch(String keyword) {
+	public static final Vector<Vector<String>> dbSearch(String keyword) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);

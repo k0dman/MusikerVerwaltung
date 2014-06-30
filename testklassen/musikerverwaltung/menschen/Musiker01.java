@@ -123,7 +123,7 @@ public class Musiker01 extends Person01 {
 	}
 	
 	public Vector<Vector<String>> selectLibary(String keyword){
-		Vector<Vector<String>> result = DBMethods03.DBSearch(keyword);
+		Vector<Vector<String>> result = DBMethods03.dbSearch(keyword);
 		return result;
 		
 	}

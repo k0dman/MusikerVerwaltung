@@ -14,8 +14,6 @@ import musikerverwaltung.Graphics.Icons01;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
-
 import musikerverwaltung.menschen.*;
 
 public class Uebersichtstabelle03 extends JTabbedPane {
@@ -58,10 +56,10 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		// #############################//
 		// Methodenaufruf und in Variable abgelegt
 		Vector<Vector<String>> results;
-		if (result == null){
-		results = dbsearch.dbSelect();
-		}
-		else results = dbsearch.selectLibary(result);
+		if (result == null) {
+			results = dbsearch.dbSelect();
+		} else
+			results = dbsearch.selectLibary(result);
 		//
 		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
 
@@ -71,7 +69,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
-	
+
 		jtmaintable.getTableHeader().setReorderingAllowed(false);
 
 		jtmaintable.setCellSelectionEnabled(true);
@@ -104,12 +102,12 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 		// Hinzufuegen der JScrollPane zur JTabbedPane
 		jtpmaindesc.addTab("Libary", tabicons.icons[0], jspmaintable);
-	
+
 		// Aufruf der MouseListener aus der JTable-Klasse (Evtl. wieder
 		// zurueckpacken)
 		mouseListenerTable();
 		changeListenerTable();
-		
+
 		return jtpmaindesc;
 
 	}
