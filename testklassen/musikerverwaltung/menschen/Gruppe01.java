@@ -1,5 +1,7 @@
 package musikerverwaltung.menschen;
 
+import java.util.Vector;
+
 import musikerverwaltung.Database.DBMethods03;
 
 public class Gruppe01 {
@@ -49,5 +51,11 @@ public class Gruppe01 {
 	public boolean isBand(){
 		boolean isband = DBMethods03.selectIsBand(getBandName());
 		return isband;
+	}
+	
+	// Aufruf des Selects aus der Datenbank fuer Uebersichtstabelle
+	public Vector<Vector<String>> dbSelectMitglieder() {
+		Vector<Vector<String>> result = DBMethods03.dbSelectMitglieder(getBandName());
+		return result;
 	}
 }

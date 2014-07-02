@@ -373,7 +373,7 @@ public class MusicLounge14 extends JFrame {
 						if (i > 2) {
 							// Uebergabe der Tab-Titel fuer Titel und
 							// weiterleitung an die Suche
-							AddTabs02.showArtist(jtpmain.jtpmaindesc, title[i], title[i]);
+							AddTabs02.showArtist(jtpmain.jtpmaindesc, title[i]);
 						}
 					}
 					// Text wieder leeren - muss am Ende stehen

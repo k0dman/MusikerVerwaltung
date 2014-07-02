@@ -44,8 +44,8 @@ public class DBConnection01 {
 		// vorhanden oder nicht eingebunden :P
 		// Falsche Daten zur DB
 		catch (Exception ex) {
-			System.out.println("false");
 			System.out.println("Probleme mit der Datenbank !");
+			System.out.println("false");
 
 			return false;
 		}

@@ -37,7 +37,9 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 
 	// String
 	public String name;
-	Musiker01 dbsearch = new Musiker01();
+	
+	//Instanz aus Musikerklasse fuer Select 
+	private Musiker01 dbsearch = new Musiker01();
 
 	public JTabbedPane jtpmaindesc(String result) {
 
@@ -51,9 +53,9 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		};
 
 		// Spaltenueberschriften aus der Methode-Klasse holen
-		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERS);
+		dtm.setColumnIdentifiers(DBMethods03.COLUMN_IDENTIFIERSMAINTABLE);
 
-		// #############################//
+
 		// Methodenaufruf und in Variable abgelegt
 		Vector<Vector<String>> results;
 		if (result == null) {
@@ -61,11 +63,11 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 		} else
 			results = dbsearch.selectLibary(result);
 		//
-		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
+		dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERSMAINTABLE);
 
 		// Methode
 		dtm.fireTableDataChanged();
-		// #############################//
+
 
 		// JTable erzeugen
 		jtmaintable = new JTable(dtm);
@@ -123,7 +125,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 				Musiker01 result = new Musiker01();
 				Vector<Vector<String>> results = result.dbSelect();
 				//
-				dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERS);
+				dtm.setDataVector(results, DBMethods03.COLUMN_IDENTIFIERSMAINTABLE);
 
 				// Methode
 				dtm.fireTableDataChanged();
@@ -174,7 +176,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 							} else {
 								// Methodenaufruf um Tab zu adden
 								AddTabs02
-										.showArtist(jtpmaindesc, artist, title);
+										.showArtist(jtpmaindesc, artist);
 							}
 
 						}
@@ -200,7 +202,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 							} else {
 								// Methodenaufruf um Tab zu adden
 								AddTabs02
-										.showArtist(jtpmaindesc, artist, title);
+										.showArtist(jtpmaindesc, artist);
 							}
 						}
 					}

@@ -24,10 +24,17 @@ public final class DBMethods03 {
 	// Instanz-Objekt erzeugen für die ganze Klasse
 	private static DBConnection conn = new DBConnection();
 
-	public final static Vector<String> COLUMN_IDENTIFIERS = new Vector<String>() {
+	public final static Vector<String> COLUMN_IDENTIFIERSMAINTABLE = new Vector<String>() {
 		{
 			add("Interpret");
 			add("Titel");
+		}
+	};
+	
+	public final static Vector<String> COLUMN_IDENTIFIERSTITLES = new Vector<String>() {
+		{
+			add("Mitglied");
+			add("Aktiv");
 		}
 	};
 
@@ -451,6 +458,54 @@ public final class DBMethods03 {
 			System.out.println("Fehler bei Band-Suche");
 		}
 		return isband;
+
+	}
+	
+	// Select nach Pseudonym um gezieltes Klicken in der Libary zu ermoeglichen
+	public static final Vector<Vector<String>> dbSelectMitglieder(String band) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt.executeQuery("select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_musiker = mg.id_musiker and mg.id_gruppe = gr.id_gruppe and gr.name = '" + band
+					+ "'");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> pseudonymsdata = new Vector<String>();
+				pseudonymsdata.add(rs.getString("pseudonym"));
+				pseudonymsdata.add(rs.getString("aktiv"));
+				
+				result.add(pseudonymsdata);
+			}
+			
+			rs.close();
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler bei Mitglieder-Suche");
+		}
+		return result;
 
 	}
 }

@@ -128,7 +128,7 @@ public class Musiker01 extends Person01 {
 		
 	}
 
-	// Aufruf des Selects aus der Datenbank
+	// Aufruf des Selects aus der Datenbank fuer Uebersichtstabelle
 	public Vector<Vector<String>> dbSelect() {
 		Vector<Vector<String>> result = DBMethods03.dbSelectTable();
 		return result;
@@ -140,7 +140,7 @@ public class Musiker01 extends Person01 {
 		return musiker;
 	}
 
-	// GET - Methode um die Daten aus der Datenb
+	// GET - Methoden um die Daten aus der Datenbank zu holen
 	public String getMusiker() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()));
 	}
