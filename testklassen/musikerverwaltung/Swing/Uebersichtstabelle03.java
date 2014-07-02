@@ -160,7 +160,7 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 							// Die Objecte in Strings casten
 							artist = String.valueOf(artist);
 							title = String.valueOf(title);
-
+							//Musiker01 musiker = new Musiker01(String.valueOf(artist));
 							// Methodenaufruf um Tab zu adden
 							AddTabs02.showArtist(artist, title, jtpmaindesc);
 						}

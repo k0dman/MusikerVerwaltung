@@ -268,7 +268,7 @@ public final class DBMethods03 {
 		// Die Datenbank erwartet "j" / "n"
 		// Boolean fuer <istaktiv> wird erneut umgewandelt mit Helfer-Methode
 
-		String lebt = Helfer01.toStringLebt(istot);
+		///String lebt = Helfer01.toStringLebt(istot);
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
