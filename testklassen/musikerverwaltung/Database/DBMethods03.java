@@ -50,7 +50,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss where mus.id_musiker = ss.id_musiker UNION SELECT gr.name, sg.stueckgruppe FROM gruppe gr, stueckgruppe sg where gr.id_gruppe = sg.id_gruppe order by pseudonym");
+					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss where mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' UNION SELECT gr.name, sg.stueckgruppe FROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg where gr.id_gruppe = sg.id_gruppe order by pseudonym");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
