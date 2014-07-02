@@ -1,10 +1,16 @@
 package musikerverwaltung.menschen;
 
+import musikerverwaltung.Database.DBMethods03;
+
 public class Gruppe01 {
 
 	// Instanzvariabeln
 	private String bandname;
 	private String[] mitglied, ehemalig, bandstueck, bandreferenz;
+
+	public Gruppe01(String bandname) {
+		this.bandname = bandname;
+	}
 
 	// Konstruktor
 	public Gruppe01(String bandname, String[] mitglied, String[] ehemalig,
@@ -38,5 +44,10 @@ public class Gruppe01 {
 
 	public String[] getBandReferenz() {
 		return bandreferenz;
+	}
+	
+	public boolean isBand(){
+		boolean isband = DBMethods03.selectIsBand(getBandName());
+		return isband;
 	}
 }

@@ -14,15 +14,15 @@ public final class AddTabs02 extends JTabbedPane {
 	
 	private static Icons01 tabicons = new Icons01();
 	
-	public static void showArtist(Object artist, Object title, JTabbedPane jtpane) {
+	public static void showArtist(JTabbedPane jtpane, Object artist, Object title) {
 		
 		jtpane.addTab(String.valueOf(artist), tabicons.icons[2], jpmainshowartist.jpmainArtist(artist));
 		
 	}
 
-	public static void showBand(JTabbedPane jtpane, String name) {
+	public static void showBand(JTabbedPane jtpane, Object band) {
 
-		//jtpane.addTab(name, tabicons.icons[1], jpmainartist.jpmainArtist());
+		jtpane.addTab(String.valueOf(band), tabicons.icons[1], jpmainband.jpmainBand());
 
 	}
 	

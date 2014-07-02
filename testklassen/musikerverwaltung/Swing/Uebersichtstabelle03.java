@@ -160,9 +160,23 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 							// Die Objecte in Strings casten
 							artist = String.valueOf(artist);
 							title = String.valueOf(title);
-							//Musiker01 musiker = new Musiker01(String.valueOf(artist));
-							// Methodenaufruf um Tab zu adden
-							AddTabs02.showArtist(artist, title, jtpmaindesc);
+
+							// Instanz der Gruppe erzeugen um Methode zur
+							// Pruefung zu nutzen
+							Gruppe01 gruppe = new Gruppe01(String
+									.valueOf(artist));
+
+							// Pruefung ob es sich um eine Band handelt oder
+							// Musiker
+							if (gruppe.isBand() == true) {
+								// Methodenaufruf um Tab zu adden
+								AddTabs02.showBand(jtpmaindesc, artist);
+							} else {
+								// Methodenaufruf um Tab zu adden
+								AddTabs02
+										.showArtist(jtpmaindesc, artist, title);
+							}
+
 						}
 
 						// Wenn es sich um die zweite Spalte handelt:
@@ -175,7 +189,19 @@ public class Uebersichtstabelle03 extends JTabbedPane {
 							artist = String.valueOf(artist);
 							title = String.valueOf(title);
 
-							AddTabs02.showArtist(artist, title, jtpmaindesc);
+							Gruppe01 gruppe = new Gruppe01(String
+									.valueOf(artist));
+
+							// Pruefung ob es sich um eine Band handelt oder
+							// Musiker
+							if (gruppe.isBand() == true) {
+								// Methodenaufruf um Tab zu adden
+								AddTabs02.showBand(jtpmaindesc, artist);
+							} else {
+								// Methodenaufruf um Tab zu adden
+								AddTabs02
+										.showArtist(jtpmaindesc, artist, title);
+							}
 						}
 					}
 				}

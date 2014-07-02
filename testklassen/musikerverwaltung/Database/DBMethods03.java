@@ -268,7 +268,7 @@ public final class DBMethods03 {
 		// Die Datenbank erwartet "j" / "n"
 		// Boolean fuer <istaktiv> wird erneut umgewandelt mit Helfer-Methode
 
-		///String lebt = Helfer01.toStringLebt(istot);
+		// /String lebt = Helfer01.toStringLebt(istot);
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
@@ -402,6 +402,55 @@ public final class DBMethods03 {
 			System.out.println("Fehler bei Pseudonym-Suche");
 		}
 		return pseudonymsdata;
+
+	}
+
+	// Select fuer Abfrage Band
+	public static final boolean selectIsBand(String band) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean isband = false;
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt.executeQuery("SELECT * FROM gruppe WHERE name = '" + band
+					+ "'");
+
+			// band null setzen damit die Abfrage funktioniert
+			band = null;
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+			while (rs.next()) {
+				band = rs.getString("name");
+			}
+
+			// Wenn band nicht "leer" ist, <isband> auf true setzen
+			if (band != null) {
+				isband = true;
+			}
+
+			rs.close();
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler bei Band-Suche");
+		}
+		return isband;
 
 	}
 }

@@ -30,7 +30,7 @@ public class MusicLounge14 extends JFrame {
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle03 jtpmain = new Uebersichtstabelle03();
-
+ 
 	// Farben
 
 	// Contentpane
