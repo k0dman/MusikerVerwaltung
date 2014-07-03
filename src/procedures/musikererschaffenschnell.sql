@@ -33,6 +33,7 @@ SET @p0='Izzy'; SET @p1='Stradlin'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=
 SET @p0='Ronald'; SET @p1='Blumenthal'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='25'; SET @p8='09'; SET @p9='1969'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Ron „Bumblefoot“ Thal'; SET @p14='Lead- und Rhythmus-Gitarre'; SET @p15=''; SET @p16='http://de.wikipedia.org/wiki/Ron_Thal'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
 
 SET @p0='Frank'; SET @p1='Ferrer'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='25'; SET @p8='03'; SET @p9='1966'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Frank Ferrer'; SET @p14='Schlagzeug'; SET @p15=''; SET @p16='http://de.wikipedia.org/wiki/Frank_Ferrer'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
 /* Band Eintragen */
 
 SET @p0='The Doors'; SET @p1=''; SET @p2=''; SET @p3='Riders on the Storm'; SET @p4='https://www.youtube.com/watch?v=5qRJIBtbc2c&feature=kp'; SET @p5='9'; SET @p6=''; SET @p7='j'; CALL `gruppeErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
@@ -48,3 +49,13 @@ INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, 
 INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, `aktiv`) VALUES (NULL, '13', '2', 'n');
 INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, `aktiv`) VALUES (NULL, '14', '2', 'j');
 INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, `aktiv`) VALUES (NULL, '15', '2', 'j');
+
+/* Band Lieder hinzufuegen */
+
+INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '1', 'Touch Me'), (NULL, '1', 'Light My Fire');
+INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '1', 'Roadhouse Blues'), (NULL, '1', 'Waiting for the sun');
+INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '2', 'November Rain'), (NULL, '2', 'Welcome To The Jungle'), (NULL, '2', 'You Could Be Mine'), (NULL, '2', 'Knocking On Heaven''s Door'), (NULL, '2', 'Sweet Child O''Mine');
+INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '1', 'Love me Two Times'), (NULL, '1', 'Gloria'), (NULL, '1', 'The End'), (NULL, '1', 'L.A. Woman'), (NULL, '1', 'Roadhouse Blues');
+/* Band Refernz hinzufuegen */
+INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '2', 'http://www.youtube.com/watch?v=NqTuN-35580'), (NULL, '2', 'http://www.youtube.com/watch?v=UnurdL-TatQ'), (NULL, '2', 'http://www.youtube.com/watch?v=X1ZRBPA8SK0'), (NULL, '2', 'http://www.youtube.com/watch?v=X1ZRBPA8SK0&list=RDX1ZRBPA8SK0#t=0'), (NULL, '2', 'http://www.youtube.com/watch?v=YnL5wI5P2B0');
+INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '1', 'http://www.youtube.com/watch?v=chluWboqK-w'), (NULL, '1', 'http://www.youtube.com/watch?v=cJEL6b9Z78w'), (NULL, '1', 'http://www.youtube.com/watch?v=RIagV6hUQAM'), (NULL, '1', 'http://www.youtube.com/watch?v=ZRAr354usf8'), (NULL, '1', 'http://www.youtube.com/watch?v=JskztPPSJwY');
