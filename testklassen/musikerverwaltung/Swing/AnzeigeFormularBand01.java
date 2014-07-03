@@ -8,6 +8,10 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import musikerverwaltung.Database.DBMethods03;
@@ -17,38 +21,42 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	// JPanel
 	private JPanel jpmainband, jpmainleft, jpmainmiddle, jpmainright,
-			jpmainleftjl, jpmainleftjtf, jpmainleftehemalig;
+			jpmainleftjl, jpmainleftjtf, jpmainleftehemalig,
+			jpmainmiddlemitglieder, jpmainmiddletitel;
 
 	// JLabel
-	private JLabel jlueschrift, jlname, jlmitglied, jlehemalig, jlstueckgruppe, jlreferenz,
-			jlfueller, jlauswahl;
-	
+	private JLabel jlueschrift, jlname, jlmitglied, jlehemalig, jlstueckgruppe,
+			jlreferenz, jlfueller, jlauswahl;
+
 	// JTextField
 	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz;
-	
-	// Schrift:
-		private Font ftfield;
-		
-		// JRadioButton
-		private JRadioButton jrbehemaligja, jrbehemalignein;
 
-		// ButtonGroup
-		private ButtonGroup bgehemalig;
-		
-		// JComboBox
-		private JComboBox<String> jcbmitgliedauswahl;
-		
-		// JTable
-		private JTable jtbandmitglieder, jtbandtitles;
-		
-		// JScrollPane
-		private JScrollPane jspmitglieder, jsptitles;
+	// Schrift:
+	private Font ftfield;
+
+	// JRadioButton
+	private JRadioButton jrbehemaligja, jrbehemalignein;
+
+	// ButtonGroup
+	private ButtonGroup bgehemalig;
+
+	// JComboBox
+	private JComboBox<String> jcbmitgliedauswahl;
+
+	// JTable
+	private JTable jtbandmitglieder, jtbandtitles;
+
+	// JScrollPane
+	private JScrollPane jspmitglieder, jsptitles;
+
+	// Border
+	private Border border;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft() {
 
 		// JPanel fuer JLabels
-		jpmainleftjl = new JPanel(new GridLayout(12,1,1,15));
+		jpmainleftjl = new JPanel(new GridLayout(12, 1, 1, 15));
 
 		// JLabel erzeugen
 		jlueschrift = new JLabel("Tragen Sie eine Band ein: ");
@@ -60,14 +68,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jlauswahl = new JLabel("Mitglied-Auswahl: ");
 
 		// Label Right anordnen
-				jlueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlname.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlmitglied.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlehemalig.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlstueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlreferenz.setHorizontalAlignment(SwingConstants.RIGHT);
-				jlauswahl.setHorizontalAlignment(SwingConstants.RIGHT);
-				
+		jlueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlname.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlmitglied.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlehemalig.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlstueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlreferenz.setHorizontalAlignment(SwingConstants.RIGHT);
+		jlauswahl.setHorizontalAlignment(SwingConstants.RIGHT);
+
 		// Label dem Panel hinzuf\u00FCgen
 		jpmainleftjl.add(jlueschrift);
 		jpmainleftjl.add(jlname);
@@ -76,116 +84,128 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleftjl.add(jlehemalig);
 		jpmainleftjl.add(jlmitglied);
 		jpmainleftjl.add(jlauswahl);
-		
-		
+
 		// JPanel fuer JTF¥s
-		jpmainleftjtf = new JPanel(new GridLayout(12,1,1,15));
-		
+		jpmainleftjtf = new JPanel(new GridLayout(12, 1, 1, 15));
+
 		// JLabel erzeugen
 		for (int i = 0; i < 1; i++) {
 			jlfueller = new JLabel("");
 			jpmainleftjtf.add(jlfueller);
 		}
-		
+
 		// JTextFields erzeugen
 		jtfname = new JTextField();
 		jtfmitglied = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
-		
-		jtfname.setMaximumSize(new Dimension(10,10));
+
+		jtfname.setMaximumSize(new Dimension(10, 10));
 
 		// JTextfields verg\u00F6sern
-		//jtfname.setColumns(7);
-		//jtfmitglied.setColumns(7);
-		//jtfstueckgruppe.setColumns(7);
-		//jtfreferenz.setColumns(7);
+		// jtfname.setColumns(7);
+		// jtfmitglied.setColumns(7);
+		// jtfstueckgruppe.setColumns(7);
+		// jtfreferenz.setColumns(7);
 
 		// Schriften erzeugen
-			ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
-		
+		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
+
 		// JTextfield schrift festlegen
 		jtfname.setFont(ftfield);
 		jtfmitglied.setFont(ftfield);
 		jtfstueckgruppe.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
-		
+
 		// JRadioButton erzeugen
 
-				jrbehemaligja = new JRadioButton("Ja");
-				jrbehemaligja.setActionCommand("j");
+		jrbehemaligja = new JRadioButton("Ja");
+		jrbehemaligja.setActionCommand("j");
 
-				jrbehemalignein = new JRadioButton("Nein");
-				jrbehemalignein.setActionCommand("n");
+		jrbehemalignein = new JRadioButton("Nein");
+		jrbehemalignein.setActionCommand("n");
 
-				// JRadioButtons ButtonGroup hinzuf\u00FCgen
-				bgehemalig = new ButtonGroup();
-				bgehemalig.add(jrbehemaligja);
-				bgehemalig.add(jrbehemalignein);
+		// JRadioButtons ButtonGroup hinzuf\u00FCgen
+		bgehemalig = new ButtonGroup();
+		bgehemalig.add(jrbehemaligja);
+		bgehemalig.add(jrbehemalignein);
 
-				// JPanel fuer die JRadioButtons
-				jpmainleftehemalig = new JPanel(new GridLayout(1, 1, 0, 10));
-				jpmainleftehemalig.add(jrbehemaligja);
-				jpmainleftehemalig.add(jrbehemalignein);
-				
-				//Instanz von Musiker erzeugen
-				Musiker01 musiker = new Musiker01();
-				
-				// Vector-Var um JComboxBox zu fuellen 
-				Vector<String> selectmitglied = musiker.getMusikerArray();
+		// JPanel fuer die JRadioButtons
+		jpmainleftehemalig = new JPanel(new GridLayout(1, 1, 0, 10));
+		jpmainleftehemalig.add(jrbehemaligja);
+		jpmainleftehemalig.add(jrbehemalignein);
 
-				// Erzeugen der Combobox
-				jcbmitgliedauswahl = new JComboBox<String>();
-				jcbmitgliedauswahl.setModel(new DefaultComboBoxModel<String>(
-						selectmitglied));
+		// Instanz von Musiker erzeugen
+		Musiker01 musiker = new Musiker01();
 
-				
-				// JTextfields und JRadioButtons hinzuf\u00FCgen
-				jpmainleftjtf.add(jtfname);
-				jpmainleftjtf.add(jtfstueckgruppe);
-				jpmainleftjtf.add(jtfreferenz);
-				jpmainleftjtf.add(jpmainleftehemalig);
-				jpmainleftjtf.add(jtfmitglied);
-				jpmainleftjtf.add(jcbmitgliedauswahl);
-				
-				// ToolTips hinzuf\u00FCgen
-				jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
-				jtfmitglied
-						.setToolTipText("Tragen Sie hier bitte die Bandmitglieder ein");
-				jtfstueckgruppe
-						.setToolTipText("Tragen Sie hier bitte ein Stueck der Gruppe ein");
-				jtfreferenz
-						.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
-				jcbmitgliedauswahl.setToolTipText("Bitte waehle einen Musiker aus");
-		
-		
-		//HauptJPanel linke Seite erzeugen
-		jpmainleft = new JPanel(new GridLayout(1,2,1,1));
-		
+		// Vector-Var um JComboxBox zu fuellen
+		Vector<String> selectmitglied = musiker.getMusikerArray();
+
+		// Erzeugen der Combobox
+		jcbmitgliedauswahl = new JComboBox<String>();
+		jcbmitgliedauswahl.setModel(new DefaultComboBoxModel<String>(
+				selectmitglied));
+
+		// JTextfields und JRadioButtons hinzuf\u00FCgen
+		jpmainleftjtf.add(jtfname);
+		jpmainleftjtf.add(jtfstueckgruppe);
+		jpmainleftjtf.add(jtfreferenz);
+		jpmainleftjtf.add(jpmainleftehemalig);
+		jpmainleftjtf.add(jtfmitglied);
+		jpmainleftjtf.add(jcbmitgliedauswahl);
+
+		// ToolTips hinzuf\u00FCgen
+		jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
+		jtfmitglied
+				.setToolTipText("Tragen Sie hier bitte die Bandmitglieder ein");
+		jtfstueckgruppe
+				.setToolTipText("Tragen Sie hier bitte ein Stueck der Gruppe ein");
+		jtfreferenz
+				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
+		jcbmitgliedauswahl.setToolTipText("Bitte waehle einen Musiker aus");
+
+		// HauptJPanel linke Seite erzeugen
+		jpmainleft = new JPanel(new GridLayout(1, 2, 1, 1));
+
 		jpmainleft.add(jpmainleftjl);
-		jpmainleft.add(jpmainleftjtf);
 		
+		// Border dem JPanel hinzufuegen
+		border = jpmainleft.getBorder();
+		// Farbe fuer Border
+		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
+
+		CompoundBorder border1 = new CompoundBorder(border, margin);
+		jpmainleft.setBorder(new TitledBorder(border1, "Band-Info¥s"));
+		
+		jpmainleft.add(jpmainleftjtf);
+
 		return jpmainleft;
 	}
 
 	// HauptJPanel mitte
 	private JPanel jpmainMiddle(Object band) {
+
+		jpmainmiddlemitglieder = new JPanel(new GridLayout(2, 1, 1, 0));
+
 		
-		//Instanz des TablesModels erzeugen
+		// Instanz des TablesModels erzeugen
 		TableModel dtm = new TableModel();
-		//Instanz der Gruppe erzeugen um Tabelle fuellen zu koennen
+		// Instanz der Gruppe erzeugen um Tabelle fuellen zu koennen
 		Gruppe01 mitglieder = new Gruppe01(String.valueOf(band));
-		
-		//Erzeugung der Tabelle mit DefaultTableModel
-		jtbandmitglieder = new JTable(dtm.dtm(1,2 , DBMethods03.COLUMN_IDENTIFIERSTITLES, mitglieder.dbSelectMitglieder()));
-		
-		//Spalten nicht mehr verschiebbar
+
+		// Erzeugung der Tabelle mit DefaultTableModel
+		jtbandmitglieder = new JTable(dtm.dtm(1, 2,
+				DBMethods03.COLUMN_IDENTIFIERSTITLES,
+				mitglieder.dbSelectMitglieder()));
+
+		// Spalten nicht mehr verschiebbar
 		jtbandmitglieder.getTableHeader().setReorderingAllowed(false);
 
 		jtbandmitglieder.setCellSelectionEnabled(true);
-		
-		//Nur auswahl einer Zeile moeglich
-		ListSelectionModel cellSelectionModel = jtbandmitglieder.getSelectionModel();
+
+		// Nur auswahl einer Zeile moeglich
+		ListSelectionModel cellSelectionModel = jtbandmitglieder
+				.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -199,12 +219,68 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Viewport setzen
 		jspmitglieder.setViewportView(jtbandmitglieder);
 
+		// JTable mit Mitgliedern und JLabel dem JPanel hinzufuegen
 		
-		//HauptJPanel mitte
-		jpmainmiddle = new JPanel();
+		jpmainmiddlemitglieder.add(jspmitglieder);
+
+		// Border dem JPanel hinzufuegen
+		border = jpmainmiddlemitglieder.getBorder();
+		// Farbe fuer Border
+		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
+
+		CompoundBorder border1 = new CompoundBorder(border, margin);
+		jpmainmiddlemitglieder.setBorder(new TitledBorder(border1, "Mitglieder-Liste"));
 		
-		jpmainmiddle.add(jspmitglieder);
 		
+		// #########################Unteres JPanel fuer die
+		// Mitte#############################
+		jpmainmiddletitel = new JPanel(new GridLayout(2, 1, 1, 0));
+
+		
+		// Erzeugung der Tabelle mit DefaultTableModel
+		jtbandtitles = new JTable(dtm.dtm(1, 2,
+				DBMethods03.COLUMN_IDENTIFIERSTITLES,
+				mitglieder.dbSelectMitglieder()));
+
+		// Spalten nicht mehr verschiebbar
+		jtbandtitles.getTableHeader().setReorderingAllowed(false);
+
+		jtbandtitles.setCellSelectionEnabled(true);
+
+		// Nur auswahl einer Zeile moeglich
+		cellSelectionModel = jtbandtitles.getSelectionModel();
+		cellSelectionModel
+				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		// JTable der JScrollPane hinzufuegen
+		jsptitles = new JScrollPane(jtbandtitles);
+
+		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, auﬂerdem schoener:) //860 , 600
+		jsptitles.setPreferredSize(new Dimension(300, 300));
+
+		// Viewport setzen
+		jsptitles.setViewportView(jtbandtitles);
+
+		// JTable mit Mitgliedern und JLabel dem JPanel hinzufuegen
+		
+
+		jpmainmiddletitel.add(jsptitles);
+		// Border dem JPanel hinzufuegen
+		border = jpmainmiddletitel.getBorder();
+		// Farbe fuer Border
+		margin = new LineBorder(Color.LIGHT_GRAY, 2);
+
+		border1 = new CompoundBorder(border, margin);
+		jpmainmiddletitel.setBorder(new TitledBorder(border1, "Titel-Liste"));
+		
+		
+		// HauptJPanel mitte
+		jpmainmiddle = new JPanel(new GridLayout(2, 1, 1, 10));
+
+		jpmainmiddle.add(jpmainmiddlemitglieder);
+		jpmainmiddle.add(jpmainmiddletitel);
+
 		return jpmainmiddle;
 	}
 
@@ -223,13 +299,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight());
 		bandActionListener();
-		//mouseListenerTable();
+		// mouseListenerTable();
 
 		return jpmainband;
 
 	}
-	
-	// ActionListener, setzt ausgewaehltes Textfeld nach Auswahl eines Items aus JComboBox
+
+	// ActionListener, setzt ausgewaehltes Textfeld nach Auswahl eines Items aus
+	// JComboBox
 	public void bandActionListener() {
 		jcbmitgliedauswahl.addActionListener(new ActionListener() {
 
@@ -248,7 +325,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		});
 
 	}
-	/*
+
 	Uebersichtstabelle03 jtpmaindesc = new Uebersichtstabelle03();
 
 	public void mouseListenerTable() {
@@ -272,8 +349,10 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 							// Die Werte des ausgewaehlten Feldes in Objecte
 							// ablegen
-							Object artist = jtbandmitglieder.getValueAt(row, column);
-							Object title = jtbandmitglieder.getValueAt(row, column + 1);
+							Object artist = jtbandmitglieder.getValueAt(row,
+									column);
+							Object title = jtbandmitglieder.getValueAt(row,
+									column + 1);
 
 							// Die Objecte in Strings casten
 							artist = String.valueOf(artist);
@@ -316,5 +395,5 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 			}
 		});
-	}*/
+	}
 }
