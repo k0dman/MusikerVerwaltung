@@ -20,7 +20,7 @@ public class AnzeigeFormularBand00 extends JPanel {
 
 	// Panel
 	private JPanel jpmaininput, jpmaininputedit, jpmaininputtable, jpmainband,
-			jpmaindesc, jpmainright, jpehemalig;
+			jpmaindesc, jpmaindescinfo, jpmainright, jpehemalig;
 
 	// Schrift:
 	private Font ftfield;
@@ -50,10 +50,12 @@ public class AnzeigeFormularBand00 extends JPanel {
 	// JScrollPane
 	private JScrollPane jsptableband;
 
-	public JPanel jpmainDesc() {
+	public JPanel jpmainDesc(Object band) {
 
 		// Panel erzeugen mit GridLayout
-		jpmaindesc = new JPanel(new GridLayout(13, 1, 10, 10));
+		jpmaindesc = new JPanel(new GridLayout(5, 3, 10, 10));
+
+		jpmaindescinfo = new JPanel(new GridLayout(13, 1, 10, 10));
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -67,12 +69,12 @@ public class AnzeigeFormularBand00 extends JPanel {
 		referenz = new JLabel("Referenz");
 
 		// Label dem Panel hinzuf\u00FCgen
-		jpmaindesc.add(ueschrift);
-		jpmaindesc.add(name);
-		jpmaindesc.add(stueckgruppe);
-		jpmaindesc.add(referenz);
-		jpmaindesc.add(ehemalig);
-		jpmaindesc.add(mitglied);
+		jpmaindescinfo.add(ueschrift);
+		jpmaindescinfo.add(name);
+		jpmaindescinfo.add(stueckgruppe);
+		jpmaindescinfo.add(referenz);
+		jpmaindescinfo.add(ehemalig);
+		jpmaindescinfo.add(mitglied);
 
 		// Label Right anordnen
 		ueschrift.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -84,16 +86,7 @@ public class AnzeigeFormularBand00 extends JPanel {
 
 		// Schrift dem gew\u00FCnschten Label hinzuf\u00FCgen
 		ueschrift.setFont(ftfield);
-
-		return jpmaindesc;
-
-	}
-
-	public JPanel jpmainInput(Object band) {
-
-		// Haupt-JPanel erzeugen mit Gridlayout
-		jpmaininput = new JPanel(new GridLayout(2, 1, 1, 1));
-
+	
 		// Zwei UnterJPanels
 		jpmaininputedit = new JPanel(new GridLayout(7, 1, 1, 10));
 		jpmaininputtable = new JPanel(new GridLayout(1, 1, 1, 1));
@@ -203,8 +196,19 @@ public class AnzeigeFormularBand00 extends JPanel {
 		jpmaininputtable.add(jsptableband);
 
 		// Hauptpanel die TextFelder und die Table hinzufuegen
-		jpmaininput.add(jpmaininputedit);
-		jpmaininput.add(jpmaininputtable);
+		jpmaindesc.add(jpmaindescinfo);
+
+		jpmaindesc.add(jpmaininputedit);
+		jpmaindesc.add(jpmaininputtable);
+
+		return jpmaindesc;
+
+	}
+
+	public JPanel jpmainInput() {
+
+		// Haupt-JPanel erzeugen mit Gridlayout
+		jpmaininput = new JPanel();
 
 		return jpmaininput;
 
@@ -258,8 +262,8 @@ public class AnzeigeFormularBand00 extends JPanel {
 
 		jpmainband = new JPanel(new GridLayout(1, 3, 4, 4));
 
-		jpmainband.add(jpmainDesc());
-		jpmainband.add(jpmainInput(band));
+		jpmainband.add(jpmainDesc(band));
+		jpmainband.add(jpmainInput());
 		jpmainband.add(jpmainRight());
 		bandActionListener();
 		mouseListenerTable();
@@ -316,12 +320,14 @@ public class AnzeigeFormularBand00 extends JPanel {
 							// Die Objecte in Strings casten
 							artist = String.valueOf(artist);
 							title = String.valueOf(title);
-							
+
 							JTabbedPane jtpane = new JTabbedPane();
-							jtpmaindesc.jtpmaindesc = jtpmaindesc.jtpmaindesc(null);
-							
+							jtpmaindesc.jtpmaindesc = jtpmaindesc
+									.jtpmaindesc(null);
+
 							// Methodenaufruf um Tab zu adden
-							AddTabs02.showArtist(jtpmaindesc.jtpmaindesc, artist);
+							AddTabs02.showArtist(jtpmaindesc.jtpmaindesc,
+									artist);
 						}
 
 					}
