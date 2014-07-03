@@ -47,15 +47,28 @@ public class Gruppe01 {
 	public String[] getBandReferenz() {
 		return bandreferenz;
 	}
-	
-	public boolean isBand(){
+
+	public boolean isBand() {
 		boolean isband = DBMethods03.selectIsBand(getBandName());
 		return isband;
 	}
-	
-	// Aufruf des Selects aus der Datenbank fuer Uebersichtstabelle
+
+	// Aufruf des Selects aus der Datenbank fuer Mitglieder-Liste
 	public Vector<Vector<String>> dbSelectMitglieder() {
 		Vector<Vector<String>> result = DBMethods03.dbSelectMitglieder(getBandName());
 		return result;
 	}
+
+	// Aufruf des Selects aus der Datenbank fuer Titel-Liste
+	public Vector<Vector<String>> dbSelectTitel() {
+		Vector<Vector<String>> result = DBMethods03.dbSelectStueckgruppe(getBandName());
+		return result;
+	}
+
+	// Aufruf des Selects aus der Datenbank fuer Titel-Liste
+	public Vector<Vector<String>> dbSelectReferenzen() {
+		Vector<Vector<String>> result = DBMethods03.dbSelectGrreferenz(getBandName());
+		return result;
+	}
+
 }

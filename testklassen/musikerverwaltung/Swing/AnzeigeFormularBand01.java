@@ -113,13 +113,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
 
-		jtfname.setMaximumSize(new Dimension(10, 10));
-
-		// JTextfields verg\u00F6sern
-		// jtfname.setColumns(7);
-		// jtfmitglied.setColumns(7);
-		// jtfstueckgruppe.setColumns(7);
-		// jtfreferenz.setColumns(7);
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -205,7 +198,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandmitglieder = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES,
+				DBMethods03.COLUMN_IDENTIFIERSMEMBERS,
 				gruppe.dbSelectMitglieder()));
 
 		// Spalten nicht mehr verschiebbar
@@ -241,7 +234,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandtitles = new JTable(dtm.dtm(1, 2,
 				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				gruppe.dbSelectMitglieder()));
+				gruppe.dbSelectTitel()));
 
 		// Spalten nicht mehr verschiebbar
 		jtbandtitles.getTableHeader().setReorderingAllowed(false);
@@ -279,14 +272,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 	}
 
 	// HauptJPanel rechts
-	private JPanel jpmainRight() {
+	private JPanel jpmainRight(Object band) {
 		// JPanel für Tabelle mit Referenzen
 		jpmainrightreferenz = new JPanel(new GridLayout(2,1,1,1));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandreferenzen = new JTable(dtm.dtm(1, 1,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				gruppe.dbSelectMitglieder()));
+				DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+				gruppe.dbSelectReferenzen()));
 
 		// Spalten nicht mehr verschiebbar
 		jtbandreferenzen.getTableHeader().setReorderingAllowed(false);
@@ -354,7 +347,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		jpmainband.add(jpmainLeft());
 		jpmainband.add(jpmainMiddle(band));
-		jpmainband.add(jpmainRight());
+		jpmainband.add(jpmainRight(band));
 		bandActionListener();
 		// mouseListenerTable();
 
