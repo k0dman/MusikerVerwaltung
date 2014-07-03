@@ -507,4 +507,49 @@ public final class DBMethods03 {
 		return result;
 
 	}
+	
+	public static final Vector<Vector<String>> dbSelectStueckgruppe(String band) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt.executeQuery("select stueckgruppe from stueckgruppe sg, gruppe g where sg.id_gruppe = g.id_gruppe and g.grname = '"+band+"';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> pseudonymsdata = new Vector<String>();
+				pseudonymsdata.add(rs.getString("stueckgruppe"));
+				
+				result.add(pseudonymsdata);
+			}
+			
+			rs.close();
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler bei Stueckgruppe-Suche");
+		}
+		return result;
+
+	}
 }
