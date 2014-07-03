@@ -1,7 +1,7 @@
 use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `bandBearbeiten` (grname varchar(100), 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `bandBearbeiten` (grgrname varchar(100), 
 id_grreferenz int(11), id_stueckgruppe int(11), grstueckgruppe varchar(100), grgrreferenz varchar(100),
 id_musiker int(11), id_gruppe int(11), graktiv varchar(1))
 
@@ -11,7 +11,7 @@ declare musid_musiker int;
 
 UPDATE gruppe
 SET
-name = grname,
+grname = grgrname,
 where gruppe.id_gruppe = id_gruppe;
 
 UPDATE grreferenz

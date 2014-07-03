@@ -68,7 +68,7 @@ foreign key (id_person) references person (id_person) on update cascade on delet
 create table if not exists gruppe
 (
 id_gruppe int(11) not null auto_increment,
-name varchar(100),
+grname varchar(100),
 primary key (id_gruppe)
 );
 
@@ -186,7 +186,7 @@ foreign key (id_gruppe) references gruppe (id_gruppe) on update cascade on delet
 
 /* Prozeduren */
 
-/* musikerErstellen */
+/* procedure : musikerErstellen */
 
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerErstellen` (musvorname varchar(100), musname varchar(100),
@@ -229,7 +229,7 @@ values (id_musiker, referenz);
 END$$
 DELIMITER ;
 
-/* gruppeErstellen */
+/* procedure : gruppeErstellen */
 
 use musiclounge;
 
@@ -242,7 +242,7 @@ BEGIN
 declare id_mitglied int;
 
 /* Gruppe Tabelle fuellen */
-insert into gruppe (name)
+insert into gruppe (grname)
 values (grname);
 
 /* Mitglied Tabelle fuellen */
@@ -264,7 +264,7 @@ values (id_gruppe, grstueckgruppe);
 END$$
 DELIMITER ;
 
-/* musiker bearbeiten */
+/* procedure : musiker bearbeiten */
 
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerBearbeiten` (musvorname varchar(100), musname varchar(100),
@@ -315,4 +315,87 @@ where stuecksolo.id_musiker = musid_musiker;
 
 END$$
 DELIMITER ;
+
+/* procedure :musiker loeschen */
+
+use musiclounge;
+
+CREATE PROCEDURE DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerLoeschen` (musid_musiker int(11), musid_person int(11))
+BEGIN
+
+/* Instrument loeschen */
+
+DELETE FROM Instrument
+WHERE id_musiker= musid_musiker;
+
+/* Solostueck loeschen */
+DELETE FROM stuecksolo
+WHERE id_musiker= musid_musiker;
+
+/* Referenz loeschen */
+DELETE FROM referenz
+WHERE id_musiker= musid_musiker;	
+	
+/* Personen Tabelle löschen */
+
+DELETE FROM person
+WHERE id_person = musid_person;
+
+/* Musiker Tabelle wird automatisch mitgelöscht dank FK*/
+
+END$$
+DELIMITER ;
+
+/* procedure :band bearbeiten */
+use musiclounge;
+
+CREATE PROCEDURE DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeBearbeiten` (grgrname varchar(100), 
+id_grreferenz int(11), id_stueckgruppe int(11), grstueckgruppe varchar(100), grgrreferenz varchar(100),
+id_musiker int(11), id_gruppe int(11), graktiv varchar(1))
+
+BEGIN
+
+declare musid_musiker int;	
+
+UPDATE gruppe
+SET
+grname = grgrname
+where gruppe.id_gruppe = id_gruppe;
+
+UPDATE grreferenz
+set 
+grreferenz = grgrreferenz
+where grreferenz.id_gruppe = id_gruppe;
+
+update stueckgruppe
+set stueckgruppe = grstueckgruppe
+where stueckgruppe.id_gruppe = id_gruppe;
+
+END$$
+DELIMITER ;
+
+/* procedure : band loeschen */
+
+use musiclounge;
+
+CREATE PROCEDURE DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeLoeschen` (grid_gruppe int(11))
+BEGIN
+
+/*gruppe*/
+
+DELETE FROM gruppe
+WHERE id_gruppe =  grid_gruppe;
+
+/*mitglied loeschen*/
+
+DELETE FROM mitglied
+WHERE id_gruppe = grid_gruppe;
+	
+
+END$$
+DELIMITER ;
+
 

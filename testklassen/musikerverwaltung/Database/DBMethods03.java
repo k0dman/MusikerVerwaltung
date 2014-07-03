@@ -57,7 +57,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss where mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' UNION SELECT gr.name, sg.stueckgruppe FROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg where gr.id_gruppe = sg.id_gruppe order by pseudonym");
+					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss where mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' UNION SELECT gr.grname, sg.stueckgruppe FROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg where gr.id_gruppe = sg.id_gruppe order by pseudonym");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -101,8 +101,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND CONCAT (name, vorname, pseudonym, stuecksolo) like '%"
-							+ keyword + "%' ORDER BY m.pseudonym");
+					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss, person p where p.id_person = mus.id_person and mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' and concat(pseudonym, stuecksolo, name, vorname) like '%" + keyword + "%' UNION SELECT gr.grname, sg.stueckgruppe fROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg, person p where gr.id_gruppe = sg.id_gruppe and concat(grname, stueckgruppe) like '%" + keyword + "%' order by pseudonym");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -262,7 +261,7 @@ public final class DBMethods03 {
 	// Methode die Insert-Prozedur für eine Band ausfuehrt
 
 	// id_musiker muss übergeben werden für die Prozedur
-	public static final void insertBand(String name, String stueckgruppe,
+	public static final void insertBand(String grname, String stueckgruppe,
 			String referenz, int id_musiker, boolean aktiv) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
@@ -285,7 +284,7 @@ public final class DBMethods03 {
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
-			callableStatement.setString(1, name); // Name Band
+			callableStatement.setString(1, grname); // Name Band
 			callableStatement.setNull(2, java.sql.Types.INTEGER); // id_grreferenz
 			callableStatement.setNull(2, java.sql.Types.INTEGER); // id_stueckgruppe
 			callableStatement.setString(4, stueckgruppe); // Stueck der Gruppe
@@ -431,7 +430,7 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("SELECT * FROM gruppe WHERE name = '" + band
+			rs = stmt.executeQuery("SELECT * FROM gruppe WHERE grname = '" + band
 					+ "'");
 
 			// band null setzen damit die Abfrage funktioniert
@@ -440,7 +439,7 @@ public final class DBMethods03 {
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
 			while (rs.next()) {
-				band = rs.getString("name");
+				band = rs.getString("grname");
 			}
 
 			// Wenn band nicht "leer" ist, <isband> auf true setzen
@@ -482,7 +481,7 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_musiker = mg.id_musiker and mg.id_gruppe = gr.id_gruppe and gr.name = '" + band
+			rs = stmt.executeQuery("select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_musiker = mg.id_musiker and mg.id_gruppe = gr.id_gruppe and gr.grname = '" + band
 					+ "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
