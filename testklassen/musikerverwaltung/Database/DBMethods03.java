@@ -31,13 +31,27 @@ public final class DBMethods03 {
 		}
 	};
 	
-	public final static Vector<String> COLUMN_IDENTIFIERSTITLES = new Vector<String>() {
+	public final static Vector<String> COLUMN_IDENTIFIERSMEMBERS = new Vector<String>() {
 		{
 			add("Mitglied");
 			add("Aktiv");
 		}
 	};
+	
+	public final static Vector<String> COLUMN_IDENTIFIERSTITLES = new Vector<String>() {
+		{
+			add("Titel");
+			
+		}
+	};
 
+	public final static Vector<String> COLUMN_IDENTIFIERSREFERENCES = new Vector<String>() {
+		{
+			add("Referenzen");
+			
+		}
+	};
+	
 	public static final Vector<Vector<String>> dbSelectTable() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -548,6 +562,50 @@ public final class DBMethods03 {
 		catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Fehler bei Stueckgruppe-Suche");
+		}
+		return result;
+
+	}
+	public static final Vector<Vector<String>> dbSelectGrreferenz(String band) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt.executeQuery("select grreferenz from grreferenz gr, gruppe g where gr.id_gruppe = g.id_gruppe and g.grname = '"+band+"';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> pseudonymsdata = new Vector<String>();
+				pseudonymsdata.add(rs.getString("grreferenz"));
+				
+				result.add(pseudonymsdata);
+			}
+			
+			rs.close();
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler bei Referenz-Suche");
 		}
 		return result;
 

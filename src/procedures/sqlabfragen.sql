@@ -32,3 +32,5 @@ select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_mu
 
 // Alle Lieder eine Gruppe
 select stueckgruppe from stueckgruppe sg, gruppe g where sg.id_gruppe = g.id_gruppe and g.grname = '"+name+"';
+// Alle Referenzen eine Gruppe
+select grreferenz from grreferenz gr, gruppe g where gr.id_gruppe = g.id_gruppe and g.grname = '"+name+"';
