@@ -337,35 +337,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainright.add(jpmainrightreferenz);
 		jpmainright.add(jpmainrightbuttons);
 
-		jtbandreferenzen.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-					if (e.getClickCount() == 2 | e.getButton() == 2) {
-
-						// In Var die ausgewaehlten Zeilen und Spalten speichern
-						int row = jtbandreferenzen.getSelectedRow();
-						int column = jtbandreferenzen.getSelectedColumn();
-
-						// Die Werte des ausgewaehlten Feldes in Objecte
-						// ablegen
-						Object titel = jtbandreferenzen.getValueAt(row, column);
-						System.out.println(titel);
-
-						// Browseraufruf (für Windows):
-						try {
-							Runtime.getRuntime().exec(
-									"cmd.exe /c start " + titel);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}
-				}
-			}
-		});
-
 		return jpmainright;
 	}
 
@@ -378,7 +349,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight(band));
 		bandActionListener();
-		// mouseListenerTable();
+		mouseListenerTable();
 
 		return jpmainband;
 
@@ -410,32 +381,32 @@ public class AnzeigeFormularBand01 extends JPanel {
 	public void mouseListenerTable() {
 
 		// Button fuer die Tabelle
-		jtbandmitglieder.addMouseListener(new MouseListener() {
+		jtbandmitglieder.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 
 				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
 				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtbandmitglieder.getSelectedRow();
+					int column = jtbandmitglieder.getSelectedColumn();
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object mitglied = jtbandmitglieder.getValueAt(row, column);
+					Object title = jtbandmitglieder.getValueAt(row, column + 1);
+
+					title = String.valueOf(title);
+
+					if (e.getClickCount() == 1) {
+						jtfmitglied.setText(String.valueOf(mitglied));
+
+					}
 					if (e.getClickCount() == 2 | e.getButton() == 2) {
 
-						// In Var die ausgewaehlten Zeilen und Spalten speichern
-						int row = jtbandmitglieder.getSelectedRow();
-						int column = jtbandmitglieder.getSelectedColumn();
-						System.out.println(row);
 						// Wenn es sich um die erste Spalte handelt:
 						if (column == 0) {
-
-							// Die Werte des ausgewaehlten Feldes in Objecte
-							// ablegen
-							Object artist = jtbandmitglieder.getValueAt(row,
-									column);
-							Object title = jtbandmitglieder.getValueAt(row,
-									column + 1);
-
-							// Die Objecte in Strings casten
-							artist = String.valueOf(artist);
-							title = String.valueOf(title);
 
 							JTabbedPane jtpane = new JTabbedPane();
 							jtpmaindesc.jtpmaindesc = jtpmaindesc
@@ -443,35 +414,68 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 							// Methodenaufruf um Tab zu adden
 							AddTabs02.showArtist(jtpmaindesc.jtpmaindesc,
-									artist);
+									mitglied);
 						}
 
 					}
 				}
 			}
+		});
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
+		jtbandreferenzen.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtbandreferenzen.getSelectedRow();
+					int column = jtbandreferenzen.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object referenz = jtbandreferenzen.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtfreferenz.setText(String.valueOf(referenz));
+					}
+
+					if (e.getClickCount() == 2 | e.getButton() == 2) {
+
+						// Browseraufruf (für Windows):
+						try {
+							Runtime.getRuntime().exec(
+									"cmd.exe /c start " + referenz);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				}
+			}
+		});
+		jtbandtitles.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtbandtitles.getSelectedRow();
+					int column = jtbandtitles.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object titel = jtbandtitles.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtfstueckgruppe.setText(String.valueOf(titel));
+
+					}
+				}
 			}
 		});
 	}
