@@ -22,7 +22,8 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// JPanel
 	private JPanel jpmainband, jpmainleft, jpmainmiddle, jpmainright,
 			jpmainleftjl, jpmainleftjtf, jpmainleftehemalig,
-			jpmainmiddlemitglieder, jpmainmiddletitel;
+			jpmainmiddlemitglieder, jpmainmiddletitel, jpmainrightreferenz,
+			jpmainrightbuttons;
 
 	// JLabel
 	private JLabel jlueschrift, jlname, jlmitglied, jlehemalig, jlstueckgruppe,
@@ -44,13 +45,25 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JComboBox<String> jcbmitgliedauswahl;
 
 	// JTable
-	private JTable jtbandmitglieder, jtbandtitles;
+	private JTable jtbandmitglieder, jtbandtitles, jtbandreferenzen;
 
 	// JScrollPane
-	private JScrollPane jspmitglieder, jsptitles;
+	private JScrollPane jspmitglieder, jsptitles, jspreferenzen;
+
+	// Instanz der Gruppe
+	private Gruppe01 gruppe;
+
+	// DefaultTableModel
+	private TableModel dtm;
+
+	// ListeSelcectionModel
+	private ListSelectionModel cellSelectionModel;
 
 	// Border
-	private Border border;
+	private BorderSet border;
+
+	// JButton
+	private JButton jbsubmit, jbdelete;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft() {
@@ -167,17 +180,15 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// HauptJPanel linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(1, 2, 1, 1));
 
+		// JPanel mit JLabels der HauptPanel der linken Seite zurordnen
 		jpmainleft.add(jpmainleftjl);
-		
-		// Border dem JPanel hinzufuegen
-		border = jpmainleft.getBorder();
-		// Farbe fuer Border
-		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
-		CompoundBorder border1 = new CompoundBorder(border, margin);
-		jpmainleft.setBorder(new TitledBorder(border1, "Band-Info´s"));
-		
+		// JPanel mit JTF´s der HauptPanel der linken Seite zurordnen
 		jpmainleft.add(jpmainleftjtf);
+
+		// Border setzen fuer das linke JPanel
+		border = new BorderSet();
+		border.setBorder(jpmainleft, "Band-Info's");
 
 		return jpmainleft;
 	}
@@ -187,16 +198,15 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		jpmainmiddlemitglieder = new JPanel(new GridLayout(2, 1, 1, 0));
 
-		
 		// Instanz des TablesModels erzeugen
-		TableModel dtm = new TableModel();
+		dtm = new TableModel();
 		// Instanz der Gruppe erzeugen um Tabelle fuellen zu koennen
-		Gruppe01 mitglieder = new Gruppe01(String.valueOf(band));
+		gruppe = new Gruppe01(String.valueOf(band));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandmitglieder = new JTable(dtm.dtm(1, 2,
 				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				mitglieder.dbSelectMitglieder()));
+				gruppe.dbSelectMitglieder()));
 
 		// Spalten nicht mehr verschiebbar
 		jtbandmitglieder.getTableHeader().setReorderingAllowed(false);
@@ -204,8 +214,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtbandmitglieder.setCellSelectionEnabled(true);
 
 		// Nur auswahl einer Zeile moeglich
-		ListSelectionModel cellSelectionModel = jtbandmitglieder
-				.getSelectionModel();
+		cellSelectionModel = jtbandmitglieder.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -219,28 +228,20 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Viewport setzen
 		jspmitglieder.setViewportView(jtbandmitglieder);
 
-		// JTable mit Mitgliedern und JLabel dem JPanel hinzufuegen
-		
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
 		jpmainmiddlemitglieder.add(jspmitglieder);
 
-		// Border dem JPanel hinzufuegen
-		border = jpmainmiddlemitglieder.getBorder();
-		// Farbe fuer Border
-		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
+		// Border setzen
+		border.setBorder(jpmainmiddlemitglieder, "Mitglieder-Liste");
 
-		CompoundBorder border1 = new CompoundBorder(border, margin);
-		jpmainmiddlemitglieder.setBorder(new TitledBorder(border1, "Mitglieder-Liste"));
-		
-		
-		// #########################Unteres JPanel fuer die
+		// ######################### Unteres JPanel fuer die //
 		// Mitte#############################
 		jpmainmiddletitel = new JPanel(new GridLayout(2, 1, 1, 0));
 
-		
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandtitles = new JTable(dtm.dtm(1, 2,
 				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				mitglieder.dbSelectMitglieder()));
+				gruppe.dbSelectMitglieder()));
 
 		// Spalten nicht mehr verschiebbar
 		jtbandtitles.getTableHeader().setReorderingAllowed(false);
@@ -262,19 +263,12 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Viewport setzen
 		jsptitles.setViewportView(jtbandtitles);
 
-		// JTable mit Mitgliedern und JLabel dem JPanel hinzufuegen
-		
-
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
 		jpmainmiddletitel.add(jsptitles);
-		// Border dem JPanel hinzufuegen
-		border = jpmainmiddletitel.getBorder();
-		// Farbe fuer Border
-		margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
-		border1 = new CompoundBorder(border, margin);
-		jpmainmiddletitel.setBorder(new TitledBorder(border1, "Titel-Liste"));
-		
-		
+		// Border dem JPanel hinzufuegen
+		border.setBorder(jpmainmiddletitel, "Titel-Liste");
+
 		// HauptJPanel mitte
 		jpmainmiddle = new JPanel(new GridLayout(2, 1, 1, 10));
 
@@ -286,7 +280,70 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	// HauptJPanel rechts
 	private JPanel jpmainRight() {
-		jpmainright = new JPanel();
+		// JPanel für Tabelle mit Referenzen
+		jpmainrightreferenz = new JPanel(new GridLayout(2,1,1,1));
+
+		// Erzeugung der Tabelle mit DefaultTableModel
+		jtbandreferenzen = new JTable(dtm.dtm(1, 1,
+				DBMethods03.COLUMN_IDENTIFIERSTITLES,
+				gruppe.dbSelectMitglieder()));
+
+		// Spalten nicht mehr verschiebbar
+		jtbandreferenzen.getTableHeader().setReorderingAllowed(false);
+
+		jtbandreferenzen.setCellSelectionEnabled(true);
+
+		// Nur auswahl einer Zeile moeglich
+		cellSelectionModel = jtbandreferenzen.getSelectionModel();
+		cellSelectionModel
+				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		// JTable der JScrollPane hinzufuegen
+		jspreferenzen = new JScrollPane(jtbandreferenzen);
+
+		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, außerdem schoener:) //860 , 600
+		jspreferenzen.setPreferredSize(new Dimension(300, 300));
+
+		// Viewport setzen
+		jspreferenzen.setViewportView(jtbandreferenzen);
+
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
+		jpmainrightreferenz.add(jspreferenzen);
+
+		// Border dem JPanel hinzufuegen
+		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
+		
+		// ##########################################//
+		// JPanel fuer Buttons
+		jpmainrightbuttons = new JPanel(new GridLayout(5, 1, 1, 10));
+
+		// JButton erzeugen
+		// Bestatigungsbutton
+		jbsubmit = new JButton("Bearbeiten");
+		jbsubmit.setPreferredSize(new Dimension(10, 20));
+
+		// Loeschbutton
+		jbdelete = new JButton("Löschen");
+		jbsubmit.setPreferredSize(new Dimension(10, 20));
+
+		// ToolTip hinzuf\u00FCgen
+		jbsubmit.setToolTipText("Hier klicken, um die Band zubearbeiten");
+		jbdelete.setToolTipText("Hier klicken, um die Band zu löschen");
+
+		// L\u00FCenf\u00FCller einf\u00FCgen
+		for (int i = 0; i < 3; i++) {
+			jlfueller = new JLabel("");
+			jpmainrightbuttons.add(jlfueller);
+		}
+
+		jpmainrightbuttons.add(jbsubmit);
+		jpmainrightbuttons.add(jbdelete);
+
+		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
+		jpmainright.add(jpmainrightreferenz);
+		jpmainright.add(jpmainrightbuttons);
+
 		return jpmainright;
 	}
 
