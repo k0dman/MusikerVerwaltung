@@ -3,8 +3,10 @@ package musikerverwaltung.Swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -112,7 +114,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtfmitglied = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
-
 
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
@@ -233,8 +234,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandtitles = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				gruppe.dbSelectTitel()));
+				DBMethods03.COLUMN_IDENTIFIERSTITLES, gruppe.dbSelectTitel()));
 
 		// Spalten nicht mehr verschiebbar
 		jtbandtitles.getTableHeader().setReorderingAllowed(false);
@@ -274,7 +274,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// HauptJPanel rechts
 	private JPanel jpmainRight(Object band) {
 		// JPanel für Tabelle mit Referenzen
-		jpmainrightreferenz = new JPanel(new GridLayout(2,1,1,1));
+		jpmainrightreferenz = new JPanel(new GridLayout(2, 1, 1, 1));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandreferenzen = new JTable(dtm.dtm(1, 1,
@@ -306,7 +306,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Border dem JPanel hinzufuegen
 		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
-		
+
 		// ##########################################//
 		// JPanel fuer Buttons
 		jpmainrightbuttons = new JPanel(new GridLayout(5, 1, 1, 10));
@@ -336,6 +336,35 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
 		jpmainright.add(jpmainrightreferenz);
 		jpmainright.add(jpmainrightbuttons);
+
+		jtbandreferenzen.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+					if (e.getClickCount() == 2 | e.getButton() == 2) {
+
+						// In Var die ausgewaehlten Zeilen und Spalten speichern
+						int row = jtbandreferenzen.getSelectedRow();
+						int column = jtbandreferenzen.getSelectedColumn();
+
+						// Die Werte des ausgewaehlten Feldes in Objecte
+						// ablegen
+						Object titel = jtbandreferenzen.getValueAt(row, column);
+						System.out.println(titel);
+
+						// Browseraufruf (für Windows):
+						try {
+							Runtime.getRuntime().exec(
+									"cmd.exe /c start " + titel);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+			}
+		});
 
 		return jpmainright;
 	}
