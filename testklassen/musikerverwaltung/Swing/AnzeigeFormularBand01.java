@@ -190,7 +190,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// HauptJPanel mitte
 	private JPanel jpmainMiddle(Object band) {
 
-		jpmainmiddlemitglieder = new JPanel(new GridLayout(2, 1, 1, 0));
+		jpmainmiddlemitglieder = new JPanel(new GridLayout(1, 1, 1, 0));
 
 		// Instanz des TablesModels erzeugen
 		dtm = new TableModel();
@@ -217,7 +217,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
 		// ist, auﬂerdem schoener:) //860 , 600
-		jspmitglieder.setPreferredSize(new Dimension(300, 300));
+		jspmitglieder.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jspmitglieder.setViewportView(jtbandmitglieder);
@@ -230,7 +230,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// ######################### Unteres JPanel fuer die //
 		// Mitte#############################
-		jpmainmiddletitel = new JPanel(new GridLayout(2, 1, 1, 0));
+		jpmainmiddletitel = new JPanel(new GridLayout(1, 1, 1, 0));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandtitles = new JTable(dtm.dtm(1, 2,
@@ -251,7 +251,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
 		// ist, auﬂerdem schoener:) //860 , 600
-		jsptitles.setPreferredSize(new Dimension(300, 300));
+		jsptitles.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jsptitles.setViewportView(jtbandtitles);
@@ -274,7 +274,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// HauptJPanel rechts
 	private JPanel jpmainRight(Object band) {
 		// JPanel f¸r Tabelle mit Referenzen
-		jpmainrightreferenz = new JPanel(new GridLayout(2, 1, 1, 1));
+		jpmainrightreferenz = new JPanel(new GridLayout(1, 1, 1, 1));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandreferenzen = new JTable(dtm.dtm(1, 1,
@@ -296,7 +296,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
 		// ist, auﬂerdem schoener:) //860 , 600
-		jspreferenzen.setPreferredSize(new Dimension(300, 300));
+		jspreferenzen.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jspreferenzen.setViewportView(jtbandreferenzen);
