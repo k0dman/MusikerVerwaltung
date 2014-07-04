@@ -14,10 +14,6 @@ SET @p0='Charles Edward Anderson'; SET @p1='Berry'; SET @p2=''; SET @p3=''; SET 
 
 SET @p0='Robert Nesta'; SET @p1='Marley'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='n'; SET @p7='06'; SET @p8='02'; SET @p9='1945'; SET @p10='11'; SET @p11='05'; SET @p12='1981'; SET @p13='Bob Marley'; SET @p14='Gitarre'; SET @p15='Three little Birds'; SET @p16='http://de.wikipedia.org/wiki/Bob_Marley'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
 
-
-
-/* Bandmitglied eintragen */
-
 SET @p0='John'; SET @p1='Densmore'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6=''; SET @p7='01'; SET @p8='12'; SET @p9='1941'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='John Densmore'; SET @p14='Schlagzeug'; SET @p15=''; SET @p16='http://de.wikipedia.org/wiki/John_Densmore'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
 
 SET @p0='James Douglas'; SET @p1='Morrison'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='n'; SET @p7='08'; SET @p8='12'; SET @p9='1943'; SET @p10='03'; SET @p11='07'; SET @p12='1971'; SET @p13='Jim Morrison'; SET @p14='Sänger'; SET @p15=''; SET @p16='http://de.wikipedia.org/wiki/Jim_Morrison'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
@@ -34,6 +30,27 @@ SET @p0='Ronald'; SET @p1='Blumenthal'; SET @p2=''; SET @p3=''; SET @p4=''; SET 
 
 SET @p0='Frank'; SET @p1='Ferrer'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='25'; SET @p8='03'; SET @p9='1966'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Frank Ferrer'; SET @p14='Schlagzeug'; SET @p15=''; SET @p16='http://de.wikipedia.org/wiki/Frank_Ferrer'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
 
+SET @p0='Alain'; SET @p1='Kienas'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='27'; SET @p8='05'; SET @p9='1944'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Alain Souchon'; SET @p14='Sänger'; SET @p15='Pardon'; SET @p16='http://de.wikipedia.org/wiki/Alain_Souchon'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Edward Christopher'; SET @p1='Sheeran'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='17'; SET @p8='02'; SET @p9='1991'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Ed Sheeran'; SET @p14='Gitarre'; SET @p15='https://www.youtube.com/watch?v=mllXxyHTzfg'; SET @p16='I see fire'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Gordon Matthew Thomas'; SET @p1='Sumner'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='02'; SET @p8='10'; SET @p9='1951'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Sting'; SET @p14='Gesang, Bass'; SET @p15='Shape of My Heart'; SET @p16='http://www.youtube.com/watch?v=ZuI61cTNbAk'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Elvis Aaron'; SET @p1='Presley'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='n'; SET @p7='08'; SET @p8='01'; SET @p9='1935'; SET @p10='16'; SET @p11='08'; SET @p12='1977'; SET @p13='Elvis Presley'; SET @p14='Gesang'; SET @p15='Jailhouse Rock'; SET @p16='http://www.youtube.com/watch?v=qDID_E0FDUU'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Al'; SET @p1='Green'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='13'; SET @p8='04'; SET @p9='1946'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Al Green'; SET @p14='Gesang'; SET @p15='Love and Happiness'; SET @p16='http://www.youtube.com/watch?v=sCXEtvbJkkY'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='James Newell'; SET @p1='Osterberg'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='21'; SET @p8='04'; SET @p9='1947'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Iggy Pop'; SET @p14='http://www.youtube.com/watch?v=ZIJTyryvr5E'; SET @p15='The Passenger'; SET @p16=''; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Gaynor'; SET @p1='Hopkins'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='w'; SET @p6='j'; SET @p7='08'; SET @p8='05'; SET @p9='1951'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Bonnie Tyler'; SET @p14=''; SET @p15='Total the eclipse of the heart'; SET @p16='http://www.youtube.com/watch?v=iQRPjlaFvbk'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Eric Patrick'; SET @p1='Clapton'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='j'; SET @p7='30'; SET @p8='03'; SET @p9='1945'; SET @p10=''; SET @p11=''; SET @p12=''; SET @p13='Eric Clapton'; SET @p14='Gitarre'; SET @p15='Clapton'; SET @p16='http://www.youtube.com/watch?v=fX5USg8_1gA'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='James Marshall'; SET @p1='Hendrix'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='n'; SET @p7='22'; SET @p8='11'; SET @p9='1942'; SET @p10='18'; SET @p11='09'; SET @p12='1970'; SET @p13='Jimi Hendrix'; SET @p14='Gitarre'; SET @p15='Hey Joe'; SET @p16='http://www.youtube.com/watch?v=R-DO8zskzq4'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Janis Lyn'; SET @p1='Joplin'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='w'; SET @p6='n'; SET @p7='19 '; SET @p8='01'; SET @p9='1943'; SET @p10='04'; SET @p11='10'; SET @p12='1970'; SET @p13='Janis Joplin'; SET @p14='Gesang'; SET @p15='To love somebody'; SET @p16=''; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
+
+SET @p0='Stevie Ray'; SET @p1='Vaughan'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5='m'; SET @p6='n'; SET @p7='03'; SET @p8='10'; SET @p9='1954'; SET @p10='27'; SET @p11='08'; SET @p12='1990'; SET @p13='Stevie Ray Vaughan'; SET @p14='Gitarre'; SET @p15='Superstition'; SET @p16='http://www.youtube.com/watch?v=xX-GJ46kiCo'; SET @p17=''; SET @p18=''; SET @p19=''; SET @p20=''; CALL `musikerErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20);
 /* Band Eintragen */
 
 SET @p0='The Doors'; SET @p1=''; SET @p2=''; SET @p3='Riders on the Storm'; SET @p4='https://www.youtube.com/watch?v=5qRJIBtbc2c&feature=kp'; SET @p5='9'; SET @p6=''; SET @p7='j'; CALL `gruppeErstellen`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
@@ -56,6 +73,11 @@ INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stuec
 INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '1', 'Roadhouse Blues'), (NULL, '1', 'Waiting for the sun');
 INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '2', 'November Rain'), (NULL, '2', 'Welcome To The Jungle'), (NULL, '2', 'You Could Be Mine'), (NULL, '2', 'Knocking On Heaven''s Door'), (NULL, '2', 'Sweet Child O''Mine');
 INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '1', 'Love me Two Times'), (NULL, '1', 'Gloria'), (NULL, '1', 'The End'), (NULL, '1', 'L.A. Woman'), (NULL, '1', 'Roadhouse Blues');
+
 /* Band Refernz hinzufuegen */
+
 INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '2', 'http://www.youtube.com/watch?v=NqTuN-35580'), (NULL, '2', 'http://www.youtube.com/watch?v=UnurdL-TatQ'), (NULL, '2', 'http://www.youtube.com/watch?v=X1ZRBPA8SK0'), (NULL, '2', 'http://www.youtube.com/watch?v=X1ZRBPA8SK0&list=RDX1ZRBPA8SK0#t=0'), (NULL, '2', 'http://www.youtube.com/watch?v=YnL5wI5P2B0');
 INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '1', 'http://www.youtube.com/watch?v=chluWboqK-w'), (NULL, '1', 'http://www.youtube.com/watch?v=cJEL6b9Z78w'), (NULL, '1', 'http://www.youtube.com/watch?v=RIagV6hUQAM'), (NULL, '1', 'http://www.youtube.com/watch?v=ZRAr354usf8'), (NULL, '1', 'http://www.youtube.com/watch?v=JskztPPSJwY');
+
+/* Solostuecke hinzufuegen */
+INSERT INTO `musiclounge`.`stuecksolo` (`id_stuecksolo`, `id_musiker`, `stuecksolo`) VALUES (NULL, '19', 'Guitar Man'), (NULL, '19', 'Teddy Bear');
