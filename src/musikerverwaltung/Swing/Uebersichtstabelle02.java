@@ -160,7 +160,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 						JOptionPane.showMessageDialog(null, ausgabe);
 
 						// Methodenaufruf um Tab zu adden
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
+						AddTabs01.showArtist(artist, title, jtpmaindesc);
 
 					}
 					// Wenn es sich um die zweite Spalte handelt:
@@ -176,7 +176,7 @@ public class Uebersichtstabelle02 extends JTabbedPane {
 								+ title;
 						JOptionPane.showMessageDialog(null, ausgabe);
 
-						AddTabs02.showArtist(artist, title, jtpmaindesc);
+						AddTabs01.showArtist(artist, title, jtpmaindesc);
 
 					}
 				}

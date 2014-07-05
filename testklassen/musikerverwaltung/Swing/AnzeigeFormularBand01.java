@@ -68,7 +68,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JButton jbsubmit, jbdelete;
 
 	// HauptJPanel links
-	private JPanel jpmainLeft() {
+	private JPanel jpmainLeft(Object band) {
 
 		// JPanel fuer JLabels
 		jpmainleftjl = new JPanel(new GridLayout(12, 1, 1, 15));
@@ -111,6 +111,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// JTextFields erzeugen
 		jtfname = new JTextField();
+		jtfname.setText(String.valueOf(band));
 		jtfmitglied = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
@@ -345,7 +346,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		jpmainband = new JPanel(new GridLayout(1, 3, 4, 4));
 
-		jpmainband.add(jpmainLeft());
+		jpmainband.add(jpmainLeft(band));
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight(band));
 		bandActionListener();
