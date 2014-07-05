@@ -189,17 +189,11 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jrblebt = new JRadioButton("tot");
 		jrblebt.setActionCommand("n");
 
-		// LueckenFueller
-		jlfueller = new JLabel("");
-
 		// Alles in ein Panel
-		jpdatum = new JPanel(new GridLayout(1, 5, 2, 2));
+		jpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
 		jpdatum.add(jcbtag);
 		jpdatum.add(jcbmonat);
 		jpdatum.add(jcbjahr);
-		jpdatum.add(jlfueller);
-
-		// #### Hier if-Abfrage einbauen ob lebt oder nicht ### //
 
 		// JComboBox- Todes - Tag
 		dodjcbtag = new JComboBox<Integer>();
@@ -237,22 +231,23 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		}
 
 		// in ein JPanel einfuegen
-		dodjpdatum = new JPanel(new GridLayout(1, 5, 2, 2));
+		dodjpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
 		dodjpdatum.add(dodjcbtag);
 		dodjpdatum.add(dodjcbmonat);
 		dodjpdatum.add(dodjcbjahr);
-		dodjpdatum.add(jrblebt);
 
+		// Zuordnung zum mittleren Panel der linken Seite
 		jpmainleftmiddle.add(jldob);
-		//jpmainleftmiddle.add(jtfdob);
+		jpmainleftmiddle.add(jpdatum);
 		jpmainleftmiddle.add(jldod);
-		//jpmainleftmiddle.add(jtfdod);
+		jpmainleftmiddle.add(dodjpdatum);
+		jpmainleftmiddle.add(jrblebt);
 
 		// Border setzen
 		border.setBorder(jpmainleftmiddle, "Datums-Angaben");
 
 		// ### Unteres JPanel der linken Seite ###//
-		jpmainleftbottom = new JPanel(new GridLayout(4,2,1,1));
+		jpmainleftbottom = new JPanel(new GridLayout(4, 2, 1, 1));
 
 		// JLabel erzeugen
 		jlpseudonym = new JLabel("Pseudonym");
@@ -296,9 +291,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
 		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
 		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
-
-		// Pruefung ob Musiker noch lebt
-
 		dodjcbtag
 				.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
 		dodjcbmonat
@@ -328,7 +320,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jpmainleft.add(jpmainleftmiddle);
 		jpmainleft.add(jpmainleftbottom);
 
+		// Border setzen
 		border.setBorder(jpmainleft, "Info's zum Interpreten");
+
 		return jpmainleft;
 
 	}
@@ -493,7 +487,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jpmainartist.add(jpmainRight());
 
 		// Listener hinzufuegen
-		// actionListenerJButton();
+		actionListenerJButton();
 
 		return jpmainartist;
 
