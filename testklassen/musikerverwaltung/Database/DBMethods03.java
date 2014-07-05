@@ -298,8 +298,8 @@ public final class DBMethods03 {
 			callableStatement.setString(1, grname); // Name Band
 			callableStatement.setNull(2, java.sql.Types.INTEGER); // id_grreferenz
 			callableStatement.setNull(3, java.sql.Types.INTEGER); // id_stueckgruppe
-			callableStatement.setString(4, stueckgruppe); // Stueck der Gruppe
-			callableStatement.setString(5, grreferenz); // Referenz
+			callableStatement.setString(4, grreferenz); // Stueck der Gruppe
+			callableStatement.setString(5, stueckgruppe); // Referenz
 			callableStatement.setInt(6, id_musiker); // id_musiker
 			callableStatement.setNull(7, java.sql.Types.INTEGER);// id_gruppe
 			callableStatement.setString(8, aktiv); // Gruppenmitglied

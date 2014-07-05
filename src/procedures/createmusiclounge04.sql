@@ -235,7 +235,7 @@ use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeErstellen` (grname varchar(100), 
-id_grreferenz int(11), id_stueckgruppe int(11), grstueckgruppe varchar(100), grgrreferenz varchar(100),
+id_grreferenz int(11), id_stueckgruppe int(11), grgrreferenz varchar(100), grstueckgruppe varchar(100),
 id_musiker int(11), id_gruppe int(11), graktiv varchar(1))
 BEGIN
 
