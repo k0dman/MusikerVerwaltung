@@ -9,7 +9,7 @@ public final class AddTabs02 extends JTabbedPane {
 	
 	private static final EingabeformularArtist05 jpmainartist = new EingabeformularArtist05();
 	private static final EingabeformularBand06 jpmainband = new EingabeformularBand06();
-	private static final AnzeigeFormularArtist01 jpmainshowartist = new AnzeigeFormularArtist01();
+	private static final AnzeigeFormularArtist02 jpmainshowartist = new AnzeigeFormularArtist02();
 	private static final AnzeigeFormularBand01 jpmainshowband = new AnzeigeFormularBand01();
 	
 	private static Icons01 tabicons = new Icons01();

@@ -229,8 +229,8 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Border setzen
 		border.setBorder(jpmainmiddlemitglieder, "Mitglieder-Liste");
 
-		// ######################### Unteres JPanel fuer die //
-		// Mitte#############################
+		// ########### Unteres JPanel fuer die Mitte############
+		//JPanel erzeugen
 		jpmainmiddletitel = new JPanel(new GridLayout(1, 1, 1, 0));
 
 		// Erzeugung der Tabelle mit DefaultTableModel

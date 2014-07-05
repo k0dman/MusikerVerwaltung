@@ -52,6 +52,13 @@ public final class DBMethods03 {
 		}
 	};
 
+	public final static Vector<String> COLUMN_IDENTIFIERSINSTRUMENT = new Vector<String>() {
+		{
+			add("Instrumente");
+
+		}
+	};
+	
 	public static final Vector<Vector<String>> dbSelectTable() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
