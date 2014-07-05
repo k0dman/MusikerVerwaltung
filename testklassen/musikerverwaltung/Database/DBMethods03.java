@@ -30,28 +30,28 @@ public final class DBMethods03 {
 			add("Titel");
 		}
 	};
-	
+
 	public final static Vector<String> COLUMN_IDENTIFIERSMEMBERS = new Vector<String>() {
 		{
 			add("Mitglied");
 			add("Aktiv");
 		}
 	};
-	
+
 	public final static Vector<String> COLUMN_IDENTIFIERSTITLES = new Vector<String>() {
 		{
 			add("Titel");
-			
+
 		}
 	};
 
 	public final static Vector<String> COLUMN_IDENTIFIERSREFERENCES = new Vector<String>() {
 		{
 			add("Referenzen");
-			
+
 		}
 	};
-	
+
 	public static final Vector<Vector<String>> dbSelectTable() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -115,7 +115,10 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss, person p where p.id_person = mus.id_person and mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' and concat(pseudonym, stuecksolo, name, vorname) like '%" + keyword + "%' UNION SELECT gr.grname, sg.stueckgruppe fROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg, person p where gr.id_gruppe = sg.id_gruppe and concat(grname, stueckgruppe) like '%" + keyword + "%' order by pseudonym");
+					.executeQuery("SELECT mus.pseudonym, ss.stuecksolo FROM musiker mus, stuecksolo ss, person p where p.id_person = mus.id_person and mus.id_musiker = ss.id_musiker and ss.stuecksolo not like '' and concat(pseudonym, stuecksolo, name, vorname) like '%"
+							+ keyword
+							+ "%' UNION SELECT gr.grname, sg.stueckgruppe fROM musiker mus,mitglied mg, gruppe gr, stueckgruppe sg, person p where gr.id_gruppe = sg.id_gruppe and concat(grname, stueckgruppe) like '%"
+							+ keyword + "%' order by pseudonym");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -276,19 +279,13 @@ public final class DBMethods03 {
 
 	// id_musiker muss übergeben werden für die Prozedur
 	public static final void insertBand(String grname, String stueckgruppe,
-			String referenz, int id_musiker, boolean aktiv) {
+			String grreferenz, int id_musiker, String aktiv) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter //
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call gruppeErstellen(?,?,?,?,?,?,?,?)}";
-
-		// Frage ob wir hier mit boolean wieder arbeiten oder nicht.
-		// Die Datenbank erwartet "j" / "n"
-		// Boolean fuer <istaktiv> wird erneut umgewandelt mit Helfer-Methode
-
-		// /String lebt = Helfer01.toStringLebt(istot);
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
@@ -300,7 +297,7 @@ public final class DBMethods03 {
 
 			callableStatement.setString(1, grname); // Name Band
 			callableStatement.setNull(2, java.sql.Types.INTEGER); // id_grreferenz
-			callableStatement.setNull(2, java.sql.Types.INTEGER); // id_stueckgruppe
+			callableStatement.setNull(3, java.sql.Types.INTEGER); // id_stueckgruppe
 			callableStatement.setString(4, stueckgruppe); // Stueck der Gruppe
 			callableStatement.setString(5, grreferenz); // Referenz
 			callableStatement.setInt(6, id_musiker); // id_musiker
@@ -321,7 +318,7 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der Insert-Prozedur");
+			System.out.println("Fehler beim Ausführen der InsertBand-Prozedur");
 		}
 
 	}
@@ -444,8 +441,8 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("SELECT * FROM gruppe WHERE grname = '" + band
-					+ "'");
+			rs = stmt.executeQuery("SELECT * FROM gruppe WHERE grname = '"
+					+ band + "'");
 
 			// band null setzen damit die Abfrage funktioniert
 			band = null;
@@ -473,7 +470,7 @@ public final class DBMethods03 {
 		return isband;
 
 	}
-	
+
 	// Select nach Pseudonym um gezieltes Klicken in der Libary zu ermoeglichen
 	public static final Vector<Vector<String>> dbSelectMitglieder(String band) {
 
@@ -484,7 +481,7 @@ public final class DBMethods03 {
 		// Interface-Klassen
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 
 		// try / catch zum Abfangen, falls Fehler auftreten
@@ -495,8 +492,9 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_musiker = mg.id_musiker and mg.id_gruppe = gr.id_gruppe and gr.grname = '" + band
-					+ "'");
+			rs = stmt
+					.executeQuery("select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_musiker = mg.id_musiker and mg.id_gruppe = gr.id_gruppe and gr.grname = '"
+							+ band + "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -505,10 +503,10 @@ public final class DBMethods03 {
 				Vector<String> pseudonymsdata = new Vector<String>();
 				pseudonymsdata.add(rs.getString("pseudonym"));
 				pseudonymsdata.add(rs.getString("aktiv"));
-				
+
 				result.add(pseudonymsdata);
 			}
-			
+
 			rs.close();
 		}
 
@@ -521,7 +519,7 @@ public final class DBMethods03 {
 		return result;
 
 	}
-	
+
 	public static final Vector<Vector<String>> dbSelectStueckgruppe(String band) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -531,7 +529,7 @@ public final class DBMethods03 {
 		// Interface-Klassen
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 
 		// try / catch zum Abfangen, falls Fehler auftreten
@@ -542,7 +540,9 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("select stueckgruppe from stueckgruppe sg, gruppe g where sg.id_gruppe = g.id_gruppe and g.grname = '"+band+"';");
+			rs = stmt
+					.executeQuery("select stueckgruppe from stueckgruppe sg, gruppe g where sg.id_gruppe = g.id_gruppe and g.grname = '"
+							+ band + "';");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -550,10 +550,10 @@ public final class DBMethods03 {
 			while (rs.next()) {
 				Vector<String> pseudonymsdata = new Vector<String>();
 				pseudonymsdata.add(rs.getString("stueckgruppe"));
-				
+
 				result.add(pseudonymsdata);
 			}
-			
+
 			rs.close();
 		}
 
@@ -566,6 +566,7 @@ public final class DBMethods03 {
 		return result;
 
 	}
+
 	public static final Vector<Vector<String>> dbSelectGrreferenz(String band) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -575,7 +576,7 @@ public final class DBMethods03 {
 		// Interface-Klassen
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 
 		// try / catch zum Abfangen, falls Fehler auftreten
@@ -586,7 +587,9 @@ public final class DBMethods03 {
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
-			rs = stmt.executeQuery("select grreferenz from grreferenz gr, gruppe g where gr.id_gruppe = g.id_gruppe and g.grname = '"+band+"';");
+			rs = stmt
+					.executeQuery("select grreferenz from grreferenz gr, gruppe g where gr.id_gruppe = g.id_gruppe and g.grname = '"
+							+ band + "';");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -594,10 +597,10 @@ public final class DBMethods03 {
 			while (rs.next()) {
 				Vector<String> pseudonymsdata = new Vector<String>();
 				pseudonymsdata.add(rs.getString("grreferenz"));
-				
+
 				result.add(pseudonymsdata);
 			}
-			
+
 			rs.close();
 		}
 

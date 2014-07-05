@@ -1,7 +1,5 @@
 package musikerverwaltung.menschen;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 import musikerverwaltung.Database.DBMethods03;
@@ -26,7 +24,8 @@ public class Musiker01 extends Person01 {
 	public Musiker01(String name, String vorname, String geschlecht,
 			String geburtsdatum, String pseudonym, String[] instrument,
 			String[] stuecksolo, String[] referenz) {
-
+		// TODO Auto-generated constructor stub
+		
 		// Aufruf des Konstruktors der Basis-Klasse
 		super(name, vorname, geschlecht, geburtsdatum);
 
@@ -36,7 +35,7 @@ public class Musiker01 extends Person01 {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	// Konstuktor#2

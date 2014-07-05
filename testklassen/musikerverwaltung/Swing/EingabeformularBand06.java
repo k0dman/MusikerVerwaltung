@@ -200,6 +200,24 @@ public class EingabeformularBand06 extends JPanel {
 	}
 
 	public void bandActionListener() {
+		jbsubmit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//Instanz eines Musikers erzeugen um ID herauszubekommen
+				Musiker01 musiker = new Musiker01(jtfmitglied.getText());
+				System.out.println(jtfreferenz.getText());
+				
+				//Instanz einer Gruppe erzeugen um Insert-Methode aufrufen zu koennen
+				Gruppe01 gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(), musiker.getMusikerID(), jtfstueckgruppe
+						.getText(), jtfreferenz.getText(), bgehemalig.getSelection().getActionCommand());
+			
+				gruppe.insertBand();
+				JOptionPane.showMessageDialog(null, "hallo" + " ");
+
+			}
+		});
 		jcbmitgliedauswahl.addActionListener(new ActionListener() {
 
 			@Override

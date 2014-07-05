@@ -14,9 +14,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 
 public class MusicLounge14 extends JFrame {
 
@@ -30,7 +30,7 @@ public class MusicLounge14 extends JFrame {
 
 	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
 	private Uebersichtstabelle03 jtpmain = new Uebersichtstabelle03();
- 
+
 	// Farben
 
 	// Contentpane
@@ -68,24 +68,22 @@ public class MusicLounge14 extends JFrame {
 		super("MusicLounge14");
 
 		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
 		} catch (UnsupportedLookAndFeelException e) {
-		    // handle exception
+			// handle exception
 		} catch (ClassNotFoundException e) {
-		    // handle exception
+			// handle exception
 		} catch (InstantiationException e) {
-		    // handle exception
+			// handle exception
 		} catch (IllegalAccessException e) {
-		    // handle exception
+			// handle exception
 		}
-		
 
-		
 		// Sauberes Schlieﬂen ermoeglichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -270,9 +268,9 @@ public class MusicLounge14 extends JFrame {
 
 	public void mouseListenerJTP() {
 
-		jtpmain.jtpmaindesc.addMouseListener(new MouseListener() {
+		jtpmain.jtpmaindesc.addMouseListener(new MouseAdapter() {
 
-			@Override
+			
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if (e.getButton() == 3) {
@@ -287,30 +285,6 @@ public class MusicLounge14 extends JFrame {
 						}
 					}
 				}
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 		});
 
