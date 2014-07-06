@@ -643,6 +643,15 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				musikerbearbeiten.updateArtist(musiker.getMusikerID());
 			}
 		});
+		
+		// delete-Button
+		jbdelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae)
+			
+			{
+				
+				// Insert-Methode aufrufen
+				DBMethods03.deleteArtist(musiker.getMusikerID(), musiker.getMusikerId_musiker());}});
 
 	}
 }

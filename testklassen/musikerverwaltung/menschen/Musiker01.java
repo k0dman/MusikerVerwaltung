@@ -250,5 +250,10 @@ public class Musiker01 extends Person01 {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(17));
 	}
+	
+	public int getMusikerId_musiker() {
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				18));
+	}
 
 }

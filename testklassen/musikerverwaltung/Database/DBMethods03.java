@@ -393,11 +393,11 @@ public final class DBMethods03 {
 			callableStatement.setString(15, instrument);
 			callableStatement.setString(16, solostueck);
 			callableStatement.setString(17, referenz);
-			callableStatement.setInt(18, id);
-			callableStatement.setNull(19, java.sql.Types.INTEGER);
-			callableStatement.setNull(20, java.sql.Types.INTEGER);
-			callableStatement.setNull(21, java.sql.Types.INTEGER);
-			callableStatement.setNull(22, java.sql.Types.INTEGER);
+			callableStatement.setInt(18, id); // musid_person
+			callableStatement.setNull(19, java.sql.Types.INTEGER); 
+			callableStatement.setNull(20, java.sql.Types.INTEGER);	// musid_instrument
+			callableStatement.setNull(21, java.sql.Types.INTEGER);	// musid_referenz 
+			callableStatement.setNull(22, java.sql.Types.INTEGER);	// musid_solostueck
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -416,7 +416,48 @@ public final class DBMethods03 {
 		}
 
 	}
+	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
+	public static final void deleteArtist(int id, int id_mus) {
 
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+		conn.connectionToDB(host, database, user, passwd);
+
+		java.sql.CallableStatement callableStatement = null;
+		String insertStoreProc = "{call musikerLoeschen(?,?)}";
+
+		
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// / Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+
+			callableStatement = conn.connection.prepareCall(insertStoreProc);
+
+
+			callableStatement.setInt(1, id_mus); // musid_musiker
+			callableStatement.setInt(2, id); // musid_person
+
+
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			if (callableStatement.executeUpdate() == 0)
+				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+			else
+				JOptionPane.showMessageDialog(null,
+						"Der Interpret wurde geloescht!");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der delete-Prozedur");
+		}
+
+	}
+	
 	// Methode die Insert-Prozedur für eine Band ausfuehrt
 
 	// id_musiker muss übergeben werden für die Prozedur
@@ -464,6 +505,48 @@ public final class DBMethods03 {
 		}
 
 	}
+	
+	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
+	public static final void deleteBand(int id_gruppe) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+		conn.connectionToDB(host, database, user, passwd);
+
+		java.sql.CallableStatement callableStatement = null;
+		String insertStoreProc = "{call gruppeLoeschen(?)}";
+
+		
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// / Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+
+			callableStatement = conn.connection.prepareCall(insertStoreProc);
+
+
+			callableStatement.setInt(1, id_gruppe); // id_gruppe
+
+
+
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			if (callableStatement.executeUpdate() == 0)
+				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+			else
+				JOptionPane.showMessageDialog(null,
+						"Die Gruppe wurde geloescht!");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der delete-Prozedur");
+		}
+
+	}
 
 	// Methode zum Select fuer Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
@@ -485,7 +568,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
+					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument, m.id_musiker FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
 							+ artist + "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
@@ -510,6 +593,7 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("instrument"));
 				artistdata.add(rs.getString("stuecksolo"));
 				artistdata.add(rs.getString("referenz"));
+				artistdata.add(rs.getString("id_musiker"));
 			}
 		}
 
