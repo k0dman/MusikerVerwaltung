@@ -210,7 +210,7 @@ public class EingabeformularBand06 extends JPanel {
 				System.out.println(jtfreferenz.getText());
 				
 				//Instanz einer Gruppe erzeugen um Insert-Methode aufrufen zu koennen
-				Gruppe01 gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(), musiker.getMusikerId_person(), jtfstueckgruppe
+				Gruppe01 gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(), musiker.getMusikerIDPerson(), jtfstueckgruppe
 						.getText(), jtfreferenz.getText(), bgehemalig.getSelection().getActionCommand());
 			
 				gruppe.insertBand();

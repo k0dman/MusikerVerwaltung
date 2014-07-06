@@ -2,6 +2,7 @@ package musikerverwaltung.menschen;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /*
  *ES SOLLEN ALLE STATISCHEN METHODEN ENTHALTEN TEXT / PRUEF / SCHALT
@@ -87,6 +88,19 @@ public final class Helfer01 {
 		return datum;
 	}
 
+	public static int searchID(List<String> inputlist, String search) {
+
+		String[] list = inputlist.toArray(new String[inputlist.size()]);
+
+		int id = 0;
+		for (int i = 0; i < list.length; i++) {
+			if (list[i].equals(search))
+				id = Integer.parseInt(list[i+1]);
+		}
+
+		return id;
+	}
+
 	public static boolean toBoolLebt(String lebt) {
 
 		boolean lebendig = false;
@@ -156,8 +170,6 @@ public final class Helfer01 {
 			monatszahl = 12;
 
 		}
-
 		return monatszahl;
-
 	}
 }

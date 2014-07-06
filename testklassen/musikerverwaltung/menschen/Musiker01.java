@@ -110,10 +110,11 @@ public class Musiker01 extends Person01 {
 				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
 	}
 
-	public void updateArtist(int id_person, int id_musiker, int id_instrument,
-			int id_referenz, int id_stuecksolo) {
-		DBMethods03.updateArtist(id_person, id_musiker, id_instrument,
-				id_referenz, id_stuecksolo, super.getTitel(),
+	public void updateArtist(int idperson, int idmusiker, int idinstrument,
+			int idreferenz, int idstuecksolo) {
+	
+		DBMethods03.updateArtist(idperson, idmusiker, idinstrument,
+				idreferenz, idstuecksolo, super.getTitel(),
 				super.getVorsatz(), super.getVorname(), super.getZusatz(),
 				super.getName(), super.getGeburtsTag(),
 				super.getGeburtsMonat(), super.getGeburtsJahr(),
@@ -164,10 +165,12 @@ public class Musiker01 extends Person01 {
 
 	// GET - Methoden um die Daten aus der Datenbank zu holen
 	public String getMusiker() {
+
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym()));
+
 	}
 
-	public int getMusikerId_person() {
+	public int getMusikerIDPerson() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				0));
 	}
@@ -242,39 +245,45 @@ public class Musiker01 extends Person01 {
 				.get(14));
 	}
 
-	public String getMusikerInstrument() {
+	public String getMusikerReferenz() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(15));
 	}
 
-	public String getMusikerStueckSolo() {
-		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
-				.get(16));
+	public int getMusikerIDReferenz() {
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				16));
 	}
 
-	public String getMusikerReferenz() {
+	public String getMusikerStueckSolo() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(17));
 	}
 
-	public int getMusikerId_musiker() {
+	public int getMusikerIDStueckSolo() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				18));
 	}
 
-	public int getMusikerId_instrument() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
-				19));
+	public String getMusikerInstrument() {
+		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
+				.get(19));
 	}
 
-	public int getMusikerId_stuecksolo() {
+	public int getMusikerIDInstrument() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				20));
 	}
 
-	public int getMusikerId_referenz() {
+	public int getMusikerIDMusiker() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				21));
+	}
+
+	public int getMusikerIDS(String search) {
+		return Helfer01.searchID(DBMethods03.DBSelectArtist(getPseudonym()),
+				search);
+
 	}
 
 }

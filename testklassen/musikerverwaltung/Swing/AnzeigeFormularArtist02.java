@@ -466,8 +466,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jbsubmit.setPreferredSize(new Dimension(50, 100));
 
 		// JButton dem JPanel hinzuf\u00FCgen
-		jpmainrightjb.add(jbdelete);
 		jpmainrightjb.add(jbsubmit);
+		jpmainrightjb.add(jbdelete);
+		
 
 		// ToolTip hinzuf\u00FCgen
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten zu editieren");
@@ -617,6 +618,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				int todestag = musiker.getMusikerTTag();
 				int todesmonat = musiker.getMusikerTMonat();
 				int todesjahr = musiker.getMusikerTJahr();
+				
 				if (jrblebt.getActionCommand() == "n") {
 					todestag = Integer.parseInt(String.valueOf(dodjcbtag
 							.getSelectedItem()));
@@ -627,7 +629,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				}
 
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
-				Musiker01 musikerbearbeiten = new Musiker01(jtftitel.getText(),
+				musiker = new Musiker01(jtftitel.getText(),
 						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
 								.getText(), jtfname.getText(), Integer
 								.parseInt(String.valueOf(jcbtag
@@ -640,12 +642,21 @@ public class AnzeigeFormularArtist02 extends JPanel {
 						jrblebt.getActionCommand(), jtfpseudonym.getText(),
 						instrument, solostueck, referenz);
 
-				// Insert-Methode aufrufen
-				musikerbearbeiten.updateArtist(musiker.getMusikerId_person(),
-						musiker.getMusikerId_musiker(),
-						musiker.getMusikerId_instrument(),
-						musiker.getMusikerId_referenz(),
-						musiker.getMusikerId_stuecksolo());
+				System.out.println(musiker.getMusiker());
+				System.out.println(musiker.getMusikerIDMusiker()+" musikerID");
+				System.out.println(musiker.getMusikerIDInstrument()+ " InstrumentID");
+				System.out.println(musiker.getMusikerIDReferenz()+ " ReferenzID");
+				System.out.println(musiker.getMusikerIDS(jtfinstrument.getText())+ " ID Instrumente");
+				System.out.println(musiker.getMusikerIDS(jtfsolostueck.getText())+ " ID stuecksolo");
+				System.out.println(musiker.getMusikerIDS(jtfreferenz.getText())+ " ID Referenz");
+	
+				// Update-Methode aufrufen
+				musiker.updateArtist(
+						musiker.getMusikerIDPerson(),
+						musiker.getMusikerIDMusiker(),
+						musiker.getMusikerIDS(jtfinstrument.getText()),
+						musiker.getMusikerIDS(jtfsolostueck.getText()),
+						musiker.getMusikerIDS(jtfsolostueck.getText()));
 			}
 		});
 
@@ -654,10 +665,16 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			public void actionPerformed(ActionEvent ae)
 
 			{
-
-				// Delete-Methode aufrufen
-				DBMethods03.deleteArtist(musiker.getMusikerId_person(),
-						musiker.getMusikerId_musiker());
+				int auswahl = JOptionPane.showConfirmDialog(null,
+						"Willst du diesen Interpreten wirklich löschen?",
+						"Löschen", JOptionPane.YES_NO_OPTION);
+				
+				if (auswahl == JOptionPane.YES_OPTION) {
+					// Delete-Methode aufrufen
+					DBMethods03.deleteArtist(musiker.getMusikerIDPerson(),
+							musiker.getMusikerIDMusiker());
+				}
+				
 			}
 		});
 

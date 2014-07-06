@@ -348,9 +348,9 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode die Update-Prozedur ausfuehrt
-	public static final void updateArtist(int id_person, int id_musiker,
-			int id_instrument, int id_referenz, int id_stuecksolo,
+	// Methode die Update-Prozedur fuer SoloKuenstler ausfuehrt
+	public static final void updateArtist(int idperson, int idmusiker,
+			int idinstrument, int idreferenz, int idstuecksolo,
 			String titel, String namensvorsatz, String vorname,
 			String namenszusatz, String nachname, int geburtstag,
 			int geburtsmonat, int geburtsjahr, int todestag, int todesmonat,
@@ -359,7 +359,7 @@ public final class DBMethods03 {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
-
+		System.out.println(solostueck);
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerBearbeiten(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
@@ -391,11 +391,11 @@ public final class DBMethods03 {
 			callableStatement.setString(15, instrument);
 			callableStatement.setString(16, solostueck);
 			callableStatement.setString(17, referenz);
-			callableStatement.setInt(18, id_person);
-			callableStatement.setNull(19, id_musiker);
-			callableStatement.setNull(20, id_instrument); // es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
-			callableStatement.setNull(21, id_referenz);		// es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
-			callableStatement.setNull(22, id_stuecksolo);		// es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
+			callableStatement.setInt(18, idperson);
+			callableStatement.setInt(19, idmusiker);
+			callableStatement.setInt(20, idinstrument); 
+			callableStatement.setInt(21, idreferenz);		
+			callableStatement.setInt(22, idstuecksolo);		
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -565,28 +565,28 @@ public final class DBMethods03 {
 			// >next()<
 
 			while (rs.next()) {
-				artistdata.add(rs.getString("id_person"));// 1
-				artistdata.add(rs.getString("name"));// 2
-				artistdata.add(rs.getString("vorname"));// 3
-				artistdata.add(rs.getString("titel"));// 4
-				artistdata.add(rs.getString("vorsatz"));// 5
-				artistdata.add(rs.getString("zusatz"));// 6
-				artistdata.add(rs.getString("geschlecht"));// 7
-				artistdata.add(rs.getString("lebt"));// 8
-				artistdata.add(rs.getString("gtag"));// 9
-				artistdata.add(rs.getString("gmonat"));// 10
-				artistdata.add(rs.getString("gjahr"));// 11
-				artistdata.add(rs.getString("ttag"));// 12
-				artistdata.add(rs.getString("tmonat"));// 13
-				artistdata.add(rs.getString("tjahr"));// 14
-				artistdata.add(rs.getString("pseudonym"));// 15
-				artistdata.add(rs.getString("instrument"));// 16
+				artistdata.add(rs.getString("id_person"));// 0
+				artistdata.add(rs.getString("name"));// 1
+				artistdata.add(rs.getString("vorname"));// 2
+				artistdata.add(rs.getString("titel"));// 3
+				artistdata.add(rs.getString("vorsatz"));// 4
+				artistdata.add(rs.getString("zusatz"));// 5
+				artistdata.add(rs.getString("geschlecht"));// 6
+				artistdata.add(rs.getString("lebt"));// 7
+				artistdata.add(rs.getString("gtag"));// 8
+				artistdata.add(rs.getString("gmonat"));// 9
+				artistdata.add(rs.getString("gjahr"));// 10
+				artistdata.add(rs.getString("ttag"));// 11
+				artistdata.add(rs.getString("tmonat"));// 12
+				artistdata.add(rs.getString("tjahr"));// 13
+				artistdata.add(rs.getString("pseudonym"));// 14
+				artistdata.add(rs.getString("referenz"));// 15
+				artistdata.add(rs.getString("id_referenz"));// 16
 				artistdata.add(rs.getString("stuecksolo"));// 17
-				artistdata.add(rs.getString("referenz"));// 18
-				artistdata.add(rs.getString("id_musiker"));// 19
+				artistdata.add(rs.getString("id_stuecksolo"));// 18
+				artistdata.add(rs.getString("instrument"));// 19
 				artistdata.add(rs.getString("id_instrument"));// 20
-				artistdata.add(rs.getString("id_stuecksolo"));// 21
-				artistdata.add(rs.getString("id_referenz"));// 22
+				artistdata.add(rs.getString("id_musiker"));// 21
 			}
 		}
 
