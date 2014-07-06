@@ -650,7 +650,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			
 			{
 				
-				// Insert-Methode aufrufen
+				// Delete-Methode aufrufen
 				DBMethods03.deleteArtist(musiker.getMusikerID(), musiker.getMusikerId_musiker());}});
 
 	}
