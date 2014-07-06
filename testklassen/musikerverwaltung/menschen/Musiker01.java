@@ -25,7 +25,7 @@ public class Musiker01 extends Person01 {
 			String geburtsdatum, String pseudonym, String[] instrument,
 			String[] stuecksolo, String[] referenz) {
 		// TODO Auto-generated constructor stub
-		
+
 		// Aufruf des Konstruktors der Basis-Klasse
 		super(name, vorname, geschlecht, geburtsdatum);
 
@@ -35,7 +35,6 @@ public class Musiker01 extends Person01 {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 
-		
 	}
 
 	// Konstuktor#2
@@ -111,20 +110,23 @@ public class Musiker01 extends Person01 {
 				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
 	}
 
-	public void updateArtist(int id_person, int id_musiker, int id_instrument, int id_referenz, int id_stuecksolo) {
-		DBMethods03.updateArtist(id_person, id_musiker, id_instrument, id_referenz, id_stuecksolo, super.getTitel(), super.getVorsatz(),
-				super.getVorname(), super.getZusatz(), super.getName(),
-				super.getGeburtsTag(), super.getGeburtsMonat(),
-				super.getGeburtsJahr(), super.getTodesTag(),
-				super.getTodesMonat(), super.getTodesJahr(),
-				super.getGeschlecht(), super.isTot(), getPseudonym(),
-				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
+	public void updateArtist(int id_person, int id_musiker, int id_instrument,
+			int id_referenz, int id_stuecksolo) {
+		DBMethods03.updateArtist(id_person, id_musiker, id_instrument,
+				id_referenz, id_stuecksolo, super.getTitel(),
+				super.getVorsatz(), super.getVorname(), super.getZusatz(),
+				super.getName(), super.getGeburtsTag(),
+				super.getGeburtsMonat(), super.getGeburtsJahr(),
+				super.getTodesTag(), super.getTodesMonat(),
+				super.getTodesJahr(), super.getGeschlecht(), super.isTot(),
+				getPseudonym(), getInstrument()[0], getStueckSolo()[0],
+				getReferenz()[0]);
 	}
-	
-	public Vector<Vector<String>> selectLibary(String keyword){
+
+	public Vector<Vector<String>> selectLibary(String keyword) {
 		Vector<Vector<String>> result = DBMethods03.dbSearch(keyword);
 		return result;
-		
+
 	}
 
 	// Aufruf des Selects aus der Datenbank fuer Uebersichtstabelle
@@ -132,26 +134,30 @@ public class Musiker01 extends Person01 {
 		Vector<Vector<String>> result = DBMethods03.dbSelectTable();
 		return result;
 	}
-	
+
 	// Aufruf des Selects aus der Datenbank fuer stuecksolo
 	public Vector<Vector<String>> dbSelectStuecksolo() {
-		Vector<Vector<String>> result = DBMethods03.dbSelectStuecksolo(getPseudonym());
+		Vector<Vector<String>> result = DBMethods03
+				.dbSelectStuecksolo(getPseudonym());
 		return result;
 	}
-	
+
 	// Aufruf des Selects aus der Datenbank fuer refernz
-		public Vector<Vector<String>> dbSelectReferenz() {
-			Vector<Vector<String>> result = DBMethods03.dbSelectReferenz(getPseudonym());
-			return result;
-		}
-		// Aufruf des Selects aus der Datenbank fuer refernz
-				public Vector<Vector<String>> dbSelectInstrument() {
-					Vector<Vector<String>> result = DBMethods03.dbSelectInstrument(getPseudonym());
-					return result;
-				}		
-	
-	//Aufruf des Selects der Musiker mit Pseudonyme fuer Bandeintragen
-	public Vector<String> getMusikerArray(){
+	public Vector<Vector<String>> dbSelectReferenz() {
+		Vector<Vector<String>> result = DBMethods03
+				.dbSelectReferenz(getPseudonym());
+		return result;
+	}
+
+	// Aufruf des Selects aus der Datenbank fuer refernz
+	public Vector<Vector<String>> dbSelectInstrument() {
+		Vector<Vector<String>> result = DBMethods03
+				.dbSelectInstrument(getPseudonym());
+		return result;
+	}
+
+	// Aufruf des Selects der Musiker mit Pseudonyme fuer Bandeintragen
+	public Vector<String> getMusikerArray() {
 		Vector<String> musiker = DBMethods03.dbSelectPseudonym();
 		return musiker;
 	}
@@ -250,24 +256,25 @@ public class Musiker01 extends Person01 {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(17));
 	}
-	
+
 	public int getMusikerId_musiker() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				18));
 	}
-	
+
 	public int getMusikerId_instrument() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				19));
 	}
+
 	public int getMusikerId_stuecksolo() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				20));
 	}
+
 	public int getMusikerId_referenz() {
-		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(21
-				));
+		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
+				21));
 	}
-	
 
 }

@@ -47,7 +47,7 @@ where referenz.id_musiker = musid_musiker and referenz.id_referenz = musid_refer
 
 update stuecksolo
 set stuecksolo = musstuecksolo
-where stuecksolo.id_musiker = musid_musiker and stuecksolo.id_stuecksolo = musid_solostueck;
+where stuecksolo.id_musiker = musid_musiker and id_stuecksolo = musid_solostueck;
 
 END$$
 DELIMITER ;

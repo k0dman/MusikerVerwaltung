@@ -340,7 +340,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtinstrument = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT, musiker.dbSelectInstrument()));
+				DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT,
+				musiker.dbSelectInstrument()));
 
 		// Spalten nicht mehr verschiebbar
 		jtinstrument.getTableHeader().setReorderingAllowed(false);
@@ -373,7 +374,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtstueck = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES, musiker.dbSelectStuecksolo()));
+				DBMethods03.COLUMN_IDENTIFIERSTITLES,
+				musiker.dbSelectStuecksolo()));
 
 		// Spalten nicht mehr verschiebbar
 		jtstueck.getTableHeader().setReorderingAllowed(false);
@@ -417,7 +419,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtreferenz = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSREFERENCES, musiker.dbSelectReferenz()));
+				DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+				musiker.dbSelectReferenz()));
 
 		// Spalten nicht mehr verschiebbar
 		jtreferenz.getTableHeader().setReorderingAllowed(false);
@@ -491,8 +494,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Listener hinzufuegen
 		actionListenerJButton();
-		
-		
 
 		return jpmainartist;
 
@@ -521,7 +522,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				}
 			}
 		});
-		
+
 		jtreferenz.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -640,18 +641,25 @@ public class AnzeigeFormularArtist02 extends JPanel {
 						instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen
-				musikerbearbeiten.updateArtist(musiker.getMusikerId_person(), musiker.getMusikerId_musiker(),musiker.getMusikerId_instrument(),musiker.getMusikerId_referenz(),musiker.getMusikerId_stuecksolo());
+				musikerbearbeiten.updateArtist(musiker.getMusikerId_person(),
+						musiker.getMusikerId_musiker(),
+						musiker.getMusikerId_instrument(),
+						musiker.getMusikerId_referenz(),
+						musiker.getMusikerId_stuecksolo());
 			}
 		});
-		
+
 		// delete-Button
 		jbdelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae)
-			
+
 			{
-				
+
 				// Delete-Methode aufrufen
-				DBMethods03.deleteArtist(musiker.getMusikerId_person(), musiker.getMusikerId_musiker());}});
+				DBMethods03.deleteArtist(musiker.getMusikerId_person(),
+						musiker.getMusikerId_musiker());
+			}
+		});
 
 	}
 }

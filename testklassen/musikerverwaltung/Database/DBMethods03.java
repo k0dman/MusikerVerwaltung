@@ -58,7 +58,7 @@ public final class DBMethods03 {
 
 		}
 	};
-	
+
 	public static final Vector<Vector<String>> dbSelectTable() {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -102,7 +102,7 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
-	
+
 	public static final Vector<Vector<String>> dbSelectStuecksolo(String artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -122,7 +122,8 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("select stuecksolo from stuecksolo, musiker where stuecksolo.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+					.executeQuery("select stuecksolo from stuecksolo, musiker where stuecksolo.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -136,8 +137,6 @@ public final class DBMethods03 {
 
 			}
 		}
-		
-		
 
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
@@ -147,7 +146,7 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
-	
+
 	public static final Vector<Vector<String>> dbSelectReferenz(String artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -167,7 +166,8 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("select referenz from referenz, musiker where referenz.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+					.executeQuery("select referenz from referenz, musiker where referenz.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -181,8 +181,6 @@ public final class DBMethods03 {
 
 			}
 		}
-		
-		
 
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
@@ -192,7 +190,7 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
-	
+
 	public static final Vector<Vector<String>> dbSelectInstrument(String artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -212,7 +210,8 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("select instrument from instrument, musiker where instrument.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+					.executeQuery("select instrument from instrument, musiker where instrument.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
@@ -226,8 +225,6 @@ public final class DBMethods03 {
 
 			}
 		}
-		
-		
 
 		// Moegliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
@@ -352,14 +349,15 @@ public final class DBMethods03 {
 	}
 
 	// Methode die Update-Prozedur ausfuehrt
-	public static final void updateArtist(int id_person,int id_musiker, int id_instrument, int id_referenz, int id_stuecksolo, String titel,
-			String namensvorsatz, String vorname, String namenszusatz,
-			String nachname, int geburtstag, int geburtsmonat, int geburtsjahr,
-			int todestag, int todesmonat, int todesjahr, String geschlecht,
-			boolean istot, String pseudonym, String instrument,
-			String solostueck, String referenz) {
+	public static final void updateArtist(int id_person, int id_musiker,
+			int id_instrument, int id_referenz, int id_stuecksolo,
+			String titel, String namensvorsatz, String vorname,
+			String namenszusatz, String nachname, int geburtstag,
+			int geburtsmonat, int geburtsjahr, int todestag, int todesmonat,
+			int todesjahr, String geschlecht, boolean istot, String pseudonym,
+			String instrument, String solostueck, String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -395,10 +393,9 @@ public final class DBMethods03 {
 			callableStatement.setString(17, referenz);
 			callableStatement.setInt(18, id_person);
 			callableStatement.setNull(19, id_musiker);
-			callableStatement.setNull(20, id_instrument); 
-			callableStatement.setNull(21, id_referenz);	
-			callableStatement.setNull(22, id_stuecksolo);
-		
+			callableStatement.setNull(20, id_instrument); // es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
+			callableStatement.setNull(21, id_referenz);		// es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
+			callableStatement.setNull(22, id_stuecksolo);		// es wird die aktuelle ausgewählte id_instrument benötigt ansonsten passiert nichts
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -417,6 +414,7 @@ public final class DBMethods03 {
 		}
 
 	}
+
 	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
 	public static final void deleteArtist(int id, int id_mus) {
 
@@ -426,8 +424,6 @@ public final class DBMethods03 {
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerLoeschen(?,?)}";
 
-		
-
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
@@ -436,10 +432,8 @@ public final class DBMethods03 {
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
-
 			callableStatement.setInt(1, id_mus); // musid_musiker
 			callableStatement.setInt(2, id); // musid_person
-
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -458,7 +452,7 @@ public final class DBMethods03 {
 		}
 
 	}
-	
+
 	// Methode die Insert-Prozedur für eine Band ausfuehrt
 
 	// id_musiker muss übergeben werden für die Prozedur
@@ -506,7 +500,7 @@ public final class DBMethods03 {
 		}
 
 	}
-	
+
 	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
 	public static final void deleteBand(int id_gruppe) {
 
@@ -516,8 +510,6 @@ public final class DBMethods03 {
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call gruppeLoeschen(?)}";
 
-		
-
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
@@ -526,10 +518,7 @@ public final class DBMethods03 {
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
-
 			callableStatement.setInt(1, id_gruppe); // id_gruppe
-
-
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -576,28 +565,28 @@ public final class DBMethods03 {
 			// >next()<
 
 			while (rs.next()) {
-				artistdata.add(rs.getString("id_person"));
-				artistdata.add(rs.getString("name"));
-				artistdata.add(rs.getString("vorname"));
-				artistdata.add(rs.getString("titel"));
-				artistdata.add(rs.getString("vorsatz"));
-				artistdata.add(rs.getString("zusatz"));
-				artistdata.add(rs.getString("geschlecht"));
-				artistdata.add(rs.getString("lebt"));
-				artistdata.add(rs.getString("gtag"));
-				artistdata.add(rs.getString("gmonat"));
-				artistdata.add(rs.getString("gjahr"));
-				artistdata.add(rs.getString("ttag"));
-				artistdata.add(rs.getString("tmonat"));
-				artistdata.add(rs.getString("tjahr"));
-				artistdata.add(rs.getString("pseudonym"));
-				artistdata.add(rs.getString("instrument"));
-				artistdata.add(rs.getString("stuecksolo"));
-				artistdata.add(rs.getString("referenz"));
-				artistdata.add(rs.getString("id_musiker"));
-				artistdata.add(rs.getString("id_instrument"));
-				artistdata.add(rs.getString("id_stuecksolo"));
-				artistdata.add(rs.getString("id_referenz"));
+				artistdata.add(rs.getString("id_person"));// 1
+				artistdata.add(rs.getString("name"));// 2
+				artistdata.add(rs.getString("vorname"));// 3
+				artistdata.add(rs.getString("titel"));// 4
+				artistdata.add(rs.getString("vorsatz"));// 5
+				artistdata.add(rs.getString("zusatz"));// 6
+				artistdata.add(rs.getString("geschlecht"));// 7
+				artistdata.add(rs.getString("lebt"));// 8
+				artistdata.add(rs.getString("gtag"));// 9
+				artistdata.add(rs.getString("gmonat"));// 10
+				artistdata.add(rs.getString("gjahr"));// 11
+				artistdata.add(rs.getString("ttag"));// 12
+				artistdata.add(rs.getString("tmonat"));// 13
+				artistdata.add(rs.getString("tjahr"));// 14
+				artistdata.add(rs.getString("pseudonym"));// 15
+				artistdata.add(rs.getString("instrument"));// 16
+				artistdata.add(rs.getString("stuecksolo"));// 17
+				artistdata.add(rs.getString("referenz"));// 18
+				artistdata.add(rs.getString("id_musiker"));// 19
+				artistdata.add(rs.getString("id_instrument"));// 20
+				artistdata.add(rs.getString("id_stuecksolo"));// 21
+				artistdata.add(rs.getString("id_referenz"));// 22
 			}
 		}
 
