@@ -136,6 +136,9 @@ public class EingabeformularBand06 extends JPanel {
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
 
+		BorderSet border = new BorderSet();
+		border.setBorder(jpmaininput, " ");
+		
 		return jpmaininput;
 
 	}
@@ -189,12 +192,16 @@ public class EingabeformularBand06 extends JPanel {
 	public JPanel jpmainBand() {
 
 		jpmainband = new JPanel(new GridLayout(1, 2, 4, 4));
-
+	
 		jpmainband.add(jpmainDesc());
 		jpmainband.add(jpmainInput());
 		jpmainband.add(jpmainRight());
 		bandActionListener();
 
+		BorderSet border = new BorderSet();
+		border.setBorder(jpmainband, "");
+		
+		
 		return jpmainband;
 
 	}
@@ -212,9 +219,15 @@ public class EingabeformularBand06 extends JPanel {
 				//Instanz einer Gruppe erzeugen um Insert-Methode aufrufen zu koennen
 				Gruppe01 gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(), musiker.getMusikerIDPerson(), jtfstueckgruppe
 						.getText(), jtfreferenz.getText(), bgehemalig.getSelection().getActionCommand());
-			
+	
+				// Insert-Methode aufrufen
 				gruppe.insertBand();
-				JOptionPane.showMessageDialog(null, "hallo" + " ");
+
+				//TextFelder wieder leeren
+				jtfname.setText("");
+				jtfmitglied.setText("");
+				jtfstueckgruppe.setText("");
+				jtfreferenz.setText("");
 
 			}
 		});

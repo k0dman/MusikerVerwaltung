@@ -359,7 +359,7 @@ public final class DBMethods03 {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
-		System.out.println(solostueck);
+		
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerBearbeiten(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 

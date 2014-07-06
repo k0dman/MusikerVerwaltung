@@ -230,7 +230,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		border.setBorder(jpmainmiddlemitglieder, "Mitglieder-Liste");
 
 		// ########### Unteres JPanel fuer die Mitte############
-		//JPanel erzeugen
+		// JPanel erzeugen
 		jpmainmiddletitel = new JPanel(new GridLayout(1, 1, 1, 0));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
@@ -350,8 +350,13 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight(band));
 		bandActionListener();
-		mouseListenerTable();
-
+	
+		// MouseListener hinzufuegen
+		MouseListenerTable mlt = new MouseListenerTable();
+		mlt.mouseListenerBandMitglieder(jtbandmitglieder, jtfmitglied);
+		mlt.mouseListenerBandReferenzen(jtbandreferenzen, jtfreferenz);
+		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
+		
 		return jpmainband;
 
 	}
@@ -375,118 +380,16 @@ public class AnzeigeFormularBand01 extends JPanel {
 			}
 		});
 
-	}
-
-	Uebersichtstabelle03 jtpmaindesc = new Uebersichtstabelle03();
-
-	public void mouseListenerTable() {
-
-		// Button fuer die Tabelle
-		jtbandmitglieder.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtbandmitglieder.getSelectedRow();
-					int column = jtbandmitglieder.getSelectedColumn();
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object mitglied = jtbandmitglieder.getValueAt(row, column);
-					Object title = jtbandmitglieder.getValueAt(row, column + 1);
-
-					title = String.valueOf(title);
-
-					if (e.getClickCount() == 1) {
-						jtfmitglied.setText(String.valueOf(mitglied));
-
-					}
-					if (e.getClickCount() == 2 | e.getButton() == 2) {
-
-						// Wenn es sich um die erste Spalte handelt:
-						if (column == 0) {
-
-							JTabbedPane jtpane = new JTabbedPane();
-							jtpmaindesc.jtpmaindesc = jtpmaindesc
-									.jtpmaindesc(null);
-
-							// Methodenaufruf um Tab zu adden
-							AddTabs02.showArtist(jtpmaindesc.jtpmaindesc,
-									mitglied);
-						}
-
-					}
-				}
-			}
-		});
-
-		jtbandreferenzen.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtbandreferenzen.getSelectedRow();
-					int column = jtbandreferenzen.getSelectedColumn();
-
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object referenz = jtbandreferenzen.getValueAt(row, column);
-
-					if (e.getClickCount() == 1) {
-						jtfreferenz.setText(String.valueOf(referenz));
-					}
-
-					if (e.getClickCount() == 2 | e.getButton() == 2) {
-
-						// Browseraufruf (für Windows):
-						try {
-							Runtime.getRuntime().exec(
-									"cmd.exe /c start " + referenz);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}
-				}
-			}
-		});
-		jtbandtitles.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtbandtitles.getSelectedRow();
-					int column = jtbandtitles.getSelectedColumn();
-
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object titel = jtbandtitles.getValueAt(row, column);
-
-					if (e.getClickCount() == 1) {
-						jtfstueckgruppe.setText(String.valueOf(titel));
-
-					}
-				}
-			}
-		});
 		/*
-		// delete-Button
-				jbdelete.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ae)
-					
-					{
-						
-						// Delete-Methode aufrufen
-						DBMethods03.deleteBand(musiker.getMusikerID());}});  */
+		 * // delete-Button jbdelete.addActionListener(new ActionListener() {
+		 * public void actionPerformed(ActionEvent ae)
+		 * 
+		 * {
+		 * 
+		 * // Delete-Methode aufrufen
+		 * DBMethods03.deleteBand(musiker.getMusikerID());}});
+		 */
+
 	}
+
 }

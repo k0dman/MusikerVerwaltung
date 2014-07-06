@@ -1,6 +1,5 @@
 package musikerverwaltung.Swing;
 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,8 +27,6 @@ public class EingabeformularArtist05 extends JPanel {
 	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz,
 			jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym,
 			jtfinstrument, jtfsolostueck, jtfreferenz;
-	
-
 
 	// Deklaration der Auswahlvariablen
 	// In den eineckigen Klammern steht, von welchem Typ das Ausgew\u00E4hlte
@@ -53,7 +50,7 @@ public class EingabeformularArtist05 extends JPanel {
 	private JButton jbsubmit;
 
 	// Border
-	private Border border;
+	private BorderSet border;
 
 	// JJRadioButton
 	private JRadioButton rbmann, rbfrau, rbkeineahnung, jrblebt;
@@ -122,14 +119,6 @@ public class EingabeformularArtist05 extends JPanel {
 		// JPanel fuer gesamt
 		jpmaininput = new JPanel(new GridLayout(13, 1, 1, 10));
 
-		// Border dem JPanel hinzufuegen
-		border = jpmaininput.getBorder();
-		// Farbe fuer Border
-		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
-
-		CompoundBorder border1 = new CompoundBorder(border, margin);
-		jpmaininput.setBorder(new TitledBorder(border1, "hey"));
-
 		// LueckenFueller
 		fueller = new JLabel("");
 		jpmaininput.add(fueller);
@@ -147,8 +136,6 @@ public class EingabeformularArtist05 extends JPanel {
 		jtfinstrument = new JTextField();
 		jtfsolostueck = new JTextField();
 		jtfreferenz = new JTextField();
-		
-
 
 		// Jpanel erzeugen fuer geschlechtgruppe
 		geschlechtgruppe = new JPanel();
@@ -307,6 +294,10 @@ public class EingabeformularArtist05 extends JPanel {
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 
+		// Border der Mitte hinzufuegen
+		border = new BorderSet();
+		border.setBorder(jpmaininput, " ");
+
 		return jpmaininput;
 
 	}
@@ -369,17 +360,10 @@ public class EingabeformularArtist05 extends JPanel {
 		jpmainartist.add(jpmainDesc());
 		jpmainartist.add(jpmainInput());
 		jpmainartist.add(jpmainRight());
-		
-		// Border dem JPanel hinzufuegen
-		border = jpmainartist.getBorder();
-		// Farbe fuer Border
-		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
-		CompoundBorder border1 = new CompoundBorder(border, margin);
-		jpmainartist.setBorder(new TitledBorder(border1, ""));
+		// Border hinzufuegen
+		border.setBorder(jpmainartist, "");
 
-		
-		
 		return jpmainartist;
 
 	}
@@ -449,7 +433,7 @@ public class EingabeformularArtist05 extends JPanel {
 				jtfpseudonym.setText("");
 				jtfinstrument.setText("");
 				jtfsolostueck.setText("");
-				jtfreferenz.setText("");				
+				jtfreferenz.setText("");
 			}
 		});
 

@@ -493,6 +493,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jpmainartist.add(jpmainMiddle(artist));
 		jpmainartist.add(jpmainRight());
 
+		MouseListenerTable mlt = new MouseListenerTable();
+		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
+		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
+		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
 		// Listener hinzufuegen
 		actionListenerJButton();
 
@@ -520,85 +524,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 					dodjcbtag.setEnabled(false);
 					dodjcbmonat.setEnabled(false);
 					dodjcbjahr.setEnabled(false);
-				}
-			}
-		});
-
-		jtreferenz.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtreferenz.getSelectedRow();
-					int column = jtreferenz.getSelectedColumn();
-
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object referenz = jtreferenz.getValueAt(row, column);
-
-					if (e.getClickCount() == 1) {
-						jtfreferenz.setText(String.valueOf(referenz));
-					}
-
-					if (e.getClickCount() == 2 | e.getButton() == 2) {
-
-						// Browseraufruf (für Windows):
-						try {
-							Runtime.getRuntime().exec(
-									"cmd.exe /c start " + referenz);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-					}
-				}
-			}
-		});
-		jtstueck.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtstueck.getSelectedRow();
-					int column = jtstueck.getSelectedColumn();
-
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object titel = jtstueck.getValueAt(row, column);
-
-					if (e.getClickCount() == 1) {
-						jtfsolostueck.setText(String.valueOf(titel));
-
-					}
-				}
-			}
-		});
-		jtinstrument.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
-				if (e.getButton() == 1 || e.getButton() == 2) {
-
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
-					int row = jtinstrument.getSelectedRow();
-					int column = jtinstrument.getSelectedColumn();
-
-					// Die Werte des ausgewaehlten Feldes in Objecte
-					// ablegen
-					Object titel = jtinstrument.getValueAt(row, column);
-
-					if (e.getClickCount() == 1) {
-						jtfinstrument.setText(String.valueOf(titel));
-
-					}
 				}
 			}
 		});
