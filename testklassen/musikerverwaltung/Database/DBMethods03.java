@@ -352,7 +352,7 @@ public final class DBMethods03 {
 	}
 
 	// Methode die Update-Prozedur ausfuehrt
-	public static final void updateArtist(int id, String titel,
+	public static final void updateArtist(int id_person,int id_musiker, int id_instrument, int id_referenz, int id_stuecksolo, String titel,
 			String namensvorsatz, String vorname, String namenszusatz,
 			String nachname, int geburtstag, int geburtsmonat, int geburtsjahr,
 			int todestag, int todesmonat, int todesjahr, String geschlecht,
@@ -393,11 +393,12 @@ public final class DBMethods03 {
 			callableStatement.setString(15, instrument);
 			callableStatement.setString(16, solostueck);
 			callableStatement.setString(17, referenz);
-			callableStatement.setInt(18, id); // musid_person
-			callableStatement.setNull(19, java.sql.Types.INTEGER); 
-			callableStatement.setNull(20, java.sql.Types.INTEGER);	// musid_instrument
-			callableStatement.setNull(21, java.sql.Types.INTEGER);	// musid_referenz 
-			callableStatement.setNull(22, java.sql.Types.INTEGER);	// musid_solostueck
+			callableStatement.setInt(18, id_person);
+			callableStatement.setNull(19, id_musiker);
+			callableStatement.setNull(20, id_instrument); 
+			callableStatement.setNull(21, id_referenz);	
+			callableStatement.setNull(22, id_stuecksolo);
+		
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -568,7 +569,7 @@ public final class DBMethods03 {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, s.stuecksolo, i.instrument, m.id_musiker FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
+					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, r.id_referenz, s.stuecksolo, s.id_stuecksolo, i.instrument, i.id_instrument, m.id_musiker FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
 							+ artist + "'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
@@ -594,6 +595,9 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("stuecksolo"));
 				artistdata.add(rs.getString("referenz"));
 				artistdata.add(rs.getString("id_musiker"));
+				artistdata.add(rs.getString("id_instrument"));
+				artistdata.add(rs.getString("id_stuecksolo"));
+				artistdata.add(rs.getString("id_referenz"));
 			}
 		}
 

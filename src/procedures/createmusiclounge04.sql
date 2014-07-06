@@ -265,6 +265,8 @@ DELIMITER ;
 
 /* procedure : musiker bearbeiten */
 
+use musiclounge;
+
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerBearbeiten` (musvorname varchar(100), musname varchar(100),
 mustitel varchar(100), musvorsatz varchar(100), muszusatz varchar(100),
@@ -302,15 +304,15 @@ where musiker.id_person = musid_person;
 SELECT id_musiker from musiker where musiker.id_person = musid_person into musid_musiker;
 update instrument
 set instrument = musinstrument
-where instrument.id_musiker = musid_musiker;
+where instrument.id_musiker = musid_musiker and instrument.id_instrument = musid_instrument;
 
 update referenz
 set referenz = musreferenz
-where referenz.id_musiker = musid_musiker;
+where referenz.id_musiker = musid_musiker and referenz.id_referenz = musid_referenz;
 
 update stuecksolo
 set stuecksolo = musstuecksolo
-where stuecksolo.id_musiker = musid_musiker;
+where stuecksolo.id_musiker = musid_musiker and stuecksolo.id_stuecksolo = musid_solostueck;
 
 END$$
 DELIMITER ;

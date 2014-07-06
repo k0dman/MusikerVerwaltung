@@ -640,7 +640,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 						instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen
-				musikerbearbeiten.updateArtist(musiker.getMusikerID());
+				musikerbearbeiten.updateArtist(musiker.getMusikerId_person(), musiker.getMusikerId_musiker(),musiker.getMusikerId_instrument(),musiker.getMusikerId_referenz(),musiker.getMusikerId_stuecksolo());
 			}
 		});
 		
@@ -651,7 +651,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			{
 				
 				// Delete-Methode aufrufen
-				DBMethods03.deleteArtist(musiker.getMusikerID(), musiker.getMusikerId_musiker());}});
+				DBMethods03.deleteArtist(musiker.getMusikerId_person(), musiker.getMusikerId_musiker());}});
 
 	}
 }

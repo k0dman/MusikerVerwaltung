@@ -10,7 +10,7 @@ musreferenz varchar(100), musid_person int(11),musid_musiker int(11), musid_inst
 
 BEGIN
 
-declare musid_musiker int;	
+
 
 UPDATE person
 SET
@@ -45,7 +45,7 @@ where referenz.id_musiker = musid_musiker and referenz.id_referenz = musid_refer
 
 update stuecksolo
 set stuecksolo = musstuecksolo
-where stuecksolo.id_musiker = musid_musiker and stuecksolo.id_stuecksolo = musid_stuecksolo;
+where stuecksolo.id_musiker = musid_musiker and stuecksolo.id_stuecksolo = musid_solostueck;
 
 END$$
 DELIMITER ;
