@@ -479,5 +479,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 				}
 			}
 		});
+		/*
+		// delete-Button
+				jbdelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ae)
+					
+					{
+						
+						// Delete-Methode aufrufen
+						DBMethods03.deleteBand(musiker.getMusikerID());}});  */
 	}
 }
