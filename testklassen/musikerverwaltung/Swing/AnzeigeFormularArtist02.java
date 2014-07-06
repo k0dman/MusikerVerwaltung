@@ -3,6 +3,9 @@ package musikerverwaltung.Swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -337,7 +340,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtinstrument = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT, musiker.dbSelect()));
+				DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT, musiker.dbSelectInstrument()));
 
 		// Spalten nicht mehr verschiebbar
 		jtinstrument.getTableHeader().setReorderingAllowed(false);
@@ -370,7 +373,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtstueck = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES, musiker.dbSelect()));
+				DBMethods03.COLUMN_IDENTIFIERSTITLES, musiker.dbSelectStuecksolo()));
 
 		// Spalten nicht mehr verschiebbar
 		jtstueck.getTableHeader().setReorderingAllowed(false);
@@ -414,7 +417,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtreferenz = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSREFERENCES, musiker.dbSelect()));
+				DBMethods03.COLUMN_IDENTIFIERSREFERENCES, musiker.dbSelectReferenz()));
 
 		// Spalten nicht mehr verschiebbar
 		jtreferenz.getTableHeader().setReorderingAllowed(false);
@@ -488,6 +491,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// Listener hinzufuegen
 		actionListenerJButton();
+		
+		
 
 		return jpmainartist;
 
@@ -513,6 +518,85 @@ public class AnzeigeFormularArtist02 extends JPanel {
 					dodjcbtag.setEnabled(false);
 					dodjcbmonat.setEnabled(false);
 					dodjcbjahr.setEnabled(false);
+				}
+			}
+		});
+		
+		jtreferenz.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtreferenz.getSelectedRow();
+					int column = jtreferenz.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object referenz = jtreferenz.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtfreferenz.setText(String.valueOf(referenz));
+					}
+
+					if (e.getClickCount() == 2 | e.getButton() == 2) {
+
+						// Browseraufruf (für Windows):
+						try {
+							Runtime.getRuntime().exec(
+									"cmd.exe /c start " + referenz);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				}
+			}
+		});
+		jtstueck.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtstueck.getSelectedRow();
+					int column = jtstueck.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object titel = jtstueck.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtfsolostueck.setText(String.valueOf(titel));
+
+					}
+				}
+			}
+		});
+		jtinstrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtinstrument.getSelectedRow();
+					int column = jtinstrument.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object titel = jtinstrument.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtfinstrument.setText(String.valueOf(titel));
+
+					}
 				}
 			}
 		});

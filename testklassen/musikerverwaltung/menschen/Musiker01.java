@@ -133,6 +133,23 @@ public class Musiker01 extends Person01 {
 		return result;
 	}
 	
+	// Aufruf des Selects aus der Datenbank fuer stuecksolo
+	public Vector<Vector<String>> dbSelectStuecksolo() {
+		Vector<Vector<String>> result = DBMethods03.dbSelectStuecksolo(getPseudonym());
+		return result;
+	}
+	
+	// Aufruf des Selects aus der Datenbank fuer refernz
+		public Vector<Vector<String>> dbSelectReferenz() {
+			Vector<Vector<String>> result = DBMethods03.dbSelectReferenz(getPseudonym());
+			return result;
+		}
+		// Aufruf des Selects aus der Datenbank fuer refernz
+				public Vector<Vector<String>> dbSelectInstrument() {
+					Vector<Vector<String>> result = DBMethods03.dbSelectInstrument(getPseudonym());
+					return result;
+				}		
+	
 	//Aufruf des Selects der Musiker mit Pseudonyme fuer Bandeintragen
 	public Vector<String> getMusikerArray(){
 		Vector<String> musiker = DBMethods03.dbSelectPseudonym();

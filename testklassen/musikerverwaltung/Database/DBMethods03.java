@@ -102,6 +102,141 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
+	
+	public static final Vector<Vector<String>> dbSelectStuecksolo(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> results = new Vector<Vector<String>>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select stuecksolo from stuecksolo, musiker where stuecksolo.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> person = new Vector<String>();
+
+				person.add(rs.getString("stuecksolo"));
+
+				results.add(person);
+
+			}
+		}
+		
+		
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectTable");
+		}
+		return results;
+	}
+	
+	public static final Vector<Vector<String>> dbSelectReferenz(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> results = new Vector<Vector<String>>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select referenz from referenz, musiker where referenz.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> person = new Vector<String>();
+
+				person.add(rs.getString("referenz"));
+
+				results.add(person);
+
+			}
+		}
+		
+		
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectTable");
+		}
+		return results;
+	}
+	
+	public static final Vector<Vector<String>> dbSelectInstrument(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Vector<String>> results = new Vector<Vector<String>>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select instrument from instrument, musiker where instrument.id_musiker = musiker.id_musiker and pseudonym = '" + artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				Vector<String> person = new Vector<String>();
+
+				person.add(rs.getString("instrument"));
+
+				results.add(person);
+
+			}
+		}
+		
+		
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectTable");
+		}
+		return results;
+	}
 
 	public static final Vector<Vector<String>> dbSearch(String keyword) {
 

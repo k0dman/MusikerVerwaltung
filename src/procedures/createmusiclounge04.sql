@@ -171,8 +171,7 @@ create table if not exists stueckgruppe
 id_stueckgruppe int(11) not null auto_increment,
 id_gruppe int(11),
 stueckgruppe varchar(100),
-primary key (id_stueckgruppe),
-foreign key (id_gruppe) references gruppe (id_gruppe) on update cascade on delete cascade
+primary key (id_stueckgruppe)
 );
 
 create table if not exists grreferenz
@@ -180,8 +179,7 @@ create table if not exists grreferenz
 id_grreferenz int(11) not null auto_increment,
 id_gruppe int(11),
 grreferenz varchar(100),
-primary key (id_grreferenz),
-foreign key (id_gruppe) references gruppe (id_gruppe) on update cascade on delete cascade
+primary key (id_grreferenz)
 );
 
 /* Prozeduren */
@@ -234,16 +232,17 @@ DELIMITER ;
 use musiclounge;
 
 CREATE PROCEDURE DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeErstellen` (grname varchar(100), 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeErstellen` (grgrname varchar(100), 
 id_grreferenz int(11), id_stueckgruppe int(11), grgrreferenz varchar(100), grstueckgruppe varchar(100),
 id_musiker int(11), id_gruppe int(11), graktiv varchar(1))
 BEGIN
 
 declare id_mitglied int;
 
+
 /* Gruppe Tabelle fuellen */
 insert into gruppe (grname)
-values (grname);
+values (grgrname);
 
 /* Mitglied Tabelle fuellen */
 select last_insert_id() into id_gruppe;
@@ -251,12 +250,12 @@ insert into mitglied (id_mitglied, id_musiker, id_gruppe, aktiv)
 values (id_mitglied, id_musiker, id_gruppe, graktiv);
 
 /* grReferenz eintragen */
-select last_insert_id() into id_gruppe;
+select id_gruppe from gruppe where grname = grgrname into id_gruppe;
 insert into grreferenz (id_gruppe, grreferenz)
 values (id_gruppe, grgrreferenz);
 
 /* stueckgruppe eintragen */
-select last_insert_id() into id_gruppe;
+select id_gruppe from gruppe where grname = grgrname into id_gruppe;
 insert into stueckgruppe (id_gruppe, stueckgruppe)
 values (id_gruppe, grstueckgruppe);
 
