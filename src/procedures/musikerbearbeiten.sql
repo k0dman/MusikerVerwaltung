@@ -34,14 +34,16 @@ set
 pseudonym = muspseudonym
 where musiker.id_person = musid_person;
 
-SELECT id_musiker from musiker where musiker.id_person = musid_person into musid_musiker;
+
 update instrument
 set instrument = musinstrument
 where instrument.id_musiker = musid_musiker and instrument.id_instrument = musid_instrument;
 
+
 update referenz
 set referenz = musreferenz
 where referenz.id_musiker = musid_musiker and referenz.id_referenz = musid_referenz;
+
 
 update stuecksolo
 set stuecksolo = musstuecksolo
