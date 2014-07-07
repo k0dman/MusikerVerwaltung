@@ -142,7 +142,49 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der dbSelectTable");
+			System.out.println("Fehler beim Ausführen der dbSelectStueckSolo");
+		}
+		return results;
+	}
+
+	public static final Vector<Integer> dbSelectStuecksoloID(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Integer> results = new Vector<Integer>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select id_stuecksolo from stuecksolo, musiker where stuecksolo.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+
+				results.add(rs.getInt("id_stuecksolo"));
+
+			}
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out
+					.println("Fehler beim Ausführen der dbSelectStueckSoloID");
 		}
 		return results;
 	}
@@ -186,7 +228,48 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der dbSelectTable");
+			System.out.println("Fehler beim Ausführen der dbSelectReferenz");
+		}
+		return results;
+	}
+
+	public static final Vector<Integer> dbSelectReferenzID(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Integer> results = new Vector<Integer>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select id_referenz from referenz, musiker where referenz.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+
+				results.add(rs.getInt("id_referenz"));
+
+			}
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectReferenzID");
 		}
 		return results;
 	}
@@ -230,11 +313,11 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der dbSelectTable");
+			System.out.println("Fehler beim Ausführen der dbSelectInstrument");
 		}
 		return results;
 	}
-	
+
 	public static final Vector<Integer> dbSelectInstrumentID(String artist) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
@@ -261,11 +344,8 @@ public final class DBMethods03 {
 			// >next()<
 
 			while (rs.next()) {
-				
 
 				results.add(rs.getInt("id_instrument"));
-
-				
 
 			}
 		}
@@ -274,7 +354,8 @@ public final class DBMethods03 {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der dbSelectTableID");
+			System.out
+					.println("Fehler beim Ausführen der dbSelectInstrumentID");
 		}
 		return results;
 	}
@@ -394,16 +475,16 @@ public final class DBMethods03 {
 
 	// Methode die Update-Prozedur fuer SoloKuenstler ausfuehrt
 	public static final void updateArtist(int idperson, int idmusiker,
-			int idinstrument, int idreferenz, int idstuecksolo,
-			String titel, String namensvorsatz, String vorname,
-			String namenszusatz, String nachname, int geburtstag,
-			int geburtsmonat, int geburtsjahr, int todestag, int todesmonat,
-			int todesjahr, String geschlecht, boolean istot, String pseudonym,
-			String instrument, String solostueck, String referenz) {
+			int idinstrument, int idstuecksolo, int idreferenz, String titel,
+			String namensvorsatz, String vorname, String namenszusatz,
+			String nachname, int geburtstag, int geburtsmonat, int geburtsjahr,
+			int todestag, int todesmonat, int todesjahr, String geschlecht,
+			boolean istot, String pseudonym, String instrument,
+			String solostueck, String referenz) {
 
 		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
-		
+
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerBearbeiten(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
@@ -437,9 +518,9 @@ public final class DBMethods03 {
 			callableStatement.setString(17, referenz);
 			callableStatement.setInt(18, idperson);
 			callableStatement.setInt(19, idmusiker);
-			callableStatement.setInt(20, idinstrument); 
-			callableStatement.setInt(21, idreferenz);		
-			callableStatement.setInt(22, idstuecksolo);		
+			callableStatement.setInt(20, idinstrument);
+			callableStatement.setInt(21, idreferenz);
+			callableStatement.setInt(22, idstuecksolo);
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
 			if (callableStatement.executeUpdate() == 0)
@@ -624,10 +705,10 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("tmonat"));// 12
 				artistdata.add(rs.getString("tjahr"));// 13
 				artistdata.add(rs.getString("pseudonym"));// 14
-				artistdata.add(rs.getString("referenz"));// 15
-				artistdata.add(rs.getString("id_referenz"));// 16
-				artistdata.add(rs.getString("stuecksolo"));// 17
-				artistdata.add(rs.getString("id_stuecksolo"));// 18
+				artistdata.add(rs.getString("stuecksolo"));// 15
+				artistdata.add(rs.getString("id_stuecksolo"));// 16
+				artistdata.add(rs.getString("referenz"));// 17
+				artistdata.add(rs.getString("id_referenz"));// 18
 				artistdata.add(rs.getString("instrument"));// 19
 				artistdata.add(rs.getString("id_instrument"));// 20
 				artistdata.add(rs.getString("id_musiker"));// 21

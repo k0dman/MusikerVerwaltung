@@ -21,8 +21,9 @@ public class Musiker01 extends Person01 {
 		this.pseudonym = pseudonym;
 
 	}
-	
-	public Musiker01(String pseudonym, int idinstrument,int idstuecksolo,int idreferenz) {
+
+	public Musiker01(String pseudonym, int idinstrument, int idstuecksolo,
+			int idreferenz) {
 
 		this.pseudonym = pseudonym;
 		this.idinstrument = idinstrument;
@@ -107,7 +108,7 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int idStueckSolo() {
-		return idinstrument;
+		return idstuecksolo;
 
 	}
 
@@ -136,11 +137,11 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void updateArtist(int idperson, int idmusiker, int idinstrument,
-			int idreferenz, int idstuecksolo, String pseudonym,
+			int idstuecksolo, int idreferenz, String pseudonym,
 			String instrument, String stuecksolo, String referenz) {
 
-		DBMethods03.updateArtist(idperson, idmusiker, idinstrument, idreferenz,
-				idstuecksolo, super.getTitel(), super.getVorsatz(),
+		DBMethods03.updateArtist(idperson, idmusiker, idinstrument,
+				idstuecksolo, idreferenz, super.getTitel(), super.getVorsatz(),
 				super.getVorname(), super.getZusatz(), super.getName(),
 				super.getGeburtsTag(), super.getGeburtsMonat(),
 				super.getGeburtsJahr(), super.getTodesTag(),
@@ -270,22 +271,22 @@ public class Musiker01 extends Person01 {
 				.get(14));
 	}
 
-	public String getMusikerReferenz() {
+	public String getMusikerStueckSolo() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(15));
 	}
 
-	public int getMusikerIDReferenz() {
+	public int getMusikerIDStueckSolo() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				16));
 	}
 
-	public String getMusikerStueckSolo() {
+	public String getMusikerReferenz() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(17));
 	}
 
-	public int getMusikerIDStueckSolo() {
+	public int getMusikerIDReferenz() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				18));
 	}
@@ -309,8 +310,20 @@ public class Musiker01 extends Person01 {
 		return Helfer01.searchID(DBMethods03.DBSelectArtist(getPseudonym()),
 				search);
 	}
-	public boolean idProof(int id){
-		return Helfer01.idToInt(DBMethods03.dbSelectInstrumentID(getPseudonym()), id);
+
+	public boolean idProofInstrument(int id) {
+		return Helfer01.idToInt(
+				DBMethods03.dbSelectInstrumentID(getPseudonym()), id);
+	}
+
+	public boolean idProofSoloStueck(int id) {
+		return Helfer01.idToInt(
+				DBMethods03.dbSelectStuecksoloID(getPseudonym()), id);
+	}
+
+	public boolean idProofReferenz(int id) {
+		return Helfer01.idToInt(DBMethods03.dbSelectReferenzID(getPseudonym()),
+				id);
 	}
 
 }

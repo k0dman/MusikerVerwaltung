@@ -403,7 +403,7 @@ public class EingabeformularArtist05 extends JPanel {
 				referenz[0] = jtfreferenz.getText();
 
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
-				Musiker01 musikereintragen = new Musiker01(jtftitel.getText(),
+			/*	Musiker01 musikereintragen = new Musiker01(jtftitel.getText(),
 						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
 								.getText(), jtfname.getText(), Integer
 								.parseInt(String.valueOf(jcbtag
@@ -419,9 +419,9 @@ public class EingabeformularArtist05 extends JPanel {
 						auswahl.getSelection().getActionCommand(), jrblebt
 								.getActionCommand(), jtfpseudonym.getText(),
 						instrument, solostueck, referenz);
-
+*/
 				// Insert-Methode aufrufen
-				musikereintragen.insertArtist();
+				//musikereintragen.insertArtist();
 				jtftitel.setText("");
 				jtfname.setText("");
 				jtfvorname.setText("");

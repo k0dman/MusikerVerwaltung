@@ -3,18 +3,11 @@ package musikerverwaltung.Swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 
@@ -26,21 +19,19 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	private JPanel jpmainleft, jpmainmiddle, jpmainright, jpmainlefttop,
 			jpmainleftmiddle, jpmainleftbottom, jpmainmiddleinstrument,
 			jpmainmiddlestueck, jpmainrightreferenz, jpmainrightjb,
-			jpmainartist, jpdatum, dodjpdatum, jpgeschlechtgruppe,
-			jpmainleftperson;
+			jpmainartist, jpdatum, dodjpdatum, jpgeschlechtgruppe;
 
 	// Schriften:
 	private Font ftfield;
 
 	// Labels
-	private JLabel jlueschrift, jlvorname, jlname, jltitel, jlvorsatz,
-			jlzusatz, jlgeschlecht, jldob, jldod, jlpseudonym, jlinstrument,
+	private JLabel jlvorname, jlname, jltitel, jlvorsatz, jlzusatz,
+			jlgeschlecht, jldob, jldod, jlpseudonym, jlinstrument,
 			jlsolostueck, jlreferenz, jlfueller;
 
 	// JTextField
-	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz,
-			jtfzusatz, jtfgeschlecht, jtfdob, jtfdod, jtfpseudonym,
-			jtfinstrument, jtfsolostueck, jtfreferenz;
+	private JTextField jtfvorname, jtfname, jtftitel, jtfvorsatz, jtfzusatz,
+			jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz;
 
 	// JComoboxBox
 	private JComboBox<String> jcbmonat, dodjcbmonat;
@@ -83,10 +74,12 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	private ListSelectionModel cellSelectionModel;
 
 	// String
-	private String pseudonym, instrument, solostueck, referenz, instrument2;
+	private String pseudonym, instrument, solostueck, referenz, instrument1,
+			solostueck1, referenz1;
 
 	// int
-	private int idinstrument, idinstrument1, idsolostueck, idreferenz;
+	private int idinstrument, idinstrument1, idsolostueck, idsolostueck1,
+			idreferenz, idreferenz1;
 
 	// MouseListener fuer Tabellen
 	private MouseListenerTable mlt;
@@ -109,7 +102,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
-		jtfgeschlecht = new JTextField();
 		jpgeschlechtgruppe = new JPanel();
 
 		// Vorname
@@ -275,8 +267,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JTextfield erzeugen und mit Inhalt fuellen
 		jtfpseudonym = new JTextField(musiker.getMusikerPseudonym());
 		jtfinstrument = new JTextField(musiker.getMusikerInstrument());
-		jtfsolostueck = new JTextField(musiker.getMusikerReferenz());
-		jtfreferenz = new JTextField(musiker.getMusikerStueckSolo());
+		jtfsolostueck = new JTextField(musiker.getMusikerStueckSolo());
+		jtfreferenz = new JTextField(musiker.getMusikerReferenz());
 
 		// Pseudonym
 		jpmainleftbottom.add(jlpseudonym);
@@ -505,49 +497,47 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// MouseListener hinzufuegen
 		mlt = new MouseListenerTable();
 		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
-		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
 		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
-		
+		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
+
+		// Instrument+ID setzen
+		instrument = jtfinstrument.getText();
 		idinstrument = musiker.getMusikerIDS(instrument);
-		
+		// Solostueck+ID setzen
+		solostueck = jtfsolostueck.getText();
+		idsolostueck = musiker.getMusikerIDS(solostueck);
+		// Referenz+ID setzen
+		referenz = jtfreferenz.getText();
+		idreferenz = musiker.getMusikerIDS(referenz);
+
 		// ActionListener hinzufuegen
-		actionListenerJButton();
-		
+		Listener();
+
 		return jpmainartist;
 
 	}
 
-	private void actionListenerJButton() {
+	private void Listener() {
 
 		jtfinstrument.getDocument().addDocumentListener(new DocumentListener() {
-
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
 				instrument = jtfinstrument.getText();
-
 				idinstrument = musiker.getMusikerIDS(instrument);
-			
 
-				if (musiker.idProof(idinstrument)){
-					instrument2 = instrument;
-					idinstrument1 = musiker.getMusikerIDS(instrument2);
+				if (musiker.idProofInstrument(idinstrument)) {
+					instrument1 = instrument;
+					idinstrument1 = musiker.getMusikerIDS(instrument1);
 				}
-				System.out.println("##########Hier NEu###################");
 
-				if (idinstrument == 0)idinstrument = idinstrument1;
-				System.out.println(idinstrument + " InstrumentID1");
-				System.out.println(idinstrument1);
-
-				System.out.println(instrument2 + " 2");
-				System.out.println(instrument);
-				
+				if (idinstrument == 0)
+					idinstrument = idinstrument1;
 			}
 
 			@Override
@@ -557,29 +547,60 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			}
 		});
 
-		jtfsolostueck.addCaretListener(new CaretListener() {
+		jtfsolostueck.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+			}
 
 			@Override
-			public void caretUpdate(CaretEvent e) {
+			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
 
 				solostueck = jtfsolostueck.getText();
-				System.out.println("#############################");
-				System.out.println(solostueck);
+				idsolostueck = musiker.getMusikerIDS(solostueck);
+
+				if (musiker.idProofSoloStueck(idsolostueck)) {
+					solostueck1 = solostueck;
+					idsolostueck1 = musiker.getMusikerIDS(solostueck1);
+				}
+
+				if (idsolostueck == 0)
+					idsolostueck = idsolostueck1;
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
 
 			}
 		});
 
-		jtfreferenz.addCaretListener(new CaretListener() {
+		jtfreferenz.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+			}
 
 			@Override
-			public void caretUpdate(CaretEvent e) {
+			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
-
 				referenz = jtfreferenz.getText();
 
-				System.out.println("#############################");
-				System.out.println(referenz);
+				idreferenz = musiker.getMusikerIDS(referenz);
+
+				if (musiker.idProofReferenz(idreferenz)) {
+					referenz1 = referenz;
+					idreferenz1 = musiker.getMusikerIDS(referenz1);
+				}
+
+				if (idreferenz == 0)
+					idreferenz = idreferenz1;
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
 
 			}
 		});
@@ -624,23 +645,25 @@ public class AnzeigeFormularArtist02 extends JPanel {
 							.getSelectedItem()));
 				}
 
-				
-
-				idsolostueck = musiker.getMusikerIDS(solostueck);
+				if (idsolostueck == 0)
+					idsolostueck = idsolostueck1;
 				System.out.println("#############################");
 				System.out.println(idsolostueck + " SoloStueckID2");
 				System.out.println(solostueck);
 
-				idreferenz = musiker.getMusikerIDS(referenz);
+				if (idreferenz == 0)
+					idreferenz = idreferenz1;
 				System.out.println("#############################");
-				System.out.println(idreferenz + " InstrumentID1");
+				System.out.println(idreferenz + " ReferenztID1");
 				System.out.println(referenz);
-				
-				if (idinstrument == 0)idinstrument = idinstrument1;
+
+				if (idinstrument == 0)
+					idinstrument = idinstrument1;
 				System.out.println("#############################");
 				System.out.println(idinstrument + " InstrumentID1");
+				System.out.println(idinstrument1 + " InstrumentID1");
 				System.out.println(instrument);
-				
+
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
 						.getText(), jtfvorname.getText(), jtfzusatz.getText(),
