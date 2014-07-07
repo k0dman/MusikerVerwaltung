@@ -705,10 +705,10 @@ public final class DBMethods03 {
 				artistdata.add(rs.getString("tmonat"));// 12
 				artistdata.add(rs.getString("tjahr"));// 13
 				artistdata.add(rs.getString("pseudonym"));// 14
-				artistdata.add(rs.getString("stuecksolo"));// 15
-				artistdata.add(rs.getString("id_stuecksolo"));// 16
-				artistdata.add(rs.getString("referenz"));// 17
-				artistdata.add(rs.getString("id_referenz"));// 18
+				artistdata.add(rs.getString("referenz"));// 15
+				artistdata.add(rs.getString("id_referenz"));// 16
+				artistdata.add(rs.getString("stuecksolo"));// 17
+				artistdata.add(rs.getString("id_stuecksolo"));// 18
 				artistdata.add(rs.getString("instrument"));// 19
 				artistdata.add(rs.getString("id_instrument"));// 20
 				artistdata.add(rs.getString("id_musiker"));// 21

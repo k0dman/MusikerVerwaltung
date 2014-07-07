@@ -647,22 +647,13 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (idsolostueck == 0)
 					idsolostueck = idsolostueck1;
-				System.out.println("#############################");
-				System.out.println(idsolostueck + " SoloStueckID2");
-				System.out.println(solostueck);
+
 
 				if (idreferenz == 0)
 					idreferenz = idreferenz1;
-				System.out.println("#############################");
-				System.out.println(idreferenz + " ReferenztID1");
-				System.out.println(referenz);
 
 				if (idinstrument == 0)
 					idinstrument = idinstrument1;
-				System.out.println("#############################");
-				System.out.println(idinstrument + " InstrumentID1");
-				System.out.println(idinstrument1 + " InstrumentID1");
-				System.out.println(instrument);
 
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz

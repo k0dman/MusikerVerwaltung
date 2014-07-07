@@ -271,22 +271,22 @@ public class Musiker01 extends Person01 {
 				.get(14));
 	}
 
-	public String getMusikerStueckSolo() {
+	public String getMusikerReferenz() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(15));
 	}
 
-	public int getMusikerIDStueckSolo() {
+	public int getMusikerIDReferenz() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				16));
 	}
 
-	public String getMusikerReferenz() {
+	public String getMusikerStueckSolo() {
 		return String.valueOf(DBMethods03.DBSelectArtist(getPseudonym())
 				.get(17));
 	}
 
-	public int getMusikerIDReferenz() {
+	public int getMusikerIDStueckSolo() {
 		return Integer.parseInt(DBMethods03.DBSelectArtist(getPseudonym()).get(
 				18));
 	}
