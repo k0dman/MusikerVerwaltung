@@ -75,7 +75,12 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// JScrollPane
 	private JScrollPane jspinstrument, jspstueck, jspreferenz;
 
+	// ListeSelectionModel
 	private ListSelectionModel cellSelectionModel;
+
+	// String
+	private String pseudonym;
+	private String[] instrument, solostueck, referenz;
 
 	public JPanel jpmainLeft(Object artist) {
 
@@ -283,6 +288,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfreferenz.setText(musiker.getMusikerReferenz());
 		jtfsolostueck.setText(musiker.getMusikerStueckSolo());
 
+		pseudonym = jtfpseudonym.getText();
+
 		// Border setzen
 		border.setBorder(jpmainleftbottom, "Interpreten-Daten");
 
@@ -468,7 +475,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainrightjb.add(jbsubmit);
 		jpmainrightjb.add(jbdelete);
-		
 
 		// ToolTip hinzuf\u00FCgen
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten zu editieren");
@@ -493,11 +499,20 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jpmainartist.add(jpmainMiddle(artist));
 		jpmainartist.add(jpmainRight());
 
+		// MouseListener hinzufuegen
 		MouseListenerTable mlt = new MouseListenerTable();
 		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
 		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
 		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
-		// Listener hinzufuegen
+		
+		// Arrays erzeugen
+		instrument = new String[10];
+		instrument[0] = jtfinstrument.getText();
+		solostueck = new String[10];
+		solostueck[0] = jtfsolostueck.getText();
+		referenz = new String[10];
+		referenz[0] = jtfreferenz.getText();
+		// ActionListener hinzufuegen
 		actionListenerJButton();
 
 		return jpmainartist;
@@ -532,18 +547,15 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jbsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 
-				// Arrays erzeugen
-				String[] instrument = new String[10];
-				instrument[0] = jtfinstrument.getText();
-				String[] solostueck = new String[10];
-				solostueck[0] = jtfsolostueck.getText();
-				String[] referenz = new String[10];
-				referenz[0] = jtfreferenz.getText();
+				System.out.println(pseudonym);
+				System.out.println(instrument[0]);
+				System.out.println(solostueck[0]);
+				System.out.println(referenz[0]);
 
 				int todestag = musiker.getMusikerTTag();
 				int todesmonat = musiker.getMusikerTMonat();
 				int todesjahr = musiker.getMusikerTJahr();
-				
+
 				if (jrblebt.getActionCommand() == "n") {
 					todestag = Integer.parseInt(String.valueOf(dodjcbtag
 							.getSelectedItem()));
@@ -554,34 +566,46 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				}
 
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
-				musiker = new Musiker01(jtftitel.getText(),
-						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
-								.getText(), jtfname.getText(), Integer
-								.parseInt(String.valueOf(jcbtag
-										.getSelectedItem())), Helfer01
+				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
+						.getText(), jtfvorname.getText(), jtfzusatz.getText(),
+						jtfname.getText(), Integer.parseInt(String
+								.valueOf(jcbtag.getSelectedItem())), Helfer01
 								.monatUmwandlung(jcbmonat.getSelectedItem()
 										.toString()), Integer.parseInt(String
 								.valueOf(jcbjahr.getSelectedItem())), todestag,
 						todesmonat, todesjahr, auswahl.getSelection()
 								.getActionCommand(),
-						jrblebt.getActionCommand(), jtfpseudonym.getText(),
-						instrument, solostueck, referenz);
+						jrblebt.getActionCommand(), pseudonym, instrument,
+						solostueck, referenz);
 
 				System.out.println(musiker.getMusiker());
-				System.out.println(musiker.getMusikerIDMusiker()+" musikerID");
-				System.out.println(musiker.getMusikerIDInstrument()+ " InstrumentID");
-				System.out.println(musiker.getMusikerIDReferenz()+ " ReferenzID");
-				System.out.println(musiker.getMusikerIDS(jtfinstrument.getText())+ " ID Instrumente");
-				System.out.println(musiker.getMusikerIDS(jtfsolostueck.getText())+ " ID stuecksolo");
-				System.out.println(musiker.getMusikerIDS(jtfreferenz.getText())+ " ID Referenz");
-	
+				System.out.println(musiker.getMusikerIDPerson() + " PersonID");
+				System.out.println(musiker.getMusikerIDMusiker() + " musikerID");
+				System.out.println(musiker.getMusikerIDInstrument()
+						+ " InstrumentID");
+				System.out.println(musiker.getMusikerIDReferenz()
+						+ " ReferenzID");
+				System.out.println(musiker.getMusikerIDStueckSolo()
+						+ " SoloStueckrID");
+				System.out.println(musiker.getMusikerIDS(jtfinstrument
+						.getText()) + " ID Instrumente");
+				System.out.println(musiker.getMusikerIDS(jtfsolostueck
+						.getText()) + " ID stuecksolo");
+				System.out.println(musiker.getMusikerIDS(jtfreferenz.getText())
+						+ " ID Referenz");
+
+				int idinstrument = musiker.getMusikerIDS(jtfinstrument
+						.getText());
+				int idsolostueck = musiker.getMusikerIDS(jtfsolostueck
+						.getText());
+				int idreferenz = musiker.getMusikerIDS(jtfreferenz.getText());
+
 				// Update-Methode aufrufen
-				musiker.updateArtist(
-						musiker.getMusikerIDPerson(),
-						musiker.getMusikerIDMusiker(),
-						musiker.getMusikerIDS(jtfinstrument.getText()),
-						musiker.getMusikerIDS(jtfsolostueck.getText()),
-						musiker.getMusikerIDS(jtfsolostueck.getText()));
+				musiker.updateArtist(musiker.getMusikerIDPerson(),
+						musiker.getMusikerIDMusiker(), idinstrument,
+						idsolostueck, idreferenz, jtfpseudonym.getText(),
+						jtfinstrument.getText(), jtfsolostueck.getText(),
+						jtfreferenz.getText());
 			}
 		});
 
@@ -593,13 +617,13 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				int auswahl = JOptionPane.showConfirmDialog(null,
 						"Willst du diesen Interpreten wirklich löschen?",
 						"Löschen", JOptionPane.YES_NO_OPTION);
-				
+
 				if (auswahl == JOptionPane.YES_OPTION) {
 					// Delete-Methode aufrufen
 					DBMethods03.deleteArtist(musiker.getMusikerIDPerson(),
 							musiker.getMusikerIDMusiker());
 				}
-				
+
 			}
 		});
 

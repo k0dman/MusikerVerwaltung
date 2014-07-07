@@ -111,7 +111,7 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void updateArtist(int idperson, int idmusiker, int idinstrument,
-			int idreferenz, int idstuecksolo) {
+			int idreferenz, int idstuecksolo, String pseudonym, String instrument, String stuecksolo, String referenz) {
 	
 		DBMethods03.updateArtist(idperson, idmusiker, idinstrument,
 				idreferenz, idstuecksolo, super.getTitel(),
@@ -120,8 +120,8 @@ public class Musiker01 extends Person01 {
 				super.getGeburtsMonat(), super.getGeburtsJahr(),
 				super.getTodesTag(), super.getTodesMonat(),
 				super.getTodesJahr(), super.getGeschlecht(), super.isTot(),
-				getPseudonym(), getInstrument()[0], getStueckSolo()[0],
-				getReferenz()[0]);
+				pseudonym, instrument, stuecksolo,
+				referenz);
 	}
 
 	public Vector<Vector<String>> selectLibary(String keyword) {

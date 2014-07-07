@@ -446,7 +446,7 @@ public class AnzeigeFormularArtist01 extends JPanel {
 						instrument, solostueck, referenz);
 
 				// Insert-Methode aufrufen
-				musikerbearbeiten.updateArtist(musiker.getMusikerIDPerson(),musiker.getMusikerIDMusiker(), musiker.getMusikerIDInstrument(), musiker.getMusikerIDReferenz(), musiker.getMusikerIDStueckSolo());
+				//musikerbearbeiten.updateArtist(musiker.getMusikerIDPerson(),musiker.getMusikerIDMusiker(), musiker.getMusikerIDInstrument(), musiker.getMusikerIDReferenz(), musiker.getMusikerIDStueckSolo());
 			}
 		});
 
