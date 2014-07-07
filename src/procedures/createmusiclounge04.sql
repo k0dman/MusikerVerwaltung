@@ -214,12 +214,12 @@ insert into instrument (id_musiker, instrument )
 values (id_musiker, instrument);
 
 /* Solostueck eintragen */
-select last_insert_id() into id_musiker;
+
 insert into stuecksolo (id_musiker, stuecksolo )
 values (id_musiker, stuecksolo);
 
 /* Referenz eintragen */
-select last_insert_id() into id_musiker;
+
 insert into referenz (id_musiker, referenz)
 values (id_musiker, referenz);
 

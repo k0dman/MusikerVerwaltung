@@ -1,4 +1,4 @@
-use musiclounge;
+/* procedure : musikerErstellen */
 
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `musikerErstellen` (musvorname varchar(100), musname varchar(100),
@@ -28,12 +28,12 @@ insert into instrument (id_musiker, instrument )
 values (id_musiker, instrument);
 
 /* Solostueck eintragen */
-select last_insert_id() into id_musiker;
+
 insert into stuecksolo (id_musiker, stuecksolo )
 values (id_musiker, stuecksolo);
 
 /* Referenz eintragen */
-select last_insert_id() into id_musiker;
+
 insert into referenz (id_musiker, referenz)
 values (id_musiker, referenz);
 
