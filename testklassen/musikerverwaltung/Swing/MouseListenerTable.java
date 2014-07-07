@@ -30,6 +30,8 @@ public class MouseListenerTable {
 
 					if (e.getClickCount() == 1) {
 						jtf.setText(String.valueOf(titel));
+						MusikerIDs musikerid = new MusikerIDs();
+						musikerid.idReferenz(String.valueOf(titel));
 					}
 				}
 			}

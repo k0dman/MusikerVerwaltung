@@ -81,6 +81,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// String
 	private String pseudonym;
 	private String[] instrument, solostueck, referenz;
+	private int idinstrument, idsolostueck, idreferenz;
 
 	public JPanel jpmainLeft(Object artist) {
 
@@ -504,7 +505,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
 		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
 		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
-		
+
 		// Arrays erzeugen
 		instrument = new String[10];
 		instrument[0] = jtfinstrument.getText();
@@ -512,6 +513,11 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		solostueck[0] = jtfsolostueck.getText();
 		referenz = new String[10];
 		referenz[0] = jtfreferenz.getText();
+
+		idinstrument = musiker.getMusikerIDS(jtfinstrument.getText());
+		idsolostueck = musiker.getMusikerIDS(jtfsolostueck.getText());
+		idreferenz = musiker.getMusikerIDS(jtfreferenz.getText());
+
 		// ActionListener hinzufuegen
 		actionListenerJButton();
 
@@ -581,25 +587,21 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				System.out.println(musiker.getMusiker());
 				System.out.println(musiker.getMusikerIDPerson() + " PersonID");
 				System.out.println(musiker.getMusikerIDMusiker() + " musikerID");
-				System.out.println(musiker.getMusikerIDInstrument()
-						+ " InstrumentID");
-				System.out.println(musiker.getMusikerIDReferenz()
-						+ " ReferenzID");
-				System.out.println(musiker.getMusikerIDStueckSolo()
-						+ " SoloStueckrID");
+
+				System.out.println(idinstrument + " InstrumentID");
+				System.out.println(idreferenz + " ReferenzID");
+				System.out.println(idsolostueck + " SoloStueckrID");
+
+				
 				System.out.println(musiker.getMusikerIDS(jtfinstrument
 						.getText()) + " ID Instrumente");
 				System.out.println(musiker.getMusikerIDS(jtfsolostueck
 						.getText()) + " ID stuecksolo");
 				System.out.println(musiker.getMusikerIDS(jtfreferenz.getText())
 						+ " ID Referenz");
-
-				int idinstrument = musiker.getMusikerIDS(jtfinstrument
-						.getText());
-				int idsolostueck = musiker.getMusikerIDS(jtfsolostueck
-						.getText());
-				int idreferenz = musiker.getMusikerIDS(jtfreferenz.getText());
-
+				MusikerIDs musi = new MusikerIDs();
+				musi.idReferenz(referenz)
+				
 				// Update-Methode aufrufen
 				musiker.updateArtist(musiker.getMusikerIDPerson(),
 						musiker.getMusikerIDMusiker(), idinstrument,
