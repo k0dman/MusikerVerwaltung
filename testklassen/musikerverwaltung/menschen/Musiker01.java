@@ -7,6 +7,7 @@ import musikerverwaltung.Database.DBMethods03;
 public class Musiker01 extends Person01 {
 
 	// Instanzvariabeln
+	private int idinstrument, idstuecksolo, idreferenz;
 	private String pseudonym;
 	private String[] instrument, stuecksolo, referenz;
 
@@ -58,8 +59,8 @@ public class Musiker01 extends Person01 {
 	public Musiker01(String titel, String vorsatz, String vorname,
 			String zusatz, String name, int geburtstag, int geburtsmonat,
 			int geburtsjahr, int todestag, int todesmonat, int todesjahr,
-			String geschlecht, String lebt, String pseudonym,
-			String[] instrument, String[] stuecksolo, String[] referenz) {
+			String geschlecht, String lebt, String pseudonym, int idinstrument,
+			int idstuecksolo, int idreferenz) {
 
 		// Aufruf des Konstruktors der Basis-Klasse
 		super(name, vorname, titel, vorsatz, zusatz, geschlecht, lebt,
@@ -68,9 +69,9 @@ public class Musiker01 extends Person01 {
 
 		// Sets
 		this.pseudonym = pseudonym;
-		this.instrument = instrument;
-		this.stuecksolo = stuecksolo;
-		this.referenz = referenz;
+		this.idinstrument = idinstrument;
+		this.idstuecksolo = idstuecksolo;
+		this.idreferenz = idreferenz;
 	}
 
 	// Gets
@@ -89,6 +90,21 @@ public class Musiker01 extends Person01 {
 
 	public String[] getReferenz() {
 		return referenz;
+	}
+
+	public int idInstrument() {
+		return idinstrument;
+
+	}
+
+	public int idStueckSolo() {
+		return idinstrument;
+
+	}
+
+	public int idReferenz() {
+		return idreferenz;
+
 	}
 
 	public String toString() {
@@ -111,17 +127,17 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void updateArtist(int idperson, int idmusiker, int idinstrument,
-			int idreferenz, int idstuecksolo, String pseudonym, String instrument, String stuecksolo, String referenz) {
-	
-		DBMethods03.updateArtist(idperson, idmusiker, idinstrument,
-				idreferenz, idstuecksolo, super.getTitel(),
-				super.getVorsatz(), super.getVorname(), super.getZusatz(),
-				super.getName(), super.getGeburtsTag(),
-				super.getGeburtsMonat(), super.getGeburtsJahr(),
-				super.getTodesTag(), super.getTodesMonat(),
-				super.getTodesJahr(), super.getGeschlecht(), super.isTot(),
-				pseudonym, instrument, stuecksolo,
-				referenz);
+			int idreferenz, int idstuecksolo, String pseudonym,
+			String instrument, String stuecksolo, String referenz) {
+
+		DBMethods03.updateArtist(idperson, idmusiker, idinstrument, idreferenz,
+				idstuecksolo, super.getTitel(), super.getVorsatz(),
+				super.getVorname(), super.getZusatz(), super.getName(),
+				super.getGeburtsTag(), super.getGeburtsMonat(),
+				super.getGeburtsJahr(), super.getTodesTag(),
+				super.getTodesMonat(), super.getTodesJahr(),
+				super.getGeschlecht(), super.isTot(), pseudonym, instrument,
+				stuecksolo, referenz);
 	}
 
 	public Vector<Vector<String>> selectLibary(String keyword) {
