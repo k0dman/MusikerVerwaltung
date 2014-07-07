@@ -83,10 +83,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	private ListSelectionModel cellSelectionModel;
 
 	// String
-	private String pseudonym, instrument, solostueck, referenz;;
+	private String pseudonym, instrument, solostueck, referenz, instrument2;
 
 	// int
-	private int idinstrument, idsolostueck, idreferenz;
+	private int idinstrument, idinstrument1, idsolostueck, idreferenz;
 
 	// MouseListener fuer Tabellen
 	private MouseListenerTable mlt;
@@ -507,10 +507,12 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
 		mlt.mouseListenerArtistTables(jtreferenz, jtfreferenz);
 		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
-
+		
+		idinstrument = musiker.getMusikerIDS(instrument);
+		
 		// ActionListener hinzufuegen
 		actionListenerJButton();
-
+		
 		return jpmainartist;
 
 	}
@@ -529,17 +531,23 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
 				instrument = jtfinstrument.getText();
-				String instrument2 = "leer";
-				if (instrument.equals(musiker.getMusikerInstrument())){
-					idinstrument = musiker.getMusikerIDS(instrument);
-					instrument2 = jtfinstrument.getText();
-				}
-				
-				System.out.println("##########Hier NEu###################");
-				System.out.println(musiker.getMusikerInstrument());
-				System.out.println(instrument2+ " 2");
-				System.out.println(instrument);
 
+				idinstrument = musiker.getMusikerIDS(instrument);
+			
+
+				if (musiker.idProof(idinstrument)){
+					instrument2 = instrument;
+					idinstrument1 = musiker.getMusikerIDS(instrument2);
+				}
+				System.out.println("##########Hier NEu###################");
+
+				if (idinstrument == 0)idinstrument = idinstrument1;
+				System.out.println(idinstrument + " InstrumentID1");
+				System.out.println(idinstrument1);
+
+				System.out.println(instrument2 + " 2");
+				System.out.println(instrument);
+				
 			}
 
 			@Override
@@ -617,9 +625,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				}
 
 				
-				System.out.println("#############################");
-				System.out.println(idinstrument + " InstrumentID1");
-				System.out.println(instrument);
 
 				idsolostueck = musiker.getMusikerIDS(solostueck);
 				System.out.println("#############################");
@@ -630,7 +635,12 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				System.out.println("#############################");
 				System.out.println(idreferenz + " InstrumentID1");
 				System.out.println(referenz);
-
+				
+				if (idinstrument == 0)idinstrument = idinstrument1;
+				System.out.println("#############################");
+				System.out.println(idinstrument + " InstrumentID1");
+				System.out.println(instrument);
+				
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
 						.getText(), jtfvorname.getText(), jtfzusatz.getText(),

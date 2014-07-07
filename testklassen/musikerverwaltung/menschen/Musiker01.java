@@ -1,5 +1,6 @@
 package musikerverwaltung.menschen;
 
+import java.util.List;
 import java.util.Vector;
 
 import musikerverwaltung.Database.DBMethods03;
@@ -19,6 +20,14 @@ public class Musiker01 extends Person01 {
 
 		this.pseudonym = pseudonym;
 
+	}
+	
+	public Musiker01(String pseudonym, int idinstrument,int idstuecksolo,int idreferenz) {
+
+		this.pseudonym = pseudonym;
+		this.idinstrument = idinstrument;
+		this.idstuecksolo = idstuecksolo;
+		this.idreferenz = idreferenz;
 	}
 
 	// Konstruktor#1
@@ -299,7 +308,9 @@ public class Musiker01 extends Person01 {
 	public int getMusikerIDS(String search) {
 		return Helfer01.searchID(DBMethods03.DBSelectArtist(getPseudonym()),
 				search);
-
+	}
+	public boolean idProof(int id){
+		return Helfer01.idToInt(DBMethods03.dbSelectInstrumentID(getPseudonym()), id);
 	}
 
 }

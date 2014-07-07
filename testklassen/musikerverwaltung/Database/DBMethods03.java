@@ -234,6 +234,50 @@ public final class DBMethods03 {
 		}
 		return results;
 	}
+	
+	public static final Vector<Integer> dbSelectInstrumentID(String artist) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		Vector<Integer> results = new Vector<Integer>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("select id_instrument from instrument, musiker where instrument.id_musiker = musiker.id_musiker and pseudonym = '"
+							+ artist + "';");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				
+
+				results.add(rs.getInt("id_instrument"));
+
+				
+
+			}
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der dbSelectTableID");
+		}
+		return results;
+	}
 
 	public static final Vector<Vector<String>> dbSearch(String keyword) {
 

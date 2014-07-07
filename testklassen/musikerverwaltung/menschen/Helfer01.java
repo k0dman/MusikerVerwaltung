@@ -3,6 +3,7 @@ package musikerverwaltung.menschen;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Vector;
 
 /*
  *ES SOLLEN ALLE STATISCHEN METHODEN ENTHALTEN TEXT / PRUEF / SCHALT
@@ -95,10 +96,23 @@ public final class Helfer01 {
 		int id = 0;
 		for (int i = 0; i < list.length; i++) {
 			if (list[i].equals(search))
-				id = Integer.parseInt(list[i+1]);
+				id = Integer.parseInt(list[i + 1]);
 		}
 
 		return id;
+	}
+
+	public static boolean idToInt(Vector<Integer> inputlist, int id) {
+		boolean idok = false;
+		int[] list = new int[inputlist.size()];
+		for (int i = 0; i < list.length; i++) {
+			list[i] = inputlist.get(i);
+			if (list[i] == id)
+				idok = true;
+
+		}
+
+		return idok;
 	}
 
 	public static boolean toBoolLebt(String lebt) {
@@ -172,4 +186,5 @@ public final class Helfer01 {
 		}
 		return monatszahl;
 	}
+
 }
