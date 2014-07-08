@@ -37,7 +37,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	private JComboBox<String> jcbmonat, dodjcbmonat;
 	private JComboBox<Integer> jcbtag, jcbjahr, dodjcbtag, dodjcbjahr;
 
-	// String Array fuer die Monatsnamen
+	// String Array f\u00FCr die Monatsnamen
 	private String[] monatsname = { "Januar", "Februar", "M\u00E4rz", "April",
 			"Mai", "Juni", "Juli", "August", "September", "Oktober",
 			"November", "Dezember" };
@@ -54,8 +54,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// Button Group
 	private ButtonGroup auswahl;
 
-	// Instanz der Klasse Musiker erzeugen und Pseudonym uebergeben um
-	// entsprechenden >SELECT< ausfuehren zu koennen in DB-Methoden
+	// Instanz der Klasse Musiker erzeugen und Pseudonym \u00FCbergeben um
+	// entsprechenden >SELECT< ausf\u00FChren zu k\u00F6nnen in DB-Methoden
 	private Musiker01 musiker;
 
 	// Border
@@ -81,7 +81,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	private int idinstrument, idinstrument1, idsolostueck, idsolostueck1,
 			idreferenz, idreferenz1;
 
-	// MouseListener fuer Tabellen
+	// MouseListener f\u00FCr Tabellen
 	private MouseListenerTable mlt;
 
 	public JPanel jpmainLeft(Object artist) {
@@ -133,7 +133,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfvorsatz.setText(musiker.getMusikerVorsatz());
 		jtfzusatz.setText(musiker.getMusikerZusatz());
 
-		// Pruefung ob m oder w oder ns
+		// Pr\u00FCfung ob m oder w oder ns
 		boolean m = false;
 		boolean w = false;
 		boolean ns = false;
@@ -243,7 +243,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			dodjcbjahr.setEnabled(false);
 		}
 
-		// in ein JPanel einfuegen
+		// in ein JPanel einf\u00FCgen
 		dodjpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
 		dodjpdatum.add(dodjcbtag);
 		dodjpdatum.add(dodjcbmonat);
@@ -268,7 +268,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jlsolostueck = new JLabel("Stueck");
 		jlreferenz = new JLabel("Referenz");
 
-		// JTextfield erzeugen und mit Inhalt fuellen
+		// JTextfield erzeugen und mit Inhalt f\u00FCllen
 		jtfpseudonym = new JTextField(musiker.getMusikerPseudonym());
 		jtfinstrument = new JTextField(musiker.getMusikerInstrument());
 		jtfsolostueck = new JTextField(musiker.getMusikerStueckSolo());
@@ -280,7 +280,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// Instrument
 		jpmainleftbottom.add(jlinstrument);
 		jpmainleftbottom.add(jtfinstrument);
-		// Solostueck
+		// Solost\u00FCck
 		jpmainleftbottom.add(jlsolostueck);
 		jpmainleftbottom.add(jtfsolostueck);
 		// Referenz
@@ -321,7 +321,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
 
-		// Hauptpanel fuer die Linke Seite erzeugen
+		// Hauptpanel f\u00FCr die Linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(3, 1, 1, 1));
 
 		// Zurordnen der beiden JPanel jl und jtf
@@ -336,7 +336,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 	}
 
-	// Rueckgabe-Methode fuer das Mittlere JPanel
+	// R\u00FCckgabe-Methode f\u00FCr das Mittlere JPanel
 	public JPanel jpmainMiddle(Object artist) {
 
 		jpmainmiddleinstrument = new JPanel(new GridLayout(1, 1, 1, 0));
@@ -354,28 +354,28 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		jtinstrument.setCellSelectionEnabled(true);
 
-		// Nur auswahl einer Zeile moeglich
+		// Nur auswahl einer Zeile m\u00F6glich
 		cellSelectionModel = jtinstrument.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		// JTable der JScrollPane hinzufuegen
+		// JTable der JScrollPane hinzuf\u00FCgen
 		jspinstrument = new JScrollPane(jtinstrument);
 
-		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
-		// ist, außerdem schoener:) //860 , 600
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspinstrument.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jspinstrument.setViewportView(jtinstrument);
 
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
 		jpmainmiddleinstrument.add(jspinstrument);
 
 		// Border setzen
 		border.setBorder(jpmainmiddleinstrument, "Instrumenten-Liste");
 
-		// #### JPANEL fuer die 2. Tabelle ####//
+		// #### JPANEL f\u00FCr die 2. Tabelle ####//
 		jpmainmiddlestueck = new JPanel(new GridLayout(1, 1, 1, 0));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
@@ -388,28 +388,28 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		jtstueck.setCellSelectionEnabled(true);
 
-		// Nur auswahl einer Zeile moeglich
+		// Nur auswahl einer Zeile m\u00F6glich
 		cellSelectionModel = jtstueck.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		// JTable der JScrollPane hinzufuegen
+		// JTable der JScrollPane hinzuf\u00FCgen
 		jspstueck = new JScrollPane(jtstueck);
 
-		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
-		// ist, außerdem schoener:) //860 , 600
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspstueck.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jspstueck.setViewportView(jtstueck);
 
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
 		jpmainmiddlestueck.add(jspstueck);
 
-		// Border dem JPanel hinzufuegen
+		// Border dem JPanel hinzuf\u00FCgen
 		border.setBorder(jpmainmiddlestueck, "Titel-Liste");
 
-		// HauptPanel fuer die Mitte erzeugen
+		// HauptPanel f\u00FCr die Mitte erzeugen
 		jpmainmiddle = new JPanel(new GridLayout(2, 1, 1, 1));
 
 		// Dem Hauptpanel die JSP zuordnen
@@ -433,25 +433,25 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		jtreferenz.setCellSelectionEnabled(true);
 
-		// Nur auswahl einer Zeile moeglich
+		// Nur auswahl einer Zeile m\u00F6glich
 		cellSelectionModel = jtreferenz.getSelectionModel();
 		cellSelectionModel
 				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		// JTable der JScrollPane hinzufuegen
+		// JTable der JScrollPane hinzuf\u00FCgen
 		jspreferenz = new JScrollPane(jtreferenz);
 
-		// Groesse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
-		// ist, außerdem schoener:) //860 , 600
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspreferenz.setPreferredSize(new Dimension(300, 500));
 
 		// Viewport setzen
 		jspreferenz.setViewportView(jtreferenz);
 
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzufuegen
+		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
 		jpmainrightreferenz.add(jspreferenz);
 
-		// Border dem JPanel hinzufuegen
+		// Border dem JPanel hinzuf\u00FCgen
 		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
 
 		// ###Unteres JPanel rechts### //
@@ -466,9 +466,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// JButtons
 		jbsubmit = new JButton("Bearbeiten");
-		jbdelete = new JButton("Löschen");
+		jbdelete = new JButton("L\u00F6schen");
 
-		// In Arbeit => Groesse des Eintragen-Buttons setzen
+		// In Arbeit => Gr\u00F6sse des Eintragen-Buttons setzen
 		jbsubmit.setPreferredSize(new Dimension(50, 100));
 
 		// JButton dem JPanel hinzuf\u00FCgen
@@ -478,7 +478,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// ToolTip hinzuf\u00FCgen
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten zu editieren");
 
-		// HauptPanel fuer die linke Seite erzeugen
+		// HauptPanel f\u00FCr die linke Seite erzeugen
 		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
 		jpmainright.add(jpmainrightreferenz);
 		jpmainright.add(jpmainrightjb);
@@ -487,18 +487,18 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 	}
 
-	// Methode, die die drei JPanels zusammenfuehrt
+	// Methode, die die drei JPanels zusammenf\u00FChrt
 	public JPanel jpmainArtist(Object artist) {
 
-		// JPanel erzeugen, dem drei JPanels hinzugefuegt werden
+		// JPanel erzeugen, dem drei JPanels hinzugef\u00FCgt werden
 		jpmainartist = new JPanel(new GridLayout(1, 3, 4, 4));
 
-		// hinzufuegen der JPanels
+		// hinzuf\u00FCgen der JPanels
 		jpmainartist.add(jpmainLeft(artist));
 		jpmainartist.add(jpmainMiddle(artist));
 		jpmainartist.add(jpmainRight());
 
-		// MouseListener hinzufuegen
+		// MouseListener hinzuf\u00FCgen
 		mlt = new MouseListenerTable();
 		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
 		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
@@ -508,7 +508,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		instrument = musiker.getMusikerInstrument();
 		idinstrument1 = musiker.getMusikerIDS(instrument);
 		
-		// Solostueck+ID setzen
+		// Solost\u00FCck+ID setzen
 		solostueck = musiker.getMusikerStueckSolo();
 		idsolostueck1 = musiker.getMusikerIDS(solostueck);
 		
@@ -517,7 +517,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		idreferenz1 = musiker.getMusikerIDS(referenz);
 		
 
-		// ActionListener hinzufuegen
+		// ActionListener hinzuf\u00FCgen
 		Listener();
 
 		return jpmainartist;
@@ -618,7 +618,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				// Wenn JRB ausgewaehlt, ist lebt != null
+				// Wenn JRB ausgew\u00E4hlt, ist lebt != null
 				Object lebt = jrblebt.getSelectedObjects();
 
 				if (lebt != null) {
@@ -667,7 +667,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				if (idinstrument == 0)
 					idinstrument = idinstrument1;
 				
-				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
+				// Instanzvar erzeugen - \u00DCbergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
 						.getText(), jtfvorname.getText(), jtfzusatz.getText(),
 						jtfname.getText(), Integer.parseInt(String
@@ -695,8 +695,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 			{
 				int auswahl = JOptionPane.showConfirmDialog(null,
-						"Willst du diesen Interpreten wirklich löschen?",
-						"Löschen", JOptionPane.YES_NO_OPTION);
+						"Willst du diesen Interpreten wirklich l\u00F6schen?",
+						"L\u00F6schen", JOptionPane.YES_NO_OPTION);
 
 				if (auswahl == JOptionPane.YES_OPTION) {
 					// Delete-Methode aufrufen
