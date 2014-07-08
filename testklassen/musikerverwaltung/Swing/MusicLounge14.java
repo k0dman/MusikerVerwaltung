@@ -28,7 +28,7 @@ public class MusicLounge14 extends JFrame {
 	// Schriften:
 	private Font fheader;
 
-	// Instanzen erzeugen, die zur GUI hinzugefuegt werden
+	// Instanzen erzeugen, die zur GUI hinzugef\u00FCgt werden
 	private Uebersichtstabelle03 jtpmain = new Uebersichtstabelle03();
 
 	// Farben
@@ -84,7 +84,7 @@ public class MusicLounge14 extends JFrame {
 			// handle exception
 		}
 
-		// Sauberes Schließen ermoeglichen
+		// Sauberes Schließen erm\u00F6glichen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Schriften erzeugen
@@ -171,7 +171,7 @@ public class MusicLounge14 extends JFrame {
 		jlsearch = new JLabel(searchicon.icons[3]);
 
 		// JButton erzeugen
-		jbmaintable = new JButton("Übersicht");
+		jbmaintable = new JButton("\u00FCbersicht");
 		jbmaintable.setPreferredSize(new Dimension(150, 35));
 		jbnewart = new JButton("Neuer Artist");
 		jbnewart.setPreferredSize(new Dimension(150, 35));
@@ -183,7 +183,7 @@ public class MusicLounge14 extends JFrame {
 		// JTextField erzeugen
 		jtfsearch = new RoundJTextField03(13);
 
-		// JLabels der >jpheaderright< hinzufuegen
+		// JLabels der >jpheaderright< hinzuf\u00FCgen
 		gpleft.add(jpheaderleft.add(jlheader));
 		gpright.add(jpheaderright.add(jlsearch));
 		gpright.add(jpheaderright.add(jtfsearch));
@@ -194,30 +194,30 @@ public class MusicLounge14 extends JFrame {
 		jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(null);
 		jpmain.add(jtpmain.jtpmaindesc, BorderLayout.CENTER);
 
-		// Tabs hinzufuegen
+		// Tabs hinzuf\u00FCgen
 		AddTabs02.insertArtist(jtpmain.jtpmaindesc, "Interpret eintragen");
 		AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
 
-		// Schriftart hinzufuegen
+		// Schriftart hinzuf\u00FCgen
 		jlheader.setFont(fheader);
 
-		// JButton der >jpselect< hinzufuegen
+		// JButton der >jpselect< hinzuf\u00FCgen
 		jpselect.add(jbmaintable);
 		jpselect.add(jbnewart);
 		jpselect.add(jbnewband);
 
-		// der Instanz von GradientPanel das JPanel >jpselect< hinzufuegen
+		// der Instanz von GradientPanel das JPanel >jpselect< hinzuf\u00FCgen
 		// gpnew.add(jpselect);
 		// gpnew.setPreferredSize(new Dimension(200, 50));
 
-		// JButton der >jpedit< hinzufuegen
+		// JButton der >jpedit< hinzuf\u00FCgen
 		// gpinfo.add(jpinfo.add(jbedit));
 		// gpinfo.setPreferredSize(new Dimension(200, 50));
 
 		// jpfooter
 		gpfooter.add(jpfooter);
 
-		// JPanel der ContentPane hinzufuegen
+		// JPanel der ContentPane hinzuf\u00FCgen
 		copa.add(jpall);
 
 		// ActionLister();
@@ -226,10 +226,10 @@ public class MusicLounge14 extends JFrame {
 		searchKeyListener();
 		mouseListenerJTP();
 
-		// Anfangsposition und -groesse festlegen
+		// Anfangsposition und -gr\u00F6sse festlegen
 		setBounds(50, 50, 1280, 720);
 
-		// Groesse nicht veraenderbar
+		// Gr\u00F6sse nicht veraenderbar
 		setResizable(false);
 
 		// Frame sichtbar machen
@@ -290,7 +290,7 @@ public class MusicLounge14 extends JFrame {
 
 	}
 
-	// KeyListener fuer die Suchfunktion
+	// KeyListener f\u00FCr die Suchfunktion
 	public void searchKeyListener() {
 		jtfsearch.addKeyListener(new KeyListener() {
 
@@ -310,7 +310,7 @@ public class MusicLounge14 extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
 
-				// Abfrage ob "Enter" gedrueckt wurde (KeyCode = 10)
+				// Abfrage ob "Enter" gedr\u00FCckt wurde (KeyCode = 10)
 				if (e.getKeyCode() == 10) {
 
 					// zaehlen der Tabs
@@ -331,21 +331,21 @@ public class MusicLounge14 extends JFrame {
 					// Pointer auf die Variable legen
 					jtpmain.jtpmaindesc = jtpmain.jtpmaindesc(jtfsearch
 							.getText());
-					// Hinzufuegen der TabbedPane zum Panel
+					// Hinzuf\u00FCgen der TabbedPane zum Panel
 					jpmain.add(jtpmain.jtpmaindesc);
 					jpmain.setVisible(true);
 
-					// Tabs hinzufuegen
+					// Tabs hinzuf\u00FCgen
 					AddTabs02.insertArtist(jtpmain.jtpmaindesc,
 							"Interpret eintragen");
 					AddTabs02.insertBand(jtpmain.jtpmaindesc, "Band eintragen");
 
-					// Vorher bestehende Tabs wieder hinzufuegen nach Suche
+					// Vorher bestehende Tabs wieder hinzuf\u00FCgen nach Suche
 					for (int i = 0; i < tabindex; i++) {
 
-						// Erst ab zweiten Tab ausfuehren
+						// Erst ab zweiten Tab ausf\u00FChren
 						if (i > 2) {
-							// Uebergabe der Tab-Titel fuer Titel und
+							// \u00FCbergabe der Tab-Titel f\u00FCr Titel und
 							// weiterleitung an die Suche
 							AddTabs02.showArtist(jtpmain.jtpmaindesc, title[i]);
 						}
@@ -353,7 +353,7 @@ public class MusicLounge14 extends JFrame {
 					// Text wieder leeren - muss am Ende stehen
 					jtfsearch.setText("");
 
-					// MouseListener wieder hinzufuegen
+					// MouseListener wieder hinzuf\u00FCgen
 					mouseListenerJTP();
 				}
 
