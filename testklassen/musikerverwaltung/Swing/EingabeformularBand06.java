@@ -241,7 +241,7 @@ public class EingabeformularBand06 extends JPanel {
 				String mitglied = String.valueOf(jcbmitgliedauswahl
 						.getSelectedItem());
 
-				// das ausgewaehlte Mitglied in das JTextfield einfuegen
+				// das ausgew\u00E4hlte Mitglied in das JTextfield einfuegen
 				jtfmitglied.setText(mitglied);
 
 			}

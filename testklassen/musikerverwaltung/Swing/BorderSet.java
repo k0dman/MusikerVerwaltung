@@ -15,9 +15,9 @@ public class BorderSet {
 
 	public Border setBorder(JPanel jpanel, String beschreibung) {
 
-		// Border dem JPanel hinzufuegen
+		// Border dem JPanel hinzuf\u00FCgen
 		border = jpanel.getBorder();
-		// Farbe fuer Border
+		// Farbe f\u00FCr Border
 		Border margin = new LineBorder(Color.LIGHT_GRAY, 2);
 
 		CompoundBorder border1 = new CompoundBorder(border, margin);

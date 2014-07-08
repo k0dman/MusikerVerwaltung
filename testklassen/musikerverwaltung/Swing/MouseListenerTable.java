@@ -10,21 +10,21 @@ import javax.swing.JTextField;
 
 public class MouseListenerTable {
 
-	// Methode fuer AnzeigeFormularArtist - Tabellen
+	// Methode f\u00FCr AnzeigeFormularArtist - Tabellen
 	public void mouseListenerArtistTables(final JTable jtable,
 			final JTextField jtf) {
 
 		jtable.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				// wenn die mittlere Maustaste gedr\u00FCckt wird - ausf\u00FChren
 				if (e.getButton() == 1 || e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					// In Var die ausgew\u00E4hlten Zeilen und Spalten speichern
 					int row = jtable.getSelectedRow();
 					int column = jtable.getSelectedColumn();
 
-					// Die Werte des ausgewaehlten Feldes in Objecte
+					// Die Werte des ausgew\u00E4hlten Feldes in Objecte
 					// ablegen
 					Object titel = jtable.getValueAt(row, column);
 
@@ -37,21 +37,21 @@ public class MouseListenerTable {
 
 	}
 
-	// Methode fuer AnzeigeFormularArtist - Tabellen
+	// Methode f\u00FCr AnzeigeFormularArtist - Tabellen
 	public void mouseListenerArtistTableReferenz(final JTable jtable,
 			final JTextField jtf) {
 
 		jtable.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				// wenn die mittlere Maustaste gedr\u00FCckt wird - ausf\u00FChren
 				if (e.getButton() == 1 || e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					// In Var die ausgew\u00E4hlten Zeilen und Spalten speichern
 					int row = jtable.getSelectedRow();
 					int column = jtable.getSelectedColumn();
 
-					// Die Werte des ausgewaehlten Feldes in Objecte
+					// Die Werte des ausgew\u00E4hlten Feldes in Objecte
 					// ablegen
 					Object referenz = jtable.getValueAt(row, column);
 
@@ -77,7 +77,7 @@ public class MouseListenerTable {
 
 	}
 
-	// Methode fuer AnzeigeFormularBand
+	// Methode f\u00FCr AnzeigeFormularBand
 	public void mouseListenerBandMitglieder(final JTable jtable,
 			final JTextField jtf) {
 
@@ -86,13 +86,13 @@ public class MouseListenerTable {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				// wenn die mittlere Maustaste gedr\u00FCckt wird - ausf\u00FChren
 				if (e.getButton() == 1 || e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					// In Var die ausgew\u00E4hlten Zeilen und Spalten speichern
 					int row = jtable.getSelectedRow();
 					int column = jtable.getSelectedColumn();
-					// Die Werte des ausgewaehlten Feldes in Objecte
+					// Die Werte des ausgew\u00E4hlten Feldes in Objecte
 					// ablegen
 					Object mitglied = jtable.getValueAt(row, column);
 					Object title = jtable.getValueAt(row, column + 1);
@@ -120,14 +120,14 @@ public class MouseListenerTable {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				// wenn die mittlere Maustaste gedr\u00FCckt wird - ausf\u00FChren
 				if (e.getButton() == 1 || e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					// In Var die ausgew\u00E4hlten Zeilen und Spalten speichern
 					int row = jtable.getSelectedRow();
 					int column = jtable.getSelectedColumn();
 
-					// Die Werte des ausgewaehlten Feldes in Objecte
+					// Die Werte des ausgew\u00E4hlten Feldes in Objecte
 					// ablegen
 					Object referenz = jtable.getValueAt(row, column);
 
@@ -158,14 +158,14 @@ public class MouseListenerTable {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				// wenn die mittlere Maustaste gedr\u00FCckt wird - ausf\u00FChren
 				if (e.getButton() == 1 || e.getButton() == 2) {
 
-					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					// In Var die ausgew\u00E4hlten Zeilen und Spalten speichern
 					int row = jtable.getSelectedRow();
 					int column = jtable.getSelectedColumn();
 
-					// Die Werte des ausgewaehlten Feldes in Objecte
+					// Die Werte des ausgew\u00E4hlten Feldes in Objecte
 					// ablegen
 					Object titel = jtable.getValueAt(row, column);
 

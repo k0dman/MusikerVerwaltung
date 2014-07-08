@@ -93,7 +93,7 @@ public class MusicLounge14 extends JFrame {
 		// Farben erzeugen
 		bgheader = new Color(214, 214, 214);
 
-		// Farbverlaeufe aus der Klasse >GradientPanel<
+		// Farbverl\u00E4ufe aus der Klasse >GradientPanel<
 		gpright = new GradientJPanels03("gpheaderright");
 		gpleft = new GradientJPanels03("gpheaderleft");
 		// gpnew = new GradientJPanels03("gpnew");
@@ -101,7 +101,7 @@ public class MusicLounge14 extends JFrame {
 		// GradientJPanels01 gpinfo = new GradientJPanels01("gpinfo");
 		gpfooter = new GradientJPanels03("gpfooter");
 
-		// Gibt ContentPane Objekt zurueck
+		// Gibt ContentPane Objekt zur\u00FCck
 		copa = getContentPane();
 
 		// JMenuBar erzeugen
@@ -118,18 +118,18 @@ public class MusicLounge14 extends JFrame {
 		// Abstand setzen
 		jmdatei.setMargin(new Insets(0, 10, 0, 100));
 
-		// Items dem Menupunkt hinzufuegen
+		// Items dem Menupunkt hinzuf\u00FCgen
 		jmdatei.add(jmiimport);
 		jmdatei.add(jmiexport);
 		jmdatei.add(jmiexit);
 
 		jlmenudate = new JLabel("Datum");
-		// Menupunkte der JMenubar hinzufuegen
+		// Menupunkte der JMenubar hinzuf\u00FCgen
 		jmbmenu.add(jmdatei);
 		jmbmenu.add(Box.createHorizontalStrut(1150));
 		jmbmenu.add(jlmenudate);
 
-		// JMenubar dem Frame hinzufuegen
+		// JMenubar dem Frame hinzuf\u00FCgen
 		add(jmbmenu, BorderLayout.NORTH);
 
 		// JPanel erzeugen mit BorderLayout
@@ -150,14 +150,14 @@ public class MusicLounge14 extends JFrame {
 		jpselect.setOpaque(false);
 		jpfooter.setOpaque(false);
 
-		// JPanels der >jpall< hinzufuegen
+		// JPanels der >jpall< hinzuf\u00FCgen
 		jpall.add(jpheader, BorderLayout.NORTH);
 		jpall.add(jpmain, BorderLayout.CENTER);
 		// jpall.add(gpinfo, BorderLayout.EAST);
 		// jpall.add(gpnew, BorderLayout.WEST);
 		jpall.add(gpfooter, BorderLayout.SOUTH);
 
-		// JPanels der >jpheader< hinzufuegen
+		// JPanels der >jpheader< hinzuf\u00FCgen
 		jpheader.add(gpleft);
 		jpheader.add(gpright, BorderLayout.EAST);
 
@@ -229,7 +229,7 @@ public class MusicLounge14 extends JFrame {
 		// Anfangsposition und -gr\u00F6sse festlegen
 		setBounds(50, 50, 1280, 720);
 
-		// Gr\u00F6sse nicht veraenderbar
+		// Gr\u00F6sse nicht ver\u00E4nderbar
 		setResizable(false);
 
 		// Frame sichtbar machen
@@ -313,7 +313,7 @@ public class MusicLounge14 extends JFrame {
 				// Abfrage ob "Enter" gedr\u00FCckt wurde (KeyCode = 10)
 				if (e.getKeyCode() == 10) {
 
-					// zaehlen der Tabs
+					// z\u00E4hlen der Tabs
 					int tabindex = jtpmain.jtpmaindesc.getTabCount();
 
 					// String-Array in dem die Title der Tabs gespeichert werden
@@ -365,7 +365,7 @@ public class MusicLounge14 extends JFrame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// Konfliktfreies spaeteres paralleles Betreiben des Dialoges
+		// Konfliktfreies sp\u00E4teres paralleles Betreiben des Dialoges
 		// sicherstellen
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

@@ -172,7 +172,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 				.setToolTipText("Tragen Sie hier bitte ein St\u00FCck der Gruppe ein");
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
-		jcbmitgliedauswahl.setToolTipText("Bitte waehle einen Musiker aus");
+		jcbmitgliedauswahl.setToolTipText("Bitte w\u00E4hle einen Musiker aus");
 
 		// HauptJPanel linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(1, 2, 1, 1));
@@ -402,7 +402,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	}
 
-	// ActionListener, setzt ausgewaehltes Textfeld nach Auswahl eines Items aus
+	// ActionListener, setzt ausgew\u00E4hltes Textfeld nach Auswahl eines Items aus
 	// JComboBox
 	public void bandActionListener() {
 		jcbmitgliedauswahl.addActionListener(new ActionListener() {
@@ -415,7 +415,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 				String mitglied = String.valueOf(jcbmitgliedauswahl
 						.getSelectedItem());
 
-				// das ausgewaehlte Mitglied in das JTextfield einf\u00FCgen
+				// das ausgew\u00E4hlte Mitglied in das JTextfield einf\u00FCgen
 				jtfmitglied.setText(mitglied);
 
 			}
