@@ -102,7 +102,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
-		jpgeschlechtgruppe = new JPanel();
+		jpgeschlechtgruppe = new JPanel(new GridLayout(1,3,1,1));
 
 		// Vorname
 		jpmainlefttop.add(jlvorname);
@@ -151,7 +151,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		rbmann.setActionCommand("m");
 		rbfrau = new JRadioButton("Frau", w);
 		rbfrau.setActionCommand("f");
-		rbkeineahnung = new JRadioButton("Keine Ahnung", ns);
+		rbkeineahnung = new JRadioButton("k.A.", ns);
 		rbkeineahnung.setActionCommand("ns");
 
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
@@ -270,6 +270,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfsolostueck = new JTextField(musiker.getMusikerStueckSolo());
 		jtfreferenz = new JTextField(musiker.getMusikerReferenz());
 
+		
 		// Pseudonym
 		jpmainleftbottom.add(jlpseudonym);
 		jpmainleftbottom.add(jtfpseudonym);
@@ -647,7 +648,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (idsolostueck == 0)
 					idsolostueck = idsolostueck1;
-
 
 				if (idreferenz == 0)
 					idreferenz = idreferenz1;
