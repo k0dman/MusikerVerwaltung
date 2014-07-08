@@ -13,9 +13,9 @@ import musikerverwaltung.menschen.*;
 
 public final class DBMethods03 {
 
-	// Diese Eintraege werden zum Verbindungsaufbau benoetigt
+	// Diese Eintr\u00E4ge werden zum Verbindungsaufbau ben\u00F6tigt
 	// Die Variabeln werden als >final< deklariert, da es sich hier um
-	// Konstanten handelt, die nicht mehr veraendert werden sollen
+	// Konstanten handelt, die nicht mehr ver\u00E4ndert werden sollen
 	private final static String host = "localhost";
 	private final static String database = "musiclounge";
 	private final static String user = "root";
@@ -61,7 +61,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectTable() {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -72,8 +72,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -94,7 +94,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectStuecksolo(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -116,8 +116,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -138,7 +138,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -149,7 +149,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectStuecksoloID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -160,8 +160,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -179,7 +179,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -191,7 +191,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectReferenz(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -202,8 +202,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -224,7 +224,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -235,7 +235,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectReferenzID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -246,8 +246,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -265,7 +265,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -276,7 +276,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectInstrument(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -287,8 +287,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -309,7 +309,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -320,7 +320,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectInstrumentID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -331,8 +331,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -350,7 +350,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -362,7 +362,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSearch(String keyword) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -373,8 +373,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -398,7 +398,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -408,7 +408,7 @@ public final class DBMethods03 {
 		return results;
 	}
 
-	// Methode die Insert-Prozedur ausfuehrt
+	// Methode die Insert-Prozedur ausf\u00FChrt
 	public static final void insertArtist(String titel, String namensvorsatz,
 			String vorname, String namenszusatz, String nachname,
 			int geburtstag, int geburtsmonat, int geburtsjahr, int todestag,
@@ -416,20 +416,20 @@ public final class DBMethods03 {
 			String pseudonym, String instrument, String solostueck,
 			String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /17
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /17
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerErstellen(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
-		// Boolean fuer <istot> wird erneut umgewandelt mit Helfer-Methode
+		// Boolean f\u00FCr <istot> wird erneut umgewandelt mit Helfer-Methode
 		String lebt = Helfer01.toStringLebt(istot);
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
@@ -455,7 +455,7 @@ public final class DBMethods03 {
 			callableStatement.setNull(20, java.sql.Types.INTEGER);
 			callableStatement.setNull(21, java.sql.Types.INTEGER);
 
-			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
@@ -464,7 +464,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -473,7 +473,7 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode die Update-Prozedur fuer SoloKuenstler ausfuehrt
+	// Methode die Update-Prozedur f\u00FCr SoloK\u00FCnstler ausf\u00FChrt
 	public static final void updateArtist(int idperson, int idmusiker,
 			int idinstrument, int idstuecksolo, int idreferenz, String titel,
 			String namensvorsatz, String vorname, String namenszusatz,
@@ -482,20 +482,20 @@ public final class DBMethods03 {
 			boolean istot, String pseudonym, String instrument,
 			String solostueck, String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /22
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call musikerBearbeiten(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
-		// Boolean fuer <istot> wird erneut umgewandelt mit Helfer-Methode
+		// Boolean f\u00FCr <istot> wird erneut umgewandelt mit Helfer-Methode
 		String lebt = Helfer01.toStringLebt(istot);
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
@@ -522,7 +522,7 @@ public final class DBMethods03 {
 			callableStatement.setInt(21, idreferenz);
 			callableStatement.setInt(22, idstuecksolo);
 
-			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
@@ -531,7 +531,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -540,10 +540,10 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
+	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
 	public static final void deleteArtist(int id, int id_mus) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /21
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -552,24 +552,24 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
 			callableStatement.setInt(1, id_mus); // musid_musiker
 			callableStatement.setInt(2, id); // musid_person
 
-			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
 				JOptionPane.showMessageDialog(null,
-						"Der Interpret wurde geloescht!");
+						"Der Interpret wurde gel\u00F6scht!");
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -578,13 +578,13 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode die Insert-Prozedur für eine Band ausfuehrt
+	// Methode die Insert-Prozedur für eine Band ausf\u00FChrt
 
 	// id_musiker muss übergeben werden für die Prozedur
 	public static final void insertBand(String grname, String stueckgruppe,
 			String grreferenz, int id_musiker, String aktiv) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter //
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter //
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -593,8 +593,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
@@ -608,7 +608,7 @@ public final class DBMethods03 {
 			callableStatement.setString(8, aktiv); // Gruppenmitglied
 													// aktiv/passiv
 
-			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
@@ -617,7 +617,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -626,10 +626,10 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode die Delete-Prozedur ausfuehrt fuehr Artist
+	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
 	public static final void deleteBand(int id_gruppe) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter /21
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /21
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -638,23 +638,23 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// / Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
 			callableStatement.setInt(1, id_gruppe); // id_gruppe
 
-			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausfuehrung
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
 				JOptionPane.showMessageDialog(null,
-						"Die Gruppe wurde geloescht!");
+						"Die Gruppe wurde gel\u00F6scht!");
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -663,10 +663,10 @@ public final class DBMethods03 {
 
 	}
 
-	// Methode zum Select fuer Artisten
+	// Methode zum Select f\u00FCr Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -677,8 +677,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -715,7 +715,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -724,10 +724,10 @@ public final class DBMethods03 {
 		return artistdata;
 	}
 
-	// Select nach Pseudonym um gezieltes Klicken in der Libary zu ermoeglichen
+	// Select nach Pseudonym um gezieltes Klicken in der Libary zu erm\u00F6glichen
 	public static final Vector<String> dbSelectPseudonym() {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -739,8 +739,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -756,7 +756,7 @@ public final class DBMethods03 {
 			rs.close();
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -766,10 +766,10 @@ public final class DBMethods03 {
 
 	}
 
-	// Select fuer Abfrage Band
+	// Select f\u00FCr Abfrage Band
 	public static final boolean selectIsBand(String band) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -780,8 +780,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -805,7 +805,7 @@ public final class DBMethods03 {
 			rs.close();
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -815,10 +815,10 @@ public final class DBMethods03 {
 
 	}
 
-	// Select nach Pseudonym um gezieltes Klicken in der Libary zu ermoeglichen
+	// Select nach Pseudonym um gezieltes Klicken in der Libary zu erm\u00F6glichen
 	public static final Vector<Vector<String>> dbSelectMitglieder(String band) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -831,8 +831,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -854,7 +854,7 @@ public final class DBMethods03 {
 			rs.close();
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -866,7 +866,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectStueckgruppe(String band) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -879,8 +879,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -901,7 +901,7 @@ public final class DBMethods03 {
 			rs.close();
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -913,7 +913,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectGrreferenz(String band) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -926,8 +926,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -948,7 +948,7 @@ public final class DBMethods03 {
 			rs.close();
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -957,10 +957,10 @@ public final class DBMethods03 {
 		return result;
 
 	}
-	//Inserts fuer Gruppen
+	//Inserts f\u00FCr Gruppen
 	public static final void insertstueckgruppe(int id_gruppe, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -968,8 +968,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -977,7 +977,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -986,7 +986,7 @@ public final class DBMethods03 {
 	}
 	public static final void insertgrreferenz(int id_gruppe, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -994,8 +994,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -1003,7 +1003,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -1012,7 +1012,7 @@ public final class DBMethods03 {
 	}
 	public static final void insertartist(int id_gruppe, int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1020,8 +1020,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -1029,7 +1029,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -1037,11 +1037,11 @@ public final class DBMethods03 {
 
 	}
 	
-	// Inserts fuer Artists
+	// Inserts f\u00FCr Artists
 	
 	public static final void insertstuecksolo(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1049,8 +1049,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -1058,7 +1058,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -1068,7 +1068,7 @@ public final class DBMethods03 {
 	
 	public static final void insertreferenz(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1076,8 +1076,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -1085,7 +1085,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -1095,7 +1095,7 @@ public final class DBMethods03 {
 	
 	public static final void insertinstrument(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1103,8 +1103,8 @@ public final class DBMethods03 {
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
 
-			// Fuer die Variable wird muss ein Statement erstellt werden um
-			// eine Kommunikation mit der DB zu ermoeglichen
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
 			stmt = conn.connection.createStatement();
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
@@ -1112,7 +1112,7 @@ public final class DBMethods03 {
 
 		}
 
-		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
