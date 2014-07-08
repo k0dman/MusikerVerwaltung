@@ -102,7 +102,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtftitel = new JTextField();
 		jtfvorsatz = new JTextField();
 		jtfzusatz = new JTextField();
-		jpgeschlechtgruppe = new JPanel(new GridLayout(1,3,1,1));
+		jpgeschlechtgruppe = new JPanel(new GridLayout(1, 3, 1, 1));
 
 		// Vorname
 		jpmainlefttop.add(jlvorname);
@@ -194,10 +194,27 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			jcbjahr.addItem(new Integer(aktjahr - j));
 		jcbjahr.setSelectedIndex(aktjahr - musiker.getMusikerGJahr());
 
-		// JRadio Button ob Musiker gestorben ist
-		jrblebt = new JRadioButton("tot");
-		jrblebt.setActionCommand("n");
+		// Vars
+		boolean tot = false;
+		String lebt = "j";
 
+		// Pruefung ob Artist noch lebt oder nicht
+		if (musiker.getMusikerLebt().equals("j"))
+			lebt = "j";
+		else {
+			tot = true;
+			lebt = "n";
+		}
+		// JRadio Button ob Musiker gestorben ist
+		jrblebt = new JRadioButton("tot", tot);
+		jrblebt.setActionCommand(lebt);
+		if (jrblebt.isSelected()) {
+			jrblebt.setActionCommand("n");
+		
+		} else {
+			jrblebt.setActionCommand("j");
+	
+		}
 		// Alles in ein Panel
 		jpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
 		jpdatum.add(jcbtag);
@@ -270,7 +287,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfsolostueck = new JTextField(musiker.getMusikerStueckSolo());
 		jtfreferenz = new JTextField(musiker.getMusikerReferenz());
 
-		
 		// Pseudonym
 		jpmainleftbottom.add(jlpseudonym);
 		jpmainleftbottom.add(jtfpseudonym);
@@ -613,9 +629,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				// TODO Auto-generated method stub
 
 				// Wenn JRB ausgewaehlt, ist lebt != null
-				Object lebt = jrblebt.getSelectedObjects();
+				boolean lebt = jrblebt.isSelected();
 
-				if (lebt != null) {
+				// JCB Enabled oder nicht
+				if (lebt) {
 					dodjcbtag.setEnabled(true);
 					dodjcbmonat.setEnabled(true);
 					dodjcbjahr.setEnabled(true);
@@ -637,13 +654,19 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				int todesmonat = musiker.getMusikerTMonat();
 				int todesjahr = musiker.getMusikerTJahr();
 
-				if (jrblebt.getActionCommand() == "n") {
+				if (jrblebt.isSelected()) {
+					jrblebt.setActionCommand("n");
 					todestag = Integer.parseInt(String.valueOf(dodjcbtag
 							.getSelectedItem()));
 					todesmonat = Helfer01.monatUmwandlung(dodjcbmonat
 							.getSelectedItem().toString());
 					todesjahr = Integer.parseInt(String.valueOf(dodjcbjahr
 							.getSelectedItem()));
+				} else {
+					jrblebt.setActionCommand("j");
+					todestag = 0;
+					todesmonat = 0;
+					todesjahr = 0;
 				}
 
 				if (idsolostueck == 0)
