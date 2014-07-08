@@ -37,6 +37,46 @@ public class MouseListenerTable {
 
 	}
 
+	// Methode fuer AnzeigeFormularArtist - Tabellen
+	public void mouseListenerArtistTableReferenz(final JTable jtable,
+			final JTextField jtf) {
+
+		jtable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+
+				// wenn die mittlere Maustaste gedrueckt wird - ausfuehren
+				if (e.getButton() == 1 || e.getButton() == 2) {
+
+					// In Var die ausgewaehlten Zeilen und Spalten speichern
+					int row = jtable.getSelectedRow();
+					int column = jtable.getSelectedColumn();
+
+					// Die Werte des ausgewaehlten Feldes in Objecte
+					// ablegen
+					Object referenz = jtable.getValueAt(row, column);
+
+					if (e.getClickCount() == 1) {
+						jtf.setText(String.valueOf(referenz));
+					}
+					if (e.getClickCount() == 2 | e.getButton() == 2) {
+
+						// Browseraufruf (für Windows):
+						try {
+							Runtime.getRuntime().exec(
+									"cmd.exe /c start " + referenz);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				}
+
+			}
+		});
+
+	}
+
 	// Methode fuer AnzeigeFormularBand
 	public void mouseListenerBandMitglieder(final JTable jtable,
 			final JTextField jtf) {
@@ -112,8 +152,8 @@ public class MouseListenerTable {
 
 		});
 	}
-	
-	public void mouseListenerBandTitel(final JTable jtable, final JTextField jtf){
+
+	public void mouseListenerBandTitel(final JTable jtable, final JTextField jtf) {
 		jtable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -136,6 +176,6 @@ public class MouseListenerTable {
 				}
 			}
 		});
-		
+
 	}
 }
