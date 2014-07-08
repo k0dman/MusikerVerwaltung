@@ -25,23 +25,25 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JPanel jpmainband, jpmainleft, jpmainmiddle, jpmainright,
 			jpmainleftjl, jpmainleftjtf, jpmainleftehemalig,
 			jpmainmiddlemitglieder, jpmainmiddletitel, jpmainrightreferenz,
-			jpmainrightbuttons;
+			jpmainrightbuttons, jpinsert, jpinsertrbg;
 
 	// JLabel
 	private JLabel jlueschrift, jlname, jlmitglied, jlehemalig, jlstueckgruppe,
 			jlreferenz, jlfueller, jlauswahl;
 
 	// JTextField
-	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz;
+	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz,
+			jtfinsert;
 
 	// Schrift:
 	private Font ftfield;
 
 	// JRadioButton
-	private JRadioButton jrbehemaligja, jrbehemalignein;
+	private JRadioButton jrbehemaligja, jrbehemalignein, jrbreferenz,
+			jrbstueckgruppe;
 
 	// ButtonGroup
-	private ButtonGroup bgehemalig;
+	private ButtonGroup bgehemalig, bginsert;
 
 	// JComboBox
 	private JComboBox<String> jcbmitgliedauswahl;
@@ -65,7 +67,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private BorderSet border;
 
 	// JButton
-	private JButton jbsubmit, jbdelete;
+	private JButton jbsubmit, jbdelete, jbinsert;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
@@ -308,11 +310,49 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Border dem JPanel hinzufuegen
 		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
 
+		// jpinsert
+		jpinsert = new JPanel(new GridLayout(3, 1, 1, 10));
+
+		// jtferzeugen
+		jtfinsert = new JTextField();
+
+		// Einfuegenbutton
+		jbinsert = new JButton("Einfügen");
+		jbinsert.setPreferredSize(new Dimension(10, 20));
+
+		// JRadioButton erzeugen
+
+		jrbstueckgruppe = new JRadioButton("Stueck");
+		jrbstueckgruppe.setActionCommand("g");
+
+		jrbreferenz = new JRadioButton("Referenz");
+		jrbreferenz.setActionCommand("r");
+
+		// JRadioButtons ButtonGroup hinzuf\u00FCgen
+		bginsert = new ButtonGroup();
+		bginsert.add(jrbstueckgruppe);
+		bginsert.add(jrbreferenz);
+
+		// JPanel fuer die JRadioButtons
+		jpinsertrbg = new JPanel(new GridLayout(1, 1, 0, 10));
+		jpinsertrbg.add(jrbstueckgruppe);
+		jpinsertrbg.add(jrbreferenz);
+
+		// jtferzeugen dem jpinsert hinzufuegen
+		jpinsert.add(jtfinsert);
+		jpinsert.add(jpinsertrbg);	
+		jpinsert.add(jbinsert);
+		
+		// Border dem JPanel hinzufuegen
+				border.setBorder(jpinsert, "Referenz oder Stueck hinzufuegen");
+		
+		
 		// ##########################################//
 		// JPanel fuer Buttons
 		jpmainrightbuttons = new JPanel(new GridLayout(5, 1, 1, 10));
 
 		// JButton erzeugen
+
 		// Bestatigungsbutton
 		jbsubmit = new JButton("Bearbeiten");
 		jbsubmit.setPreferredSize(new Dimension(10, 20));
@@ -330,12 +370,13 @@ public class AnzeigeFormularBand01 extends JPanel {
 			jlfueller = new JLabel("");
 			jpmainrightbuttons.add(jlfueller);
 		}
-
 		jpmainrightbuttons.add(jbsubmit);
+
 		jpmainrightbuttons.add(jbdelete);
 
-		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
+		jpmainright = new JPanel(new GridLayout(3, 1, 1, 1));
 		jpmainright.add(jpmainrightreferenz);
+		jpmainright.add(jpinsert);
 		jpmainright.add(jpmainrightbuttons);
 
 		return jpmainright;
@@ -350,13 +391,13 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight(band));
 		bandActionListener();
-	
+
 		// MouseListener hinzufuegen
 		MouseListenerTable mlt = new MouseListenerTable();
 		mlt.mouseListenerBandMitglieder(jtbandmitglieder, jtfmitglied);
 		mlt.mouseListenerBandReferenzen(jtbandreferenzen, jtfreferenz);
 		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
-		
+
 		return jpmainband;
 
 	}
