@@ -957,4 +957,167 @@ public final class DBMethods03 {
 		return result;
 
 	}
+	//Inserts fuer Gruppen
+	public static final void insertstueckgruppe(int id_gruppe, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '"+id_gruppe+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public static final void insertgrreferenz(int id_gruppe, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '"+id_gruppe+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public static final void insertartist(int id_gruppe, int id_musiker, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, `aktiv`) VALUES (NULL, '"+id_musiker+"', '"+id_gruppe+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	// Inserts fuer Artists
+	
+	public static final void insertstuecksolo(int id_musiker, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`stuecksolo` (`id_stuecksolo`, `id_musiker`, `stuecksolo`) VALUES (NULL, '"+id_musiker+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static final void insertreferenz(int id_musiker, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`referenz` (`id_referenz`, `id_musiker`, `referenz`) VALUES (NULL, '"+id_musiker+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static final void insertinstrument(int id_musiker, String text) {
+
+		// Verbindung zur Datenbank herstellen mit Uebergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		Statement stmt = null;
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// Fuer die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu ermoeglichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			stmt.executeUpdate("INSERT INTO `musiclounge`.`instrument` (`id_instrument`, `id_musiker`, `instrument`) VALUES (NULL, '"+id_musiker+"', '"+text+"');");
+
+		}
+
+		// Moegliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

@@ -34,3 +34,20 @@ select pseudonym, aktiv from musiker mus, mitglied mg, gruppe gr where mus.id_mu
 select stueckgruppe from stueckgruppe sg, gruppe g where sg.id_gruppe = g.id_gruppe and g.grname = '"+name+"';
 // Alle Referenzen eine Gruppe
 select grreferenz from grreferenz gr, gruppe g where gr.id_gruppe = g.id_gruppe and g.grname = '"+name+"';
+
+//Band:
+//Hinzufuegn neues Lied:
+INSERT INTO `musiclounge`.`stueckgruppe` (`id_stueckgruppe`, `id_gruppe`, `stueckgruppe`) VALUES (NULL, '"+id_gruppe+"', '"+text+"');
+//Hinzufuegn neuer Referenz:
+INSERT INTO `musiclounge`.`grreferenz` (`id_grreferenz`, `id_gruppe`, `grreferenz`) VALUES (NULL, '"+id_gruppe+"', '"+text+"');
+//Hinzufügen neues Mitglied:
+INSERT INTO `musiclounge`.`mitglied` (`id_mitglied`, `id_musiker`, `id_gruppe`, `aktiv`) VALUES (NULL, '"+id_musiker+"', '"+id_gruppe+"', '"+aktiv/passiv+"');
+
+//Artist:
+//Hinzufuegn neues Lied:
+INSERT INTO `musiclounge`.`stuecksolo` (`id_stuecksolo`, `id_musiker`, `stuecksolo`) VALUES (NULL, '"+id_musiker+"', '"+text+"');
+//Hinzufuegn neuer Referenz:
+INSERT INTO `musiclounge`.`referenz` (`id_referenz`, `id_musiker`, `referenz`) VALUES (NULL, '"+id_musiker+"', '"+text+"');
+//Hinzufuegn neues Instrument:
+INSERT INTO `musiclounge`.`instrument` (`id_instrument`, `id_musiker`, `instrument`) VALUES (NULL, '"+id_musiker+"', '"+text+"');
+
