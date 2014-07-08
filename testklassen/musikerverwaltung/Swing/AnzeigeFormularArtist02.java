@@ -195,11 +195,12 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jcbjahr.setSelectedIndex(aktjahr - musiker.getMusikerGJahr());
 
 		boolean tot = false;
-		if(musiker.getMusikerLebt().equals("n")){tot = true;}
-		
+		if (musiker.getMusikerLebt().equals("n")) {
+			tot = true;
+		}
+
 		// JRadio Button ob Musiker gestorben ist
 		jrblebt = new JRadioButton("tot", tot);
-	
 
 		// Alles in ein Panel
 		jpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
@@ -504,14 +505,17 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		mlt.mouseListenerArtistTableReferenz(jtreferenz, jtfreferenz);
 
 		// Instrument+ID setzen
-		instrument = jtfinstrument.getText();
-		idinstrument = musiker.getMusikerIDS(instrument);
+		instrument = musiker.getMusikerInstrument();
+		idinstrument1 = musiker.getMusikerIDS(instrument);
+		
 		// Solostueck+ID setzen
-		solostueck = jtfsolostueck.getText();
-		idsolostueck = musiker.getMusikerIDS(solostueck);
+		solostueck = musiker.getMusikerStueckSolo();
+		idsolostueck1 = musiker.getMusikerIDS(solostueck);
+		
 		// Referenz+ID setzen
-		referenz = jtfreferenz.getText();
-		idreferenz = musiker.getMusikerIDS(referenz);
+		referenz = musiker.getMusikerReferenz();
+		idreferenz1 = musiker.getMusikerIDS(referenz);
+		
 
 		// ActionListener hinzufuegen
 		Listener();
@@ -662,7 +666,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (idinstrument == 0)
 					idinstrument = idinstrument1;
-
+				
 				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
 						.getText(), jtfvorname.getText(), jtfzusatz.getText(),
@@ -675,8 +679,6 @@ public class AnzeigeFormularArtist02 extends JPanel {
 								.getActionCommand(),
 						jrblebt.getActionCommand(), pseudonym, idinstrument,
 						idsolostueck, idreferenz);
-
-				System.out.println(musiker.getMusiker());
 
 				// Update-Methode aufrufen
 				musiker.updateArtist(musiker.getMusikerIDPerson(),
