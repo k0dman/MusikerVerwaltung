@@ -1,4 +1,5 @@
 ue = \u00FC
+UE = \u00DC
 ae = \u00E4
 oe = \u00F6
 

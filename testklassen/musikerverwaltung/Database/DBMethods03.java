@@ -61,7 +61,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectTable() {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -105,7 +105,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectStuecksolo(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -138,7 +138,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -149,7 +149,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectStuecksoloID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -191,7 +191,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectReferenz(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -235,7 +235,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectReferenzID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -276,7 +276,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectInstrument(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -320,7 +320,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Integer> dbSelectInstrumentID(String artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -362,7 +362,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSearch(String keyword) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -398,7 +398,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -416,7 +416,7 @@ public final class DBMethods03 {
 			String pseudonym, String instrument, String solostueck,
 			String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /17
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter /17
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -482,7 +482,7 @@ public final class DBMethods03 {
 			boolean istot, String pseudonym, String instrument,
 			String solostueck, String referenz) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /22
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter /22
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -543,7 +543,7 @@ public final class DBMethods03 {
 	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
 	public static final void deleteArtist(int id, int id_mus) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /21
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter /21
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -584,7 +584,7 @@ public final class DBMethods03 {
 	public static final void insertBand(String grname, String stueckgruppe,
 			String grreferenz, int id_musiker, String aktiv) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter //
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter //
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -629,7 +629,7 @@ public final class DBMethods03 {
 	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
 	public static final void deleteBand(int id_gruppe) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter /21
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter /21
 		conn.connectionToDB(host, database, user, passwd);
 
 		java.sql.CallableStatement callableStatement = null;
@@ -666,7 +666,7 @@ public final class DBMethods03 {
 	// Methode zum Select f\u00FCr Artisten
 	public static final List<String> DBSelectArtist(Object artist) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -715,7 +715,7 @@ public final class DBMethods03 {
 			}
 		}
 
-		// M\u00F6gliche Fehlerq\u00FCllen: Falscher Tabellenname,
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -818,7 +818,7 @@ public final class DBMethods03 {
 	// Select nach Pseudonym um gezieltes Klicken in der Libary zu erm\u00F6glichen
 	public static final Vector<Vector<String>> dbSelectMitglieder(String band) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -866,7 +866,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectStueckgruppe(String band) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -913,7 +913,7 @@ public final class DBMethods03 {
 
 	public static final Vector<Vector<String>> dbSelectGrreferenz(String band) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		// Variablen deklarieren // Statement und ResultSet sind
@@ -960,7 +960,7 @@ public final class DBMethods03 {
 	//Inserts f\u00FCr Gruppen
 	public static final void insertstueckgruppe(int id_gruppe, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -986,7 +986,7 @@ public final class DBMethods03 {
 	}
 	public static final void insertgrreferenz(int id_gruppe, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1012,7 +1012,7 @@ public final class DBMethods03 {
 	}
 	public static final void insertartist(int id_gruppe, int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1041,7 +1041,7 @@ public final class DBMethods03 {
 	
 	public static final void insertstuecksolo(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1068,7 +1068,7 @@ public final class DBMethods03 {
 	
 	public static final void insertreferenz(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
@@ -1095,7 +1095,7 @@ public final class DBMethods03 {
 	
 	public static final void insertinstrument(int id_musiker, String text) {
 
-		// Verbindung zur Datenbank herstellen mit \u00FCbergabe der Parameter
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
 
 		Statement stmt = null;
