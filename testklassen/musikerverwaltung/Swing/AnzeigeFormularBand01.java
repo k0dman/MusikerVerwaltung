@@ -70,6 +70,10 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private int idband, idbandreferenz, idbandstueck, idbandmitglied,
 			idbandreferenz1, idbandstueck1, idbandmitglied1;
 
+	// SelectTables
+	private SelectTables selecttablesmitglieder, selecttablestitel,
+			selecttablesreferenz;
+
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
 
@@ -193,7 +197,8 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleft.add(jpmainleftanzeige);
 		jpmainleftinsert = new InsertJPanel();
 
-		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl, gruppe.getBandName()));
+		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl,
+				gruppe.getBandName()));
 
 		// Border setzen f\u00FCr das linke JPanel
 		border = new BorderSet();
@@ -205,78 +210,35 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// HauptJPanel mitte
 	private JPanel jpmainMiddle(Object band) {
 
-		jpmainmiddlemitglieder = new JPanel(new GridLayout(1, 1, 1, 0));
+		// JPanel mit Tabelle fuer Mitglieder
+		jpmainmiddlemitglieder = new JPanel();
 
-		// Instanz des TablesModels erzeugen
+		// Instanz TableModel erzeugen
 		dtm = new TableModel();
-		// Instanz der Gruppe erzeugen um Tabelle f\u00FCllen zu k\u00F6nnen
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtbandmitglieder = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSMEMBERS,
-				gruppe.dbSelectMitglieder()));
+		// Instanz SelectTables
+		selecttablesmitglieder = new SelectTables();
 
-		// Spalten nicht mehr verschiebbar
-		jtbandmitglieder.getTableHeader().setReorderingAllowed(false);
-
-		jtbandmitglieder.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtbandmitglieder.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jspmitglieder = new JScrollPane(jtbandmitglieder);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jspmitglieder.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jspmitglieder.setViewportView(jtbandmitglieder);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainmiddlemitglieder.add(jspmitglieder);
-
-		// Border setzen
-		border.setBorder(jpmainmiddlemitglieder, "Mitglieder-Liste");
+		// Zeiger setzen
+		jpmainmiddlemitglieder = selecttablesmitglieder.selectTables(
+				String.valueOf(band),
+				"Mitglieder-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSMEMBERS,
+						gruppe.dbSelectMitglieder()));
 
 		// ########### Unteres JPanel f\u00FCr die Mitte############
 		// JPanel erzeugen
-		jpmainmiddletitel = new JPanel(new GridLayout(1, 1, 1, 0));
+		jpmainmiddletitel = new JPanel();
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtbandtitles = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES, gruppe.dbSelectTitel()));
+		// Instanz SelectTables
+		selecttablestitel = new SelectTables();
 
-		// Spalten nicht mehr verschiebbar
-		jtbandtitles.getTableHeader().setReorderingAllowed(false);
-
-		jtbandtitles.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtbandtitles.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jsptitles = new JScrollPane(jtbandtitles);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jsptitles.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jsptitles.setViewportView(jtbandtitles);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainmiddletitel.add(jsptitles);
-
-		// Border dem JPanel hinzuf\u00FCgen
-		border.setBorder(jpmainmiddletitel, "Titel-Liste");
+		// Zeiger setzen
+		jpmainmiddletitel = selecttablestitel.selectTables(
+				String.valueOf(band),
+				"Mitglieder-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSTITLES,
+						gruppe.dbSelectTitel()));
 
 		// HauptJPanel mitte
 		jpmainmiddle = new JPanel(new GridLayout(2, 1, 1, 10));
@@ -289,40 +251,19 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	// HauptJPanel rechts
 	private JPanel jpmainRight(Object band) {
-		// JPanel f\u00FCr Tabelle mit Referenzen
-		jpmainrightreferenz = new JPanel(new GridLayout(1, 1, 1, 1));
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtbandreferenzen = new JTable(dtm.dtm(1, 1,
-				DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
-				gruppe.dbSelectReferenzen()));
+		// JPanel mit Tabelle fuer die Referenzen
+		jpmainrightreferenz = new JPanel();
 
-		// Spalten nicht mehr verschiebbar
-		jtbandreferenzen.getTableHeader().setReorderingAllowed(false);
+		// Instanz SelectTables
+		selecttablesreferenz = new SelectTables();
 
-		jtbandreferenzen.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtbandreferenzen.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jspreferenzen = new JScrollPane(jtbandreferenzen);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jspreferenzen.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jspreferenzen.setViewportView(jtbandreferenzen);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainrightreferenz.add(jspreferenzen);
-
-		// Border dem JPanel hinzuf\u00FCgen
-		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
+		// Zeiger setzen
+		jpmainrightreferenz = selecttablesreferenz.selectTables(
+				String.valueOf(band),
+				"Referenzen-Liste",
+				dtm.dtm(1, 1, DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+						gruppe.dbSelectReferenzen()));
 
 		// ##########################################//
 		// JPanel f\u00FCr Buttons
@@ -369,10 +310,10 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// MouseListener hinzuf\u00FCgen
 		MouseListenerTable mlt = new MouseListenerTable();
-		mlt.mouseListenerBandMitglieder(jtbandmitglieder, jtfmitglied,
+		mlt.mouseListenerBandMitglieder(selecttablesmitglieder.jt, jtfmitglied,
 				jrbehemaligja, jrbehemalignein);
-		mlt.mouseListenerBandReferenzen(jtbandreferenzen, jtfreferenz);
-		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
+		mlt.mouseListenerBandReferenzen(selecttablesreferenz.jt, jtfreferenz);
+		mlt.mouseListenerBandTitel(selecttablestitel.jt, jtfstueckgruppe);
 
 		// Bandname
 		idband = gruppe.getBandIDDB();
@@ -474,33 +415,32 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 				if (idbandstueck == 0)
 					idbandstueck = idbandstueck1;
-				
+
 				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
 						idband, idbandmitglied, idbandreferenz, idbandstueck,
 						jtfstueckgruppe.getText(), jtfreferenz.getText(),
 						bgehemalig.getSelection().getActionCommand());
-				
 
 				gruppe.updateBand();
 
 			}
 		});
 		// delete-Button
-				jbdelete.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ae)
+		jbdelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae)
 
-					{
-						int auswahl = JOptionPane.showConfirmDialog(null,
-								"Willst du diesen Interpreten wirklich l\u00F6schen?",
-								"L\u00F6schen", JOptionPane.YES_NO_OPTION);
+			{
+				int auswahl = JOptionPane.showConfirmDialog(null,
+						"Willst du diesen Interpreten wirklich l\u00F6schen?",
+						"L\u00F6schen", JOptionPane.YES_NO_OPTION);
 
-						if (auswahl == JOptionPane.YES_OPTION) {
-							// Delete-Methode aufrufen
-							gruppe.deleteBand();
-						}
+				if (auswahl == JOptionPane.YES_OPTION) {
+					// Delete-Methode aufrufen
+					gruppe.deleteBand();
+				}
 
-					}
-				});
+			}
+		});
 
 	}
 
