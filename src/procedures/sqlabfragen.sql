@@ -56,3 +56,6 @@ INSERT INTO `musiclounge`.`referenz` (`id_referenz`, `id_musiker`, `referenz`) V
 //Hinzufuegn neues Instrument:
 INSERT INTO `musiclounge`.`instrument` (`id_instrument`, `id_musiker`, `instrument`) VALUES (NULL, '"+id_musiker+"', '"+text+"');
 
+//Mächtige Bandabfrtage
+
+Select g.id_gruppe, g.grname, m.mitglied, m.aktiv, m.id_mitglied, gr.grreferenz, gr.id_grreferenz, sg.stueckgruppe, sg.id_stueckgruppe from gruppe g, mitglied m, stueckgruppe sg, grreferenz gr where grname = '"+name+"';

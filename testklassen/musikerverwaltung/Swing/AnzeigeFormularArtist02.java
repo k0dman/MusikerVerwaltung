@@ -478,12 +478,17 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		jrbstuecksolo = new JRadioButton("St\u00FCck");
 		jrbstuecksolo.setActionCommand("ss");
+		jrbstuecksolo.setToolTipText("Wollen Sie ein St\u00FCck einf\u00FCgen?");
 
 		jrbreferenz = new JRadioButton("Referenz");
 		jrbreferenz.setActionCommand("r");
+		jrbreferenz.setToolTipText("Wollen Sie eine Referenz einf\u00FCgen?");
+
 
 		jrbinstrument = new JRadioButton("Instrument");
 		jrbinstrument.setActionCommand("i");
+		jrbinstrument.setToolTipText("Wollen Sie ein Instrument einf\u00FCgen?");
+
 
 		// Listener den JRadioButtons hinzuf\u00FCgen
 
@@ -500,6 +505,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// JButton
 		jbinsert = new JButton("Einf\u00FCgen");
+		jbinsert.setToolTipText("Einf\u00FCgen eines neuen Datensatztes");
 
 		// Alles dem jpmainrightinsert hinzuf\u00FCgen
 		jpmainrightinsert.add(jpmainrightinsertbg);
@@ -523,8 +529,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JButtons
 
 		jbsubmit = new JButton("Bearbeiten");
-		jbsubmit.setToolTipText("Hier f\u00FChren Sie die Ver");
+		jbsubmit.setToolTipText("Mit klicken f\u00FChren Sie die Ver\u00E4nderungen durch");
 		jbdelete = new JButton("L\u00F6schen");
+		jbdelete.setToolTipText("Hiermit l\u00F6schen Sie den gesamten Interpreten");
 
 		// In Arbeit => Gr\u00F6sse des Eintragen-Buttons setzen
 		jbsubmit.setPreferredSize(new Dimension(50, 100));
