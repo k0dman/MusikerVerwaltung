@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -20,9 +21,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// JPanel
 	private JPanel jpmainleft, jpmainmiddle, jpmainright, jpmainlefttop,
 			jpmainleftmiddle, jpmainleftbottom, jpmainmiddleinstrument,
-			jpmainmiddlestueck, jpmainrightreferenz, jpmainrightinsert, jpmainrightinsertbg,
-			jpmainrightjb, jpmainartist, jpdatum, dodjpdatum,
-			jpgeschlechtgruppe;
+			jpmainmiddlestueck, jpmainrightreferenz, jpmainrightinsert,
+			jpmainrightinsertbg, jpmainrightjb, jpmainartist, jpdatum,
+			dodjpdatum, jpgeschlechtgruppe;
 
 	// Schriften:
 	private Font ftfield;
@@ -463,15 +464,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// JPanel zum einf\u00FCgen f\u00FCr die Inserts
 		jpmainrightinsert = new JPanel(new GridLayout(3, 1, 0, 10));
-		
-		
+
 		// JPanel zum einf\u00FCgen f\u00FCr die Buttongroup
-		jpmainrightinsertbg = new JPanel(new GridLayout(1,1,0,10));
-		
+		jpmainrightinsertbg = new JPanel(new GridLayout(1, 1, 0, 10));
+
 		// Eingabefeld fuer den insert erzeugen
-		
+
 		jtfinsert = new JTextField();
-				
+
 		// JRadioButton erzeugen
 
 		jrbstuecksolo = new JRadioButton("St\u00FCck");
@@ -483,19 +483,18 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jrbinstrument = new JRadioButton("Instrument");
 		jrbinstrument.setActionCommand("i");
 
-		
+		// Listener den JRadioButtons hinzuf\u00FCgen
+
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 		bgrinsert = new ButtonGroup();
 		bgrinsert.add(jrbstuecksolo);
 		bgrinsert.add(jrbreferenz);
 		bgrinsert.add(jrbinstrument);
-		
+
 		// ButtonGroup dem JPanel hinzuf\u00FCgen
 		jpmainrightinsertbg.add(jrbinstrument);
 		jpmainrightinsertbg.add(jrbstuecksolo);
 		jpmainrightinsertbg.add(jrbreferenz);
-
-		
 
 		// JButton
 		jbinsert = new JButton("Einf\u00FCgen");
@@ -506,8 +505,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jpmainrightinsert.add(jbinsert);
 
 		// Border dem JPanel hinzuf\u00FCgen
-		border.setBorder(jpmainrightinsert, "Instrument, St\u00FCck oder Referenz hinzuf\u00FCgen");
-		
+		border.setBorder(jpmainrightinsert,
+				"Instrument, St\u00FCck oder Referenz hinzuf\u00FCgen");
+
 		// ###Unteres JPanel rechts### //
 		// JPanel erzeugen
 		jpmainrightjb = new JPanel(new GridLayout(3, 1, 1, 10));
@@ -535,7 +535,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// HauptPanel f\u00FCr die linke Seite erzeugen
 		jpmainright = new JPanel(new GridLayout(3, 1, 1, 1));
-		
+
 		jpmainright.add(jpmainrightreferenz);
 		jpmainright.add(jpmainrightinsert);
 		jpmainright.add(jpmainrightjb);
@@ -760,6 +760,35 @@ public class AnzeigeFormularArtist02 extends JPanel {
 							musiker.getMusikerIDMusiker());
 				}
 
+			}
+		});
+		// einf\u00FCgen-Button
+		jbinsert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae)
+
+			{
+
+				if (bgrinsert.getSelection().getActionCommand().equals("i")) {
+					// Insert Instrument
+					DBMethods03.insertinstrument(musiker.getMusikerIDPerson(),
+							jtfinsert.getText());
+					jtfinsert.setText("");
+				}
+
+				if (bgrinsert.getSelection().getActionCommand().equals("ss")) {
+
+					// Insert St\u00FCcksolo
+					DBMethods03.insertstuecksolo(musiker.getMusikerIDPerson(),
+							jtfinsert.getText());
+					jtfinsert.setText("");
+				}
+
+				if (bgrinsert.getSelection().getActionCommand().equals("r")) {
+					// Insert Referenz
+					DBMethods03.insertreferenz(musiker.getMusikerIDPerson(),
+							jtfinsert.getText());
+					jtfinsert.setText("");
+				}
 			}
 		});
 
