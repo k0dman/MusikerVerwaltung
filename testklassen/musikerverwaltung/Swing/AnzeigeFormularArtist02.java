@@ -5,9 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 
@@ -18,8 +20,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// JPanel
 	private JPanel jpmainleft, jpmainmiddle, jpmainright, jpmainlefttop,
 			jpmainleftmiddle, jpmainleftbottom, jpmainmiddleinstrument,
-			jpmainmiddlestueck, jpmainrightreferenz, jpmainrightjb,
-			jpmainartist, jpdatum, dodjpdatum, jpgeschlechtgruppe;
+			jpmainmiddlestueck, jpmainrightreferenz, jpmainrightinsert, jpmainrightinsertbg,
+			jpmainrightjb, jpmainartist, jpdatum, dodjpdatum,
+			jpgeschlechtgruppe;
 
 	// Schriften:
 	private Font ftfield;
@@ -31,7 +34,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 	// JTextField
 	private JTextField jtfvorname, jtfname, jtftitel, jtfvorsatz, jtfzusatz,
-			jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz;
+			jtfpseudonym, jtfinstrument, jtfsolostueck, jtfreferenz, jtfinsert;
 
 	// JComoboxBox
 	private JComboBox<String> jcbmonat, dodjcbmonat;
@@ -46,13 +49,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			"November", "Dezember" };
 
 	// JButton
-	private JButton jbsubmit, jbdelete;
+	private JButton jbsubmit, jbdelete, jbinsert;
 
 	// JRadioButton
-	private JRadioButton rbmann, rbfrau, rbkeineahnung, jrblebt;
+	private JRadioButton rbmann, rbfrau, rbkeineahnung, jrblebt, jrbinstrument,
+			jrbstuecksolo, jrbreferenz;
 
 	// Button Group
-	private ButtonGroup auswahl;
+	private ButtonGroup auswahl, bgrinsert;
 
 	// Instanz der Klasse Musiker erzeugen und Pseudonym \u00FCbergeben um
 	// entsprechenden >SELECT< ausf\u00FChren zu k\u00F6nnen in DB-Methoden
@@ -362,7 +366,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JTable der JScrollPane hinzuf\u00FCgen
 		jspinstrument = new JScrollPane(jtinstrument);
 
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
+		// vorhanden
 		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspinstrument.setPreferredSize(new Dimension(300, 500));
 
@@ -396,7 +401,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JTable der JScrollPane hinzuf\u00FCgen
 		jspstueck = new JScrollPane(jtstueck);
 
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
+		// vorhanden
 		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspstueck.setPreferredSize(new Dimension(300, 500));
 
@@ -441,7 +447,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JTable der JScrollPane hinzuf\u00FCgen
 		jspreferenz = new JScrollPane(jtreferenz);
 
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen vorhanden
+		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
+		// vorhanden
 		// ist, außerdem sch\u00F6ner:) //860 , 600
 		jspreferenz.setPreferredSize(new Dimension(300, 500));
 
@@ -454,6 +461,53 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// Border dem JPanel hinzuf\u00FCgen
 		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
 
+		// JPanel zum einf\u00FCgen f\u00FCr die Inserts
+		jpmainrightinsert = new JPanel(new GridLayout(3, 1, 0, 10));
+		
+		
+		// JPanel zum einf\u00FCgen f\u00FCr die Buttongroup
+		jpmainrightinsertbg = new JPanel(new GridLayout(1,1,0,10));
+		
+		// Eingabefeld fuer den insert erzeugen
+		
+		jtfinsert = new JTextField();
+				
+		// JRadioButton erzeugen
+
+		jrbstuecksolo = new JRadioButton("St\u00FCck");
+		jrbstuecksolo.setActionCommand("ss");
+
+		jrbreferenz = new JRadioButton("Referenz");
+		jrbreferenz.setActionCommand("r");
+
+		jrbinstrument = new JRadioButton("Instrument");
+		jrbinstrument.setActionCommand("i");
+
+		
+		// JRadioButtons ButtonGroup hinzuf\u00FCgen
+		bgrinsert = new ButtonGroup();
+		bgrinsert.add(jrbstuecksolo);
+		bgrinsert.add(jrbreferenz);
+		bgrinsert.add(jrbinstrument);
+		
+		// ButtonGroup dem JPanel hinzuf\u00FCgen
+		jpmainrightinsertbg.add(jrbinstrument);
+		jpmainrightinsertbg.add(jrbstuecksolo);
+		jpmainrightinsertbg.add(jrbreferenz);
+
+		
+
+		// JButton
+		jbinsert = new JButton("Einf\u00FCgen");
+
+		// Alles dem jpmainrightinsert hinzuf\u00FCgen
+		jpmainrightinsert.add(jpmainrightinsertbg);
+		jpmainrightinsert.add(jtfinsert);
+		jpmainrightinsert.add(jbinsert);
+
+		// Border dem JPanel hinzuf\u00FCgen
+		border.setBorder(jpmainrightinsert, "Instrument, St\u00FCck oder Referenz hinzuf\u00FCgen");
+		
 		// ###Unteres JPanel rechts### //
 		// JPanel erzeugen
 		jpmainrightjb = new JPanel(new GridLayout(5, 1, 1, 10));
@@ -465,6 +519,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		}
 
 		// JButtons
+
 		jbsubmit = new JButton("Bearbeiten");
 		jbdelete = new JButton("L\u00F6schen");
 
@@ -479,8 +534,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jbsubmit.setToolTipText("Hier klicken, um den Interpreten zu editieren");
 
 		// HauptPanel f\u00FCr die linke Seite erzeugen
-		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
+		jpmainright = new JPanel(new GridLayout(3, 1, 1, 1));
+		
 		jpmainright.add(jpmainrightreferenz);
+		jpmainright.add(jpmainrightinsert);
 		jpmainright.add(jpmainrightjb);
 
 		return jpmainright;
@@ -507,15 +564,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// Instrument+ID setzen
 		instrument = musiker.getMusikerInstrument();
 		idinstrument1 = musiker.getMusikerIDS(instrument);
-		
+
 		// Solost\u00FCck+ID setzen
 		solostueck = musiker.getMusikerStueckSolo();
 		idsolostueck1 = musiker.getMusikerIDS(solostueck);
-		
+
 		// Referenz+ID setzen
 		referenz = musiker.getMusikerReferenz();
 		idreferenz1 = musiker.getMusikerIDS(referenz);
-		
 
 		// ActionListener hinzuf\u00FCgen
 		Listener();
@@ -666,7 +722,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (idinstrument == 0)
 					idinstrument = idinstrument1;
-				
+
 				// Instanzvar erzeugen - \u00DCbergabe der Parameter/ jrblebt
 				musiker = new Musiker01(jtftitel.getText(), jtfvorsatz
 						.getText(), jtfvorname.getText(), jtfzusatz.getText(),
