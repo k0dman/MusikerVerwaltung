@@ -5,10 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
+
 import javax.swing.*;
 import javax.swing.border.*;
+
 import musikerverwaltung.Graphics.*;
 
 public class EingabeformularArtist05 extends JPanel {
@@ -21,7 +24,7 @@ public class EingabeformularArtist05 extends JPanel {
 	// JLabels
 	private JLabel ueschrift, vorname, name, titel, vorsatz, zusatz,
 			geschlecht, dob, dod, pseudonym, instrument, solostueck, referenz,
-			fueller;
+			fueller, pflichtfeld;
 
 	// JTextField
 	private JTextField jtfueschrift, jtfvorname, jtfname, jtftitel, jtfvorsatz,
@@ -74,10 +77,10 @@ public class EingabeformularArtist05 extends JPanel {
 		geschlecht = new JLabel("Geschlecht");
 		dob = new JLabel("Geburstdatum");
 		dod = new JLabel("Todesdatum");
-		pseudonym = new JLabel("Pseudonym");
-		instrument = new JLabel("Instrument");
-		solostueck = new JLabel("Stueck");
-		referenz = new JLabel("Referenz");
+		pseudonym = new JLabel("Pseudonym *");
+		instrument = new JLabel("Instrument *");
+		solostueck = new JLabel("Stueck *");
+		referenz = new JLabel("Referenz *");
 
 		jpmainDesc.add(ueschrift);
 
@@ -203,7 +206,7 @@ public class EingabeformularArtist05 extends JPanel {
 		// RButton - Mann
 		rbmann = new JRadioButton("Mann");
 		rbmann.setActionCommand("m");
-		rbmann.setSelected(true);
+
 
 		// RButton - Frau
 		rbfrau = new JRadioButton("Frau");
@@ -212,6 +215,7 @@ public class EingabeformularArtist05 extends JPanel {
 		// RButton - Keine Ahnung
 		rbkeineahnung = new JRadioButton("Keine Ahnung");
 		rbkeineahnung.setActionCommand("ns");
+		rbkeineahnung.setSelected(true);
 
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
 		auswahl = new ButtonGroup();
@@ -312,6 +316,7 @@ public class EingabeformularArtist05 extends JPanel {
 		jbsubmit.setPreferredSize(new Dimension(10, 20));
 
 		// L\u00FCenf\u00FCller einf\u00FCgen
+
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
 		fueller = new JLabel("");
@@ -334,8 +339,8 @@ public class EingabeformularArtist05 extends JPanel {
 		jpmainright.add(fueller);
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
-		fueller = new JLabel("");
-		jpmainright.add(fueller);
+		pflichtfeld = new JLabel("* Pflichtfelder");
+		jpmainright.add(pflichtfeld);
 
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainright.add(jbsubmit, BorderLayout.SOUTH);
@@ -394,46 +399,92 @@ public class EingabeformularArtist05 extends JPanel {
 		jbsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 
-				// Arrays erzeugen
-				String[] instrument = new String[10];
-				instrument[0] = jtfinstrument.getText();
-				String[] solostueck = new String[10];
-				solostueck[0] = jtfsolostueck.getText();
-				String[] referenz = new String[10];
-				referenz[0] = jtfreferenz.getText();
+				String tfpseudonym = jtfpseudonym.getText();
+				String tfstuecksolo = jtfsolostueck.getText();
+				String tfinstrument = jtfinstrument.getText();
+				String tfreferenz = jtfreferenz.getText();
+				
+				
+	
+				if (tfstuecksolo.equals("") || tfreferenz.equals("") ||tfinstrument.equals("") ||tfpseudonym.equals("")) {
+					String fehltpseudonym = "";
+					String fehltstuecksolo = "";
+					String fehltreferenz = "";
+					String fehltinstrument = "";
+						
+					if (tfpseudonym.equals("")) {
+						fehltpseudonym = "Tragen Sie ein Pseudonym ein! \n\r";
 
-				// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
-				Musiker01 musikereintragen = new Musiker01(jtftitel.getText(),
-						jtfvorsatz.getText(), jtfvorname.getText(), jtfzusatz
-								.getText(), jtfname.getText(), Integer
-								.parseInt(String.valueOf(jcbtag
-										.getSelectedItem())), Helfer01
-								.monatUmwandlung(jcbmonat.getSelectedItem()
-										.toString()), Integer.parseInt(String
-								.valueOf(jcbjahr.getSelectedItem())), Integer
-								.parseInt(String.valueOf(dodjcbtag
-										.getSelectedItem())), Helfer01
-								.monatUmwandlung(dodjcbmonat.getSelectedItem()
-										.toString()), Integer.parseInt(String
-								.valueOf(dodjcbjahr.getSelectedItem())),
-						auswahl.getSelection().getActionCommand(), jrblebt
-								.getActionCommand(), jtfpseudonym.getText(),
-						instrument, solostueck, referenz);
+					}
 
-				// Insert-Methode aufrufen
-			musikereintragen.insertArtist();
-				jtftitel.setText("");
-				jtfname.setText("");
-				jtfvorname.setText("");
-				jtfvorsatz.setText("");
-				jtfzusatz.setText("");
-				jtfgeschlecht.setText("");
-				jtfdob.setText("");
-				jtfdod.setText("");
-				jtfpseudonym.setText("");
-				jtfinstrument.setText("");
-				jtfsolostueck.setText("");
-				jtfreferenz.setText("");
+					if (tfstuecksolo.equals("")) {
+
+						fehltstuecksolo = "Tragen Sie ein St\u00FCck ein! \n\r";
+					}
+
+					if (tfreferenz.equals("")) {
+
+						fehltreferenz = "Tragen Sie eine Referenz ein! \n\r";
+					}
+
+					if (tfinstrument.equals("")) {
+
+						fehltinstrument = "Tragen Sie ein Instrument ein! \n\r";
+					}
+					
+					JOptionPane
+							.showMessageDialog(null, fehltpseudonym
+									+ fehltstuecksolo + fehltreferenz
+									+ fehltinstrument);
+				}
+
+				else
+
+				{
+					// Arrays erzeugen
+					String[] instrument = new String[10];
+					instrument[0] = jtfinstrument.getText();
+					String[] solostueck = new String[10];
+					solostueck[0] = jtfsolostueck.getText();
+					String[] referenz = new String[10];
+					referenz[0] = jtfreferenz.getText();
+
+					// Instanzvar erzeugen - Uebergabe der Parameter/ jrblebt
+					Musiker01 musikereintragen = new Musiker01(jtftitel
+							.getText(), jtfvorsatz.getText(), jtfvorname
+							.getText(), jtfzusatz.getText(), jtfname.getText(),
+							Integer.parseInt(String.valueOf(jcbtag
+									.getSelectedItem())), Helfer01
+									.monatUmwandlung(jcbmonat.getSelectedItem()
+											.toString()), Integer
+									.parseInt(String.valueOf(jcbjahr
+											.getSelectedItem())), Integer
+									.parseInt(String.valueOf(dodjcbtag
+											.getSelectedItem())), Helfer01
+									.monatUmwandlung(dodjcbmonat
+											.getSelectedItem().toString()),
+							Integer.parseInt(String.valueOf(dodjcbjahr
+									.getSelectedItem())), auswahl
+									.getSelection().getActionCommand(), jrblebt
+									.getActionCommand(),
+							jtfpseudonym.getText(), instrument, solostueck,
+							referenz);
+
+					// Insert-Methode aufrufen
+					musikereintragen.insertArtist();
+					jtftitel.setText("");
+					jtfname.setText("");
+					jtfvorname.setText("");
+					jtfvorsatz.setText("");
+					jtfzusatz.setText("");
+					jtfgeschlecht.setText("");
+					jtfdob.setText("");
+					jtfdod.setText("");
+					jtfpseudonym.setText("");
+					jtfinstrument.setText("");
+					jtfsolostueck.setText("");
+					jtfreferenz.setText("");
+				}
 			}
 		});
 
