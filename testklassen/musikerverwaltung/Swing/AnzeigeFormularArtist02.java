@@ -89,6 +89,11 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	// MouseListener f\u00FCr Tabellen
 	private MouseListenerTable mlt;
 
+	// SelectTables
+	// SelectTables
+	private SelectTables selecttablesinstrument, selecttablesstitel,
+			selecttablesreferenz;
+
 	public JPanel jpmainLeft(Object artist) {
 
 		jpmainlefttop = new JPanel(new GridLayout(6, 2, 1, 1));
@@ -347,72 +352,26 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// Instanz des TablesModels erzeugen
 		dtm = new TableModel();
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtinstrument = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT,
-				musiker.dbSelectInstrument()));
+		// Instanz SelectTables
+		selecttablesinstrument = new SelectTables();
 
-		// Spalten nicht mehr verschiebbar
-		jtinstrument.getTableHeader().setReorderingAllowed(false);
-
-		jtinstrument.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtinstrument.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jspinstrument = new JScrollPane(jtinstrument);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jspinstrument.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jspinstrument.setViewportView(jtinstrument);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainmiddleinstrument.add(jspinstrument);
-
-		// Border setzen
-		border.setBorder(jpmainmiddleinstrument, "Instrumenten-Liste");
+		// Zeiger setzen
+		jpmainmiddleinstrument = selecttablesinstrument.selectTables(
+				"Instrumenten-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT,
+						musiker.dbSelectInstrument()));
 
 		// #### JPANEL f\u00FCr die 2. Tabelle ####//
 		jpmainmiddlestueck = new JPanel(new GridLayout(1, 1, 1, 0));
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtstueck = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSTITLES,
-				musiker.dbSelectStuecksolo()));
+		// Instanz SelectTables
+		selecttablesstitel = new SelectTables();
 
-		// Spalten nicht mehr verschiebbar
-		jtstueck.getTableHeader().setReorderingAllowed(false);
-
-		jtstueck.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtstueck.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jspstueck = new JScrollPane(jtstueck);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jspstueck.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jspstueck.setViewportView(jtstueck);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainmiddlestueck.add(jspstueck);
-
-		// Border dem JPanel hinzuf\u00FCgen
-		border.setBorder(jpmainmiddlestueck, "Titel-Liste");
+		// Zeiger setzen
+		jpmainmiddlestueck = selecttablesstitel.selectTables(
+				"Titel-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSTITLES,
+						musiker.dbSelectStuecksolo()));
 
 		// HauptPanel f\u00FCr die Mitte erzeugen
 		jpmainmiddle = new JPanel(new GridLayout(2, 1, 1, 1));
@@ -428,37 +387,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 	public JPanel jpmainRight() {
 		jpmainrightreferenz = new JPanel(new GridLayout(1, 1, 1, 0));
 
-		// Erzeugung der Tabelle mit DefaultTableModel
-		jtreferenz = new JTable(dtm.dtm(1, 2,
-				DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
-				musiker.dbSelectReferenz()));
+		// Instanz SelectTables
+		selecttablesreferenz = new SelectTables();
 
-		// Spalten nicht mehr verschiebbar
-		jtreferenz.getTableHeader().setReorderingAllowed(false);
-
-		jtreferenz.setCellSelectionEnabled(true);
-
-		// Nur auswahl einer Zeile m\u00F6glich
-		cellSelectionModel = jtreferenz.getSelectionModel();
-		cellSelectionModel
-				.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		// JTable der JScrollPane hinzuf\u00FCgen
-		jspreferenz = new JScrollPane(jtreferenz);
-
-		// Gr\u00F6sse der Tabelle festlegen, das sonst keinen Scrollen
-		// vorhanden
-		// ist, auﬂerdem sch\u00F6ner:) //860 , 600
-		jspreferenz.setPreferredSize(new Dimension(300, 500));
-
-		// Viewport setzen
-		jspreferenz.setViewportView(jtreferenz);
-
-		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
-		jpmainrightreferenz.add(jspreferenz);
-
-		// Border dem JPanel hinzuf\u00FCgen
-		border.setBorder(jpmainrightreferenz, "Referenzen-Liste");
+		// Zeiger setzen
+		jpmainrightreferenz = selecttablesreferenz.selectTables(
+				"Referenz-Liste", (dtm.dtm(1, 2,
+						DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+						musiker.dbSelectReferenz())));
 
 		// JPanel zum einf\u00FCgen f\u00FCr die Inserts
 		jpmainrightinsert = new JPanel(new GridLayout(3, 1, 0, 10));
@@ -563,9 +499,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// MouseListener hinzuf\u00FCgen
 		mlt = new MouseListenerTable();
-		mlt.mouseListenerArtistTables(jtinstrument, jtfinstrument);
-		mlt.mouseListenerArtistTables(jtstueck, jtfsolostueck);
-		mlt.mouseListenerArtistTableReferenz(jtreferenz, jtfreferenz);
+		mlt.mouseListenerArtistTables(selecttablesinstrument.jt, jtfinstrument);
+		mlt.mouseListenerArtistTables(selecttablesstitel.jt, jtfsolostueck);
+		mlt.mouseListenerArtistTableReferenz(selecttablesreferenz.jt,
+				jtfreferenz);
 
 		// Instrument+ID setzen
 		instrument = musiker.getMusikerInstrument();
@@ -748,6 +685,8 @@ public class AnzeigeFormularArtist02 extends JPanel {
 						idsolostueck, idreferenz, jtfpseudonym.getText(),
 						jtfinstrument.getText(), jtfsolostueck.getText(),
 						jtfreferenz.getText());
+
+				refresh();
 			}
 		});
 
@@ -797,9 +736,41 @@ public class AnzeigeFormularArtist02 extends JPanel {
 								jtfinsert.getText());
 						jtfinsert.setText("");
 					}
+					refresh();
 				}
 			}
 		});
+
+	}
+
+	public void refresh() {
+		jpmainmiddleinstrument = selecttablesinstrument.selectTables(
+				"Instrumenten-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSINSTRUMENT,
+						musiker.dbSelectInstrument()));
+		// Zeiger setzen
+		jpmainmiddlestueck = selecttablesstitel.selectTables(
+				"Titel-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSTITLES,
+						musiker.dbSelectStuecksolo()));
+		// Zeiger setzen
+		jpmainrightreferenz = selecttablesreferenz.selectTables(
+				"Referenz-Liste", (dtm.dtm(1, 2,
+						DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+						musiker.dbSelectReferenz())));
+
+		// JPanel mit neuen Inhalten
+		RefreshAnzeigeTables rat = new RefreshAnzeigeTables();
+		rat.refreshAnzeigeTables(jpmainmiddle, jpmainmiddleinstrument,
+				jpmainmiddlestueck);
+		rat.refreshAnzeigeTables(jpmainright, jpmainrightreferenz,
+				jpmainrightinsert, jpmainrightjb);
+
+		// MouseListener wieder hinzufuegen
+		mlt.mouseListenerArtistTables(selecttablesinstrument.jt, jtfinstrument);
+		mlt.mouseListenerArtistTables(selecttablesstitel.jt, jtfsolostueck);
+		mlt.mouseListenerArtistTableReferenz(selecttablesreferenz.jt,
+				jtfreferenz);
 
 	}
 }

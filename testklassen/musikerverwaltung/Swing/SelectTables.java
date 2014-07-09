@@ -8,23 +8,23 @@ import javax.swing.table.DefaultTableModel;
 
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.Gruppe01;
-public class SelectTables extends JPanel{
 
-	private JPanel jpmain;
-	private TableModel dtm;
+public class SelectTables extends JPanel {
+
+	public JPanel jpmain;
+
 	public JTable jt;
 	private JScrollPane jsp;
-	private Gruppe01 gruppe;
+
 	private BorderSet border;
 	private ListSelectionModel cellSelectionModel;
-	private MouseListenerTable mlt;
-	
-	public JPanel selectTables(String band, String beschreibung, DefaultTableModel dtm){
-		
+
+	public JPanel selectTables(String beschreibung,
+			DefaultTableModel dtm) {
+
 		// JPanel f\u00FCr Tabelle mit Referenzen
 		jpmain = new JPanel(new GridLayout(1, 1, 1, 1));
-	
-		gruppe = new Gruppe01(band);
+
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jt = new JTable(dtm);
 
@@ -48,15 +48,15 @@ public class SelectTables extends JPanel{
 
 		// Viewport setzen
 		jsp.setViewportView(jt);
-		
+
 		// JSP mit Mitgliedern und JLabel dem JPanel hinzuf\u00FCgen
 		jpmain.add(jsp);
-		
-		//Border setzen
+
+		// Border setzen
 		border = new BorderSet();
 		border.setBorder(jpmain, beschreibung);
-		
+
 		return jpmain;
 	}
-	
+
 }

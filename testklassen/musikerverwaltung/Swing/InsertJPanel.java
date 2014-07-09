@@ -23,7 +23,7 @@ public class InsertJPanel {
 
 	private JPanel jpmainleftinsert, jpmainleftinsertbg, jpmainleftehemalig;
 	private JLabel jlfueller, jlehemalig;
-	private JButton jbinsert;
+	public JButton jbinsert;
 	private JRadioButton jrbstueckgruppe, jrbreferenz, jrbmitglied,
 			jrbehemalignein, jrbehemaligja;
 	private ButtonGroup bginsert, bgehemalig;
@@ -72,7 +72,6 @@ public class InsertJPanel {
 		jpmainleftehemalig.add(jlehemalig);
 		jpmainleftehemalig.add(jrbehemaligja);
 		jpmainleftehemalig.add(jrbehemalignein);
-		
 
 		// JPanel f\u00FCr die JRadioButtons
 		jpmainleftinsertbg = new JPanel(new GridLayout(1, 1, 0, 10));
@@ -178,37 +177,43 @@ public class InsertJPanel {
 			}
 		});
 		// einf\u00FCgen-Button
-				jbinsert.addActionListener(new ActionListener() {
-					Gruppe01 gruppe = new Gruppe01(band);
-					public void actionPerformed(ActionEvent ae)
+		jbinsert.addActionListener(new ActionListener() {
+			Gruppe01 gruppe = new Gruppe01(band);
 
-					{
-						String isleer = jtfinsert.getText();
-						if (isleer.equals("")){
-							JOptionPane.showMessageDialog(null, "Nichts eingetragen !");
-						}
-						else{
-						if (bginsert.getSelection().getActionCommand().equals("s")) {
-							// Insert St\u00FCcksolo
-							gruppe.insertStueckBand(jtfinsert.getText());
-							jtfinsert.setText("");
-						}
+			public void actionPerformed(ActionEvent ae)
 
-						if (bginsert.getSelection().getActionCommand().equals("r")) {
-							// Insert Referenz
-						
+			{
+				String isleer = jtfinsert.getText();
+				if (isleer.equals("")) {
+					JOptionPane.showMessageDialog(null, "Nichts eingetragen !");
+				} else {
+					if (bginsert.getSelection().getActionCommand().equals("s")) {
+						// Insert St\u00FCcksolo
+						gruppe.insertStueckBand(jtfinsert.getText());
+						jtfinsert.setText("");
+					}
+
+					if (bginsert.getSelection().getActionCommand().equals("r")) {
+						// Insert Referenz
+
 						gruppe.insertReferenzBand(jtfinsert.getText());
-							jtfinsert.setText("");
-						}
+						jtfinsert.setText("");
+					}
 
-						if (bginsert.getSelection().getActionCommand().equals("m")) {
-							//Insert Mitglied
-							Musiker01 musiker = new Musiker01(String.valueOf(jcb.getSelectedItem()));
-							String mitglied = String.valueOf(jcb.getSelectedItem());
-							gruppe.insertMitgliedBand(bgehemalig.getSelection().getActionCommand(), musiker.getMusikerIDMusiker());
-							jtfinsert.setText("");
-						}
-					}}
-				});
+					if (bginsert.getSelection().getActionCommand().equals("m")) {
+						// Insert Mitglied
+						Musiker01 musiker = new Musiker01(String.valueOf(jcb
+								.getSelectedItem()));
+						gruppe.insertMitgliedBand(bgehemalig.getSelection()
+								.getActionCommand(), musiker
+								.getMusikerIDMusiker());
+						jtfinsert.setText("");
+						AnzeigeFormularBand01 afbrefresh = new AnzeigeFormularBand01();
+						afbrefresh.refresh();
+
+					}
+				}
+			}
+		});
 	}
 }

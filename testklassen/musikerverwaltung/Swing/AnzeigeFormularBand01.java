@@ -4,11 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 
@@ -73,6 +71,9 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// SelectTables
 	private SelectTables selecttablesmitglieder, selecttablestitel,
 			selecttablesreferenz;
+
+	// MouseListenerTable
+	MouseListenerTable mlt;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
@@ -221,7 +222,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Zeiger setzen
 		jpmainmiddlemitglieder = selecttablesmitglieder.selectTables(
-				String.valueOf(band),
 				"Mitglieder-Liste",
 				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSMEMBERS,
 						gruppe.dbSelectMitglieder()));
@@ -235,8 +235,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Zeiger setzen
 		jpmainmiddletitel = selecttablestitel.selectTables(
-				String.valueOf(band),
-				"Mitglieder-Liste",
+				"Titel-Liste",
 				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSTITLES,
 						gruppe.dbSelectTitel()));
 
@@ -260,7 +259,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// Zeiger setzen
 		jpmainrightreferenz = selecttablesreferenz.selectTables(
-				String.valueOf(band),
 				"Referenzen-Liste",
 				dtm.dtm(1, 1, DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
 						gruppe.dbSelectReferenzen()));
@@ -309,7 +307,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainRight(band));
 
 		// MouseListener hinzuf\u00FCgen
-		MouseListenerTable mlt = new MouseListenerTable();
+		mlt = new MouseListenerTable();
 		mlt.mouseListenerBandMitglieder(selecttablesmitglieder.jt, jtfmitglied,
 				jrbehemaligja, jrbehemalignein);
 		mlt.mouseListenerBandReferenzen(selecttablesreferenz.jt, jtfreferenz);
@@ -359,7 +357,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 						if (idbandstueck == 0)
 
 							idbandstueck = idbandstueck1;
-
 					}
 
 					@Override
@@ -416,12 +413,15 @@ public class AnzeigeFormularBand01 extends JPanel {
 				if (idbandstueck == 0)
 					idbandstueck = idbandstueck1;
 
+				// Instanz der Gruppe erzeugen mit notwendigen Parametern
 				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
 						idband, idbandmitglied, idbandreferenz, idbandstueck,
 						jtfstueckgruppe.getText(), jtfreferenz.getText(),
 						bgehemalig.getSelection().getActionCommand());
 
+				// Entsprechende Eintraege aendern
 				gruppe.updateBand();
+				refresh();
 
 			}
 		});
@@ -441,7 +441,44 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 			}
 		});
+		jpmainleftinsert.jbinsert.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				refresh();
+			}
+		});
+	}
+
+	public void refresh() {
+		// JPanel neue Werte zu weisen
+		jpmainrightreferenz = selecttablesreferenz.selectTables(
+				"Referenzen-Liste",
+				dtm.dtm(1, 1, DBMethods03.COLUMN_IDENTIFIERSREFERENCES,
+						gruppe.dbSelectReferenzen()));
+
+		jpmainmiddlemitglieder = selecttablesmitglieder.selectTables(
+				"Mitglieder-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSMEMBERS,
+						gruppe.dbSelectMitglieder()));
+
+		jpmainmiddletitel = selecttablestitel.selectTables(
+				"Titel-Liste",
+				dtm.dtm(1, 2, DBMethods03.COLUMN_IDENTIFIERSTITLES,
+						gruppe.dbSelectTitel()));
+
+		// JPanel mit neuen Inhalten
+		RefreshAnzeigeTables rat = new RefreshAnzeigeTables();
+		rat.refreshAnzeigeTables(jpmainmiddle, jpmainmiddlemitglieder,
+				jpmainmiddletitel);
+		rat.refreshAnzeigeTables(jpmainright, jpmainrightreferenz,
+				jpmainrightbuttons);
+		mlt.mouseListenerBandMitglieder(selecttablesmitglieder.jt, jtfmitglied,
+				jrbehemaligja, jrbehemalignein);
+		mlt.mouseListenerBandReferenzen(selecttablesreferenz.jt, jtfreferenz);
+		mlt.mouseListenerBandTitel(selecttablestitel.jt, jtfstueckgruppe);
 	}
 
 }
