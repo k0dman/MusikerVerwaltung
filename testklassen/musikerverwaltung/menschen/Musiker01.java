@@ -106,6 +106,14 @@ public class Musiker01 extends Person01 {
 		this.idstuecksolo = idstuecksolo;
 		this.idreferenz = idreferenz;
 	}
+	
+	// Konstruktor #8
+		public Musiker01(String pseudonym, String stuecksolo) {
+
+			this.pseudonym = pseudonym;
+			this.stuecksolo = stuecksolo;
+
+		}
 
 	// Getter
 	public String getPseudonym() {
