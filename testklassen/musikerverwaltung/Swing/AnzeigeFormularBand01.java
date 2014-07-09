@@ -3,21 +3,10 @@ package musikerverwaltung.Swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.util.Vector;
-
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 
@@ -27,25 +16,22 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JPanel jpmainband, jpmainleft, jpmainleftanzeige, jpmainmiddle,
 			jpmainright, jpmainleftjl, jpmainleftjtf, jpmainleftehemalig,
 			jpmainmiddlemitglieder, jpmainmiddletitel, jpmainrightreferenz,
-			jpmainrightbuttons, jpmainleftinsertbg;
+			jpmainrightbuttons;
 
 	// JLabel
 	private JLabel jlname, jlmitglied, jlehemalig, jlstueckgruppe, jlreferenz,
 			jlfueller;
 
 	// JTextField
-	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz,
-			jtfinsert;
+	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz;
 
 	// Schrift:
 	private Font ftfield;
 
 	// JRadioButton
-	private JRadioButton jrbehemaligja, jrbehemalignein, jrbreferenz,
-			jrbstueckgruppe, jrbmitglied;
-
+	private JRadioButton jrbehemaligja, jrbehemalignein;
 	// ButtonGroup
-	private ButtonGroup bgehemalig, bginsert;
+	private ButtonGroup bgehemalig;
 
 	// JComboBox
 	private JComboBox<String> jcbmitgliedauswahl;
@@ -69,17 +55,17 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private BorderSet border;
 
 	// JButton
-	private JButton jbsubmit, jbdelete, jbinsert;
+	private JButton jbsubmit, jbdelete;
 
 	// InsertJPanel
 	private InsertJPanel jpmainleftinsert;
 
 	// String
-	private String bandname, bandreferenz, bandstueck, bandmitglied, bandname1,
-			bandreferenz1, bandstueck1, bandmitglied1;
+	private String bandreferenz, bandstueck, bandmitglied, bandreferenz1,
+			bandstueck1;
 
 	// int
-	private int idband, idbandreferenz, idbandstueck, idbandmitglied, idband1,
+	private int idband, idbandreferenz, idbandstueck, idbandmitglied,
 			idbandreferenz1, idbandstueck1, idbandmitglied1;
 
 	// HauptJPanel links
