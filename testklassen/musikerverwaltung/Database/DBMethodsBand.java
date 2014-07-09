@@ -73,8 +73,8 @@ public class DBMethodsBand {
 	}
 
 	// Methode die Update-Prozedur f\u00FCr eine Band ausf\u00FChrt
-	public static final void updateBand(String grname, int id_grreferenz, int id_stueckgruppe, String stueckgruppe,
-			String grreferenz, int id_musiker, int id_gruppe, String graktiv ) {
+	public static final void updateBand(String grname, int idgrreferenz, int idstueckgruppe, String stueckgruppe,
+			String grreferenz, int idmusiker, int idgruppe, String graktiv ) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		// /22
@@ -95,12 +95,12 @@ public class DBMethodsBand {
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
 			callableStatement.setString(1, grname); // grname
-			callableStatement.setInt(2, id_grreferenz); // id_grreferenz
-			callableStatement.setInt(3, id_stueckgruppe); // id_stueckgruppe
+			callableStatement.setInt(2, idgrreferenz); // id_grreferenz
+			callableStatement.setInt(3, idstueckgruppe); // id_stueckgruppe
 			callableStatement.setString(4, stueckgruppe); // grstueckgruppe
 			callableStatement.setString(5, grreferenz); // grreferenz
-			callableStatement.setInt(6, id_musiker); // id_musiker
-			callableStatement.setInt(7, id_gruppe); // id_gruppe
+			callableStatement.setInt(6, idmusiker); // id_musiker
+			callableStatement.setInt(7, idgruppe); // id_gruppe
 			callableStatement.setString(8, graktiv); // graktiv
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
@@ -116,7 +116,7 @@ public class DBMethodsBand {
 		// falsche Spaltennamen, falsche Datentypen
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Fehler beim Ausführen der Insert-Prozedur");
+			System.out.println("Fehler beim Ausführen der UpdateBand-Prozedur");
 		}
 
 	}

@@ -3,6 +3,7 @@ package musikerverwaltung.menschen;
 import java.util.Vector;
 
 import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethodsArtist;
 import musikerverwaltung.Database.DBMethodsBand;
 
 public class Gruppe01 {
@@ -32,7 +33,7 @@ public class Gruppe01 {
 	// Konstruktor
 	public Gruppe01(String bandname, String mitglied, int idmitglied,
 			String bandstueck, String bandreferenz, String aktiv) {
-		
+
 		// Sets
 		this.bandname = bandname;
 		this.mitglied = mitglied;
@@ -103,5 +104,13 @@ public class Gruppe01 {
 				getBandReferenz(), getIDMitglied(),
 				Helfer01.toStringLebt(isAktiv()));
 
+	}
+
+	public void updateArtist(String grname, int idgrreferenz,
+			int idstueckgruppe, String stueckgruppe, String grreferenz,
+			int idmusiker, int idgruppe, String graktiv) {
+
+		DBMethodsBand.updateBand(grname, idgrreferenz, idstueckgruppe,
+				stueckgruppe, grreferenz, idmusiker, idgruppe, graktiv);
 	}
 }

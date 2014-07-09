@@ -124,17 +124,17 @@ public class Musiker01 extends Person01 {
 		return referenz;
 	}
 
-	public int idInstrument() {
+	public int getIDInstrument() {
 		return idinstrument;
 
 	}
 
-	public int idStueckSolo() {
+	public int getIDStueckSolo() {
 		return idstuecksolo;
 
 	}
 
-	public int idReferenz() {
+	public int getIDReferenz() {
 		return idreferenz;
 
 	}
