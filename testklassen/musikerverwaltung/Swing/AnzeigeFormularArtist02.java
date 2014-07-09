@@ -756,7 +756,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (auswahl == JOptionPane.YES_OPTION) {
 					// Delete-Methode aufrufen
-					DBMethods03.deleteArtist(musiker.getMusikerIDPerson(),
+					DBMethods.deleteArtist(musiker.getMusikerIDPerson(),
 							musiker.getMusikerIDMusiker());
 				}
 

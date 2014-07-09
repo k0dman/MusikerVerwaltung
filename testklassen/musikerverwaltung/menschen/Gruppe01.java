@@ -1,7 +1,9 @@
 package musikerverwaltung.menschen;
 
 import java.util.Vector;
+
 import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethodsBand;
 
 public class Gruppe01 {
 
@@ -71,33 +73,33 @@ public class Gruppe01 {
 	}
 
 	public boolean isBand() {
-		boolean isband = DBMethods03.selectIsBand(getBandName());
+		boolean isband = DBMethodsBand.selectIsBand(getBandName());
 		return isband;
 	}
 
 	// Aufruf des Selects aus der Datenbank fuer Mitglieder-Liste
 	public Vector<Vector<String>> dbSelectMitglieder() {
-		Vector<Vector<String>> result = DBMethods03
+		Vector<Vector<String>> result = DBMethodsBand
 				.dbSelectMitglieder(getBandName());
 		return result;
 	}
 
 	// Aufruf des Selects aus der Datenbank fuer Titel-Liste
 	public Vector<Vector<String>> dbSelectTitel() {
-		Vector<Vector<String>> result = DBMethods03
+		Vector<Vector<String>> result = DBMethodsBand
 				.dbSelectStueckgruppe(getBandName());
 		return result;
 	}
 
 	// Aufruf des Selects aus der Datenbank fuer Titel-Liste
 	public Vector<Vector<String>> dbSelectReferenzen() {
-		Vector<Vector<String>> result = DBMethods03
+		Vector<Vector<String>> result = DBMethodsBand
 				.dbSelectGrreferenz(getBandName());
 		return result;
 	}
 
 	public void insertBand() {
-		DBMethods03.insertBand(getBandName(), getBandStueck(),
+		DBMethodsBand.insertBand(getBandName(), getBandStueck(),
 				getBandReferenz(), getIDMitglied(),
 				Helfer01.toStringLebt(isAktiv()));
 
