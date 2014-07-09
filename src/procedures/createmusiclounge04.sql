@@ -369,7 +369,7 @@ where gruppe.id_gruppe = id_gruppe;
 UPDATE grreferenz
 set 
 grreferenz = grgrreferenz
-where grreferenz.id_grgrreferenz = grgrreferenz;
+where grreferenz.id_grreferenz = id_grreferenz;
 
 update stueckgruppe
 set stueckgruppe = grstueckgruppe
