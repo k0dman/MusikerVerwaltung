@@ -958,7 +958,7 @@ public final class DBMethods03 {
 
 	}
 	//Inserts f\u00FCr Gruppen
-	public static final void insertstueckgruppe(int id_gruppe, String text) {
+	public static final void insertStueckGruppe(int id_gruppe, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -984,7 +984,7 @@ public final class DBMethods03 {
 		}
 
 	}
-	public static final void insertgrreferenz(int id_gruppe, String text) {
+	public static final void insertGrRreferenz(int id_gruppe, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -1010,7 +1010,7 @@ public final class DBMethods03 {
 		}
 
 	}
-	public static final void insertartist(int id_gruppe, int id_musiker, String text) {
+	public static final void insertArtist(int id_gruppe, int id_musiker, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -1039,7 +1039,7 @@ public final class DBMethods03 {
 	
 	// Inserts f\u00FCr Artists
 	
-	public static final void insertstuecksolo(int id_musiker, String text) {
+	public static final void insertStueckSolo(int id_musiker, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -1066,7 +1066,7 @@ public final class DBMethods03 {
 
 	}
 	
-	public static final void insertreferenz(int id_musiker, String text) {
+	public static final void insertReferenz(int id_musiker, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);
@@ -1093,7 +1093,7 @@ public final class DBMethods03 {
 
 	}
 	
-	public static final void insertinstrument(int id_musiker, String text) {
+	public static final void insertInstrument(int id_musiker, String text) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		conn.connectionToDB(host, database, user, passwd);

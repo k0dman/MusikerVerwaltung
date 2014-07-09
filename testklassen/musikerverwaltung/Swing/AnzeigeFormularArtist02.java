@@ -770,7 +770,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (bgrinsert.getSelection().getActionCommand().equals("i")) {
 					// Insert Instrument
-					DBMethods03.insertinstrument(musiker.getMusikerIDPerson(),
+					DBMethods03.insertInstrument(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}
@@ -778,14 +778,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				if (bgrinsert.getSelection().getActionCommand().equals("ss")) {
 
 					// Insert St\u00FCcksolo
-					DBMethods03.insertstuecksolo(musiker.getMusikerIDPerson(),
+					DBMethods03.insertStueckSolo(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}
 
 				if (bgrinsert.getSelection().getActionCommand().equals("r")) {
 					// Insert Referenz
-					DBMethods03.insertreferenz(musiker.getMusikerIDPerson(),
+					DBMethods03.insertReferenz(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}
