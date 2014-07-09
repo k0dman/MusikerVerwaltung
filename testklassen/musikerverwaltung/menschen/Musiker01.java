@@ -12,16 +12,19 @@ public class Musiker01 extends Person01 {
 	private String pseudonym;
 	private String[] instrument, stuecksolo, referenz;
 
+	// Parameterloser Konstruktor #1
 	public Musiker01() {
 
 	}
 
+	// Konstruktor #2
 	public Musiker01(String pseudonym) {
 
 		this.pseudonym = pseudonym;
 
 	}
 
+	// Konstruktor #3
 	public Musiker01(String pseudonym, int idinstrument, int idstuecksolo,
 			int idreferenz) {
 
@@ -31,7 +34,7 @@ public class Musiker01 extends Person01 {
 		this.idreferenz = idreferenz;
 	}
 
-	// Konstruktor#1
+	// Konstrukto r#4
 	public Musiker01(String name, String vorname, String geschlecht,
 			String geburtsdatum, String pseudonym, String[] instrument,
 			String[] stuecksolo, String[] referenz) {
@@ -48,7 +51,7 @@ public class Musiker01 extends Person01 {
 
 	}
 
-	// Konstuktor#2
+	// Konstuktor #5
 	public Musiker01(String titel, String vorsatz, String vorname,
 			String zusatz, String name, String geburtsdatum, String geschlecht,
 			String todesdatum, String pseudonym, String[] instrument,
@@ -64,12 +67,13 @@ public class Musiker01 extends Person01 {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 	}
-	// Konstuktor#3
+
+	// Konstuktor #6
 	public Musiker01(String titel, String vorsatz, String vorname,
 			String zusatz, String name, int geburtstag, int geburtsmonat,
 			int geburtsjahr, int todestag, int todesmonat, int todesjahr,
-			String geschlecht, String lebt, String pseudonym, String[] instrument,
-			String[] stuecksolo, String[] referenz) {
+			String geschlecht, String lebt, String pseudonym,
+			String[] instrument, String[] stuecksolo, String[] referenz) {
 
 		// Aufruf des Konstruktors der Basis-Klasse
 		super(name, vorname, titel, vorsatz, zusatz, geschlecht, lebt,
@@ -83,7 +87,7 @@ public class Musiker01 extends Person01 {
 		this.referenz = referenz;
 	}
 
-	// Konstuktor#3
+	// Konstuktor #7
 	public Musiker01(String titel, String vorsatz, String vorname,
 			String zusatz, String name, int geburtstag, int geburtsmonat,
 			int geburtsjahr, int todestag, int todesmonat, int todesjahr,
@@ -102,8 +106,7 @@ public class Musiker01 extends Person01 {
 		this.idreferenz = idreferenz;
 	}
 
-	// Gets
-
+	// Getter
 	public String getPseudonym() {
 		return pseudonym;
 	}

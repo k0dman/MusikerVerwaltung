@@ -10,6 +10,17 @@ import javax.swing.JTextField;
 
 public class MouseListenerTable {
 
+	/*
+	 * // delete-Button jbdelete.addActionListener(new ActionListener() {
+	 * public void actionPerformed(ActionEvent ae)
+	 * 
+	 * {
+	 * 
+	 * // Delete-Methode aufrufen
+	 * DBMethods03.deleteBand(musiker.getMusikerID());}});
+	 */
+	
+	
 	// Methode fuer AnzeigeFormularArtist - Tabellen
 	public void mouseListenerArtistTables(final JTable jtable,
 			final JTextField jtf) {

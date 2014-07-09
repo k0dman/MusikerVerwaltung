@@ -19,20 +19,15 @@ public class InsertJPanel {
 	private JPanel jpmainleftinsert, jpmainleftinsertbg, jpmainleftehemalig;
 	private JLabel jlfueller;
 	private JButton jbinsert;
-	private JRadioButton jrbstueckgruppe, jrbreferenz, jrbmitglied, jrbehemalignein, jrbehemaligja;
+	private JRadioButton jrbstueckgruppe, jrbreferenz, jrbmitglied,
+			jrbehemalignein, jrbehemaligja;
 	private ButtonGroup bginsert, bgehemalig;
 	private JTextField jtfinsert;
 	private BorderSet border;
 
-
 	public JPanel insertJPanel(JComboBox jcb) {
 		// jpmainleftinsert
 		jpmainleftinsert = new JPanel(new GridLayout(5, 1, 1, 20));
-
-		for (int i = 0; i < 2; i++) {
-			jlfueller = new JLabel("");
-			jpmainleftinsert.add(jlfueller);
-		}
 
 		// Einf\u00FCgenbutton
 		jbinsert = new JButton("Einf\u00FCgen");
@@ -82,9 +77,7 @@ public class InsertJPanel {
 
 		jtfinsert = new JTextField();
 		// JTF dem jpmainleftinsert hinzuf\u00FCgen
-		jpmainleftinsert.add(jpmainleftinsertbg);
-		jpmainleftinsert.add(jtfinsert);
-		jpmainleftinsert.add(jbinsert);
+		standardInhaltInsertJPanel();
 
 		border = new BorderSet();
 		border.setBorder(jpmainleftinsert, "Datensatz eintragen");
@@ -93,14 +86,13 @@ public class InsertJPanel {
 
 		return jpmainleftinsert;
 	}
-	
+
 	// Fuer die beiden JRB´s Referenz und Stueckgruppe
-	public JPanel auswahlJPanel(){
+	public JPanel standardInhaltInsertJPanel() {
 		jpmainleftinsert.repaint();
 		jpmainleftinsert.revalidate();
 		jpmainleftinsert.setLayout(new GridLayout(5, 1, 1, 20));
 		jpmainleftinsert.removeAll();
-
 
 		for (int i = 0; i < 2; i++) {
 			jlfueller = new JLabel("");
@@ -109,11 +101,10 @@ public class InsertJPanel {
 		jpmainleftinsert.add(jpmainleftinsertbg);
 		jpmainleftinsert.add(jtfinsert);
 		jpmainleftinsert.add(jbinsert);
-		
+		jtfinsert.setEnabled(true);
+
 		return jpmainleftinsert;
 	}
-		
-
 
 	public void actionListener(final JComboBox jcb) {
 		jrbmitglied.addActionListener(new ActionListener() {
@@ -135,6 +126,7 @@ public class InsertJPanel {
 					jpmainleftinsert.add(jpmainleftinsertbg);
 					jpmainleftinsert.add(jtfinsert);
 					jpmainleftinsert.add(jbinsert);
+					jtfinsert.setEnabled(false);
 
 				}
 			}
@@ -146,20 +138,8 @@ public class InsertJPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (jrbstueckgruppe.isSelected()) {
-					jpmainleftinsert.repaint();
-					jpmainleftinsert.revalidate();
-					jpmainleftinsert.setLayout(new GridLayout(5, 1, 1, 20));
-				
-					jpmainleftinsert.removeAll();
+					standardInhaltInsertJPanel();
 
-					for (int i = 0; i < 2; i++) {
-						jlfueller = new JLabel("");
-						jpmainleftinsert.add(jlfueller);
-					}
-					jpmainleftinsert.add(jpmainleftinsertbg);
-					jpmainleftinsert.add(jtfinsert);
-					jpmainleftinsert.add(jbinsert);
-				
 				}
 			}
 		});
@@ -169,7 +149,25 @@ public class InsertJPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (jrbreferenz.isSelected()) {
-				auswahlJPanel();
+					standardInhaltInsertJPanel();
+				}
+			}
+		});
+
+		// ActionListener, setzt ausgew\u00E4hltes Textfeld nach Auswahl eines
+		// Items aus JComboBox
+		jcb.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				// Auswahl der aus der JComboBox in var speichern
+				String mitglied = String.valueOf(jcb.getSelectedItem());
+
+				// das ausgew\u00E4hlte Mitglied in das JTextfield einf\u00FCgen
+				jtfinsert.setText(mitglied);
+
 			}
 		});
 	}

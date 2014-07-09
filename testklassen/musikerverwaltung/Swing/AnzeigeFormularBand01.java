@@ -29,7 +29,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	// JLabel
 	private JLabel jlname, jlmitglied, jlehemalig, jlstueckgruppe, jlreferenz,
-			jlfueller, jlauswahl;
+			jlfueller;
 
 	// JTextField
 	private JTextField jtfname, jtfmitglied, jtfstueckgruppe, jtfreferenz,
@@ -76,7 +76,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JPanel jpmainLeft(Object band) {
 
 		// JPanel f\u00FCr JLabels
-		jpmainleftjl = new JPanel(new GridLayout(6, 1, 1, 15));
+		jpmainleftjl = new JPanel(new GridLayout(5, 1, 1, 15));
 
 		// JLabel erzeugen
 
@@ -85,7 +85,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jlehemalig = new JLabel("Ehemalig: ");
 		jlstueckgruppe = new JLabel("St\u00FCck: ");
 		jlreferenz = new JLabel("Referenz: ");
-		jlauswahl = new JLabel("Mitglied-Auswahl: ");
+		
 
 		// Label Right anordnen
 
@@ -94,7 +94,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jlehemalig.setHorizontalAlignment(SwingConstants.RIGHT);
 		jlstueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
 		jlreferenz.setHorizontalAlignment(SwingConstants.RIGHT);
-		jlauswahl.setHorizontalAlignment(SwingConstants.RIGHT);
+		
 
 		// Label dem Panel hinzuf\u00FCgen
 
@@ -103,10 +103,10 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleftjl.add(jlreferenz);
 		jpmainleftjl.add(jlehemalig);
 		jpmainleftjl.add(jlmitglied);
-		jpmainleftjl.add(jlauswahl);
+	
 
 		// JPanel f\u00FCr JTF´s
-		jpmainleftjtf = new JPanel(new GridLayout(6, 1, 1, 15));
+		jpmainleftjtf = new JPanel(new GridLayout(5, 1, 1, 15));
 
 		// JTextFields erzeugen
 		jtfname = new JTextField();
@@ -151,14 +151,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jcbmitgliedauswahl = new JComboBox<String>();
 		jcbmitgliedauswahl.setModel(new DefaultComboBoxModel<String>(
 				selectmitglied));
-
+		jcbmitgliedauswahl.setToolTipText("Bitte w\u00E4hle einen Musiker aus");
 		// JTextfields und JRadioButtons hinzuf\u00FCgen
 		jpmainleftjtf.add(jtfname);
 		jpmainleftjtf.add(jtfstueckgruppe);
 		jpmainleftjtf.add(jtfreferenz);
 		jpmainleftjtf.add(jpmainleftehemalig);
 		jpmainleftjtf.add(jtfmitglied);
-		jpmainleftjtf.add(jcbmitgliedauswahl);
+		
 
 		// ToolTips hinzuf\u00FCgen
 		jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
@@ -168,7 +168,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 				.setToolTipText("Tragen Sie hier bitte ein St\u00FCck der Gruppe ein");
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
-		jcbmitgliedauswahl.setToolTipText("Bitte w\u00E4hle einen Musiker aus");
+		
 
 		jpmainleftanzeige = new JPanel(new GridLayout(1, 2, 1, 1));
 		// HauptJPanel linke Seite erzeugen
@@ -181,13 +181,12 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleftanzeige.add(jpmainleftjtf);
 		jpmainleft.add(jpmainleftanzeige);
 		jpmainleftinsert = new InsertJPanel();
-		
+
 		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl));
 
 		// Border setzen f\u00FCr das linke JPanel
 		border = new BorderSet();
 		border.setBorder(jpmainleftanzeige, "Band-Info's");
-	
 
 		return jpmainleft;
 	}
@@ -357,7 +356,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainband.add(jpmainLeft(band));
 		jpmainband.add(jpmainMiddle(band));
 		jpmainband.add(jpmainRight(band));
-		bandActionListener();
 
 		// MouseListener hinzuf\u00FCgen
 		MouseListenerTable mlt = new MouseListenerTable();
@@ -366,40 +364,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
 
 		return jpmainband;
-
-	}
-
-	// ActionListener, setzt ausgew\u00E4hltes Textfeld nach Auswahl eines Items
-	// aus
-	// JComboBox
-	public void bandActionListener() {
-		jcbmitgliedauswahl.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-				// Auswahl der aus der JComboBox in var speichern
-				String mitglied = String.valueOf(jcbmitgliedauswahl
-						.getSelectedItem());
-
-				// das ausgew\u00E4hlte Mitglied in das JTextfield einf\u00FCgen
-				jtfmitglied.setText(mitglied);
-
-			}
-		});
-
-		
-
-		/*
-		 * // delete-Button jbdelete.addActionListener(new ActionListener() {
-		 * public void actionPerformed(ActionEvent ae)
-		 * 
-		 * {
-		 * 
-		 * // Delete-Methode aufrufen
-		 * DBMethods03.deleteBand(musiker.getMusikerID());}});
-		 */
 
 	}
 
