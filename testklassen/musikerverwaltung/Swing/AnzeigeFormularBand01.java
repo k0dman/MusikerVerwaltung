@@ -14,6 +14,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 import musikerverwaltung.Database.DBMethods03;
@@ -72,8 +74,13 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// InsertJPanel
 	private InsertJPanel jpmainleftinsert;
 
+	// String
+	private String bandname, bandreferenz, bandstueck, bandmitglied, bandname1,
+			bandreferenz1, bandstueck1, bandmitglied1;
+
 	// int
-	private int idband, idbandreferenz, idbandstueck, idbandmitglied;
+	private int idband, idbandreferenz, idbandstueck, idbandmitglied, idband1,
+			idbandreferenz1, idbandstueck1, idbandmitglied1;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
@@ -114,15 +121,16 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtfmitglied = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
-		
-		//Instanz der Gruppe erzeugen um auf Daten aus der DB zugreifen zu koennen
+
+		// Instanz der Gruppe erzeugen um auf Daten aus der DB zugreifen zu
+		// koennen
 		gruppe = new Gruppe01(String.valueOf(band));
-		
-		jtfmitglied.setText(gruppe.getBandNameDB());
+
+		bandmitglied = gruppe.dbSelectMitglieder().get(0).get(0);
+		jtfmitglied.setText(bandmitglied);
 		jtfstueckgruppe.setText(gruppe.getBandStueckDB());
 		jtfreferenz.setText(gruppe.getBandReferenzDB());
-	
-		
+
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 
@@ -135,9 +143,8 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Pr\u00FCfung ob m oder w oder ns
 		boolean ja = false;
 		boolean nein = false;
-		
-		
-		if (gruppe.isAktiv())
+
+		if (gruppe.getBandAktivDB().equals("j"))
 			ja = true;
 		else
 			nein = true;
@@ -374,13 +381,93 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// MouseListener hinzuf\u00FCgen
 		MouseListenerTable mlt = new MouseListenerTable();
-		mlt.mouseListenerBandMitglieder(jtbandmitglieder, jtfmitglied);
+		mlt.mouseListenerBandMitglieder(jtbandmitglieder, jtfmitglied,
+				jrbehemaligja, jrbehemalignein);
 		mlt.mouseListenerBandReferenzen(jtbandreferenzen, jtfreferenz);
 		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
 
+		// Bandname
+		idband = gruppe.getBandIDDB();
+		// Bandmitglied
+		idbandmitglied1 = gruppe.getBandIDS(bandmitglied);
+
+		// BandReferenz
+		bandreferenz = gruppe.getBandReferenzDB();
+		idbandreferenz1 = gruppe.getBandIDS(bandreferenz);
+
+		// BandStueck
+		bandstueck = gruppe.getBandStueckDB();
+		idbandstueck1 = gruppe.getBandIDS(bandstueck);
+
+		listener();
 		actionListener();
 
 		return jpmainband;
+
+	}
+
+	public void listener() {
+
+		jtfstueckgruppe.getDocument().addDocumentListener(
+				new DocumentListener() {
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+					}
+
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+
+						bandstueck = jtfstueckgruppe.getText();
+						idbandstueck = gruppe.getBandIDS(bandstueck);
+
+						if (gruppe.idProofBandStueck(idbandstueck)) {
+							bandstueck1 = bandstueck;
+							idbandstueck1 = gruppe.getBandIDS(bandstueck1);
+						}
+
+						if (idbandstueck == 0)
+
+							idbandstueck = idbandstueck1;
+
+					}
+
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+
+		jtfreferenz.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				bandreferenz = jtfreferenz.getText();
+
+				idbandreferenz = gruppe.getBandIDS(bandreferenz);
+
+				if (gruppe.idProofBandReferenz(idbandreferenz)) {
+					bandreferenz1 = bandreferenz;
+					idbandreferenz1 = gruppe.getBandIDS(bandreferenz1);
+				}
+
+				if (idbandreferenz == 0)
+					idbandreferenz = idbandreferenz1;
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 	}
 
@@ -391,16 +478,25 @@ public class AnzeigeFormularBand01 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
+				if (idbandmitglied == 0)
+					idbandmitglied = idbandmitglied1;
+
+				if (idbandreferenz == 0)
+					idbandreferenz = idbandreferenz1;
+
+				if (idbandstueck == 0)
+					idbandstueck = idbandstueck1;
+
 				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
 						idband, idbandmitglied, idbandreferenz, idbandstueck,
 						jtfstueckgruppe.getText(), jtfreferenz.getText(),
 						bgehemalig.getSelection().getActionCommand());
 
-				System.out.println(gruppe.getBandAllList());
-				// gruppe.updateBand();
+				gruppe.updateBand();
 
 			}
 		});
+
 	}
 
 }

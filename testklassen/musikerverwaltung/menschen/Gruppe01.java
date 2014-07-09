@@ -144,37 +144,70 @@ public class Gruppe01 {
 				getIDBandStueckSolo(), getBandStueck(), getBandReferenz(),
 				getIDMitglied(), getIDBand(), getBandAktiv());
 	}
-	
+
 	// GET - Methoden um die Daten aus der Datenbank zu holen
 	public String getBandAllList() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()));
 	}
 
-	public String getBandIDDB() {
-		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(0));
+	public int getBandIDDB() {
+		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
+				.get(0));
 	}
+
 	public String getBandNameDB() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(1));
 	}
-	public String getBandIDMusikerDB() {
+
+	public String getBandMusikerPseudonym() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(2));
 	}
-	public String getBandAktivDB() {
-		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(3));
+
+	public int getBandIDMusikerDB() {
+		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
+				.get(3));
 	}
-	public String getBandIDMitgliedDB() {
+
+	public String getBandAktivDB() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(4));
 	}
-	public String getBandReferenzDB() {
-		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(5));
+
+	public int getBandIDMitgliedDB() {
+		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
+				.get(5));
 	}
-	public String getBandIDRefenzDB() {
+
+	public String getBandReferenzDB() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(6));
 	}
-	public String getBandStueckDB() {
-		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(7));
+
+	public int getBandIDRefenzDB() {
+		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
+				.get(7));
 	}
-	public String getBandIDStueckDB() {
+
+	public String getBandStueckDB() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(8));
+	}
+
+	public int getBandIDStueckDB() {
+		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
+				.get(9));
+	}
+
+	// ID aus der ArrayList ziehen
+	public int getBandIDS(String search) {
+		return Helfer01.searchID(DBMethodsBand.DBSelectBand(getBandName()),
+				search);
+	}
+	
+	//Pruefungsmethoden
+	public boolean idProofBandStueck(int id) {
+		return Helfer01.idToInt(
+				DBMethodsBand.dbSelectStueckgruppeID(getBandName()), id);
+	}
+	public boolean idProofBandReferenz(int id) {
+		return Helfer01.idToInt(
+				DBMethodsBand.dbSelectGrReferenzID(getBandName()), id);
 	}
 }

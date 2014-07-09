@@ -3,24 +3,22 @@ package musikerverwaltung.Swing;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
-import javax.swing.JTabbedPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class MouseListenerTable {
 
 	/*
-	 * // delete-Button jbdelete.addActionListener(new ActionListener() {
-	 * public void actionPerformed(ActionEvent ae)
+	 * // delete-Button jbdelete.addActionListener(new ActionListener() { public
+	 * void actionPerformed(ActionEvent ae)
 	 * 
 	 * {
 	 * 
 	 * // Delete-Methode aufrufen
 	 * DBMethods03.deleteBand(musiker.getMusikerID());}});
 	 */
-	
-	
+
 	// Methode fuer AnzeigeFormularArtist - Tabellen
 	public void mouseListenerArtistTables(final JTable jtable,
 			final JTextField jtf) {
@@ -90,7 +88,8 @@ public class MouseListenerTable {
 
 	// Methode fuer AnzeigeFormularBand
 	public void mouseListenerBandMitglieder(final JTable jtable,
-			final JTextField jtf) {
+			final JTextField jtf, final JRadioButton jrb1,
+			final JRadioButton jrb2) {
 
 		jtable.addMouseListener(new MouseAdapter() {
 
@@ -106,16 +105,23 @@ public class MouseListenerTable {
 					// Die Werte des ausgewaehlten Feldes in Objecte
 					// ablegen
 					Object mitglied = jtable.getValueAt(row, column);
-					Object title = jtable.getValueAt(row, column + 1);
+					Object title = jtable.getValueAt(row, column);
 
 					title = String.valueOf(title);
+					if (column == 0) {
+						if (e.getClickCount() == 1) {
+							jtf.setText(String.valueOf(mitglied));
+						}
+						if (e.getClickCount() == 2 | e.getButton() == 2) {
 
-					if (e.getClickCount() == 1) {
-						jtf.setText(String.valueOf(mitglied));
-
-					}
-					if (e.getClickCount() == 2 | e.getButton() == 2) {
-
+						}
+					} else if (column == 1) {
+						if (e.getClickCount() == 1) {
+							if (title.equals("j"))
+								jrb1.setSelected(true);
+							else
+								jrb2.setSelected(true);
+						}
 					}
 
 				}

@@ -584,13 +584,13 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		idreferenz1 = musiker.getMusikerIDS(referenz);
 
 		// ActionListener hinzuf\u00FCgen
-		Listener();
+		listener();
 
 		return jpmainartist;
 
 	}
 
-	private void Listener() {
+	private void listener() {
 
 		jtfinstrument.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
