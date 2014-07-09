@@ -7,6 +7,8 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import musikerverwaltung.menschen.Helfer01;
+
 public class DBMethodsBand {
 
 	// Diese Eintr\u00E4ge werden zum Verbindungsaufbau ben\u00F6tigt
@@ -66,6 +68,61 @@ public class DBMethodsBand {
 		catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Fehler beim Ausführen der InsertBand-Prozedur");
+		}
+
+	}
+
+	// Methode die Update-Prozedur f\u00FCr SoloK\u00FCnstler ausf\u00FChrt
+	public static final void updateBand(int idperson, int idmusiker,
+			int idinstrument, int idstuecksolo, int idreferenz, String titel,
+			String namensvorsatz, String vorname, String namenszusatz,
+			String nachname, int geburtstag, int geburtsmonat, int geburtsjahr,
+			int todestag, int todesmonat, int todesjahr, String geschlecht,
+			boolean istot, String pseudonym, String instrument,
+			String solostueck, String referenz) {
+
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
+		// /22
+		conn.connectionToDB(host, database, user, passwd);
+
+		java.sql.CallableStatement callableStatement = null;
+		String insertStoreProc = "{call gruppeBearbeiten(?,?,?,?,?,?,?,?)}";
+
+		// Boolean f\u00FCr <istot> wird erneut umgewandelt mit Helfer-Methode
+		String lebt = Helfer01.toStringLebt(istot);
+
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// / F\u00FCr die Variable wird muss ein Statement erstellt werden
+			// um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
+
+			callableStatement = conn.connection.prepareCall(insertStoreProc);
+
+			callableStatement.setString(1, grname); // grname
+			callableStatement.setInt(2, id_grreferenz); // id_grreferenz
+			callableStatement.setInt(3, id_stueckgruppe); // id_stueckgruppe
+			callableStatement.setString(4, stueckgruppe); // grstueckgruppe
+			callableStatement.setString(5, grreferenz); // grreferenz
+			callableStatement.setInt(6, id_musiker); // id_musiker
+			callableStatement.setInt(7, id_gruppe); // id_gruppe
+			callableStatement.setInt(8, graktiv); // graktiv
+
+			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
+			if (callableStatement.executeUpdate() == 0)
+				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
+			else
+				JOptionPane.showMessageDialog(null,
+						"Der Interpret wurde bearbeitet!");
+
+		}
+
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der Insert-Prozedur");
 		}
 
 	}

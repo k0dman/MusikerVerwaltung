@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+
 import javax.swing.*;
+
 import musikerverwaltung.menschen.*;
 
 public class EingabeformularBand06 extends JPanel {
@@ -45,11 +47,11 @@ public class EingabeformularBand06 extends JPanel {
 
 		// Label erzeugen
 		ueschrift = new JLabel("Tragen Sie eine Band ein:");
-		name = new JLabel("Name");
-		mitglied = new JLabel("Mitglied");
-		ehemalig = new JLabel("Ehemalig");
-		stueckgruppe = new JLabel("St\u00FCck");
-		referenz = new JLabel("Referenz");
+		name = new JLabel("Name *");
+		mitglied = new JLabel("Mitglied *");
+		ehemalig = new JLabel("Ehemalig *");
+		stueckgruppe = new JLabel("St\u00FCck *");
+		referenz = new JLabel("Referenz *");
 
 		// Label dem Panel hinzuf\u00FCgen
 		jpmaindesc.add(ueschrift);
@@ -155,7 +157,7 @@ public class EingabeformularBand06 extends JPanel {
 		// L\u00FCenf\u00FCller einf\u00FCgen
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
-		fueller = new JLabel("");
+		fueller = new JLabel("Falls ein Artist nicht existiert muss er vorher angelegt werden!");
 		jpmainright.add(fueller);
 
 		Musiker01 musiker = new Musiker01();
@@ -173,7 +175,7 @@ public class EingabeformularBand06 extends JPanel {
 		jpmainright.add(fueller);
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
-		fueller = new JLabel("");
+		fueller = new JLabel(" * Pflichtfelder");
 		jpmainright.add(fueller);
 		fueller = new JLabel("");
 
@@ -209,8 +211,53 @@ public class EingabeformularBand06 extends JPanel {
 	public void bandActionListener() {
 		jbsubmit.addActionListener(new ActionListener() {
 
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String tfgrname = jtfname.getText();
+				String tfmitglied = mitglied.getText();
+				String tfgrreferenz = jtfreferenz.getText();
+				String tfstueckgruppe = jtfstueckgruppe.getText();
+				
+				
+	
+				if (tfgrname.equals("") || tfmitglied.equals("") ||tfgrreferenz.equals("") ||tfstueckgruppe.equals("")) {
+					String fehltgrname = "";
+					String fehltmitglied = "";
+					String fehltgrreferenz = "";
+					String fehltstueckgruppe = "";
+						
+					if (tfgrname.equals("")) {
+						fehltgrname = "Tragen Sie einen Name f\u00FCr die Gruppe ein! \n\r";
+
+					}
+
+					if (tfmitglied.equals("")) {
+
+						fehltmitglied = "Tragen Sie ein Mitglied ein! \n\r";
+					}
+
+					if (tfgrreferenz.equals("")) {
+
+						fehltgrreferenz = "Tragen Sie eine Referenz ein! \n\r";
+					}
+
+					if (tfstueckgruppe.equals("")) {
+
+						fehltstueckgruppe = "Tragen Sie ein St\u00FCck ein! \n\r";
+					}
+					
+					JOptionPane
+							.showMessageDialog(null, fehltgrname
+									+ fehltmitglied + fehltstueckgruppe 
+									+ fehltgrreferenz);
+				}
+
+				else
+
+				{				
+				
 				// TODO Auto-generated method stub
 				//Instanz eines Musikers erzeugen um ID herauszubekommen
 				Musiker01 musiker = new Musiker01(jtfmitglied.getText());
@@ -229,7 +276,7 @@ public class EingabeformularBand06 extends JPanel {
 				jtfstueckgruppe.setText("");
 				jtfreferenz.setText("");
 
-			}
+			}}
 		});
 		jcbmitgliedauswahl.addActionListener(new ActionListener() {
 

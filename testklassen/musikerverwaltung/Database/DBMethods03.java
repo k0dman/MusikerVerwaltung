@@ -539,6 +539,8 @@ public final class DBMethods03 {
 		}
 
 	}
+	
+	
 
 	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
 	public static final void deleteArtist(int id, int id_mus) {
