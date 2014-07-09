@@ -355,7 +355,7 @@ use musiclounge;
 CREATE PROCEDURE DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gruppeBearbeiten` (grgrname varchar(100), 
 id_grreferenz int(11), id_stueckgruppe int(11), grstueckgruppe varchar(100), grgrreferenz varchar(100),
-id_musiker int(11), id_gruppe int(11), graktiv varchar(1))
+id_mitglied int(11), id_gruppe int(11), graktiv varchar(1))
 
 BEGIN
 
@@ -374,6 +374,10 @@ where grreferenz.id_grreferenz = id_grreferenz;
 update stueckgruppe
 set stueckgruppe = grstueckgruppe
 where stueckgruppe.id_stueckgruppe = id_stueckgruppe;
+
+update mitglied
+set aktiv = graktiv
+where mitglied.id_mitglied = id_mitglied;
 
 END$$
 DELIMITER ;
