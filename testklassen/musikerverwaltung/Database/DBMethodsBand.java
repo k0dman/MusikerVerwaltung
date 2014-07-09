@@ -72,14 +72,9 @@ public class DBMethodsBand {
 
 	}
 
-	// Methode die Update-Prozedur f\u00FCr SoloK\u00FCnstler ausf\u00FChrt
-	public static final void updateBand(int idperson, int idmusiker,
-			int idinstrument, int idstuecksolo, int idreferenz, String titel,
-			String namensvorsatz, String vorname, String namenszusatz,
-			String nachname, int geburtstag, int geburtsmonat, int geburtsjahr,
-			int todestag, int todesmonat, int todesjahr, String geschlecht,
-			boolean istot, String pseudonym, String instrument,
-			String solostueck, String referenz) {
+	// Methode die Update-Prozedur f\u00FCr eine Band ausf\u00FChrt
+	public static final void updateBand(String grname, int id_grreferenz, int id_stueckgruppe, String stueckgruppe,
+			String grreferenz, int id_musiker, int id_gruppe, String graktiv ) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		// /22
@@ -88,8 +83,7 @@ public class DBMethodsBand {
 		java.sql.CallableStatement callableStatement = null;
 		String insertStoreProc = "{call gruppeBearbeiten(?,?,?,?,?,?,?,?)}";
 
-		// Boolean f\u00FCr <istot> wird erneut umgewandelt mit Helfer-Methode
-		String lebt = Helfer01.toStringLebt(istot);
+		
 
 		// try / catch zum Abfangen, falls Fehler auftreten
 		try {
@@ -107,14 +101,14 @@ public class DBMethodsBand {
 			callableStatement.setString(5, grreferenz); // grreferenz
 			callableStatement.setInt(6, id_musiker); // id_musiker
 			callableStatement.setInt(7, id_gruppe); // id_gruppe
-			callableStatement.setInt(8, graktiv); // graktiv
+			callableStatement.setString(8, graktiv); // graktiv
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)
 				JOptionPane.showMessageDialog(null, "Fehler beim Eintragen");
 			else
 				JOptionPane.showMessageDialog(null,
-						"Der Interpret wurde bearbeitet!");
+						"Die Gruppe wurde bearbeitet!");
 
 		}
 
