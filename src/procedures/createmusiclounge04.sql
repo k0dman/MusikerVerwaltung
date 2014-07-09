@@ -369,11 +369,11 @@ where gruppe.id_gruppe = id_gruppe;
 UPDATE grreferenz
 set 
 grreferenz = grgrreferenz
-where grreferenz.id_gruppe = id_gruppe;
+where grreferenz.id_grgrreferenz = grgrreferenz;
 
 update stueckgruppe
 set stueckgruppe = grstueckgruppe
-where stueckgruppe.id_gruppe = id_gruppe;
+where stueckgruppe.id_stueckgruppe = id_stueckgruppe;
 
 END$$
 DELIMITER ;
