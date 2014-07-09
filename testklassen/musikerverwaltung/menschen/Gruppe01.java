@@ -144,4 +144,37 @@ public class Gruppe01 {
 				getIDBandStueckSolo(), getBandStueck(), getBandReferenz(),
 				getIDMitglied(), getIDBand(), getBandAktiv());
 	}
+	
+	// GET - Methoden um die Daten aus der Datenbank zu holen
+	public String getBandAllList() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()));
+	}
+
+	public String getBandIDDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(0));
+	}
+	public String getBandNameDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(1));
+	}
+	public String getBandIDMusikerDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(2));
+	}
+	public String getBandAktivDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(3));
+	}
+	public String getBandIDMitgliedDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(4));
+	}
+	public String getBandReferenzDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(5));
+	}
+	public String getBandIDRefenzDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(6));
+	}
+	public String getBandStueckDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(7));
+	}
+	public String getBandIDStueckDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(8));
+	}
 }

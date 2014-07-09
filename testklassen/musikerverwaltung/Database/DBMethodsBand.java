@@ -78,7 +78,7 @@ public class DBMethodsBand {
 
 	// Methode die Update-Prozedur f\u00FCr eine Band ausf\u00FChrt
 	public static final void updateBand(String grname, int idgrreferenz, int idstueckgruppe, String stueckgruppe,
-			String grreferenz, int idmusiker, int idgruppe, String graktiv ) {
+			String grreferenz, int idmitglied, int idgruppe, String graktiv ) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		// /22
@@ -103,7 +103,7 @@ public class DBMethodsBand {
 			callableStatement.setInt(3, idstueckgruppe); // id_stueckgruppe
 			callableStatement.setString(4, stueckgruppe); // grstueckgruppe
 			callableStatement.setString(5, grreferenz); // grreferenz
-			callableStatement.setInt(6, idmusiker); // id_musiker
+			callableStatement.setInt(6, idmitglied); // id_musiker
 			callableStatement.setInt(7, idgruppe); // id_gruppe
 			callableStatement.setString(8, graktiv); // graktiv
 

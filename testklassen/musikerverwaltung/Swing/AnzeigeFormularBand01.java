@@ -114,7 +114,15 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtfmitglied = new JTextField();
 		jtfstueckgruppe = new JTextField();
 		jtfreferenz = new JTextField();
-
+		
+		//Instanz der Gruppe erzeugen um auf Daten aus der DB zugreifen zu koennen
+		gruppe = new Gruppe01(String.valueOf(band));
+		
+		jtfmitglied.setText(gruppe.getBandNameDB());
+		jtfstueckgruppe.setText(gruppe.getBandStueckDB());
+		jtfreferenz.setText(gruppe.getBandReferenzDB());
+	
+		
 		// Schriften erzeugen
 		ftfield = new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, 15);
 
@@ -124,11 +132,21 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jtfstueckgruppe.setFont(ftfield);
 		jtfreferenz.setFont(ftfield);
 
+		// Pr\u00FCfung ob m oder w oder ns
+		boolean ja = false;
+		boolean nein = false;
+		
+		
+		if (gruppe.isAktiv())
+			ja = true;
+		else
+			nein = true;
+
 		// JRadioButton erzeugen
-		jrbehemaligja = new JRadioButton("Ja");
+		jrbehemaligja = new JRadioButton("Ja", ja);
 		jrbehemaligja.setActionCommand("j");
 
-		jrbehemalignein = new JRadioButton("Nein");
+		jrbehemalignein = new JRadioButton("Nein", nein);
 		jrbehemalignein.setActionCommand("n");
 
 		// JRadioButtons ButtonGroup hinzuf\u00FCgen
@@ -197,7 +215,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// Instanz des TablesModels erzeugen
 		dtm = new TableModel();
 		// Instanz der Gruppe erzeugen um Tabelle f\u00FCllen zu k\u00F6nnen
-		gruppe = new Gruppe01(String.valueOf(band));
 
 		// Erzeugung der Tabelle mit DefaultTableModel
 		jtbandmitglieder = new JTable(dtm.dtm(1, 2,
@@ -377,9 +394,11 @@ public class AnzeigeFormularBand01 extends JPanel {
 				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
 						idband, idbandmitglied, idbandreferenz, idbandstueck,
 						jtfstueckgruppe.getText(), jtfreferenz.getText(),
-						bginsert.getSelection().getActionCommand());
+						bgehemalig.getSelection().getActionCommand());
 
-				gruppe.updateBand();
+				System.out.println(gruppe.getBandAllList());
+				// gruppe.updateBand();
+
 			}
 		});
 	}
