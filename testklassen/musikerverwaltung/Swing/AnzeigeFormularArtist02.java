@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -321,12 +320,9 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		jtfzusatz.setToolTipText("Hier \u00E4ndern Sie den Zusatz");
 		jtfpseudonym
 				.setToolTipText("Hier \u00E4ndern Sie das Pseudonym/ den K\u00FCnstlernamen");
-		jtfinstrument
-				.setToolTipText("Hier \u00E4ndern Sie das Instrument");
-		jtfsolostueck
-				.setToolTipText("Hier \u00E4ndern Sie ein Solost\u00FCck");
-		jtfreferenz
-				.setToolTipText("Hier \u00E4ndern Sie eine Referenz");
+		jtfinstrument.setToolTipText("Hier \u00E4ndern Sie das Instrument");
+		jtfsolostueck.setToolTipText("Hier \u00E4ndern Sie ein Solost\u00FCck");
+		jtfreferenz.setToolTipText("Hier \u00E4ndern Sie eine Referenz");
 
 		// Hauptpanel f\u00FCr die Linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(3, 1, 1, 1));
@@ -478,17 +474,17 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		jrbstuecksolo = new JRadioButton("St\u00FCck");
 		jrbstuecksolo.setActionCommand("ss");
-		jrbstuecksolo.setToolTipText("Wollen Sie ein St\u00FCck einf\u00FCgen?");
+		jrbstuecksolo
+				.setToolTipText("Wollen Sie ein St\u00FCck einf\u00FCgen?");
 
 		jrbreferenz = new JRadioButton("Referenz");
 		jrbreferenz.setActionCommand("r");
 		jrbreferenz.setToolTipText("Wollen Sie eine Referenz einf\u00FCgen?");
 
-
 		jrbinstrument = new JRadioButton("Instrument");
 		jrbinstrument.setActionCommand("i");
-		jrbinstrument.setToolTipText("Wollen Sie ein Instrument einf\u00FCgen?");
-
+		jrbinstrument
+				.setToolTipText("Wollen Sie ein Instrument einf\u00FCgen?");
 
 		// Listener den JRadioButtons hinzuf\u00FCgen
 
@@ -766,8 +762,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (auswahl == JOptionPane.YES_OPTION) {
 					// Delete-Methode aufrufen
-					DBMethodsArtist.deleteArtist(musiker.getMusikerIDPerson(),
-							musiker.getMusikerIDMusiker());
+					musiker.deleteMusiker();
 				}
 
 			}
@@ -777,27 +772,31 @@ public class AnzeigeFormularArtist02 extends JPanel {
 			public void actionPerformed(ActionEvent ae)
 
 			{
+				String isleer = jtfinsert.getText();
+				if (isleer.equals("")) {
+					JOptionPane.showMessageDialog(null, "Nichts eingetragen !");
+				} else {
+					if (bgrinsert.getSelection().getActionCommand().equals("i")) {
+						// Insert Instrument
+						musiker.insertInstrument(jtfinsert.getText());
+						jtfinsert.setText("");
+					}
 
-				if (bgrinsert.getSelection().getActionCommand().equals("i")) {
-					// Insert Instrument
-					DBMethodsArtist.insertInstrument(musiker.getMusikerIDPerson(),
-							jtfinsert.getText());
-					jtfinsert.setText("");
-				}
+					if (bgrinsert.getSelection().getActionCommand()
+							.equals("ss")) {
 
-				if (bgrinsert.getSelection().getActionCommand().equals("ss")) {
+						// Insert St\u00FCcksolo
+						musiker.insertStueckSolo(jtfinsert.getText());
+						jtfinsert.setText("");
+					}
 
-					// Insert St\u00FCcksolo
-					DBMethodsArtist.insertStueckSolo(musiker.getMusikerIDPerson(),
-							jtfinsert.getText());
-					jtfinsert.setText("");
-				}
-
-				if (bgrinsert.getSelection().getActionCommand().equals("r")) {
-					// Insert Referenz
-					DBMethodsArtist.insertReferenz(musiker.getMusikerIDPerson(),
-							jtfinsert.getText());
-					jtfinsert.setText("");
+					if (bgrinsert.getSelection().getActionCommand().equals("r")) {
+						// Insert Referenz
+						DBMethodsArtist.insertReferenz(
+								musiker.getMusikerIDPerson(),
+								jtfinsert.getText());
+						jtfinsert.setText("");
+					}
 				}
 			}
 		});

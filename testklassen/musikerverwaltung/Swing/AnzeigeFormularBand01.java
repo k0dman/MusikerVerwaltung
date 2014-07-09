@@ -4,9 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import musikerverwaltung.Database.DBMethods03;
 import musikerverwaltung.menschen.*;
 
@@ -191,7 +193,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleft.add(jpmainleftanzeige);
 		jpmainleftinsert = new InsertJPanel();
 
-		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl));
+		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl, gruppe.getBandName()));
 
 		// Border setzen f\u00FCr das linke JPanel
 		border = new BorderSet();
@@ -472,16 +474,33 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 				if (idbandstueck == 0)
 					idbandstueck = idbandstueck1;
-
+				
 				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
 						idband, idbandmitglied, idbandreferenz, idbandstueck,
 						jtfstueckgruppe.getText(), jtfreferenz.getText(),
 						bgehemalig.getSelection().getActionCommand());
+				
 
 				gruppe.updateBand();
 
 			}
 		});
+		// delete-Button
+				jbdelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ae)
+
+					{
+						int auswahl = JOptionPane.showConfirmDialog(null,
+								"Willst du diesen Interpreten wirklich l\u00F6schen?",
+								"L\u00F6schen", JOptionPane.YES_NO_OPTION);
+
+						if (auswahl == JOptionPane.YES_OPTION) {
+							// Delete-Methode aufrufen
+							gruppe.deleteBand();
+						}
+
+					}
+				});
 
 	}
 

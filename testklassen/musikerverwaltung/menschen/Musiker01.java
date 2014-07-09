@@ -106,14 +106,14 @@ public class Musiker01 extends Person01 {
 		this.idstuecksolo = idstuecksolo;
 		this.idreferenz = idreferenz;
 	}
-	
+
 	// Konstruktor #8
-		public Musiker01(String pseudonym, String[] stuecksolo) {
+	public Musiker01(String pseudonym, String[] stuecksolo) {
 
-			this.pseudonym = pseudonym;
-			this.stuecksolo = stuecksolo;
+		this.pseudonym = pseudonym;
+		this.stuecksolo = stuecksolo;
 
-		}
+	}
 
 	// Getter
 	public String getPseudonym() {
@@ -225,58 +225,58 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int getMusikerIDPerson() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				0));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(0));
 	}
 
 	public String getMusikerName() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(1));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(1));
 	}
 
 	public String getMusikerVorname() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(2));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(2));
 	}
 
 	public String getMusikerTitel() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(3));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(3));
 	}
 
 	public String getMusikerVorsatz() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(4));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(4));
 	}
 
 	public String getMusikerZusatz() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(5));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(5));
 	}
 
 	public String getMusikerGeschlecht() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(6));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(6));
 	}
 
 	public String getMusikerLebt() {
-		return String
-				.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(7));
+		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(7));
 	}
 
 	public int getMusikerGTag() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				8));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(8));
 	}
 
 	public int getMusikerGMonat() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				9));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(9));
 	}
 
 	public int getMusikerGJahr() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				10));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(10));
 	}
 
 	public int getMusikerTTag() {
@@ -285,13 +285,13 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int getMusikerTMonat() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				12));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(12));
 	}
 
 	public int getMusikerTJahr() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				13));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(13));
 	}
 
 	public String getMusikerPseudonym() {
@@ -305,8 +305,8 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int getMusikerIDReferenz() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				16));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(16));
 	}
 
 	public String getMusikerStueckSolo() {
@@ -315,8 +315,8 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int getMusikerIDStueckSolo() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				18));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(18));
 	}
 
 	public String getMusikerInstrument() {
@@ -325,18 +325,18 @@ public class Musiker01 extends Person01 {
 	}
 
 	public int getMusikerIDInstrument() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				20));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(20));
 	}
 
 	public int getMusikerIDMusiker() {
-		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym()).get(
-				21));
+		return Integer.parseInt(DBMethodsArtist.DBSelectArtist(getPseudonym())
+				.get(21));
 	}
 
 	public int getMusikerIDS(String search) {
-		return Helfer01.searchID(DBMethodsArtist.DBSelectArtist(getPseudonym()),
-				search);
+		return Helfer01.searchID(
+				DBMethodsArtist.DBSelectArtist(getPseudonym()), search);
 	}
 
 	public boolean idProofInstrument(int id) {
@@ -350,8 +350,27 @@ public class Musiker01 extends Person01 {
 	}
 
 	public boolean idProofReferenz(int id) {
-		return Helfer01.idToInt(DBMethodsArtist.dbSelectReferenzID(getPseudonym()),
-				id);
+		return Helfer01.idToInt(
+				DBMethodsArtist.dbSelectReferenzID(getPseudonym()), id);
+	}
+
+	public void deleteMusiker() {
+		DBMethodsArtist.deleteArtist(getMusikerIDPerson(),
+				getMusikerIDMusiker());
+	}
+
+	public void insertInstrument(String instrument) {
+		DBMethodsArtist.insertInstrument(getMusikerIDPerson(), instrument);
+	}
+
+	public void insertStueckSolo(String stuecksolo) {
+		DBMethodsArtist.insertStueckSolo(getMusikerIDPerson(),
+				stuecksolo);
+	}
+	
+	public void insertReferenz(String referenz){
+		DBMethodsArtist.insertReferenz(getMusikerIDPerson(),
+				referenz);
 	}
 
 }

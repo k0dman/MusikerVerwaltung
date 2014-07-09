@@ -418,7 +418,7 @@ public class DBMethodsArtist {
 	}
 
 	// Methode die Delete-Prozedur ausf\u00FChrt f\u00FChr Artist
-	public static final void deleteArtist(int id, int id_mus) {
+	public static final void deleteArtist(int idperson, int idmusiker) {
 
 		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
 		// /21
@@ -436,8 +436,8 @@ public class DBMethodsArtist {
 
 			callableStatement = conn.connection.prepareCall(insertStoreProc);
 
-			callableStatement.setInt(1, id_mus); // musid_musiker
-			callableStatement.setInt(2, id); // musid_person
+			callableStatement.setInt(1, idmusiker); // musid_musiker
+			callableStatement.setInt(2, idperson); // musid_person
 
 			// Abfrage Eintrag erfolgreich war und gleichzeitig Ausf\u00FChrung
 			if (callableStatement.executeUpdate() == 0)

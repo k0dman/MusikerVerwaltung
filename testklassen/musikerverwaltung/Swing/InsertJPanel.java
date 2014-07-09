@@ -10,9 +10,14 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import musikerverwaltung.Database.DBMethodsArtist;
+import musikerverwaltung.menschen.Gruppe01;
+import musikerverwaltung.menschen.Musiker01;
 
 public class InsertJPanel {
 
@@ -25,7 +30,7 @@ public class InsertJPanel {
 	private JTextField jtfinsert;
 	private BorderSet border;
 
-	public JPanel insertJPanel(JComboBox jcb) {
+	public JPanel insertJPanel(JComboBox jcb, String band) {
 		// jpmainleftinsert
 		jpmainleftinsert = new JPanel(new GridLayout(5, 1, 1, 20));
 
@@ -36,7 +41,7 @@ public class InsertJPanel {
 		// JRadioButton erzeugen
 
 		jrbstueckgruppe = new JRadioButton("St\u00FCck");
-		jrbstueckgruppe.setActionCommand("g");
+		jrbstueckgruppe.setActionCommand("s");
 
 		jrbreferenz = new JRadioButton("Referenz");
 		jrbreferenz.setActionCommand("r");
@@ -84,7 +89,7 @@ public class InsertJPanel {
 		border = new BorderSet();
 		border.setBorder(jpmainleftinsert, "Datensatz eintragen");
 
-		actionListener(jcb);
+		actionListener(jcb, band);
 
 		return jpmainleftinsert;
 	}
@@ -108,7 +113,7 @@ public class InsertJPanel {
 		return jpmainleftinsert;
 	}
 
-	public void actionListener(final JComboBox jcb) {
+	public void actionListener(final JComboBox jcb, final String band) {
 		jrbmitglied.addActionListener(new ActionListener() {
 
 			@Override
@@ -172,5 +177,38 @@ public class InsertJPanel {
 
 			}
 		});
+		// einf\u00FCgen-Button
+				jbinsert.addActionListener(new ActionListener() {
+					Gruppe01 gruppe = new Gruppe01(band);
+					public void actionPerformed(ActionEvent ae)
+
+					{
+						String isleer = jtfinsert.getText();
+						if (isleer.equals("")){
+							JOptionPane.showMessageDialog(null, "Nichts eingetragen !");
+						}
+						else{
+						if (bginsert.getSelection().getActionCommand().equals("s")) {
+							// Insert St\u00FCcksolo
+							gruppe.insertStueckBand(jtfinsert.getText());
+							jtfinsert.setText("");
+						}
+
+						if (bginsert.getSelection().getActionCommand().equals("r")) {
+							// Insert Referenz
+						
+						gruppe.insertReferenzBand(jtfinsert.getText());
+							jtfinsert.setText("");
+						}
+
+						if (bginsert.getSelection().getActionCommand().equals("m")) {
+							//Insert Mitglied
+							Musiker01 musiker = new Musiker01(String.valueOf(jcb.getSelectedItem()));
+							String mitglied = String.valueOf(jcb.getSelectedItem());
+							gruppe.insertMitgliedBand(bgehemalig.getSelection().getActionCommand(), musiker.getMusikerIDMusiker());
+							jtfinsert.setText("");
+						}
+					}}
+				});
 	}
 }

@@ -210,5 +210,19 @@ public class Gruppe01 {
 		return Helfer01.idToInt(
 				DBMethodsBand.dbSelectGrReferenzID(getBandName()), id);
 	}
+	
+	public void deleteBand(){
+		DBMethodsBand.deleteBand(getBandIDDB());
+	}
+	
+	public void insertStueckBand(String stueckgruppe){
+		DBMethodsBand.insertStueckGruppe(getBandIDDB(), stueckgruppe);
+	}
+	public void insertReferenzBand(String referenz){
+		DBMethodsBand.insertGrRreferenz(getBandIDDB(), referenz);
+	}
+	public void insertMitgliedBand(String aktiv, int idmusiker){
+		DBMethodsBand.insertArtist(getBandIDDB(), idmusiker, aktiv);
+	}
 
 }
