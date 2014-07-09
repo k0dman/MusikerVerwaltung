@@ -108,7 +108,7 @@ public class Musiker01 extends Person01 {
 	}
 	
 	// Konstruktor #8
-		public Musiker01(String pseudonym, String stuecksolo) {
+		public Musiker01(String pseudonym, String[] stuecksolo) {
 
 			this.pseudonym = pseudonym;
 			this.stuecksolo = stuecksolo;

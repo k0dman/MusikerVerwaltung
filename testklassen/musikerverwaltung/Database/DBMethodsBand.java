@@ -3,6 +3,8 @@ package musikerverwaltung.Database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -207,6 +209,67 @@ public class DBMethodsBand {
 		}
 		return isband;
 
+	}
+	
+	// Methode zum Select f\u00FCr Artisten
+	public static final List<String> DBSelectBand(Object band) {
+
+		// Verbindung zur Datenbank herstellen mit \u00DCbergabe der Parameter
+		conn.connectionToDB(host, database, user, passwd);
+
+		// Variablen deklarieren // Statement und ResultSet sind
+		// Interface-Klassen
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<String> banddata = new ArrayList<String>();
+		// try / catch zum Abfangen, falls Fehler auftreten
+		try {
+
+			// F\u00FCr die Variable wird muss ein Statement erstellt werden um
+			// eine Kommunikation mit der DB zu erm\u00F6glichen
+			stmt = conn.connection.createStatement();
+
+			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
+			rs = stmt
+					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, r.id_referenz, s.stuecksolo, s.id_stuecksolo, i.instrument, i.id_instrument, m.id_musiker FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
+							+ band + "'");
+
+			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
+			// >next()<
+
+			while (rs.next()) {
+				banddata.add(rs.getString("id_person"));// 0
+				banddata.add(rs.getString("name"));// 1
+				banddata.add(rs.getString("vorname"));// 2
+				banddata.add(rs.getString("titel"));// 3
+				banddata.add(rs.getString("vorsatz"));// 4
+				banddata.add(rs.getString("zusatz"));// 5
+				banddata.add(rs.getString("geschlecht"));// 6
+				banddata.add(rs.getString("lebt"));// 7
+				banddata.add(rs.getString("gtag"));// 8
+				banddata.add(rs.getString("gmonat"));// 9
+				banddata.add(rs.getString("gjahr"));// 10
+				banddata.add(rs.getString("ttag"));// 11
+				banddata.add(rs.getString("tmonat"));// 12
+				banddata.add(rs.getString("tjahr"));// 13
+				banddata.add(rs.getString("pseudonym"));// 14
+				banddata.add(rs.getString("referenz"));// 15
+				banddata.add(rs.getString("id_referenz"));// 16
+				banddata.add(rs.getString("stuecksolo"));// 17
+				banddata.add(rs.getString("id_stuecksolo"));// 18
+				banddata.add(rs.getString("instrument"));// 19
+				banddata.add(rs.getString("id_instrument"));// 20
+				banddata.add(rs.getString("id_musiker"));// 21
+			}
+		}
+
+		// M\u00F6gliche Fehlerquellen: Falscher Tabellenname,
+		// falsche Spaltennamen, falsche Datentypen
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Fehler beim Ausführen der DBSelectband");
+		}
+		return banddata;
 	}
 
 	// Select nach Pseudonym um gezieltes Klicken in der Libary zu
