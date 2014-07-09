@@ -72,6 +72,9 @@ public class AnzeigeFormularBand01 extends JPanel {
 	// InsertJPanel
 	private InsertJPanel jpmainleftinsert;
 
+	// int
+	private int idband, idbandreferenz, idbandstueck, idbandmitglied;
+
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
 
@@ -85,7 +88,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jlehemalig = new JLabel("Ehemalig: ");
 		jlstueckgruppe = new JLabel("St\u00FCck: ");
 		jlreferenz = new JLabel("Referenz: ");
-		
 
 		// Label Right anordnen
 
@@ -94,7 +96,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jlehemalig.setHorizontalAlignment(SwingConstants.RIGHT);
 		jlstueckgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
 		jlreferenz.setHorizontalAlignment(SwingConstants.RIGHT);
-		
 
 		// Label dem Panel hinzuf\u00FCgen
 
@@ -103,7 +104,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleftjl.add(jlreferenz);
 		jpmainleftjl.add(jlehemalig);
 		jpmainleftjl.add(jlmitglied);
-	
 
 		// JPanel f\u00FCr JTF´s
 		jpmainleftjtf = new JPanel(new GridLayout(5, 1, 1, 15));
@@ -158,7 +158,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 		jpmainleftjtf.add(jtfreferenz);
 		jpmainleftjtf.add(jpmainleftehemalig);
 		jpmainleftjtf.add(jtfmitglied);
-		
 
 		// ToolTips hinzuf\u00FCgen
 		jtfname.setToolTipText("Tragen Sie hier bitte den Namen der band ein");
@@ -168,7 +167,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 				.setToolTipText("Tragen Sie hier bitte ein St\u00FCck der Gruppe ein");
 		jtfreferenz
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
-		
 
 		jpmainleftanzeige = new JPanel(new GridLayout(1, 2, 1, 1));
 		// HauptJPanel linke Seite erzeugen
@@ -363,8 +361,27 @@ public class AnzeigeFormularBand01 extends JPanel {
 		mlt.mouseListenerBandReferenzen(jtbandreferenzen, jtfreferenz);
 		mlt.mouseListenerBandTitel(jtbandtitles, jtfstueckgruppe);
 
+		actionListener();
+
 		return jpmainband;
 
+	}
+
+	public void actionListener() {
+		jbsubmit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				gruppe = new Gruppe01(jtfname.getText(), jtfmitglied.getText(),
+						idband, idbandmitglied, idbandreferenz, idbandstueck,
+						jtfstueckgruppe.getText(), jtfreferenz.getText(),
+						bginsert.getSelection().getActionCommand());
+
+				gruppe.updateBand();
+			}
+		});
 	}
 
 }

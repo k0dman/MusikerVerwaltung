@@ -12,6 +12,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import musikerverwaltung.Database.DBMethods03;
+import musikerverwaltung.Database.DBMethodsArtist;
 import musikerverwaltung.menschen.*;
 
 public class AnzeigeFormularArtist02 extends JPanel {
@@ -206,6 +207,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 		// JRadio Button ob Musiker gestorben ist
 		jrblebt = new JRadioButton("tot", tot);
+		jrblebt.setToolTipText("Ist ihr Interpret tot?");
 
 		// Alles in ein Panel
 		jpdatum = new JPanel(new GridLayout(1, 3, 2, 2));
@@ -298,33 +300,33 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		border.setBorder(jpmainleftbottom, "Interpreten-Daten");
 
 		// ToolTips hinzuf\u00FCgen
-		rbmann.setToolTipText("Ist ihr Interpret ein Mann?");
-		rbfrau.setToolTipText("Ist ihr Interpret eine Frau?");
+		rbmann.setToolTipText("Ist ihr Interpret doch ein Mann?");
+		rbfrau.setToolTipText("Ist ihr Interpret doch eine Frau?");
 		rbkeineahnung
-				.setToolTipText("Ich habe keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
-		jcbtag.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret geboren wurde!");
-		jcbmonat.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret geboren wurde!");
-		jcbjahr.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret geboren wurde?");
+				.setToolTipText("Ich habe doch keine Ahnung welches Geschlecht mein K\u00FCnstler hat");
+		jcbtag.setToolTipText("Hier \u00E4ndern Sie den Tag an dem der Interpret geboren wurde!");
+		jcbmonat.setToolTipText("Hier \u00E4ndern Sie den Monat an dem der Interpret geboren wurde!");
+		jcbjahr.setToolTipText("Hier \u00E4ndern Sie das Jahr in dem der Interpret geboren wurde?");
 		dodjcbtag
-				.setToolTipText("W\u00E4hlen Sie den Tag an dem der Interpret gestorben ist!");
+				.setToolTipText("Hier \u00E4ndern Sie den Tag an dem der Interpret gestorben ist!");
 		dodjcbmonat
-				.setToolTipText("W\u00E4hlen Sie den Monat an dem der Interpret gestorben ist!");
+				.setToolTipText("Hier \u00E4ndern Sie den Monat an dem der Interpret gestorben ist!");
 		dodjcbjahr
-				.setToolTipText("W\u00E4hlen Sie das Jahr in dem der Interpret gestorben ist!");
+				.setToolTipText("Hier \u00E4ndern Sie das Jahr in dem der Interpret gestorben ist!");
 
-		jtfname.setToolTipText("Tragen Sie hier bitte den Nachnamen ein");
-		jtfvorname.setToolTipText("Tragen Sie hier bitte den Vornamen ein");
-		jtftitel.setToolTipText("Tragen Sie hier bitte den Titel ein");
-		jtfvorsatz.setToolTipText("Tragen Sie hier bitte den Vorsatz ein");
-		jtfzusatz.setToolTipText("Tragen Sie hier bitte den Zusatz ein");
+		jtfname.setToolTipText("Hier \u00E4ndern Sie den Nachnamen");
+		jtfvorname.setToolTipText("Hier \u00E4ndern Sie den Vornamen");
+		jtftitel.setToolTipText("Hier \u00E4ndern Sie den Titel");
+		jtfvorsatz.setToolTipText("Hier \u00E4ndern Sie den Vorsatz");
+		jtfzusatz.setToolTipText("Hier \u00E4ndern Sie den Zusatz");
 		jtfpseudonym
-				.setToolTipText("Tragen Sie hier bitte das Pseudonym/ den K\u00FCnstlernamen ein");
+				.setToolTipText("Hier \u00E4ndern Sie das Pseudonym/ den K\u00FCnstlernamen");
 		jtfinstrument
-				.setToolTipText("Tragen Sie hier bitte das Instrument ein");
+				.setToolTipText("Hier \u00E4ndern Sie das Instrument");
 		jtfsolostueck
-				.setToolTipText("Tragen Sie hier bitte ein Solost\u00FCck ein");
+				.setToolTipText("Hier \u00E4ndern Sie ein Solost\u00FCck");
 		jtfreferenz
-				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einem K\u00FCnstler eintragen");
+				.setToolTipText("Hier \u00E4ndern Sie eine Referenz");
 
 		// Hauptpanel f\u00FCr die Linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(3, 1, 1, 1));
@@ -521,6 +523,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		// JButtons
 
 		jbsubmit = new JButton("Bearbeiten");
+		jbsubmit.setToolTipText("Hier f\u00FChren Sie die Ver");
 		jbdelete = new JButton("L\u00F6schen");
 
 		// In Arbeit => Gr\u00F6sse des Eintragen-Buttons setzen
@@ -756,7 +759,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (auswahl == JOptionPane.YES_OPTION) {
 					// Delete-Methode aufrufen
-					DBMethods.deleteArtist(musiker.getMusikerIDPerson(),
+					DBMethodsArtist.deleteArtist(musiker.getMusikerIDPerson(),
 							musiker.getMusikerIDMusiker());
 				}
 
@@ -770,7 +773,7 @@ public class AnzeigeFormularArtist02 extends JPanel {
 
 				if (bgrinsert.getSelection().getActionCommand().equals("i")) {
 					// Insert Instrument
-					DBMethods03.insertInstrument(musiker.getMusikerIDPerson(),
+					DBMethodsArtist.insertInstrument(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}
@@ -778,14 +781,14 @@ public class AnzeigeFormularArtist02 extends JPanel {
 				if (bgrinsert.getSelection().getActionCommand().equals("ss")) {
 
 					// Insert St\u00FCcksolo
-					DBMethods03.insertStueckSolo(musiker.getMusikerIDPerson(),
+					DBMethodsArtist.insertStueckSolo(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}
 
 				if (bgrinsert.getSelection().getActionCommand().equals("r")) {
 					// Insert Referenz
-					DBMethods03.insertReferenz(musiker.getMusikerIDPerson(),
+					DBMethodsArtist.insertReferenz(musiker.getMusikerIDPerson(),
 							jtfinsert.getText());
 					jtfinsert.setText("");
 				}

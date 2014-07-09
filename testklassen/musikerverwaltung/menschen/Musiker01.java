@@ -213,9 +213,7 @@ public class Musiker01 extends Person01 {
 
 	// GET - Methoden um die Daten aus der Datenbank zu holen
 	public String getMusiker() {
-
 		return String.valueOf(DBMethodsArtist.DBSelectArtist(getPseudonym()));
-
 	}
 
 	public int getMusikerIDPerson() {

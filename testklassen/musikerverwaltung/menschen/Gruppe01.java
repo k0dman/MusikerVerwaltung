@@ -11,7 +11,7 @@ public class Gruppe01 {
 	// Instanzvariabeln
 	private String bandname, aktiv;
 	private String mitglied, ehemalig, bandstueck, bandreferenz;
-	private int idmitglied;
+	private int idband, idmitglied, idbandstueck, idbandreferenz;
 
 	public Gruppe01(String bandname) {
 		this.bandname = bandname;
@@ -44,9 +44,31 @@ public class Gruppe01 {
 
 	}
 
+	// Konstruktor
+	public Gruppe01(String bandname, String mitglied, int idband,
+			int idmitglied, int idbandreferenz, int idbandstueck,
+			String bandstueck, String bandreferenz, String aktiv) {
+
+		// Sets
+		this.bandname = bandname;
+		this.mitglied = mitglied;
+		this.idband = idband;
+		this.idmitglied = idmitglied;
+		this.idbandreferenz = idbandreferenz;
+		this.idbandstueck = idbandstueck;
+		this.bandstueck = bandstueck;
+		this.bandreferenz = bandreferenz;
+		this.aktiv = aktiv;
+
+	}
+
 	// Getter //
 	public String getBandName() {
 		return bandname;
+	}
+
+	public int getIDBand() {
+		return idband;
 	}
 
 	public String getMitglied() {
@@ -65,8 +87,20 @@ public class Gruppe01 {
 		return bandstueck;
 	}
 
+	public int getIDBandStueckSolo() {
+		return idbandstueck;
+	}
+
 	public String getBandReferenz() {
 		return bandreferenz;
+	}
+
+	public int getIDBandReferenz() {
+		return idbandreferenz;
+	}
+
+	public String getBandAktiv() {
+		return aktiv;
 	}
 
 	public boolean isAktiv() {
@@ -103,14 +137,11 @@ public class Gruppe01 {
 		DBMethodsBand.insertBand(getBandName(), getBandStueck(),
 				getBandReferenz(), getIDMitglied(),
 				Helfer01.toStringLebt(isAktiv()));
-
 	}
 
-	public void updateArtist(String grname, int idgrreferenz,
-			int idstueckgruppe, String stueckgruppe, String grreferenz,
-			int idmusiker, int idgruppe, String graktiv) {
-
-		DBMethodsBand.updateBand(grname, idgrreferenz, idstueckgruppe,
-				stueckgruppe, grreferenz, idmusiker, idgruppe, graktiv);
+	public void updateBand() {
+		DBMethodsBand.updateBand(getBandName(), getIDBandReferenz(),
+				getIDBandStueckSolo(), getBandStueck(), getBandReferenz(),
+				getIDMitglied(), getIDBand(), getBandAktiv());
 	}
 }
