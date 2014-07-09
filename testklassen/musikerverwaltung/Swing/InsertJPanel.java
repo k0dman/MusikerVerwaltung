@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class InsertJPanel {
 
 	private JPanel jpmainleftinsert, jpmainleftinsertbg, jpmainleftehemalig;
-	private JLabel jlfueller;
+	private JLabel jlfueller, jlehemalig;
 	private JButton jbinsert;
 	private JRadioButton jrbstueckgruppe, jrbreferenz, jrbmitglied,
 			jrbehemalignein, jrbehemaligja;
@@ -61,11 +61,13 @@ public class InsertJPanel {
 		bgehemalig = new ButtonGroup();
 		bgehemalig.add(jrbehemaligja);
 		bgehemalig.add(jrbehemalignein);
-
+		jlehemalig = new JLabel("Ehemaliges Mitglied: ");
 		// JPanel f\u00FCr die JRadioButtons
 		jpmainleftehemalig = new JPanel(new GridLayout(1, 1, 0, 10));
+		jpmainleftehemalig.add(jlehemalig);
 		jpmainleftehemalig.add(jrbehemaligja);
 		jpmainleftehemalig.add(jrbehemalignein);
+		
 
 		// JPanel f\u00FCr die JRadioButtons
 		jpmainleftinsertbg = new JPanel(new GridLayout(1, 1, 0, 10));

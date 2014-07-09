@@ -316,7 +316,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		// ##########################################//
 		// JPanel f\u00FCr Buttons
-		jpmainrightbuttons = new JPanel(new GridLayout(5, 1, 1, 10));
+		jpmainrightbuttons = new JPanel(new GridLayout(5, 1, 1, 5));
 
 		// JButton erzeugen
 
@@ -341,7 +341,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 		jpmainrightbuttons.add(jbdelete);
 
-		jpmainright = new JPanel(new GridLayout(3, 1, 1, 1));
+		jpmainright = new JPanel(new GridLayout(2, 1, 1, 1));
 		jpmainright.add(jpmainrightreferenz);
 		jpmainright.add(jpmainrightbuttons);
 
