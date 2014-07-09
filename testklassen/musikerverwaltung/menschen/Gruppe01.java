@@ -180,31 +180,12 @@ public class Gruppe01 {
 	public String getBandReferenzDB() {
 		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(6));
 	}
-
-	public int getBandIDRefenzDB() {
-		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
-				.get(7));
+	public String getBandIDRefenzDB() {
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(6));
 	}
 
 	public String getBandStueckDB() {
-		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(8));
-	}
-
-	public int getBandIDStueckDB() {
-		return Integer.parseInt(DBMethodsBand.DBSelectBand(getBandName())
-				.get(9));
-	}
-
-	// ID aus der ArrayList ziehen
-	public int getBandIDS(String search) {
-		return Helfer01.searchID(DBMethodsBand.DBSelectBand(getBandName()),
-				search);
-	}
-	
-	//Pruefungsmethoden
-	public boolean idProofBandStueck(int id) {
-		return Helfer01.idToInt(
-				DBMethodsBand.dbSelectStueckgruppeID(getBandName()), id);
+		return String.valueOf(DBMethodsBand.DBSelectBand(getBandName()).get(7));
 	}
 	public boolean idProofBandReferenz(int id) {
 		return Helfer01.idToInt(
