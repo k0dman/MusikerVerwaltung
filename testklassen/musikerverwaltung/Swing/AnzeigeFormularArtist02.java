@@ -510,10 +510,10 @@ public class AnzeigeFormularArtist02 extends JPanel {
 		
 		// ###Unteres JPanel rechts### //
 		// JPanel erzeugen
-		jpmainrightjb = new JPanel(new GridLayout(5, 1, 1, 10));
+		jpmainrightjb = new JPanel(new GridLayout(3, 1, 1, 10));
 
 		// L\u00FCenf\u00FCller einf\u00FCgen
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 1; i++) {
 			jlfueller = new JLabel("");
 			jpmainrightjb.add(jlfueller);
 		}
