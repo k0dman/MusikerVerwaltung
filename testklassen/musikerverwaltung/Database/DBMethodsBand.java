@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import musikerverwaltung.menschen.Helfer01;
 
 public class DBMethodsBand {
+	
+	
 
 	// Diese Eintr\u00E4ge werden zum Verbindungsaufbau ben\u00F6tigt
 	// Die Variabeln werden als >final< deklariert, da es sich hier um
@@ -231,35 +233,22 @@ public class DBMethodsBand {
 
 			// Methode aus Statement aufrufen und Ergebnis in Variable speichen
 			rs = stmt
-					.executeQuery("SELECT p.id_person, p.name, p.vorname, p.titel, p.vorsatz, p.zusatz, p.geschlecht, p.lebt, p.gtag, p.gmonat, p.gjahr, p.ttag, p.tmonat, p.tjahr, m.pseudonym, r.referenz, r.id_referenz, s.stuecksolo, s.id_stuecksolo, i.instrument, i.id_instrument, m.id_musiker FROM person p, musiker m, referenz r, stuecksolo s, instrument i WHERE p.id_person = m.id_person AND m.id_musiker = i.id_musiker AND m.id_musiker = r.id_musiker AND m.id_musiker = s.id_musiker AND m.pseudonym = '"
-							+ band + "'");
+					.executeQuery("Select g.id_gruppe, g.grname, m.id_musiker, m.aktiv, m.id_mitglied, gr.grreferenz, gr.id_grreferenz, sg.stueckgruppe, sg.id_stueckgruppe from gruppe g, mitglied m, stueckgruppe sg, grreferenz gr where grname = '"+band+"'");
 
 			// Schleife um eine alle Zeile durchzuarbeiten mit der Methode
 			// >next()<
 
 			while (rs.next()) {
-				banddata.add(rs.getString("id_person"));// 0
-				banddata.add(rs.getString("name"));// 1
-				banddata.add(rs.getString("vorname"));// 2
-				banddata.add(rs.getString("titel"));// 3
-				banddata.add(rs.getString("vorsatz"));// 4
-				banddata.add(rs.getString("zusatz"));// 5
-				banddata.add(rs.getString("geschlecht"));// 6
-				banddata.add(rs.getString("lebt"));// 7
-				banddata.add(rs.getString("gtag"));// 8
-				banddata.add(rs.getString("gmonat"));// 9
-				banddata.add(rs.getString("gjahr"));// 10
-				banddata.add(rs.getString("ttag"));// 11
-				banddata.add(rs.getString("tmonat"));// 12
-				banddata.add(rs.getString("tjahr"));// 13
-				banddata.add(rs.getString("pseudonym"));// 14
-				banddata.add(rs.getString("referenz"));// 15
-				banddata.add(rs.getString("id_referenz"));// 16
-				banddata.add(rs.getString("stuecksolo"));// 17
-				banddata.add(rs.getString("id_stuecksolo"));// 18
-				banddata.add(rs.getString("instrument"));// 19
-				banddata.add(rs.getString("id_instrument"));// 20
-				banddata.add(rs.getString("id_musiker"));// 21
+				banddata.add(rs.getString("id_gruppe"));// 0
+				banddata.add(rs.getString("grname"));// 1
+				banddata.add(rs.getString("id_musiker"));// 2
+				banddata.add(rs.getString("aktiv"));// 3
+				banddata.add(rs.getString("id_mitglied"));// 4
+				banddata.add(rs.getString("grreferenz"));// 5
+				banddata.add(rs.getString("id_grreferenz"));// 6
+				banddata.add(rs.getString("stueckgruppe"));// 7
+				banddata.add(rs.getString("id_stueckgruppe"));// 8
+
 			}
 		}
 
