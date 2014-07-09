@@ -25,7 +25,7 @@ public class AnzeigeFormularBand01 extends JPanel {
 	private JPanel jpmainband, jpmainleft, jpmainleftanzeige, jpmainmiddle,
 			jpmainright, jpmainleftjl, jpmainleftjtf, jpmainleftehemalig,
 			jpmainmiddlemitglieder, jpmainmiddletitel, jpmainrightreferenz,
-			jpmainrightbuttons, jpmainleftinsert, jpmainleftinsertbg;
+			jpmainrightbuttons, jpmainleftinsertbg;
 
 	// JLabel
 	private JLabel jlname, jlmitglied, jlehemalig, jlstueckgruppe, jlreferenz,
@@ -68,6 +68,9 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 	// JButton
 	private JButton jbsubmit, jbdelete, jbinsert;
+
+	// InsertJPanel
+	private InsertJPanel jpmainleftinsert;
 
 	// HauptJPanel links
 	private JPanel jpmainLeft(Object band) {
@@ -167,53 +170,6 @@ public class AnzeigeFormularBand01 extends JPanel {
 				.setToolTipText("Hier k\u00F6nnen Sie eine Referenz zu einer Band eintragen");
 		jcbmitgliedauswahl.setToolTipText("Bitte w\u00E4hle einen Musiker aus");
 
-		// jpmainleftinsert
-		jpmainleftinsert = new JPanel(new GridLayout(5, 1, 1, 20));
-
-		for (int i = 0; i < 2; i++) {
-			jlfueller = new JLabel("");
-			jpmainleftinsert.add(jlfueller);
-		}
-
-		// Einf\u00FCgenbutton
-		jbinsert = new JButton("Einf\u00FCgen");
-		jbinsert.setPreferredSize(new Dimension(10, 20));
-
-		// JRadioButton erzeugen
-
-		jrbstueckgruppe = new JRadioButton("St\u00FCck");
-		jrbstueckgruppe.setActionCommand("g");
-
-		jrbreferenz = new JRadioButton("Referenz");
-		jrbreferenz.setActionCommand("r");
-
-		jrbmitglied = new JRadioButton("Mitglied");
-		jrbmitglied.setActionCommand("m");
-
-		// JRadioButtons ButtonGroup hinzuf\u00FCgen
-		bginsert = new ButtonGroup();
-		bginsert.add(jrbstueckgruppe);
-		bginsert.add(jrbreferenz);
-		bginsert.add(jrbmitglied);
-
-		// JPanel f\u00FCr die JRadioButtons
-		jpmainleftinsertbg = new JPanel(new GridLayout(1, 1, 0, 10));
-		jpmainleftinsertbg.add(jrbstueckgruppe);
-		jpmainleftinsertbg.add(jrbreferenz);
-		jpmainleftinsertbg.add(jrbmitglied);
-
-		// JTexTField erzeugen
-		
-		jtfinsert = new JTextField();
-		// JTF dem jpmainleftinsert hinzuf\u00FCgen
-		jpmainleftinsert.add(jpmainleftinsertbg);
-		jpmainleftinsert.add(jtfinsert);
-		jpmainleftinsert.add(jbinsert);
-
-		// Border dem JPanel hinzuf\u00FCgen
-		// border.setBorder(jpmainleftinsert,
-		// "Referenz oder St\u00FCck hinzuf\u00FCgen");
-
 		jpmainleftanzeige = new JPanel(new GridLayout(1, 2, 1, 1));
 		// HauptJPanel linke Seite erzeugen
 		jpmainleft = new JPanel(new GridLayout(2, 1, 1, 1));
@@ -224,12 +180,14 @@ public class AnzeigeFormularBand01 extends JPanel {
 		// JPanel mit JTF´s der HauptPanel der linken Seite zurordnen
 		jpmainleftanzeige.add(jpmainleftjtf);
 		jpmainleft.add(jpmainleftanzeige);
-		jpmainleft.add(jpmainleftinsert);
+		jpmainleftinsert = new InsertJPanel();
+		
+		jpmainleft.add(jpmainleftinsert.insertJPanel(jcbmitgliedauswahl));
 
 		// Border setzen f\u00FCr das linke JPanel
 		border = new BorderSet();
 		border.setBorder(jpmainleftanzeige, "Band-Info's");
-		border.setBorder(jpmainleftinsert, "Datensatz eintragen");
+	
 
 		return jpmainleft;
 	}
@@ -430,17 +388,8 @@ public class AnzeigeFormularBand01 extends JPanel {
 
 			}
 		});
+
 		
-		
-		jrbmitglied.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				 if(jrbmitglied.isSelected()) jpmainleftinsert.add(jcbmitgliedauswahl);
-				
-			}
-		});
 
 		/*
 		 * // delete-Button jbdelete.addActionListener(new ActionListener() {

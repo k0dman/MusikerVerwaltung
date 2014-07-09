@@ -64,6 +64,24 @@ public class Musiker01 extends Person01 {
 		this.stuecksolo = stuecksolo;
 		this.referenz = referenz;
 	}
+	// Konstuktor#3
+	public Musiker01(String titel, String vorsatz, String vorname,
+			String zusatz, String name, int geburtstag, int geburtsmonat,
+			int geburtsjahr, int todestag, int todesmonat, int todesjahr,
+			String geschlecht, String lebt, String pseudonym, String[] instrument,
+			String[] stuecksolo, String[] referenz) {
+
+		// Aufruf des Konstruktors der Basis-Klasse
+		super(name, vorname, titel, vorsatz, zusatz, geschlecht, lebt,
+				geburtstag, geburtsmonat, geburtsjahr, todestag, todesmonat,
+				todesjahr);
+
+		// Sets
+		this.pseudonym = pseudonym;
+		this.instrument = instrument;
+		this.stuecksolo = stuecksolo;
+		this.referenz = referenz;
+	}
 
 	// Konstuktor#3
 	public Musiker01(String titel, String vorsatz, String vorname,
