@@ -2,6 +2,8 @@ package musikerverwaltung.menschen;
 
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import musikerverwaltung.database.DBMethods03;
 import musikerverwaltung.database.DBMethodsArtist;
 
@@ -156,6 +158,7 @@ public class Musiker01 extends Person01 {
 	}
 
 	public void insertArtist() {
+		if(Helfer01.pruefDatum(super.getGeburtsTag(), super.getGeburtsMonat(), super.getGeburtsJahr()) == true){
 		DBMethodsArtist.insertArtist(super.getTitel(), super.getVorsatz(),
 				super.getVorname(), super.getZusatz(), super.getName(),
 				super.getGeburtsTag(), super.getGeburtsMonat(),
@@ -164,11 +167,17 @@ public class Musiker01 extends Person01 {
 				super.getGeschlecht(), super.isTot(), getPseudonym(),
 				getInstrument()[0], getStueckSolo()[0], getReferenz()[0]);
 	}
+		else {
+			
+			JOptionPane
+			.showMessageDialog(null, "Das Datum existiert nicht");
+			
+		}}
 
 	public void updateArtist(int idperson, int idmusiker, int idinstrument,
 			int idstuecksolo, int idreferenz, String pseudonym,
 			String instrument, String stuecksolo, String referenz) {
-
+		if(Helfer01.pruefDatum(super.getGeburtsTag(), super.getGeburtsMonat(), super.getGeburtsJahr()) == true){
 		DBMethodsArtist.updateArtist(idperson, idmusiker, idinstrument,
 				idstuecksolo, idreferenz, super.getTitel(), super.getVorsatz(),
 				super.getVorname(), super.getZusatz(), super.getName(),
@@ -176,7 +185,13 @@ public class Musiker01 extends Person01 {
 				super.getGeburtsJahr(), super.getTodesTag(),
 				super.getTodesMonat(), super.getTodesJahr(),
 				super.getGeschlecht(), super.isTot(), pseudonym, instrument,
-				stuecksolo, referenz);
+				stuecksolo, referenz);}
+		else {
+			
+			JOptionPane
+			.showMessageDialog(null, "Das Datum existiert nicht");
+			
+		}
 	}
 
 	public Vector<Vector<String>> selectLibary(String keyword) {
