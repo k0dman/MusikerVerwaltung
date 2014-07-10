@@ -181,6 +181,8 @@ public class MusicLounge extends JFrame {
 
 		// JTextField erzeugen
 		jtfsearch = new RoundJTextField03(13);
+		
+		jtfsearch.setToolTipText("Suche nach einem Interpreten/ einer Band oder nach Musikst\u00FCcken");
 
 		// JLabels der >jpheaderright< hinzuf\u00FCgen
 		gpleft.add(jpheaderleft.add(jlheader));

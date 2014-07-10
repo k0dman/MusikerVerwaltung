@@ -155,7 +155,7 @@ public class EingabeformularBand extends JPanel {
 		// L\u00FCenf\u00FCller einf\u00FCgen
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
-		fueller = new JLabel("Falls ein Artist nicht existiert muss er vorher angelegt werden! Hierbei muss kein St\u00FCck eingetragen werden");
+		fueller = new JLabel("Falls ein Artist nicht existiert muss er vorher angelegt werden!");
 		jpmainright.add(fueller);
 
 		Musiker01 musiker = new Musiker01();

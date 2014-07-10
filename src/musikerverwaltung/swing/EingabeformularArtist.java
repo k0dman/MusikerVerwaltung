@@ -73,7 +73,7 @@ public class EingabeformularArtist extends JPanel {
 		dod = new JLabel("Todesdatum");
 		pseudonym = new JLabel("Pseudonym *");
 		instrument = new JLabel("Instrument *");
-		solostueck = new JLabel("Stueck *");
+		solostueck = new JLabel("Stueck **");
 		referenz = new JLabel("Referenz *");
 
 		jpmainDesc.add(ueschrift);
@@ -331,10 +331,11 @@ public class EingabeformularArtist extends JPanel {
 		jpmainright.add(fueller);
 		fueller = new JLabel("");
 		jpmainright.add(fueller);
-		fueller = new JLabel("");
-		jpmainright.add(fueller);
 		pflichtfeld = new JLabel("* Pflichtfelder");
 		jpmainright.add(pflichtfeld);
+		fueller = new JLabel("** Pflichtfeld bei Solok\u00FCnstler");
+		jpmainright.add(fueller);
+
 
 		// JButton dem JPanel hinzuf\u00FCgen
 		jpmainright.add(jbsubmit, BorderLayout.SOUTH);
@@ -400,9 +401,9 @@ public class EingabeformularArtist extends JPanel {
 				
 				
 	
-				if (tfstuecksolo.equals("") || tfreferenz.equals("") ||tfinstrument.equals("") ||tfpseudonym.equals("")) {
+				if (tfreferenz.equals("") ||tfinstrument.equals("") ||tfpseudonym.equals("")) {
 					String fehltpseudonym = "";
-					String fehltstuecksolo = "";
+					
 					String fehltreferenz = "";
 					String fehltinstrument = "";
 						
@@ -411,10 +412,7 @@ public class EingabeformularArtist extends JPanel {
 
 					}
 
-					if (tfstuecksolo.equals("")) {
-
-						fehltstuecksolo = "Tragen Sie ein St\u00FCck ein! \n\r";
-					}
+					
 
 					if (tfreferenz.equals("")) {
 
@@ -428,7 +426,7 @@ public class EingabeformularArtist extends JPanel {
 					
 					JOptionPane
 							.showMessageDialog(null, fehltpseudonym
-									+ fehltstuecksolo + fehltreferenz
+									+ fehltreferenz
 									+ fehltinstrument);
 				}
 
