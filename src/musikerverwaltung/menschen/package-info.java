@@ -1,8 +1,8 @@
 /**
- * In diesem Package befinden sich Klassen und Methoden zum Darstellen, 
- * Aufsuchen und Finden von Daten zu verschiedenen Solokünstlern und Musikgruppen
+ * In diesem Package befinden sich die Klassen mit den Getter- /Settermethoden
  */
 /**
+ * @version 0001 Donnerstag 10.07.2014 14:48:52
  * @author Sven Frerichs & Philip Brandt
  *
  */

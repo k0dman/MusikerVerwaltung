@@ -1,6 +1,5 @@
 /**
- * In diesem Package befinden sich Klassen und Methoden zum Darstellen, 
- * Aufsuchen und Finden von Daten zu verschiedenen Solokünstlern und Musikgruppen
+ * In diesem Package befinden sich Klassen und Methoden f&uuml; die Datenbank
  */
 /**
  * @author Sven Frerichs & Philip Brandt
